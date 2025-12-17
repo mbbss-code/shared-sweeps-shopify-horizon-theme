@@ -4,24 +4,28 @@
 {% endcomment %}
 
 <section 
-  class="pricing-comparison-section tw-py-[32px]"
+  class="pricing-comparison-section tw-py-12 md:tw-py-16 lg:tw-py-20"
   style="background-color: {{ section.settings.background_color }};"
   aria-labelledby="comparison-heading"
+  data-animate-section
 >
   <div class="tw-container tw-mx-auto tw-px-4 sm:tw-px-6 lg:tw-px-8 tw-max-w-7xl">
     {% if section.settings.heading != blank %}
       <h2 
         id="comparison-heading"
-        class="tw-text-2xl md:tw-text-3xl lg:tw-text-4xl tw-font-bold tw-text-center tw-mb-8 md:tw-mb-12"
+        class="tw-text-2xl md:tw-text-3xl lg:tw-text-4xl tw-font-bold tw-text-center tw-mb-8 md:tw-mb-12 tw-opacity-0 tw-translate-y-8"
         style="color: {{ section.settings.heading_color }};"
+        data-animate="fade-up"
       >
         {{ section.settings.heading }}
       </h2>
     {% endif %}
 
-    {%- comment -%} Center the table with max-width {%- endcomment -%}
-    <div class="tw-w-full tw-mx-auto">
-      <div class="comparison-table tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden">
+    <div class="tw-mx-auto">
+      <div class="comparison-table tw-bg-white tw-rounded-lg tw-shadow-lg tw-overflow-hidden tw-opacity-0 tw-translate-y-8"
+           data-animate="fade-up"
+           data-delay="200">
+        
         {%- comment -%} Table Header {%- endcomment -%}
         <div class="tw-grid tw-grid-cols-3 tw-gap-4 tw-p-4 md:tw-p-6 tw-border-b tw-border-gray-200">
           <div class="tw-col-span-1"></div>
@@ -45,13 +49,16 @@
 
         {%- comment -%} Feature Rows {%- endcomment -%}
         {% for block in section.blocks %}
+          {% assign delay = 400 | plus: forloop.index0 | times: 100 %}
           <div 
-            class="tw-grid tw-grid-cols-3 tw-gap-4 tw-p-4 md:tw-p-6 tw-border-b tw-border-gray-100 tw-items-center hover:tw-bg-gray-50 tw-transition-colors"
+            class="tw-grid tw-grid-cols-3 tw-gap-4 tw-p-4 md:tw-p-6 tw-border-b tw-border-gray-100 tw-items-center hover:tw-bg-gray-50 tw-transition-colors tw-opacity-0 tw-translate-x-[-20px]"
             {{ block.shopify_attributes }}
+            data-animate="slide-in"
+            data-delay="{{ delay }}"
           >
             {%- comment -%} Feature Name with Icon and Description {%- endcomment -%}
             <div class="tw-col-span-1">
-              <div class="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-2 md:tw-gap-3 tw-text-center md:tw-items-center">
+              <div class="tw-flex tw-flex-col md:tw-flex-row tw-items-center md:tw-items-start tw-gap-2 md:tw-gap-3 tw-text-center md:tw-text-left">
                 {%- comment -%} Icon {%- endcomment -%}
                 {% if block.settings.svg_icon != blank or block.settings.icon != blank %}
                   <div class="tw-flex-shrink-0" aria-hidden="true">
@@ -95,12 +102,12 @@
             {%- comment -%} Free Plan {%- endcomment -%}
             <div class="tw-flex tw-justify-center tw-items-center">
               {% if block.settings.free_included %}
-                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Included">
+                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6 check-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Included">
                   <circle cx="12" cy="12" r="10" fill="{{ section.settings.check_color }}" fill-opacity="0.1"/>
                   <path d="M8 12L11 15L16 9" stroke="{{ section.settings.check_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               {% else %}
-                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Not included">
+                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6 cross-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Not included">
                   <circle cx="12" cy="12" r="10" fill="{{ section.settings.cross_color }}" fill-opacity="0.1"/>
                   <path d="M9 9L15 15M15 9L9 15" stroke="{{ section.settings.cross_color }}" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -110,12 +117,12 @@
             {%- comment -%} Premium Plan {%- endcomment -%}
             <div class="tw-flex tw-justify-center tw-items-center">
               {% if block.settings.premium_included %}
-                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Included">
+                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6 check-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Included">
                   <circle cx="12" cy="12" r="10" fill="{{ section.settings.check_color }}" fill-opacity="0.1"/>
                   <path d="M8 12L11 15L16 9" stroke="{{ section.settings.check_color }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               {% else %}
-                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Not included">
+                <svg class="tw-w-5 tw-h-5 md:tw-w-6 md:tw-h-6 cross-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Not included">
                   <circle cx="12" cy="12" r="10" fill="{{ section.settings.cross_color }}" fill-opacity="0.1"/>
                   <path d="M9 9L15 15M15 9L9 15" stroke="{{ section.settings.cross_color }}" stroke-width="2" stroke-linecap="round"/>
                 </svg>
@@ -127,10 +134,12 @@
     </div>
 
     {% if section.settings.show_cta and section.settings.cta_text != blank %}
-      <div class="tw-text-center tw-mt-8 md:tw-mt-10 lg:tw-mt-12">
+      <div class="tw-text-center tw-mt-8 md:tw-mt-10 lg:tw-mt-12 tw-opacity-0 tw-translate-y-8"
+           data-animate="fade-up"
+           data-delay="800">
         <a 
           href="{{ section.settings.cta_link }}"
-          class="tw-inline-block tw-px-6 tw-py-2.5 md:tw-px-8 md:tw-py-3 lg:tw-px-10 lg:tw-py-4 tw-rounded-full tw-font-semibold tw-text-sm md:tw-text-base lg:tw-text-lg tw-transition-all tw-duration-300 hover:tw-opacity-90 focus:tw-outline-none focus:tw-ring-4 focus:tw-ring-offset-2"
+          class="tw-inline-block tw-px-6 tw-py-2.5 md:tw-px-8 md:tw-py-3 lg:tw-px-10 lg:tw-py-4 tw-rounded-full tw-font-semibold tw-text-sm md:tw-text-base lg:tw-text-lg tw-transition-all tw-duration-300 hover:tw-opacity-90 hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-4 focus:tw-ring-offset-2"
           style="background-color: {{ section.settings.cta_background }}; color: {{ section.settings.cta_text_color }};"
           {% if section.settings.cta_link == blank %}aria-disabled="true"{% endif %}
         >
@@ -150,7 +159,7 @@
     border: 1px solid #e5e7eb;
   }
 
-  /* Icon sizing - 50px x 50px */
+  /* Icon sizing */
   .feature-icon-wrapper,
   .feature-icon-img {
     width: 50px;
@@ -160,7 +169,6 @@
     justify-content: center;
   }
 
-  /* Ensure SVG icons scale to 50px */
   .feature-icon-wrapper svg {
     width: 50px;
     height: 50px;
@@ -168,19 +176,44 @@
     max-height: 50px;
   }
 
+  /* Animation states */
+  [data-animate] {
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  [data-animate].animated {
+    opacity: 1 !important;
+    transform: translateY(0) translateX(0) !important;
+  }
+
+  /* Check/Cross icon animations */
+  .check-icon,
+  .cross-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .check-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .cross-icon:hover {
+    transform: scale(1.1);
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    [data-animate],
+    .check-icon,
+    .cross-icon {
+      transition: none !important;
+    }
+    
     .comparison-table > div {
       transition: none;
     }
   }
-
-  /* Mobile optimization */
-  @media (max-width: 640px) {
-    .comparison-table {
-      font-size: 0.875rem;
-    }
-  }
 </style>
+
+<script src="{{ 'pricing-comparison-animations.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
