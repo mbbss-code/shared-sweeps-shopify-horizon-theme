@@ -111,10 +111,30 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "header_custom_aM6FqD": {
+      "type": "header-custom",
+      "name": "Header Custom",
+      "settings": {
+        "header_bg_color": "#172645",
+        "logo": "shopify://shop_images/shared-sweeps-logo.png",
+        "logo_alt_text": "Shared Sweeps",
+        "menu": "custom-header-menu",
+        "show_cta_button": true,
+        "cta_button_text": "Talk to Our Team",
+        "button_bg_color": "#3099d3",
+        "button_text_color": "#ffffff",
+        "modal_title": "Contact Our Team",
+        "show_phone_field": false,
+        "phone_required": false,
+        "submit_button_text": "Send Message",
+        "success_message": "Thanks for contacting us! We'll get back to you soon."
+      }
     }
   },
   "order": [
     "header_announcements_9jGBFp",
-    "header_section"
+    "header_section",
+    "header_custom_aM6FqD"
   ]
 }

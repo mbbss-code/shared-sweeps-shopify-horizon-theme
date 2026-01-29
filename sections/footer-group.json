@@ -11,134 +11,30 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
-    "footer_m9NzUG": {
-      "type": "footer",
-      "blocks": {
-        "text_KQmFf6": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p><em>NO PURCHASE NECESSARY. Ends 3/5/26. <br/><br/>Must be: <br/>i) a legal US resident of the 50 US or DC and age of majority or <br/><br/>ii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at </em><a href=\"http://sharedsweeps.com/rules\" target=\"_blank\"><em>sharedsweeps.com/rules</em></a><em>. <br/><br/>Void where prohibited. Sponsored By Shared Sweeps.</em></p>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "paragraph",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "email_signup_crihX7": {
-          "type": "email-signup",
-          "disabled": true,
-          "settings": {
-            "width": "fill",
-            "custom_width": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "heading": "",
-            "heading_preset": "h3",
-            "border_style": "all",
-            "border_width": 1,
-            "border_radius": 100,
-            "input_type_preset": "paragraph",
-            "style_class": "button-unstyled",
-            "display_type": "arrow",
-            "label": "Sign up",
-            "integrated_button": true,
-            "button_type_preset": "paragraph",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_KQmFf6",
-        "email_signup_crihX7"
-      ],
-      "name": "t:names.footer",
+    "footer_custom_4MhVEM": {
+      "type": "footer-custom",
+      "name": "Footer Custom",
       "settings": {
-        "section_width": "page-width",
-        "gap": 16,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "footer_utilities_jLGE8U": {
-      "type": "footer-utilities",
-      "blocks": {
-        "footer_copyright_jweRK8": {
-          "type": "footer-copyright",
-          "settings": {
-            "show_powered_by": true,
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "footer_policy_list_VCdnpa": {
-          "type": "footer-policy-list",
-          "settings": {
-            "font_size": "0.75rem",
-            "case": "none"
-          },
-          "blocks": {}
-        },
-        "social_links_Ew63Kq": {
-          "type": "social-links",
-          "settings": {
-            "facebook_url": "https://www.facebook.com/",
-            "instagram_url": "https://www.instagram.com/",
-            "youtube_url": "https://www.youtube.com/",
-            "tiktok_url": "https://www.tiktok.com/",
-            "twitter_url": "https://x.com/",
-            "threads_url": "",
-            "linkedin_url": "",
-            "bluesky_url": "",
-            "snapchat_url": "",
-            "pinterest_url": "",
-            "tumblr_url": "",
-            "vimeo_url": "",
-            "custom_url": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "footer_copyright_jweRK8",
-        "footer_policy_list_VCdnpa",
-        "social_links_Ew63Kq"
-      ],
-      "disabled": true,
-      "name": "t:names.utilities",
-      "settings": {
-        "section_width": "page-width",
-        "gap": 24,
-        "divider_thickness": 0,
-        "color_scheme": "",
-        "padding-block-start": 20,
-        "padding-block-end": 48
+        "footer_bg_color": "#1e3a5f",
+        "footer_text_color": "#e5e7eb",
+        "logo": "shopify://shop_images/shared-sweeps-logo.png",
+        "logo_alt_text": "Shared Sweeps",
+        "tagline": "Making every purchase a chance to win.",
+        "show_legal_text": true,
+        "legal_disclaimer": "NO PURCHASE NECESSARY. Ends 3/5/26. <br> <br>\nMust be:\ni) a legal US resident of the 50 US or DC and age of majority or <br> <br>\nii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at sharedsweeps.com/rules. <br> <br>\n\nVoid where prohibited. Sponsored By Shared Sweeps.",
+        "footer_menu": "custom-footer-menu",
+        "copyright_text": "© __YEAR__ __SHOP__. All rights reserved.",
+        "show_payment_icons": true,
+        "show_social_icons": true,
+        "social_facebook": "",
+        "social_twitter": "",
+        "social_instagram": "",
+        "social_linkedin": "",
+        "social_youtube": ""
       }
     }
   },
   "order": [
-    "footer_m9NzUG",
-    "footer_utilities_jLGE8U"
+    "footer_custom_4MhVEM"
   ]
 }
