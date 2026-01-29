@@ -1,0 +1,600 @@
+{% comment %}
+  Custom Sticky header with navigation and contact modal
+  SEO optimized with structured data and semantic markup
+  ADA compliant with semantic HTML and ARIA labels
+  Navigation menu selectable from theme settings
+{% endcomment %}
+
+{%- liquid
+  assign header_bg_color = section.settings.header_bg_color | default: '#0a1128'
+  assign button_bg_color = section.settings.button_bg_color | default: '#9333ea'
+  assign button_text_color = section.settings.button_text_color | default: '#ffffff'
+-%}
+
+<style>
+  .header-custom-{{ section.id }} {
+    background-color: {{ header_bg_color }};
+  }
+  .header-cta-button-{{ section.id }} {
+    background-color: {{ button_bg_color }};
+    color: {{ button_text_color }};
+  }
+  .header-cta-button-{{ section.id }}:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+</style>
+
+{%- comment -%} JSON-LD Structured Data for Navigation {%- endcomment -%}
+{% if section.settings.menu != blank %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SiteNavigationElement",
+  "name": "Main Navigation",
+  "url": "{{ shop.url }}",
+  "hasPart": [
+    {%- for link in linklists[section.settings.menu].links -%}
+    {
+      "@type": "WebPage",
+      "name": {{ link.title | json }},
+      "url": "{{ shop.url }}{{ link.url }}"
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{% endif %}
+
+{%- comment -%} Organization Schema for Logo {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ shop.name | json }},
+  "url": "{{ shop.url }}",
+  {% if section.settings.logo != blank %}
+  "logo": "{{ section.settings.logo | image_url: width: 600 }}",
+  {% endif %}
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Customer Service",
+    "url": "{{ shop.url }}{{ pages.contact.url }}"
+  },
+  "sameAs": [
+    {% if settings.social_twitter_link != blank %}"{{ settings.social_twitter_link }}",{% endif %}
+    {% if settings.social_facebook_link != blank %}"{{ settings.social_facebook_link }}",{% endif %}
+    {% if settings.social_instagram_link != blank %}"{{ settings.social_instagram_link }}",{% endif %}
+    {% if settings.social_youtube_link != blank %}"{{ settings.social_youtube_link }}",{% endif %}
+    {% if settings.social_linkedin_link != blank %}"{{ settings.social_linkedin_link }}"{% endif %}
+  ]
+}
+</script>
+
+<header class="header-custom-{{ section.id }} tw-sticky tw-top-0 tw-z-50 tw-border-b tw-border-white/10" role="banner" itemscope itemtype="https://schema.org/WPHeader">
+  <nav class="tw-container tw-mx-auto tw-flex tw-h-16 tw-items-center tw-justify-between tw-px-4" role="navigation" aria-label="Main navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    {%- comment -%} Logo with SEO optimization {%- endcomment -%}
+    <a 
+      href="{{ routes.root_url }}" 
+      class="tw-flex tw-items-center" 
+      aria-label="{{ section.settings.logo_alt_text | default: shop.name }} home"
+      itemprop="url"
+      rel="home"
+    >
+      {% if section.settings.logo != blank %}
+        <img 
+          src="{{ section.settings.logo | image_url: width: 400 }}" 
+          srcset="{{ section.settings.logo | image_url: width: 200 }} 1x, {{ section.settings.logo | image_url: width: 400 }} 2x"
+          alt="{{ section.settings.logo_alt_text | default: shop.name }}" 
+          class="tw-h-7 tw-w-auto"
+          width="{{ section.settings.logo.width | divided_by: 2 }}"
+          height="28"
+          loading="eager"
+          fetchpriority="high"
+          itemprop="logo"
+        />
+      {% else %}
+        <img 
+          src="{{ 'shared-sweeps-logo.png' | asset_url }}" 
+          alt="{{ section.settings.logo_alt_text | default: shop.name }}" 
+          class="tw-h-7 tw-w-auto"
+          width="auto"
+          height="28"
+          loading="eager"
+          fetchpriority="high"
+          itemprop="logo"
+        />
+      {% endif %}
+      {%- comment -%} Hidden site name for SEO {%- endcomment -%}
+      <span class="tw-sr-only" itemprop="name">{{ shop.name }}</span>
+    </a>
+    
+    {%- comment -%} Desktop Navigation - Shows on lg and above {%- endcomment -%}
+    {% if section.settings.menu != blank %}
+      <div class="tw-hidden tw-items-center tw-gap-8 lg:tw-flex" role="menubar">
+        {% for link in linklists[section.settings.menu].links %}
+          <a 
+            href="{{ link.url }}" 
+            class="tw-text-sm tw-font-medium tw-text-white/70 tw-transition-colors hover:tw-text-white focus:tw-text-white focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-rounded-sm"
+            {% if link.active %}aria-current="page"{% endif %}
+            role="menuitem"
+            itemprop="url"
+            title="{{ link.title }}"
+          >
+            <span itemprop="name">{{ link.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {%- comment -%} Mobile Menu Button & Desktop CTA {%- endcomment -%}
+    <div class="tw-flex tw-items-center tw-gap-3">
+      {%- comment -%} Desktop CTA Button - Shows on lg and above {%- endcomment -%}
+      {% if section.settings.show_cta_button %}
+        <button 
+          type="button"
+          class="header-cta-button-{{ section.id }} tw-hidden lg:tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}]"
+          data-contact-modal-trigger
+          aria-haspopup="dialog"
+          title="{{ section.settings.cta_button_text | default: 'Talk to Our Team' }}"
+        >
+          {{ section.settings.cta_button_text | default: 'Talk to Our Team' }}
+        </button>
+      {% endif %}
+
+      {%- comment -%} Mobile Menu Button - Shows on tablet and mobile {%- endcomment -%}
+      {% if section.settings.menu != blank %}
+        <button 
+          type="button"
+          class="lg:tw-hidden tw-text-white tw-p-2 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-rounded-sm"
+          aria-label="Toggle mobile menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-mobile-menu-toggle
+          title="Open navigation menu"
+        >
+          <svg class="tw-h-6 tw-w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      {% endif %}
+    </div>
+  </nav>
+
+  {%- comment -%} Mobile Menu - Shows on tablet and mobile {%- endcomment -%}
+  {% if section.settings.menu != blank %}
+    <div 
+      id="mobile-menu" 
+      class="tw-hidden lg:tw-hidden tw-border-t tw-border-white/10"
+      role="menu"
+      aria-label="Mobile navigation"
+    >
+      <div class="tw-container tw-mx-auto tw-px-4 tw-py-4 tw-space-y-3">
+        {% for link in linklists[section.settings.menu].links %}
+          <a 
+            href="{{ link.url }}" 
+            class="tw-block tw-text-sm tw-font-medium tw-text-white/70 tw-transition-colors hover:tw-text-white focus:tw-text-white focus:tw-outline-none tw-py-2 tw-rounded-sm focus:tw-ring-2 focus:tw-ring-white/50 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}]"
+            role="menuitem"
+            {% if link.active %}aria-current="page"{% endif %}
+            title="{{ link.title }}"
+          >
+            {{ link.title }}
+          </a>
+        {% endfor %}
+        
+        {% if section.settings.show_cta_button %}
+          <button 
+            type="button"
+            class="header-cta-button-{{ section.id }} tw-w-full tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-mt-4"
+            data-contact-modal-trigger
+            aria-haspopup="dialog"
+            title="{{ section.settings.cta_button_text | default: 'Talk to Our Team' }}"
+          >
+            {{ section.settings.cta_button_text | default: 'Talk to Our Team' }}
+          </button>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</header>
+
+{%- comment -%} Contact Form Modal {%- endcomment -%}
+{% if section.settings.show_cta_button %}
+  <div 
+    id="contact-modal" 
+    class="tw-hidden tw-fixed tw-inset-0 tw-z-50 tw-bg-black/50 tw-backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contact-modal-title"
+    aria-describedby="contact-modal-description"
+    data-contact-modal
+  >
+    <div class="tw-flex tw-min-h-full tw-items-center tw-justify-center tw-p-4">
+      <div class="tw-relative tw-w-full tw-max-w-lg tw-rounded-lg tw-bg-white tw-p-6 tw-shadow-xl tw-max-h-[90vh] tw-overflow-y-auto">
+        <div class="tw-flex tw-items-center tw-justify-between tw-mb-6">
+          <h2 id="contact-modal-title" class="tw-text-2xl tw-font-semibold tw-text-gray-900">
+            {{ section.settings.modal_title | default: 'Talk to Our Team' }}
+          </h2>
+          <button 
+            type="button"
+            class="tw-text-gray-400 hover:tw-text-gray-600 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 tw-rounded-md tw-p-1"
+            data-contact-modal-close
+            aria-label="Close contact form"
+            title="Close"
+          >
+            <svg class="tw-h-6 tw-w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+        
+        <p id="contact-modal-description" class="tw-sr-only">
+          Fill out this form to get in touch with our team. All required fields are marked with an asterisk.
+        </p>
+        
+        {%- comment -%} Contact form with proper attributes {%- endcomment -%}
+        {% form 'contact', id: 'contact-form', class: 'contact-form' %}
+          {% if form.posted_successfully? %}
+            <div class="tw-mb-4 tw-p-4 tw-bg-green-50 tw-border tw-border-green-200 tw-rounded-md" role="alert" aria-live="polite">
+              <p class="tw-text-green-800">{{ section.settings.success_message | default: "Thanks for contacting us! We'll get back to you soon." }}</p>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="tw-mb-4 tw-p-4 tw-bg-red-50 tw-border tw-border-red-200 tw-rounded-md" role="alert" aria-live="assertive">
+              <p class="tw-text-red-800 tw-font-semibold tw-mb-2">Please correct the following errors:</p>
+              <ul class="tw-list-disc tw-list-inside tw-text-red-700">
+                {% for field in form.errors %}
+                  <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          <div class="tw-space-y-5">
+            {%- comment -%} Name Field {%- endcomment -%}
+            <div>
+              <label for="contact-name" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                Name <span class="tw-text-red-500" aria-label="required">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="contact-name"
+                name="contact[name]" 
+                placeholder="Your name"
+                required
+                aria-required="true"
+                autocomplete="name"
+                class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+              />
+            </div>
+
+            {%- comment -%} Email Field {%- endcomment -%}
+            <div>
+              <label for="contact-email" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                Email <span class="tw-text-red-500" aria-label="required">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="contact-email"
+                name="contact[email]" 
+                placeholder="you@company.com"
+                required
+                aria-required="true"
+                autocomplete="email"
+                class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+              />
+            </div>
+
+            {%- comment -%} Company Field {%- endcomment -%}
+            {% if section.settings.show_company_field %}
+              <div>
+                <label for="contact-company" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                  Brand / Company {% if section.settings.company_required %}<span class="tw-text-red-500" aria-label="required">*</span>{% endif %}
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-company"
+                  name="contact[company]" 
+                  placeholder="Your company name"
+                  {% if section.settings.company_required %}required aria-required="true"{% endif %}
+                  autocomplete="organization"
+                  class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+                />
+              </div>
+            {% endif %}
+
+            {%- comment -%} Website URL Field {%- endcomment -%}
+            {% if section.settings.show_website_field %}
+              <div>
+                <label for="contact-website" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                  Website URL{% if section.settings.website_required %} <span class="tw-text-red-500" aria-label="required">*</span>{% endif %}
+                </label>
+                <input 
+                  type="url" 
+                  id="contact-website"
+                  name="contact[website]" 
+                  placeholder="https://yourcompany.com"
+                  {% if section.settings.website_required %}required aria-required="true"{% endif %}
+                  autocomplete="url"
+                  class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+                />
+              </div>
+            {% endif %}
+
+            {%- comment -%} Phone Field {%- endcomment -%}
+            {% if section.settings.show_phone_field %}
+              <div>
+                <label for="contact-phone" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                  Phone {% if section.settings.phone_required %}<span class="tw-text-red-500" aria-label="required">*</span>{% endif %}
+                </label>
+                <input 
+                  type="tel" 
+                  id="contact-phone"
+                  name="contact[phone]" 
+                  placeholder="+1 (555) 000-0000"
+                  {% if section.settings.phone_required %}required aria-required="true"{% endif %}
+                  autocomplete="tel"
+                  class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+                />
+              </div>
+            {% endif %}
+
+            {%- comment -%} Revenue Range Dropdown {%- endcomment -%}
+            {% if section.settings.show_revenue_field %}
+              <div>
+                <label for="contact-revenue" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                  Monthly Revenue Range{% if section.settings.revenue_required %} <span class="tw-text-red-500" aria-label="required">*</span>{% endif %}
+                </label>
+                <select 
+                  id="contact-revenue"
+                  name="contact[revenue_range]" 
+                  {% if section.settings.revenue_required %}required aria-required="true"{% endif %}
+                  class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20 tw-appearance-none tw-bg-white"
+                  style="background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27 fill=%27none%27%3e%3cpath d=%27M7 7l3 3 3-3%27 stroke=%27%239ca3af%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3e%3c/svg%3e'); background-position: right 0.75rem center; background-repeat: no-repeat; background-size: 1.5em 1.5em;"
+                >
+                  <option value="">Select a range</option>
+                  <option value="0-10k">$0 - $10,000</option>
+                  <option value="10k-50k">$10,000 - $50,000</option>
+                  <option value="50k-100k">$50,000 - $100,000</option>
+                  <option value="100k-500k">$100,000 - $500,000</option>
+                  <option value="500k+">$500,000+</option>
+                </select>
+              </div>
+            {% endif %}
+
+            {%- comment -%} Message Field {%- endcomment -%}
+            <div>
+              <label for="contact-message" class="tw-block tw-text-sm tw-font-medium tw-text-gray-900 tw-mb-2">
+                Message <span class="tw-text-red-500" aria-label="required">*</span>
+              </label>
+              <textarea 
+                id="contact-message"
+                name="contact[body]" 
+                rows="4"
+                placeholder="Tell us about your goals..."
+                required
+                aria-required="true"
+                class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-px-4 tw-py-3 tw-text-gray-900 placeholder:tw-text-gray-400 focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20 tw-resize-none"
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit"
+              class="tw-w-full tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-blue-500 tw-px-4 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-sm tw-transition-all hover:tw-bg-blue-600 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 focus:tw-ring-offset-2"
+              title="Submit contact form"
+            >
+              {{ section.settings.submit_button_text | default: 'Send Message' }}
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.querySelector('[data-mobile-menu-toggle]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', function() {
+        const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+        mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('tw-hidden');
+      });
+    }
+
+    // Contact modal
+    const modalTriggers = document.querySelectorAll('[data-contact-modal-trigger]');
+    const modal = document.querySelector('[data-contact-modal]');
+    const modalClose = document.querySelector('[data-contact-modal-close]');
+    
+    if (modalTriggers && modal) {
+      modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+          modal.classList.remove('tw-hidden');
+          document.body.style.overflow = 'hidden';
+          // Focus trap
+          const firstInput = modal.querySelector('input, textarea, button');
+          if (firstInput) firstInput.focus();
+        });
+      });
+    }
+
+    if (modalClose && modal) {
+      modalClose.addEventListener('click', function() {
+        modal.classList.add('tw-hidden');
+        document.body.style.overflow = '';
+      });
+      
+      // Close on backdrop click
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.add('tw-hidden');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('tw-hidden')) {
+          modal.classList.add('tw-hidden');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Header Custom",
+  "class": "header-custom-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Styling"
+    },
+    {
+      "type": "color",
+      "id": "header_bg_color",
+      "label": "Header background color",
+      "default": "#0a1128"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt_text",
+      "label": "Logo alt text",
+      "default": "Shared Sweeps",
+      "info": "Describe your logo for accessibility"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "Select which menu to display in the header"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_button",
+      "label": "Show CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "Button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button background color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Contact Modal"
+    },
+    {
+      "type": "text",
+      "id": "modal_title",
+      "label": "Modal title",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_company_field",
+      "label": "Show company field",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "company_required",
+      "label": "Make company required",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_website_field",
+      "label": "Show website field",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "website_required",
+      "label": "Make website required",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone_field",
+      "label": "Show phone field",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "phone_required",
+      "label": "Make phone required",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_revenue_field",
+      "label": "Show revenue range field",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "revenue_required",
+      "label": "Make revenue range required",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Send Message"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks for contacting us! We'll get back to you soon."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Custom",
+      "category": "Header"
+    }
+  ]
+}
+{% endschema %}

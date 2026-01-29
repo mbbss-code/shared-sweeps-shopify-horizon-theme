@@ -1,0 +1,359 @@
+{% comment %}
+  Site footer with navigation and branding
+  SEO optimized with structured data and semantic markup
+  ADA compliant with semantic HTML
+{% endcomment %}
+
+{%- liquid
+  assign footer_bg_color = section.settings.footer_bg_color | default: '#1e3a5f'
+  assign footer_text_color = section.settings.footer_text_color | default: '#e5e7eb'
+-%}
+
+<style>
+  .footer-custom-{{ section.id }} {
+    background-color: {{ footer_bg_color }};
+    color: {{ footer_text_color }};
+  }
+</style>
+
+{%- comment -%} JSON-LD Structured Data for Footer {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WPFooter",
+  "name": "Footer",
+  "url": "{{ shop.url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    "url": "{{ shop.url }}",
+    {% if section.settings.logo != blank %}
+    "logo": "{{ section.settings.logo | image_url: width: 600 }}",
+    {% endif %}
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "url": "{{ shop.url }}{{ pages.contact.url }}"
+    }
+  }
+}
+</script>
+
+<footer class="footer-custom-{{ section.id }} tw-py-12 tw-px-4 tw-border-t tw-border-white/10" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <div class="tw-container tw-mx-auto">
+    <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-8">
+      {%- comment -%} Brand Section {%- endcomment -%}
+      <div itemscope itemtype="https://schema.org/Organization">
+        <a 
+          href="{{ routes.root_url }}" 
+          class="tw-inline-flex tw-items-center tw-gap-2 tw-mb-4" 
+          aria-label="{{ section.settings.logo_alt_text | default: shop.name }} home"
+          itemprop="url"
+          rel="home"
+          title="{{ shop.name }}"
+        >
+          {% if section.settings.logo != blank %}
+            <img
+              src="{{ section.settings.logo | image_url: width: 300 }}"
+              srcset="{{ section.settings.logo | image_url: width: 150 }} 1x, {{ section.settings.logo | image_url: width: 300 }} 2x"
+              alt="{{ section.settings.logo_alt_text | default: shop.name }}"
+              class="tw-h-6 tw-w-auto"
+              width="{{ section.settings.logo.width | divided_by: 2 }}"
+              height="24"
+              loading="lazy"
+              itemprop="logo"
+            />
+          {% else %}
+            <img
+              src="{{ 'shared-sweeps-logo.png' | asset_url }}"
+              alt="{{ section.settings.logo_alt_text | default: shop.name }}"
+              class="tw-h-6 tw-w-auto"
+              width="auto"
+              height="24"
+              loading="lazy"
+              itemprop="logo"
+            />
+          {% endif %}
+          {%- comment -%} Hidden site name for SEO {%- endcomment -%}
+          <span class="tw-sr-only" itemprop="name">{{ shop.name }}</span>
+        </a>
+        <p class="tw-text-white/70 tw-mt-4 tw-text-sm" itemprop="description">
+          {{ section.settings.tagline | default: 'Making every purchase a chance to win.' }}
+        </p>
+        
+        {%- comment -%} Legal Disclaimer Text {%- endcomment -%}
+        {% if section.settings.show_legal_text and section.settings.legal_disclaimer != blank %}
+          <div class="tw-mt-4 tw-text-white/50 tw-text-xs tw-leading-relaxed tw-italic">
+            {{ section.settings.legal_disclaimer | newline_to_br }}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Dynamic Menu Sections - Handles nested menus {%- endcomment -%}
+      {% if section.settings.footer_menu != blank %}
+        {% for link in linklists[section.settings.footer_menu].links %}
+          {% if link.links != blank %}
+            {%- comment -%} This is a parent menu item with children {%- endcomment -%}
+            <nav aria-labelledby="footer-{{ link.handle }}-heading" itemscope itemtype="https://schema.org/SiteNavigationElement">
+              <h2 id="footer-{{ link.handle }}-heading" class="tw-font-semibold tw-mb-4 tw-text-white tw-text-base">
+                {{ link.title }}
+              </h2>
+              <ul class="tw-space-y-2 tw-text-white/70 tw-text-sm" role="list">
+                {% for child_link in link.links %}
+                  <li itemprop="name">
+                    <a 
+                      href="{{ child_link.url }}" 
+                      class="hover:tw-text-white tw-transition-colors focus:tw-text-white focus:tw-outline-none focus:tw-underline tw-inline-block"
+                      itemprop="url"
+                      title="{{ child_link.title }}"
+                    >
+                      {{ child_link.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {%- comment -%} Copyright Section {%- endcomment -%}
+    <div class="tw-border-t tw-border-white/10 tw-mt-8 tw-pt-8 tw-text-center tw-text-white/60 tw-text-sm">
+      <p itemprop="copyrightNotice">
+        <small>
+          {% assign current_year = 'now' | date: '%Y' %}
+          {% if section.settings.copyright_text != blank %}
+            {{ section.settings.copyright_text | replace: '__YEAR__', current_year | replace: '__SHOP__', shop.name }}
+          {% else %}
+            &copy; {{ current_year }} {{ shop.name }}. All rights reserved.
+          {% endif %}
+        </small>
+      </p>
+      
+      {%- comment -%} Payment Icons (Optional) {%- endcomment -%}
+      {% if section.settings.show_payment_icons %}
+        <div class="tw-flex tw-justify-center tw-gap-2 tw-mt-4 tw-flex-wrap" aria-label="Accepted payment methods">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class: 'tw-h-6 tw-w-auto tw-opacity-60' }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Social Media Links (Optional) {%- endcomment -%}
+    {% if section.settings.show_social_icons %}
+      <div class="tw-border-t tw-border-white/10 tw-mt-6 tw-pt-6">
+        <nav aria-label="Social media links" class="tw-flex tw-justify-center tw-gap-4">
+          {% if section.settings.social_facebook != blank %}
+            <a 
+              href="{{ section.settings.social_facebook }}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="tw-text-white/70 hover:tw-text-white tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 tw-rounded-sm tw-p-2"
+              aria-label="Follow us on Facebook"
+              title="Facebook"
+            >
+              <svg class="tw-h-5 tw-w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+              </svg>
+            </a>
+          {% endif %}
+
+          {% if section.settings.social_twitter != blank %}
+            <a 
+              href="{{ section.settings.social_twitter }}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="tw-text-white/70 hover:tw-text-white tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 tw-rounded-sm tw-p-2"
+              aria-label="Follow us on Twitter"
+              title="Twitter"
+            >
+              <svg class="tw-h-5 tw-w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+              </svg>
+            </a>
+          {% endif %}
+
+          {% if section.settings.social_instagram != blank %}
+            <a 
+              href="{{ section.settings.social_instagram }}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="tw-text-white/70 hover:tw-text-white tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 tw-rounded-sm tw-p-2"
+              aria-label="Follow us on Instagram"
+              title="Instagram"
+            >
+              <svg class="tw-h-5 tw-w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          {% endif %}
+
+          {% if section.settings.social_linkedin != blank %}
+            <a 
+              href="{{ section.settings.social_linkedin }}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="tw-text-white/70 hover:tw-text-white tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 tw-rounded-sm tw-p-2"
+              aria-label="Follow us on LinkedIn"
+              title="LinkedIn"
+            >
+              <svg class="tw-h-5 tw-w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </a>
+          {% endif %}
+
+          {% if section.settings.social_youtube != blank %}
+            <a 
+              href="{{ section.settings.social_youtube }}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="tw-text-white/70 hover:tw-text-white tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 tw-rounded-sm tw-p-2"
+              aria-label="Subscribe to our YouTube channel"
+              title="YouTube"
+            >
+              <svg class="tw-h-5 tw-w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          {% endif %}
+        </nav>
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer Custom",
+  "class": "footer-custom-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Footer Styling"
+    },
+    {
+      "type": "color",
+      "id": "footer_bg_color",
+      "label": "Footer background color",
+      "default": "#1e3a5f"
+    },
+    {
+      "type": "color",
+      "id": "footer_text_color",
+      "label": "Footer text color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "header",
+      "content": "Logo & Branding"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo",
+      "info": "Leave empty to use the same logo as header"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt_text",
+      "label": "Logo alt text",
+      "default": "Shared Sweeps",
+      "info": "Describe your logo for accessibility"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Making every purchase a chance to win."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_legal_text",
+      "label": "Show legal disclaimer",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "legal_disclaimer",
+      "label": "Legal disclaimer text",
+      "default": "NO PURCHASE NECESSARY. Ends 3/5/26.\n\nMust be:\ni) a legal US resident of the 50 US or DC and age of majority or\nii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at sharedsweeps.com/rules.\n\nVoid where prohibited. Sponsored By Shared Sweeps.",
+      "info": "Legal text displayed below the tagline"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer menu",
+      "info": "Select your footer menu with nested structure (e.g., 'custom-footer-menu')"
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "&copy; __YEAR__ __SHOP__. All rights reserved.",
+      "info": "Use __YEAR__ for current year and __SHOP__ for store name"
+    },
+    {
+      "type": "header",
+      "content": "Additional Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social media icons",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Social Media Links"
+    },
+    {
+      "type": "url",
+      "id": "social_facebook",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "social_twitter",
+      "label": "Twitter URL"
+    },
+    {
+      "type": "url",
+      "id": "social_instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_linkedin",
+      "label": "LinkedIn URL"
+    },
+    {
+      "type": "url",
+      "id": "social_youtube",
+      "label": "YouTube URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Custom",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}
