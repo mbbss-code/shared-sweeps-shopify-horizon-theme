@@ -9,279 +9,365 @@
  */
 {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero_with_toggle_48eMRL": {
+      "type": "hero-with-toggle",
+      "name": "Hero with Toggle",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "show_toggle": true,
+        "toggle_brands_label": "For Brands",
+        "toggle_customers_label": "For Customers",
+        "brands_heading": "A Better Way for Brands to Run Sweepstakes",
+        "brands_description": "Shared Sweeps enables brands to give their customers entries into a $100,000 sweepstakes simply by shopping on their site — with no financial risk.",
+        "brands_primary_cta_text": "Talk to Our Team",
+        "brands_primary_cta_type": "modal",
+        "brands_primary_cta_link": "",
+        "brands_secondary_cta_text": "See How It Works",
+        "brands_secondary_cta_link": "",
+        "brands_indicator_1": "No upfront costs",
+        "brands_indicator_2": "Shopify integrated",
+        "brands_indicator_3": "Trusted by 100+ brands",
+        "customers_heading": "Win $100,000 by purchasing from your favorite brands.",
+        "customers_description": "Shop from your favorite brands — and discover new ones you'll love. Earn entries with every dollar you spend and get a real chance at a life-changing prize, with no extra steps required.",
+        "customers_primary_cta_text": "See How to Enter",
+        "customers_primary_cta_link": "",
+        "customers_secondary_cta_text": "View Participating Brands",
+        "customers_secondary_cta_link": "",
+        "customers_indicator_1": "One $100,000 prize",
+        "customers_indicator_2": "Monthly $10,000 prizes",
+        "customers_indicator_3": "Real winners",
+        "customers_indicator_4": "Trusted brands",
+        "show_trust_indicators": true
+      }
+    },
+    "problem_solution_RCwd8k": {
+      "type": "problem-solution",
+      "name": "Problem Solution",
+      "settings": {
+        "bg_color": "#f9fafb",
+        "brands_problem_heading": "Growing an Online Brand Has Gotten Harder",
+        "brands_problem_description": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards.",
+        "brands_solution_heading": "A Smarter Way for Everyone to Win",
+        "brands_solution_description": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win.",
+        "customers_problem_heading": "Everyday Shopping",
+        "customers_problem_description": "Shopping your favorite brands is already rewarding — great products, great experiences.",
+        "customers_solution_heading": "Shopping With a Chance to Win",
+        "customers_solution_description": "Shared Sweeps turns everyday shopping into something more. Discover new brands and earn entries toward real prizes with every purchase."
+      }
+    },
+    "comparison_FNDeBU": {
+      "type": "comparison",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "traditional_item_tHwED6": {
+          "type": "traditional_item",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "text": "Pay for prizes upfront"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "traditional_item_KwMNjK": {
+          "type": "traditional_item",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "text": "Risk legal non-compliance"
+          }
+        },
+        "traditional_item_n3Kxb6": {
+          "type": "traditional_item",
+          "settings": {
+            "text": "Low participation"
+          }
+        },
+        "traditional_item_xCRefp": {
+          "type": "traditional_item",
+          "settings": {
+            "text": "Time-consuming setup"
+          }
+        },
+        "traditional_item_bgBqBp": {
+          "type": "traditional_item",
+          "settings": {
+            "text": "Unpredictable ROI"
+          }
+        },
+        "sharedsweeps_item_74FQVP": {
+          "type": "sharedsweeps_item",
+          "settings": {
+            "text": "$100K prize fully funded"
+          }
+        },
+        "sharedsweeps_item_CP6pdN": {
+          "type": "sharedsweeps_item",
+          "settings": {
+            "text": "Legal compliance handled"
+          }
+        },
+        "sharedsweeps_item_k7xbWe": {
+          "type": "sharedsweeps_item",
+          "settings": {
+            "text": "Dedicated customer support"
+          }
+        },
+        "sharedsweeps_item_8WHKAx": {
+          "type": "sharedsweeps_item",
+          "settings": {
+            "text": "Seamless Shopify integration"
+          }
+        },
+        "sharedsweeps_item_fF8BMQ": {
+          "type": "sharedsweeps_item",
+          "settings": {
+            "text": "No upfront cost, capped fees"
+          }
+        },
+        "customers_benefit_LnJf8a": {
+          "type": "customers_benefit",
+          "settings": {
+            "text": "Real $100,000 prize"
+          }
+        },
+        "customers_benefit_NrgURm": {
+          "type": "customers_benefit",
+          "settings": {
+            "text": "Earn entries automatically"
+          }
+        },
+        "customers_benefit_rM7g8Q": {
+          "type": "customers_benefit",
+          "settings": {
+            "text": "No gimmicks or fine print"
+          }
+        },
+        "customers_benefit_fTceFX": {
+          "type": "customers_benefit",
+          "settings": {
+            "text": "Trusted Shopify brands"
+          }
+        },
+        "customers_benefit_jANRQW": {
+          "type": "customers_benefit",
+          "settings": {
+            "text": "One real winner every sweepstakes"
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "traditional_item_tHwED6",
+        "traditional_item_KwMNjK",
+        "traditional_item_n3Kxb6",
+        "traditional_item_xCRefp",
+        "traditional_item_bgBqBp",
+        "sharedsweeps_item_74FQVP",
+        "sharedsweeps_item_CP6pdN",
+        "sharedsweeps_item_k7xbWe",
+        "sharedsweeps_item_8WHKAx",
+        "sharedsweeps_item_fF8BMQ",
+        "customers_benefit_LnJf8a",
+        "customers_benefit_NrgURm",
+        "customers_benefit_rM7g8Q",
+        "customers_benefit_fTceFX",
+        "customers_benefit_jANRQW"
       ],
-      "name": "t:names.hero",
+      "name": "Comparison",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "bg_color": "#ffffff",
+        "brands_heading": "Why Shared Sweeps Beats Traditional Giveaways",
+        "customers_heading": "Why Shared Sweeps Is Different",
+        "traditional_heading": "Traditional Giveaways",
+        "sharedsweeps_heading": "Shared Sweeps",
+        "show_brands_subtext": true,
+        "brands_subtext": "Built for brands. Trusted by customers."
       }
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "how_it_works_eJFfVt": {
+      "type": "how-it-works",
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "brands_step_L9dWAY": {
+          "type": "brands_step",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "step_number": "01",
+            "title": "We Set Up Your Campaign",
+            "description": "Install Shared Sweeps, configure your sweepstakes, and launch in days. We handle the $100K prize and legal compliance."
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "brands_step_TVxdFk": {
+          "type": "brands_step",
           "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "step_number": "02",
+            "title": "Customers Earn Entries",
+            "description": "Every $1 spent equals 1 entry. Built-in multipliers create urgency and repeat purchases."
+          }
+        },
+        "brands_step_XxXB7H": {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "03",
+            "title": "Track Growth in Shopify",
+            "description": "See revenue, entries, and performance directly in your Shopify dashboard."
+          }
+        },
+        "brands_step_D6PDmx": {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "04",
+            "title": "We Award the Winner",
+            "description": "Winners are selected at random using a trusted third-party system."
+          }
+        },
+        "customers_step_f6TayE": {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "01",
+            "title": "Shop Participating Brands",
+            "description": "Buy from your favorite Shopify stores."
+          }
+        },
+        "customers_step_hRiRFY": {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "02",
+            "title": "Earn Entries Automatically",
+            "description": "Every dollar you spend is one entry toward the $100K prize."
+          }
+        },
+        "customers_step_A4G8Cm": {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "03",
+            "title": "Increase Your Entries",
+            "description": "Be on the lookout for entry multipliers and bonus entries."
+          }
+        },
+        "customers_step_m8wDQT": {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "04",
+            "title": "One Real Winner",
+            "description": "One shopper wins the $100,000 prize at the end of the sweepstakes."
+          }
         }
       },
-      "name": "Featured collection",
+      "block_order": [
+        "brands_step_L9dWAY",
+        "brands_step_TVxdFk",
+        "brands_step_XxXB7H",
+        "brands_step_D6PDmx",
+        "customers_step_f6TayE",
+        "customers_step_hRiRFY",
+        "customers_step_A4G8Cm",
+        "customers_step_m8wDQT"
+      ],
+      "name": "How It Works",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "bg_color": "#f9fafb",
+        "brands_heading": "How Shared Sweeps Works for Your Shopify Store",
+        "customers_heading": "How It Works for Shoppers",
+        "show_brands_cta": true,
+        "brands_cta_text": "Real Winners",
+        "brands_cta_link": "#"
+      }
+    },
+    "social_proof_yLW97D": {
+      "type": "social-proof",
+      "blocks": {
+        "case_study_Ekjf6Y": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Fresh Chile Co",
+            "stat": "35.97% increase in ROAS",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "link": "/case-studies/fresh-chile-co"
+          }
+        },
+        "case_study_tDaeYn": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Pair of Thieves",
+            "stat": "18% increase in gross sales",
+            "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
+            "link": "/case-studies/pair-of-thieves"
+          }
+        },
+        "case_study_btXTFF": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Caraway Home",
+            "stat": "61% increase in YoY top-line revenue",
+            "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
+            "link": "/case-studies/caraway-home"
+          }
+        },
+        "winner_XHYQEH": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Jason H.",
+            "location": "Marshall, MO",
+            "brand": "Synister Speed",
+            "prize": "$10,000"
+          }
+        },
+        "winner_yF8UX8": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Kaitlin M.",
+            "location": "Montague, NJ",
+            "brand": "Cirkul",
+            "prize": "$100,000"
+          }
+        },
+        "winner_YUAWCL": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Dre C.",
+            "location": "Bozeman, MT",
+            "brand": "Caraway Home",
+            "prize": "$100,000"
+          }
+        }
+      },
+      "block_order": [
+        "case_study_Ekjf6Y",
+        "case_study_tDaeYn",
+        "case_study_btXTFF",
+        "winner_XHYQEH",
+        "winner_yF8UX8",
+        "winner_YUAWCL"
+      ],
+      "name": "Social Proof",
+      "settings": {
+        "bg_color": "#ffffff",
+        "brands_heading": "Real Results from Shopify Brands",
+        "customers_heading": "Real People. Real Winners.",
+        "show_brands_cta": true,
+        "brands_cta_text": "See All Case Studies",
+        "brands_cta_link": "",
+        "show_customers_cta": true,
+        "customers_cta_text": "See All Winners",
+        "customers_cta_link": ""
+      }
+    },
+    "bottom_final_cta_MpLdAR": {
+      "type": "bottom-final-cta",
+      "name": "Final CTA",
+      "settings": {
+        "bg_color": "#ffffff",
+        "brands_heading": "Ready to Make Your Ad Spend Work Harder?",
+        "brands_description": "Join Shopify brands turning sweepstakes into one of their most efficient growth channels. Shared Sweeps funds the prize, handles compliance, and helps your ads convert better — so every dollar goes further.",
+        "brands_cta_text": "Talk to Our Team",
+        "brands_cta_type": "modal",
+        "brands_cta_link": "",
+        "customers_heading": "Ready to Turn Shopping Into a Chance to Win?",
+        "customers_description": "Every purchase counts. Shop participating brands and earn entries toward a real $100,000 prize.",
+        "customers_cta_text": "View Participating Brands",
+        "customers_cta_link": ""
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero_with_toggle_48eMRL",
+    "problem_solution_RCwd8k",
+    "comparison_FNDeBU",
+    "how_it_works_eJFfVt",
+    "social_proof_yLW97D",
+    "bottom_final_cta_MpLdAR"
   ]
 }
