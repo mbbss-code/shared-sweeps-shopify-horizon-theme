@@ -19,7 +19,7 @@
         "footer_text_color": "#e5e7eb",
         "logo": "shopify://shop_images/shared-sweeps-logo.png",
         "logo_alt_text": "Shared Sweeps",
-        "tagline": "<strong>Making every purchase a chance to win.</strong>",
+        "tagline": "Making every purchase a chance to win.",
         "show_legal_text": true,
         "legal_disclaimer": "NO PURCHASE NECESSARY. Ends 3/5/26. <br> \nMust be:\ni) a legal US resident of the 50 US or DC and age of majority or <br>\nii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at sharedsweeps.com/rules. <br> \nVoid where prohibited.  <br>\nSponsored By Shared Sweeps.",
         "footer_menu": "custom-footer-menu",
@@ -28,8 +28,8 @@
         "show_social_icons": true,
         "social_facebook": "",
         "social_twitter": "",
-        "social_instagram": "",
-        "social_linkedin": "",
+        "social_instagram": "https://www.instagram.com/shared_sweeps/",
+        "social_linkedin": "https://www.linkedin.com/company/shared-sweeps",
         "social_youtube": ""
       }
     }
