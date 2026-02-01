@@ -1,0 +1,691 @@
+{% comment %}
+  How It Works page section
+  Converted from HowItWorks.tsx (React / Lovable)
+  Responsive, ADA compliant, SEO optimized, fully customizable
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color      = section.settings.primary_color      | default: '#9333ea'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+  assign navy_bg_color      = section.settings.navy_bg_color      | default: '#0a1128'
+  assign alt_bg_color       = section.settings.alt_bg_color       | default: '#f3f4f6'
+
+  assign step_blocks        = section.blocks | where: 'type', 'step'
+  assign comparison_blocks  = section.blocks | where: 'type', 'comparison_item'
+  assign faq_blocks         = section.blocks | where: 'type', 'faq_item'
+-%}
+
+<style>
+  .hiw-{{ section.id }} .hiw-cta-btn {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .hiw-{{ section.id }} .hiw-cta-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  .hiw-{{ section.id }} .hiw-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }}, 0 0 0 4px #fff;
+  }
+  .hiw-{{ section.id }} .hiw-step-badge {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .hiw-{{ section.id }} .hiw-navy-bg  { background-color: {{ navy_bg_color }}; }
+  .hiw-{{ section.id }} .hiw-alt-bg   { background-color: {{ alt_bg_color }}; }
+  .hiw-{{ section.id }} .hiw-pricing-card {
+    border-color: {{ primary_color }}4D;
+    background-color: {{ primary_color }}0D;
+  }
+  .hiw-{{ section.id }} .hiw-primary-highlight { color: {{ primary_color }}; }
+  .hiw-{{ section.id }} .hiw-solution-icon { color: {{ primary_color }}; }
+  .hiw-{{ section.id }} .hiw-hero-glow {
+    background: radial-gradient(circle, {{ primary_color }}0D 0%, transparent 70%);
+  }
+  .hiw-{{ section.id }} .hiw-accordion-content {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease;
+  }
+  .hiw-{{ section.id }} .hiw-accordion-chevron {
+    transition: transform 0.3s ease;
+  }
+  .hiw-{{ section.id }} .hiw-accordion-item.is-open .hiw-accordion-chevron {
+    transform: rotate(180deg);
+  }
+  .hiw-{{ section.id }} .hiw-accordion-trigger:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }};
+    border-radius: 0.25rem;
+  }
+</style>
+
+{% if faq_blocks.size > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in faq_blocks -%}
+    {
+      "@type": "Question",
+      "name": {{ block.settings.question | json }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ block.settings.answer | json }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ section.settings.page_title | default: "How It Works" | json }},
+  "url": "{{ request.origin }}{{ request.path }}",
+  "description": {{ section.settings.page_meta_description | default: "Learn how Shared Sweeps works — no risk, no upfront costs, a fully funded sweepstakes for your Shopify store." | json }},
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": {{ shop.name | json }},
+    "url": "{{ shop.url }}"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": {{ shop.name | json }},
+        "item": "{{ shop.url }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": {{ section.settings.page_title | default: "How It Works" | json }},
+        "item": "{{ request.origin }}{{ request.path }}"
+      }
+    ]
+  }
+}
+</script>
+
+<div class="hiw-{{ section.id }}" {{ section.shopify_attributes }}>
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section
+    class="tw-relative tw-overflow-hidden tw-px-4 tw-pb-20 tw-pt-16 md:tw-pb-28 md:tw-pt-24"
+    aria-labelledby="hiw-hero-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto">
+      <div class="tw-mx-auto tw-max-w-3xl tw-text-center">
+
+        <h1
+          id="hiw-hero-{{ section.id }}"
+          class="tw-mb-6 tw-text-3xl tw-font-bold tw-text-gray-900 tw-leading-tight md:tw-text-4xl lg:tw-text-5xl"
+        >
+          {{ section.settings.hero_title | default: 'The No-Risk Way to Run a 6-Figure Sweepstakes on Shopify' }}
+        </h1>
+
+        <p class="tw-mx-auto tw-mb-4 tw-max-w-2xl tw-text-lg tw-text-gray-600 md:tw-text-xl">
+          {{ section.settings.hero_description | default: 'Shared Sweeps installs directly into your Shopify store. We fund the prize, handle compliance, and manage logistics — so you can focus on growing sales.' }}
+        </p>
+
+        <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-base tw-text-gray-500">
+          {{ section.settings.hero_description_2 | default: 'Each Shared Sweeps campaign is a single, shared $100,000 sweepstakes across multiple participating Shopify brands. In addition, Shared Sweeps also runs monthly $10,000 winner campaigns — giving shoppers even more chances to win.' }}
+        </p>
+
+        {% if section.settings.show_hero_cta %}
+          {% if section.settings.hero_cta_opens_modal %}
+            <button
+              type="button"
+              class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
+            >
+              {{ section.settings.hero_cta_text | default: 'Talk to Our Team' }}
+              <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          {% else %}
+            
+              href="{{ section.settings.hero_cta_url | default: '#' }}"
+              class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+            >
+              {{ section.settings.hero_cta_text | default: 'Talk to Our Team' }}
+              <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div
+      class="hiw-hero-glow tw-absolute -tw-top-40 tw-left-1/2 -tw-z-10 tw-h-96 tw-w-96 -tw-translate-x-1/2 tw-rounded-full tw-blur-3xl"
+      aria-hidden="true"
+    ></div>
+  </section>
+
+  {%- comment -%} HOW IT WORKS — 4-STEP GRID {%- endcomment -%}
+  {% if step_blocks.size > 0 %}
+  <section
+    class="hiw-alt-bg tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-steps-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-mb-16 tw-max-w-2xl tw-text-center">
+        <h2 id="hiw-steps-{{ section.id }}" class="tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.steps_title | default: 'How It Works' }}
+        </h2>
+      </div>
+
+      <div class="tw-mx-auto tw-max-w-5xl tw-grid tw-gap-12 md:tw-grid-cols-2 lg:tw-grid-cols-4">
+        {% for block in step_blocks %}
+          <div {{ block.shopify_attributes }} class="tw-text-center">
+            <div
+              class="hiw-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold"
+              aria-hidden="true"
+            >
+              {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}
+            </div>
+            <h3 class="tw-mb-3 tw-text-xl tw-font-semibold tw-text-gray-900">
+              {{ block.settings.title }}
+            </h3>
+            <p class="tw-text-gray-600">
+              {{ block.settings.description }}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {%- comment -%} WHY IT WORKS — NAVY COMPARISON LIST {%- endcomment -%}
+  {% if comparison_blocks.size > 0 %}
+  <section
+    class="hiw-navy-bg tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-why-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-4xl">
+        <div class="tw-mx-auto tw-mb-12 tw-max-w-2xl tw-text-center">
+          <h2 id="hiw-why-{{ section.id }}" class="tw-text-3xl tw-font-bold tw-text-white md:tw-text-4xl">
+            {{ section.settings.why_title | default: 'A Smarter Alternative to Ads and Discounts' }}
+          </h2>
+        </div>
+
+        <ul class="tw-mx-auto tw-max-w-2xl tw-space-y-4">
+          {% for block in comparison_blocks %}
+            <li {{ block.shopify_attributes }} class="tw-flex tw-items-start tw-gap-4 tw-text-lg">
+              {% if block.settings.item_type == 'problem' %}
+                <svg class="tw-mt-1 tw-h-6 tw-w-6 tw-shrink-0 tw-text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              {% else %}
+                <svg class="hiw-solution-icon tw-mt-1 tw-h-6 tw-w-6 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 003.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152z"/>
+                </svg>
+              {% endif %}
+              <span class="tw-text-white">{{ block.settings.text }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {%- comment -%} PRICING PREVIEW {%- endcomment -%}
+  <section
+    class="tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-pricing-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-3xl tw-text-center">
+
+        <h2 id="hiw-pricing-{{ section.id }}" class="tw-mb-6 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.pricing_title | default: 'No Upfront Costs. Simple, Capped Fees.' }}
+        </h2>
+
+        <p class="tw-mb-4 tw-text-lg tw-text-gray-600">
+          {{ section.settings.pricing_description | default: 'Shared Sweeps charges a small percentage of revenue generated during the sweepstakes.' }}
+        </p>
+
+        <p class="tw-mb-10 tw-text-lg tw-text-gray-600">
+          {{ section.settings.pricing_description_2 | default: 'Fees are capped, so once you hit the cap, you never pay more — no matter how much you sell.' }}
+        </p>
+
+        <div class="hiw-pricing-card tw-rounded-xl tw-border tw-p-6 md:tw-p-8">
+          <p class="tw-text-lg tw-font-medium tw-text-gray-800 tw-text-left">
+            <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_brand | default: 'Fresh Chile Co' }}</span> saved <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_savings | default: '$175,000' }}</span> on ads and paid only <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_fees | default: '$22,093' }}</span> in fees.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} FAQ ACCORDION {%- endcomment -%}
+  {% if faq_blocks.size > 0 %}
+  <section
+    class="hiw-alt-bg tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-faq-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-3xl">
+
+        <h2 id="hiw-faq-{{ section.id }}" class="tw-mb-12 tw-text-center tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.faq_title | default: 'Frequently Asked Questions' }}
+        </h2>
+
+        <div class="tw-w-full">
+          {% for block in faq_blocks %}
+            <div {{ block.shopify_attributes }} class="hiw-accordion-item tw-border-b tw-border-gray-200">
+
+              <button
+                type="button"
+                class="hiw-accordion-trigger tw-flex tw-w-full tw-items-center tw-justify-between tw-py-4 tw-text-left tw-text-lg tw-font-medium tw-text-gray-900 tw-transition-colors hover:tw-text-gray-700"
+                aria-expanded="false"
+                aria-controls="hiw-faq-{{ section.id }}-{{ forloop.index }}"
+                id="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
+              >
+                <span>{{ block.settings.question }}</span>
+                <svg
+                  class="hiw-accordion-chevron tw-ml-4 tw-h-5 tw-w-5 tw-shrink-0 tw-text-gray-500"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+
+              <div
+                id="hiw-faq-{{ section.id }}-{{ forloop.index }}"
+                class="hiw-accordion-content"
+                role="region"
+                aria-labelledby="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
+              >
+                <p class="tw-pb-4 tw-text-gray-600">
+                  {{ block.settings.answer }}
+                </p>
+              </div>
+
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {%- comment -%} FINAL CTA {%- endcomment -%}
+  <section
+    class="tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-final-cta-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+
+        <h2 id="hiw-final-cta-{{ section.id }}" class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.final_cta_title | default: 'Still have questions — or ready to launch your first sweepstakes?' }}
+        </h2>
+
+        <p class="tw-mb-8 tw-text-lg tw-text-gray-600">
+          {{ section.settings.final_cta_description | default: "Our team is happy to walk through how Shared Sweeps works and whether it's a fit for your brand." }}
+        </p>
+
+        {% if section.settings.final_cta_opens_modal %}
+          <button
+            type="button"
+            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+            data-contact-modal-trigger
+            aria-haspopup="dialog"
+          >
+            {{ section.settings.final_cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        {% else %}
+          
+            href="{{ section.settings.final_cta_url | default: '#' }}"
+            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+          >
+            {{ section.settings.final_cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var wrapper = document.querySelector('.hiw-{{ section.id }}');
+    if (!wrapper) return;
+
+    var items = wrapper.querySelectorAll('.hiw-accordion-item');
+
+    items.forEach(function(item) {
+      var trigger  = item.querySelector('.hiw-accordion-trigger');
+      var content  = item.querySelector('.hiw-accordion-content');
+
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('is-open');
+
+        items.forEach(function(other) {
+          if (other !== item && other.classList.contains('is-open')) {
+            var otherContent = other.querySelector('.hiw-accordion-content');
+            var otherTrigger = other.querySelector('.hiw-accordion-trigger');
+            other.classList.remove('is-open');
+            otherContent.style.height  = otherContent.scrollHeight + 'px';
+            void otherContent.offsetHeight;
+            otherContent.style.height  = '0';
+            otherContent.style.opacity = '0';
+            otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          content.style.height  = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          trigger.setAttribute('aria-expanded', 'true');
+
+          content.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height' && item.classList.contains('is-open')) {
+              content.style.height = 'auto';
+              content.removeEventListener('transitionend', handler);
+            }
+          });
+        } else {
+          item.classList.remove('is-open');
+          content.style.height  = content.scrollHeight + 'px';
+          void content.offsetHeight;
+          content.style.height  = '0';
+          content.style.opacity = '0';
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "How It Works Page",
+  "class": "hiw-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page SEO"
+    },
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title (structured data)",
+      "default": "How It Works"
+    },
+    {
+      "type": "textarea",
+      "id": "page_meta_description",
+      "label": "Meta description (structured data)",
+      "default": "Learn how Shared Sweeps works — no risk, no upfront costs, a fully funded sweepstakes for your Shopify store."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary accent color",
+      "default": "#9333ea",
+      "info": "Buttons, step badges, highlights, solution icons"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "navy_bg_color",
+      "label": "Navy section background",
+      "default": "#0a1128"
+    },
+    {
+      "type": "color",
+      "id": "alt_bg_color",
+      "label": "Alternate section background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "The No-Risk Way to Run a 6-Figure Sweepstakes on Shopify"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Description",
+      "default": "Shared Sweeps installs directly into your Shopify store. We fund the prize, handle compliance, and manage logistics — so you can focus on growing sales."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description_2",
+      "label": "Secondary description",
+      "default": "Each Shared Sweeps campaign is a single, shared $100,000 sweepstakes across multiple participating Shopify brands. In addition, Shared Sweeps also runs monthly $10,000 winner campaigns — giving shoppers even more chances to win."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_cta",
+      "label": "Show CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the modal from header-custom. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "CTA URL",
+      "info": "Used only when Open contact modal is unchecked"
+    },
+    {
+      "type": "header",
+      "content": "Steps Section"
+    },
+    {
+      "type": "text",
+      "id": "steps_title",
+      "label": "Section title",
+      "default": "How It Works"
+    },
+    {
+      "type": "header",
+      "content": "Why It Works Section"
+    },
+    {
+      "type": "text",
+      "id": "why_title",
+      "label": "Section title",
+      "default": "A Smarter Alternative to Ads and Discounts"
+    },
+    {
+      "type": "header",
+      "content": "Pricing Section"
+    },
+    {
+      "type": "text",
+      "id": "pricing_title",
+      "label": "Section title",
+      "default": "No Upfront Costs. Simple, Capped Fees."
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_description",
+      "label": "Description",
+      "default": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes."
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_description_2",
+      "label": "Secondary description",
+      "default": "Fees are capped, so once you hit the cap, you never pay more — no matter how much you sell."
+    },
+    {
+      "type": "text",
+      "id": "case_study_brand",
+      "label": "Case study — brand name",
+      "default": "Fresh Chile Co"
+    },
+    {
+      "type": "text",
+      "id": "case_study_savings",
+      "label": "Case study — ad savings",
+      "default": "$175,000"
+    },
+    {
+      "type": "text",
+      "id": "case_study_fees",
+      "label": "Case study — fees paid",
+      "default": "$22,093"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Section"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "Section title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "header",
+      "content": "Final CTA"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_title",
+      "label": "Title",
+      "default": "Still have questions — or ready to launch your first sweepstakes?"
+    },
+    {
+      "type": "textarea",
+      "id": "final_cta_description",
+      "label": "Description",
+      "default": "Our team is happy to walk through how Shared Sweeps works and whether it's a fit for your brand."
+    },
+    {
+      "type": "text",
+      "id": "final_cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "final_cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the modal from header-custom. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "final_cta_url",
+      "label": "CTA URL",
+      "info": "Used only when Open contact modal is unchecked"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text",     "id": "title",       "label": "Step title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    },
+    {
+      "type": "comparison_item",
+      "name": "Comparison Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "item_type",
+          "label": "Type",
+          "options": [
+            { "value": "problem",  "label": "✗ Problem" },
+            { "value": "solution", "label": "✓ Solution" }
+          ],
+          "default": "problem"
+        },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text",     "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer",   "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works Page",
+      "category": "Page",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Setup in Days", "description": "Shared Sweeps installs directly with your Shopify store. Our team configures your campaign, covers official rules, legal compliance, and funds the $100,000 prize." } },
+        { "type": "step", "settings": { "title": "Every Purchase Earns Entries", "description": "Customers automatically earn 1 entry per $1 spent. Built-in multipliers create urgency and drive repeat purchases." } },
+        { "type": "step", "settings": { "title": "Track Growth in Real Time", "description": "View revenue, entries, and campaign performance directly inside Shopify. No spreadsheets or manual reporting." } },
+        { "type": "step", "settings": { "title": "We Award the Winner", "description": "Shared Sweeps selects the winner, fulfills the prize, and closes the campaign. You keep the revenue and the new customers." } },
+        { "type": "comparison_item", "settings": { "item_type": "problem",  "text": "Ads are expensive and unpredictable" } },
+        { "type": "comparison_item", "settings": { "item_type": "problem",  "text": "Discounts erode margins and train customers to wait" } },
+        { "type": "comparison_item", "settings": { "item_type": "solution", "text": "Sweepstakes create urgency, excitement, and loyalty without sacrificing profit" } },
+        { "type": "faq_item", "settings": { "question": "What does it cost?", "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn." } },
+        { "type": "faq_item", "settings": { "question": "What if my brand is small?", "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost." } },
+        { "type": "faq_item", "settings": { "question": "Who provides the prize?", "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all." } },
+        { "type": "faq_item", "settings": { "question": "Is it legally compliant?", "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it." } },
+        { "type": "faq_item", "settings": { "question": "Why is the giveaway shared across brands?", "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

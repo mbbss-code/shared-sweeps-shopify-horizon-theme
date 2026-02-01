@@ -142,11 +142,24 @@
         "heading": "One Shared Sweepstakes. One Life-Changing Prize.",
         "description": "All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign."
       }
+    },
+    "past_winners_cta_irjC7c": {
+      "type": "past-winners-cta",
+      "name": "Past Winners CTA",
+      "settings": {
+        "bg_color": "#1e3a5f",
+        "heading_color": "#ffffff",
+        "heading": "Ready to Earn Your Entries?",
+        "show_cta": true,
+        "cta_text": "See How to Enter",
+        "cta_link": ""
+      }
     }
   },
   "order": [
     "past_winners_hero_9ETYWd",
     "past_winners_grid_AQEXeA",
-    "past_winners_trust_h8PBw7"
+    "past_winners_trust_h8PBw7",
+    "past_winners_cta_irjC7c"
   ]
 }
