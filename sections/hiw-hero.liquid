@@ -1,0 +1,164 @@
+{% comment %}
+  How It Works — Hero
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color      = section.settings.primary_color      | default: '#9333ea'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+-%}
+
+<style>
+  .hiw-hero-{{ section.id }} .hiw-cta-btn {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .hiw-hero-{{ section.id }} .hiw-cta-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  .hiw-hero-{{ section.id }} .hiw-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }}, 0 0 0 4px #fff;
+  }
+  .hiw-hero-{{ section.id }} .hiw-hero-glow {
+    background: radial-gradient(circle, {{ primary_color }}0D 0%, transparent 70%);
+  }
+</style>
+
+<div class="hiw-hero-{{ section.id }}" {{ section.shopify_attributes }}>
+  <section
+    class="tw-relative tw-overflow-hidden tw-px-4 tw-pb-20 tw-pt-16 md:tw-pb-28 md:tw-pt-24"
+    aria-labelledby="hiw-hero-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto">
+      <div class="tw-mx-auto tw-max-w-3xl tw-text-center">
+
+        <h1
+          id="hiw-hero-{{ section.id }}"
+          class="tw-mb-6 tw-text-3xl tw-font-bold tw-text-gray-900 tw-leading-tight md:tw-text-4xl lg:tw-text-5xl"
+        >
+          {{ section.settings.hero_title | default: 'The No-Risk Way to Run a 6-Figure Sweepstakes on Shopify' }}
+        </h1>
+
+        <p class="tw-mx-auto tw-mb-4 tw-max-w-2xl tw-text-lg tw-text-gray-600 md:tw-text-xl">
+          {{ section.settings.hero_description | default: 'Shared Sweeps installs directly into your Shopify store. We fund the prize, handle compliance, and manage logistics — so you can focus on growing sales.' }}
+        </p>
+
+        <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-base tw-text-gray-500">
+          {{ section.settings.hero_description_2 | default: 'Each Shared Sweeps campaign is a single, shared $100,000 sweepstakes across multiple participating Shopify brands. In addition, Shared Sweeps also runs monthly $10,000 winner campaigns — giving shoppers even more chances to win.' }}
+        </p>
+
+        {% if section.settings.show_hero_cta %}
+          {% if section.settings.hero_cta_opens_modal %}
+            <button
+              type="button"
+              class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
+            >
+              {{ section.settings.hero_cta_text | default: 'Talk to Our Team' }}
+              <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          {% else %}
+            
+              href="{{ section.settings.hero_cta_url | default: '#' }}"
+              class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+            >
+              {{ section.settings.hero_cta_text | default: 'Talk to Our Team' }}
+              <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div
+      class="hiw-hero-glow tw-absolute -tw-top-40 tw-left-1/2 -tw-z-10 tw-h-96 tw-w-96 -tw-translate-x-1/2 tw-rounded-full tw-blur-3xl"
+      aria-hidden="true"
+    ></div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "HIW — Hero",
+  "class": "hiw-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary accent color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+      "default": "The No-Risk Way to Run a 6-Figure Sweepstakes on Shopify"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Description",
+      "default": "Shared Sweeps installs directly into your Shopify store. We fund the prize, handle compliance, and manage logistics — so you can focus on growing sales."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description_2",
+      "label": "Secondary description",
+      "default": "Each Shared Sweeps campaign is a single, shared $100,000 sweepstakes across multiple participating Shopify brands. In addition, Shared Sweeps also runs monthly $10,000 winner campaigns — giving shoppers even more chances to win."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hero_cta",
+      "label": "Show CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "hero_cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the contact modal. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "hero_cta_url",
+      "label": "CTA URL",
+      "info": "Used only when Open contact modal is unchecked"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — Hero",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

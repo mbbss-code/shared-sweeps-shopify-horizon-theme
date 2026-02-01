@@ -126,10 +126,101 @@
         "background_color": "white",
         "primary_color": "indigo"
       }
+    },
+    "participating_brands_trust_callout_eMi9XU": {
+      "type": "participating-brands-trust-callout",
+      "name": "Trust Callout",
+      "settings": {
+        "show_icon": true,
+        "icon": "building",
+        "heading": "You're in Good Company",
+        "description": "Shared Sweeps partners with Shopify brands across apparel, home, food, and lifestyle. Every brand participates in the same shared sweepstakes — creating more excitement and stronger results for everyone.",
+        "show_stats": false,
+        "button_text": "",
+        "button_link": "",
+        "background_style": "gray-50/30",
+        "primary_color": "indigo"
+      }
+    },
+    "participating_brands_winners_preview_KX6n4q": {
+      "type": "participating-brands-winners-preview",
+      "blocks": {
+        "winner_nj7dA8": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Jason H.",
+            "winner_location": "Marshall, MO",
+            "winner_brand": "Synister Speed",
+            "prize_amount": "$10,000",
+            "winner_quote": ""
+          }
+        },
+        "winner_PqPdrx": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Caitlin M.",
+            "winner_location": "Montague, NJ",
+            "winner_brand": "Cirkul",
+            "prize_amount": "$100,000",
+            "winner_quote": ""
+          }
+        },
+        "winner_qaEfxg": {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Dre C.",
+            "winner_location": "Bozeman, MT",
+            "winner_brand": "Caraway Home",
+            "prize_amount": "$100,000",
+            "winner_quote": ""
+          }
+        }
+      },
+      "block_order": [
+        "winner_nj7dA8",
+        "winner_PqPdrx",
+        "winner_qaEfxg"
+      ],
+      "name": "Winners Preview",
+      "settings": {
+        "show_icon": true,
+        "heading": "Recent Winners",
+        "subheading": "Real people winning real prizes",
+        "button_text": "See All Winners",
+        "button_link": "",
+        "background_color": "white",
+        "primary_color": "indigo"
+      }
+    },
+    "participating_brands_final_cta_CmTC4H": {
+      "type": "participating-brands-final-cta",
+      "name": "Final CTA",
+      "settings": {
+        "eyebrow_text": "",
+        "heading": "Ready to Join the Next Sweepstakes?",
+        "description": "",
+        "primary_button_text": "Talk to Our Team",
+        "primary_button_link": "",
+        "primary_button_opens_modal": true,
+        "primary_button_icon": "none",
+        "secondary_button_text": "",
+        "secondary_button_link": "",
+        "show_trust_text": false,
+        "trust_text": "No credit card required • Free to get started",
+        "show_social_proof": false,
+        "background_style": "gradient",
+        "gradient_from": "indigo",
+        "background_color": "gray-50",
+        "primary_color": "indigo",
+        "show_decorative_elements": true
+      }
     }
   },
   "order": [
     "participating_brands_hero_CGMNmY",
-    "participating_brands_grid_jqzcDq"
+    "participating_brands_grid_jqzcDq",
+    "participating_brands_trust_callout_eMi9XU",
+    "participating_brands_winners_preview_KX6n4q",
+    "participating_brands_final_cta_CmTC4H"
   ]
 }
