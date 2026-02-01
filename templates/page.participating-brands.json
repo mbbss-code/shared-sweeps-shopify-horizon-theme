@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "participating_brands_hero_CGMNmY": {
+      "type": "participating-brands-hero",
+      "blocks": {
+        "trust_indicator_AXHcfz": {
+          "type": "trust_indicator",
+          "settings": {
+            "icon": "star",
+            "text": "No upfront costs"
+          }
+        }
+      },
+      "block_order": [
+        "trust_indicator_AXHcfz"
+      ],
+      "name": "Brands Hero",
+      "settings": {
+        "badge_text": "aaad",
+        "heading": "Trusted by Growing Shopify Brands",
+        "subheading": "Shared Sweeps brings together high-quality Shopify brands to fund one life-changing $100,000 sweepstakes — without upfront costs.",
+        "button_text": "Talk to Our Team",
+        "button_link": "",
+        "button_opens_modal": true,
+        "show_button_icon": true,
+        "secondary_button_text": "",
+        "secondary_button_link": "",
+        "primary_color": "indigo",
+        "gradient_from": "indigo",
+        "show_background_pattern": false,
+        "show_trust_indicators": false
+      }
+    },
+    "participating_brands_grid_jqzcDq": {
+      "type": "participating-brands-grid",
+      "blocks": {
+        "current_brand_cnfbwd": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Deckiez",
+            "brand_url": ""
+          }
+        },
+        "current_brand_wdCgDw": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Cozy Earth",
+            "brand_url": ""
+          }
+        },
+        "current_brand_VhhPYA": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Shaker & Spoon",
+            "brand_url": ""
+          }
+        },
+        "current_brand_zbJGpt": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Portland Leather Goods",
+            "brand_url": ""
+          }
+        },
+        "current_brand_wWRGYX": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Caraway",
+            "brand_url": ""
+          }
+        },
+        "current_brand_QDGm4i": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Pair of Thieves",
+            "brand_url": ""
+          }
+        },
+        "past_brand_M8XbLF": {
+          "type": "past_brand",
+          "settings": {
+            "brand_name": "Fresh Chile Co",
+            "brand_url": "",
+            "case_study_url": ""
+          }
+        },
+        "past_brand_33DhWy": {
+          "type": "past_brand",
+          "settings": {
+            "brand_name": "Final Boss Sour",
+            "brand_url": "",
+            "case_study_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "current_brand_cnfbwd",
+        "current_brand_wdCgDw",
+        "current_brand_VhhPYA",
+        "current_brand_zbJGpt",
+        "current_brand_wWRGYX",
+        "current_brand_QDGm4i",
+        "past_brand_M8XbLF",
+        "past_brand_33DhWy"
+      ],
+      "name": "Brands Grid",
+      "settings": {
+        "heading": "Participating Brands",
+        "subheading": "These brands are part of the Shared Sweeps network",
+        "enable_tabs": true,
+        "current_tab_label": "Current Brands",
+        "past_tab_label": "Past Participants",
+        "initial_brands_shown": 9,
+        "show_all_text": "Show all current brands",
+        "show_less_text": "Show fewer",
+        "case_study_link_text": "See case study",
+        "background_color": "white",
+        "primary_color": "indigo"
+      }
+    }
+  },
+  "order": [
+    "participating_brands_hero_CGMNmY",
+    "participating_brands_grid_jqzcDq"
+  ]
+}

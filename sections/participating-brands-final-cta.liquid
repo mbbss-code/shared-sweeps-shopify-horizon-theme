@@ -1,0 +1,338 @@
+{% comment %}
+  Final CTA Section
+  - Call to action section with gradient background
+  - ADA Compliant with proper ARIA labels and semantic HTML
+  - SEO Optimized with proper heading hierarchy
+  - Fully customizable via Shopify schema
+{% endcomment %}
+
+<section 
+  id="final-cta-{{ section.id }}"
+  class="tw-border-t tw-border-gray-200/40 tw-py-20 md:tw-py-28 tw-relative tw-overflow-hidden {% if section.settings.background_style == 'gradient' %}tw-bg-gradient-to-b tw-from-{{ section.settings.gradient_from }}/5 tw-to-white{% elsif section.settings.background_style == 'solid' %}tw-bg-{{ section.settings.background_color }}{% else %}tw-bg-white{% endif %}"
+  aria-labelledby="cta-heading-{{ section.id }}"
+>
+  {%- if section.settings.show_decorative_elements -%}
+    <div class="tw-absolute tw-inset-0 tw-overflow-hidden tw-pointer-events-none" aria-hidden="true">
+      <div class="tw-absolute -tw-top-24 -tw-right-24 tw-w-96 tw-h-96 tw-bg-{{ section.settings.primary_color }}-100 tw-rounded-full tw-opacity-20 tw-blur-3xl"></div>
+      <div class="tw-absolute -tw-bottom-24 -tw-left-24 tw-w-96 tw-h-96 tw-bg-{{ section.settings.primary_color }}-200 tw-rounded-full tw-opacity-20 tw-blur-3xl"></div>
+    </div>
+  {%- endif -%}
+
+  <div class="tw-container tw-mx-auto tw-px-4 tw-relative tw-z-10">
+    <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+      {%- if section.settings.eyebrow_text != blank -%}
+        <span class="tw-inline-block tw-mb-4 tw-text-sm tw-font-semibold tw-text-{{ section.settings.primary_color }}-600 tw-uppercase tw-tracking-wider">
+          {{ section.settings.eyebrow_text }}
+        </span>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 
+          id="cta-heading-{{ section.id }}"
+          class="tw-mb-6 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl lg:tw-text-5xl"
+        >
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <p class="tw-mb-8 tw-text-lg tw-text-gray-600 tw-leading-relaxed">
+          {{ section.settings.description }}
+        </p>
+      {%- endif -%}
+
+      <div class="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 tw-justify-center tw-items-center">
+        {%- if section.settings.primary_button_text != blank -%}
+          {% if section.settings.primary_button_opens_modal %}
+            <button
+              type="button"
+              class="tw-inline-flex tw-items-center tw-justify-center tw-px-8 tw-py-3.5 tw-text-base tw-font-medium tw-text-white tw-bg-{{ section.settings.primary_color }}-600 tw-rounded-lg tw-shadow-lg hover:tw-bg-{{ section.settings.primary_color }}-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200 hover:tw-shadow-xl hover:-tw-translate-y-0.5 tw-w-full sm:tw-w-auto"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
+            >
+              {%- if section.settings.primary_button_icon != 'none' -%}
+                {%- case section.settings.primary_button_icon -%}
+                  {%- when 'arrow' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  {%- when 'chat' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  {%- when 'mail' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  {%- when 'calendar' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                {%- endcase -%}
+              {%- endif -%}
+              {{ section.settings.primary_button_text }}
+            </button>
+          {% else %}
+            <a 
+              href="{{ section.settings.primary_button_link }}"
+              class="tw-inline-flex tw-items-center tw-justify-center tw-px-8 tw-py-3.5 tw-text-base tw-font-medium tw-text-white tw-bg-{{ section.settings.primary_color }}-600 tw-rounded-lg tw-shadow-lg hover:tw-bg-{{ section.settings.primary_color }}-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200 hover:tw-shadow-xl hover:-tw-translate-y-0.5 tw-w-full sm:tw-w-auto"
+            >
+              {%- if section.settings.primary_button_icon != 'none' -%}
+                {%- case section.settings.primary_button_icon -%}
+                  {%- when 'arrow' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  {%- when 'chat' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                  {%- when 'mail' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  {%- when 'calendar' -%}
+                    <svg class="tw-mr-2 -tw-ml-1 tw-w-5 tw-h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                {%- endcase -%}
+              {%- endif -%}
+              {{ section.settings.primary_button_text }}
+            </a>
+          {% endif %}
+        {%- endif -%}
+
+        {%- if section.settings.secondary_button_text != blank -%}
+          <a 
+            href="{{ section.settings.secondary_button_link }}"
+            class="tw-inline-flex tw-items-center tw-justify-center tw-px-8 tw-py-3.5 tw-text-base tw-font-medium tw-text-gray-700 tw-bg-white tw-border tw-border-gray-300 tw-rounded-lg hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200 tw-w-full sm:tw-w-auto"
+          >
+            {{ section.settings.secondary_button_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_trust_text -%}
+        <p class="tw-mt-6 tw-text-sm tw-text-gray-500">
+          {{ section.settings.trust_text }}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.show_social_proof -%}
+        <div class="tw-mt-10 tw-flex tw-flex-wrap tw-justify-center tw-items-center tw-gap-6">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'social_proof_logo' -%}
+              <div 
+                class="tw-grayscale hover:tw-grayscale-0 tw-opacity-60 hover:tw-opacity-100 tw-transition-all tw-duration-200"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.logo != blank -%}
+                  <img 
+                    src="{{ block.settings.logo | image_url: width: 200 }}"
+                    alt="{{ block.settings.alt_text | default: 'Partner logo' }}"
+                    class="tw-h-8 tw-w-auto tw-object-contain"
+                    loading="lazy"
+                    width="100"
+                    height="32"
+                  >
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "tag": "section",
+  "class": "final-cta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Join the Next Sweepstakes?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "header",
+      "content": "Primary Button"
+    },
+    {
+      "type": "text",
+      "id": "primary_button_text",
+      "label": "Button Text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "url",
+      "id": "primary_button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "primary_button_opens_modal",
+      "label": "Opens Contact Modal",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "primary_button_icon",
+      "label": "Button Icon",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "chat", "label": "Chat" },
+        { "value": "mail", "label": "Mail" },
+        { "value": "calendar", "label": "Calendar" }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Button"
+    },
+    {
+      "type": "text",
+      "id": "secondary_button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "secondary_button_link",
+      "label": "Secondary Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Trust Elements"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_text",
+      "label": "Show Trust Text",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Trust Text",
+      "default": "No credit card required • Free to get started"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Show Partner Logos",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "label": "Background Style",
+      "options": [
+        { "value": "gradient", "label": "Gradient" },
+        { "value": "solid", "label": "Solid Color" },
+        { "value": "white", "label": "White" }
+      ],
+      "default": "gradient"
+    },
+    {
+      "type": "select",
+      "id": "gradient_from",
+      "label": "Gradient Start Color",
+      "options": [
+        { "value": "blue", "label": "Blue" },
+        { "value": "indigo", "label": "Indigo" },
+        { "value": "purple", "label": "Purple" },
+        { "value": "pink", "label": "Pink" },
+        { "value": "emerald", "label": "Emerald" },
+        { "value": "teal", "label": "Teal" }
+      ],
+      "default": "indigo",
+      "info": "Used when Background Style is 'Gradient'"
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background Color",
+      "options": [
+        { "value": "gray-50", "label": "Light Gray" },
+        { "value": "gray-100", "label": "Gray" },
+        { "value": "indigo-50", "label": "Light Indigo" },
+        { "value": "blue-50", "label": "Light Blue" }
+      ],
+      "default": "gray-50",
+      "info": "Used when Background Style is 'Solid Color'"
+    },
+    {
+      "type": "select",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "options": [
+        { "value": "blue", "label": "Blue" },
+        { "value": "indigo", "label": "Indigo" },
+        { "value": "purple", "label": "Purple" },
+        { "value": "pink", "label": "Pink" },
+        { "value": "red", "label": "Red" },
+        { "value": "orange", "label": "Orange" },
+        { "value": "amber", "label": "Amber" },
+        { "value": "emerald", "label": "Emerald" },
+        { "value": "teal", "label": "Teal" },
+        { "value": "cyan", "label": "Cyan" }
+      ],
+      "default": "indigo"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decorative_elements",
+      "label": "Show Decorative Blurs",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social_proof_logo",
+      "name": "Partner Logo",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final CTA",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

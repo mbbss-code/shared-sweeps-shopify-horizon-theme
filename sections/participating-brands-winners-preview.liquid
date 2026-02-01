@@ -1,0 +1,315 @@
+{% comment %}
+  Winners Preview Section
+  - Display recent sweepstakes winners
+  - ADA Compliant with proper ARIA labels and semantic HTML
+  - SEO Optimized with proper heading hierarchy
+  - Fully customizable via Shopify schema
+{% endcomment %}
+
+<section 
+  id="winners-preview-{{ section.id }}"
+  class="tw-py-20 md:tw-py-28 tw-bg-{{ section.settings.background_color }}"
+  aria-labelledby="winners-heading-{{ section.id }}"
+>
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-4xl tw-text-center">
+      {%- if section.settings.show_icon -%}
+        <div 
+          class="tw-mx-auto tw-mb-6 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full tw-bg-{{ section.settings.primary_color }}-100"
+          aria-hidden="true"
+        >
+          <svg class="tw-h-8 tw-w-8 tw-text-{{ section.settings.primary_color }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+          </svg>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h2 
+          id="winners-heading-{{ section.id }}"
+          class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl"
+        >
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="tw-mb-12 tw-text-gray-600 tw-text-lg">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      {%- assign winners = section.blocks | where: "type", "winner" -%}
+      {%- if winners.size > 0 -%}
+        <div 
+          class="tw-mb-10 tw-grid tw-gap-6 {% if winners.size == 1 %}tw-max-w-sm tw-mx-auto{% elsif winners.size == 2 %}md:tw-grid-cols-2 tw-max-w-2xl tw-mx-auto{% else %}md:tw-grid-cols-3{% endif %}"
+          role="list"
+          aria-label="Recent winners"
+        >
+          {%- for block in winners -%}
+            <article 
+              class="winner-card tw-rounded-xl tw-border tw-border-gray-200/50 tw-bg-white tw-shadow-sm hover:tw-shadow-lg tw-transition-all tw-duration-300 tw-overflow-hidden tw-group"
+              role="listitem"
+              {{ block.shopify_attributes }}
+            >
+              <div class="tw-p-6">
+                {%- if block.settings.winner_image != blank -%}
+                  <div class="tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-mx-auto tw-items-center tw-justify-center tw-rounded-full tw-overflow-hidden tw-bg-{{ section.settings.primary_color }}-50 tw-ring-4 tw-ring-{{ section.settings.primary_color }}-100 tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
+                    <img 
+                      src="{{ block.settings.winner_image | image_url: width: 128 }}"
+                      alt="{{ block.settings.winner_name }}"
+                      class="tw-h-full tw-w-full tw-object-cover"
+                      loading="lazy"
+                      width="64"
+                      height="64"
+                    >
+                  </div>
+                {%- else -%}
+                  <div class="tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-mx-auto tw-items-center tw-justify-center tw-rounded-full tw-bg-{{ section.settings.primary_color }}-100 tw-transition-transform tw-duration-300 group-hover:tw-scale-105" aria-hidden="true">
+                    <svg class="tw-h-8 tw-w-8 tw-text-{{ section.settings.primary_color }}-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                {%- endif -%}
+
+                <h3 class="tw-mb-2 tw-text-lg tw-font-semibold tw-text-gray-900">
+                  {{ block.settings.winner_name }}
+                </h3>
+
+                {%- if block.settings.winner_location != blank -%}
+                  <div class="tw-mb-3 tw-flex tw-items-center tw-justify-center tw-gap-1.5 tw-text-sm tw-text-gray-600">
+                    <svg class="tw-h-4 tw-w-4 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <span>{{ block.settings.winner_location }}</span>
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.winner_brand != blank -%}
+                  <div class="tw-mb-4 tw-flex tw-items-center tw-justify-center tw-gap-1.5 tw-text-sm tw-text-gray-600">
+                    <svg class="tw-h-4 tw-w-4 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>{{ block.settings.winner_brand }}</span>
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.prize_amount != blank -%}
+                  <div class="tw-text-2xl tw-font-bold tw-text-{{ section.settings.primary_color }}-600">
+                    {{ block.settings.prize_amount }}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.winner_quote != blank -%}
+                  <blockquote class="tw-mt-4 tw-text-sm tw-text-gray-500 tw-italic tw-border-t tw-border-gray-100 tw-pt-4">
+                    "{{ block.settings.winner_quote }}"
+                  </blockquote>
+                {%- endif -%}
+              </div>
+            </article>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_text != blank -%}
+        <a 
+          href="{{ section.settings.button_link }}"
+          class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-text-gray-700 tw-bg-white tw-border tw-border-gray-300 tw-rounded-lg hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200"
+        >
+          {{ section.settings.button_text }}
+          <svg class="tw-ml-2 -tw-mr-1 tw-w-4 tw-h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #winners-preview-{{ section.id }} .winner-card {
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: both;
+  }
+
+  {%- for i in (1..9) -%}
+    #winners-preview-{{ section.id }} .winner-card:nth-child({{ i }}) {
+      animation-delay: {{ i | minus: 1 | times: 0.1 }}s;
+    }
+  {%- endfor -%}
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #winners-preview-{{ section.id }} .winner-card {
+      animation: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Winners Preview",
+  "tag": "section",
+  "class": "winners-preview",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show Trophy Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recent Winners"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real people winning real prizes"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "See All Winners"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background Color",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "gray-50", "label": "Light Gray" },
+        { "value": "gray-100", "label": "Gray" }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "select",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "options": [
+        { "value": "blue", "label": "Blue" },
+        { "value": "indigo", "label": "Indigo" },
+        { "value": "purple", "label": "Purple" },
+        { "value": "pink", "label": "Pink" },
+        { "value": "red", "label": "Red" },
+        { "value": "orange", "label": "Orange" },
+        { "value": "amber", "label": "Amber" },
+        { "value": "yellow", "label": "Yellow" },
+        { "value": "emerald", "label": "Emerald" },
+        { "value": "teal", "label": "Teal" }
+      ],
+      "default": "indigo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "winner",
+      "name": "Winner",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "winner_image",
+          "label": "Winner Photo"
+        },
+        {
+          "type": "text",
+          "id": "winner_name",
+          "label": "Winner Name",
+          "default": "Jason H."
+        },
+        {
+          "type": "text",
+          "id": "winner_location",
+          "label": "Location",
+          "default": "Marshall, MO"
+        },
+        {
+          "type": "text",
+          "id": "winner_brand",
+          "label": "Winning Brand",
+          "default": "Synister Speed"
+        },
+        {
+          "type": "text",
+          "id": "prize_amount",
+          "label": "Prize Amount",
+          "default": "$10,000"
+        },
+        {
+          "type": "textarea",
+          "id": "winner_quote",
+          "label": "Winner Quote (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Winners Preview",
+      "blocks": [
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Jason H.",
+            "winner_location": "Marshall, MO",
+            "winner_brand": "Synister Speed",
+            "prize_amount": "$10,000"
+          }
+        },
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Caitlin M.",
+            "winner_location": "Montague, NJ",
+            "winner_brand": "Cirkul",
+            "prize_amount": "$100,000"
+          }
+        },
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Dre C.",
+            "winner_location": "Bozeman, MT",
+            "winner_brand": "Caraway Home",
+            "prize_amount": "$100,000"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

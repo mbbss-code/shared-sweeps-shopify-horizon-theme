@@ -1,0 +1,498 @@
+{% comment %}
+  Participating Brands Grid Section
+  - Tabbed interface for current/past brands
+  - Responsive grid layout
+  - ADA Compliant with proper ARIA labels and keyboard navigation
+  - SEO Optimized with proper heading hierarchy
+  - Fully customizable via Shopify schema
+{% endcomment %}
+
+<section 
+  id="participating-brands-grid"
+  class="tw-py-20 md:tw-py-28 tw-bg-{{ section.settings.background_color }}"
+  aria-labelledby="brands-section-heading"
+>
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-4xl tw-text-center">
+      {%- if section.settings.heading != blank -%}
+        <h2 
+          id="brands-section-heading"
+          class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl"
+        >
+          {{ section.settings.heading }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <p class="tw-mb-8 tw-text-gray-600 tw-text-lg">
+          {{ section.settings.subheading }}
+        </p>
+      {%- endif -%}
+
+      {%- if section.settings.enable_tabs -%}
+        <!-- Tabs Navigation -->
+        <div 
+          class="tw-mb-8" 
+          role="tablist" 
+          aria-label="Brand categories"
+        >
+          <div class="tw-inline-flex tw-rounded-lg tw-bg-gray-100 tw-p-1">
+            <button
+              id="tab-current"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-current"
+              class="tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 focus:tw-ring-offset-2 tw-bg-white tw-text-gray-900 tw-shadow-sm"
+              data-tab="current"
+            >
+              {{ section.settings.current_tab_label }}
+            </button>
+            <button
+              id="tab-past"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-past"
+              class="tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 focus:tw-ring-offset-2 tw-text-gray-600 hover:tw-text-gray-900"
+              data-tab="past"
+              tabindex="-1"
+            >
+              {{ section.settings.past_tab_label }}
+            </button>
+          </div>
+        </div>
+      {%- endif -%}
+
+      <!-- Current Brands Panel -->
+      <div
+        id="panel-current"
+        role="tabpanel"
+        aria-labelledby="tab-current"
+        class="tab-panel"
+        data-panel="current"
+      >
+        <div class="tw-grid tw-grid-cols-2 tw-gap-6 sm:tw-grid-cols-3 md:tw-gap-8" role="list" aria-label="Current participating brands">
+          {%- assign visible_count = section.settings.initial_brands_shown -%}
+          {%- assign current_brands_count = 0 -%}
+          
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'current_brand' -%}
+              {%- assign current_brands_count = current_brands_count | plus: 1 -%}
+              <div 
+                class="brand-card {% if current_brands_count > visible_count %}hidden-brand{% endif %}"
+                role="listitem"
+                data-brand-index="{{ current_brands_count }}"
+                {{ block.shopify_attributes }}
+              >
+                {%- if block.settings.brand_url != blank -%}
+                  <a 
+                    href="{{ block.settings.brand_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="tw-block"
+                    aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)"
+                  >
+                {%- endif -%}
+                
+                <div class="tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-border-gray-200/50 tw-bg-white tw-p-6 tw-transition-all tw-duration-300 hover:tw-border-{{ section.settings.primary_color }}-300/50 hover:tw-shadow-lg focus-within:tw-ring-2 focus-within:tw-ring-{{ section.settings.primary_color }}-500 focus-within:tw-ring-offset-2 tw-group">
+                  <div class="tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-bg-gray-100 tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
+                    {%- if block.settings.brand_logo != blank -%}
+                      <img 
+                        src="{{ block.settings.brand_logo | image_url: width: 160 }}"
+                        alt="{{ block.settings.brand_name }} logo"
+                        class="tw-h-full tw-w-full tw-p-2 tw-object-contain"
+                        loading="lazy"
+                        width="80"
+                        height="80"
+                      >
+                    {%- else -%}
+                      <div class="tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full tw-text-gray-400">
+                        <svg class="tw-w-8 tw-h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  <span class="tw-text-sm tw-font-medium tw-text-gray-900">{{ block.settings.brand_name }}</span>
+                </div>
+                
+                {%- if block.settings.brand_url != blank -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if current_brands_count > visible_count -%}
+          <div class="tw-mt-8">
+            <button
+              type="button"
+              id="toggle-brands-btn"
+              class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-text-gray-700 tw-bg-white tw-border tw-border-gray-300 tw-rounded-lg hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200"
+              data-show-text="{{ section.settings.show_all_text }}"
+              data-hide-text="{{ section.settings.show_less_text }}"
+              data-visible-count="{{ visible_count }}"
+              aria-expanded="false"
+              aria-controls="panel-current"
+            >
+              <span class="btn-text">{{ section.settings.show_all_text }}</span>
+            </button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Past Brands Panel -->
+      <div
+        id="panel-past"
+        role="tabpanel"
+        aria-labelledby="tab-past"
+        class="tab-panel tw-hidden"
+        data-panel="past"
+        hidden
+      >
+        <div class="tw-grid tw-grid-cols-2 tw-gap-6 sm:tw-grid-cols-3 md:tw-gap-8" role="list" aria-label="Past participating brands">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'past_brand' -%}
+              <div role="listitem" {{ block.shopify_attributes }}>
+                {%- if block.settings.brand_url != blank -%}
+                  <a 
+                    href="{{ block.settings.brand_url }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="tw-block"
+                    aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)"
+                  >
+                {%- endif -%}
+                
+                <div class="tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-border-gray-200/50 tw-bg-white tw-p-6 tw-transition-all tw-duration-300 hover:tw-border-{{ section.settings.primary_color }}-300/50 hover:tw-shadow-lg focus-within:tw-ring-2 focus-within:tw-ring-{{ section.settings.primary_color }}-500 focus-within:tw-ring-offset-2 tw-group">
+                  <div class="tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-bg-gray-100 tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
+                    {%- if block.settings.brand_logo != blank -%}
+                      <img 
+                        src="{{ block.settings.brand_logo | image_url: width: 160 }}"
+                        alt="{{ block.settings.brand_name }} logo"
+                        class="tw-h-full tw-w-full tw-p-2 tw-object-contain"
+                        loading="lazy"
+                        width="80"
+                        height="80"
+                      >
+                    {%- else -%}
+                      <div class="tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full tw-text-gray-400">
+                        <svg class="tw-w-8 tw-h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                  <span class="tw-text-sm tw-font-medium tw-text-gray-900">{{ block.settings.brand_name }}</span>
+                  
+                  {%- if block.settings.case_study_url != blank -%}
+                    <a 
+                      href="{{ block.settings.case_study_url }}"
+                      class="tw-mt-2 tw-text-xs tw-font-normal tw-text-{{ section.settings.primary_color }}-600 hover:tw-underline focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-rounded"
+                      onclick="event.stopPropagation()"
+                      aria-label="See case study for {{ block.settings.brand_name }}"
+                    >
+                      {{ section.settings.case_study_link_text }} →
+                    </a>
+                  {%- endif -%}
+                </div>
+                
+                {%- if block.settings.brand_url != blank -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const section = document.getElementById('participating-brands-grid');
+    if (!section) return;
+
+    // Tab functionality
+    const tabButtons = section.querySelectorAll('.tab-button');
+    const tabPanels = section.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.dataset.tab;
+        
+        // Update tab buttons
+        tabButtons.forEach(btn => {
+          const isSelected = btn.dataset.tab === tabId;
+          btn.setAttribute('aria-selected', isSelected);
+          btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+          btn.classList.toggle('bg-white', isSelected);
+          btn.classList.toggle('text-gray-900', isSelected);
+          btn.classList.toggle('shadow-sm', isSelected);
+          btn.classList.toggle('text-gray-600', !isSelected);
+        });
+
+        // Update tab panels
+        tabPanels.forEach(panel => {
+          const isActive = panel.dataset.panel === tabId;
+          panel.classList.toggle('hidden', !isActive);
+          panel.hidden = !isActive;
+        });
+      });
+
+      // Keyboard navigation for tabs
+      button.addEventListener('keydown', (e) => {
+        let targetButton = null;
+        
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const buttons = Array.from(tabButtons);
+          const currentIndex = buttons.indexOf(button);
+          
+          if (e.key === 'ArrowRight') {
+            targetButton = buttons[(currentIndex + 1) % buttons.length];
+          } else {
+            targetButton = buttons[(currentIndex - 1 + buttons.length) % buttons.length];
+          }
+          
+          targetButton.click();
+          targetButton.focus();
+        }
+      });
+    });
+
+    // Show/Hide more brands functionality
+    const toggleBtn = section.querySelector('#toggle-brands-btn');
+    if (toggleBtn) {
+      const hiddenBrands = section.querySelectorAll('.hidden-brand');
+      const visibleCount = parseInt(toggleBtn.dataset.visibleCount, 10);
+      let isExpanded = false;
+
+      toggleBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        
+        hiddenBrands.forEach(brand => {
+          brand.style.display = isExpanded ? '' : 'none';
+        });
+
+        toggleBtn.querySelector('.btn-text').textContent = isExpanded 
+          ? toggleBtn.dataset.hideText 
+          : toggleBtn.dataset.showText;
+        
+        toggleBtn.setAttribute('aria-expanded', isExpanded);
+      });
+
+      // Initially hide brands beyond visible count
+      hiddenBrands.forEach(brand => {
+        brand.style.display = 'none';
+      });
+    }
+  })();
+</script>
+
+<style>
+  #participating-brands-grid .brand-card {
+    animation: fadeInUp 0.3s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #participating-brands-grid .tab-panel:not(.hidden) {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brands Grid",
+  "tag": "section",
+  "class": "participating-brands-grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Participating Brands"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "These brands are part of the Shared Sweeps network"
+    },
+    {
+      "type": "header",
+      "content": "Tabs"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_tabs",
+      "label": "Enable Tabs",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "current_tab_label",
+      "label": "Current Brands Tab Label",
+      "default": "Current Brands"
+    },
+    {
+      "type": "text",
+      "id": "past_tab_label",
+      "label": "Past Brands Tab Label",
+      "default": "Past Participants"
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "type": "range",
+      "id": "initial_brands_shown",
+      "label": "Initial Brands Shown",
+      "min": 3,
+      "max": 18,
+      "step": 3,
+      "default": 9
+    },
+    {
+      "type": "text",
+      "id": "show_all_text",
+      "label": "Show All Button Text",
+      "default": "Show all current brands"
+    },
+    {
+      "type": "text",
+      "id": "show_less_text",
+      "label": "Show Less Button Text",
+      "default": "Show fewer"
+    },
+    {
+      "type": "text",
+      "id": "case_study_link_text",
+      "label": "Case Study Link Text",
+      "default": "See case study"
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "select",
+      "id": "background_color",
+      "label": "Background Color",
+      "options": [
+        { "value": "white", "label": "White" },
+        { "value": "gray-50", "label": "Light Gray" },
+        { "value": "gray-100", "label": "Gray" }
+      ],
+      "default": "white"
+    },
+    {
+      "type": "select",
+      "id": "primary_color",
+      "label": "Primary Color",
+      "options": [
+        { "value": "blue", "label": "Blue" },
+        { "value": "indigo", "label": "Indigo" },
+        { "value": "purple", "label": "Purple" },
+        { "value": "pink", "label": "Pink" },
+        { "value": "red", "label": "Red" },
+        { "value": "orange", "label": "Orange" },
+        { "value": "amber", "label": "Amber" },
+        { "value": "emerald", "label": "Emerald" },
+        { "value": "teal", "label": "Teal" },
+        { "value": "cyan", "label": "Cyan" }
+      ],
+      "default": "indigo"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "current_brand",
+      "name": "Current Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand Logo"
+        },
+        {
+          "type": "url",
+          "id": "brand_url",
+          "label": "Brand Website URL"
+        }
+      ]
+    },
+    {
+      "type": "past_brand",
+      "name": "Past Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand Logo"
+        },
+        {
+          "type": "url",
+          "id": "brand_url",
+          "label": "Brand Website URL"
+        },
+        {
+          "type": "url",
+          "id": "case_study_url",
+          "label": "Case Study URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands Grid",
+      "blocks": [
+        { "type": "current_brand", "settings": { "brand_name": "Deckiez" } },
+        { "type": "current_brand", "settings": { "brand_name": "Cozy Earth" } },
+        { "type": "current_brand", "settings": { "brand_name": "Shaker & Spoon" } },
+        { "type": "current_brand", "settings": { "brand_name": "Portland Leather Goods" } },
+        { "type": "current_brand", "settings": { "brand_name": "Caraway" } },
+        { "type": "current_brand", "settings": { "brand_name": "Pair of Thieves" } },
+        { "type": "past_brand", "settings": { "brand_name": "Fresh Chile Co" } },
+        { "type": "past_brand", "settings": { "brand_name": "Final Boss Sour" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
