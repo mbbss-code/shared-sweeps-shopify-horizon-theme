@@ -23,6 +23,42 @@
     opacity: 0.9;
     transform: scale(1.05);
   }
+
+  /* Mobile menu slide-down transition */
+  #mobile-menu {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease;
+  }
+
+  /* Hamburger <-> Close icon crossfade */
+  .mobile-menu-btn {
+    position: relative;
+  }
+  .mobile-menu-btn svg {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .mobile-menu-btn .icon-hamburger {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  .mobile-menu-btn .icon-close {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(90deg) scale(0.75);
+  }
+  .mobile-menu-btn.menu-is-open .icon-hamburger {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.75);
+  }
+  .mobile-menu-btn.menu-is-open .icon-close {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
 </style>
 
 {%- comment -%} JSON-LD Structured Data for Navigation {%- endcomment -%}
@@ -146,15 +182,20 @@
       {% if section.settings.menu != blank %}
         <button 
           type="button"
-          class="lg:tw-hidden tw-text-white tw-p-2 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-rounded-sm"
+          class="mobile-menu-btn lg:tw-hidden tw-text-white tw-p-2 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white/50 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-rounded-sm"
           aria-label="Toggle mobile menu"
           aria-expanded="false"
           aria-controls="mobile-menu"
           data-mobile-menu-toggle
           title="Open navigation menu"
         >
-          <svg class="tw-h-6 tw-w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          {%- comment -%} Hamburger icon {%- endcomment -%}
+          <svg class="tw-h-6 tw-w-6 icon-hamburger" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          {%- comment -%} Close icon {%- endcomment -%}
+          <svg class="tw-h-6 tw-w-6 icon-close" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
       {% endif %}
@@ -165,7 +206,7 @@
   {% if section.settings.menu != blank %}
     <div 
       id="mobile-menu" 
-      class="tw-hidden lg:tw-hidden tw-border-t tw-border-white/10"
+      class="lg:tw-hidden tw-border-t tw-border-white/10"
       role="menu"
       aria-label="Mobile navigation"
     >
@@ -394,16 +435,39 @@
 {% endif %}
 
 <script>
-  // Mobile menu toggle
   document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle with slide transition
     const mobileMenuToggle = document.querySelector('[data-mobile-menu-toggle]');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     if (mobileMenuToggle && mobileMenu) {
       mobileMenuToggle.addEventListener('click', function() {
         const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-        mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
-        mobileMenu.classList.toggle('tw-hidden');
+
+        if (!isExpanded) {
+          // Opening: animate height to scrollHeight, then set to auto after transition
+          mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
+          mobileMenu.style.opacity = '1';
+          mobileMenuToggle.setAttribute('aria-expanded', 'true');
+          mobileMenuToggle.setAttribute('title', 'Close navigation menu');
+          mobileMenuToggle.classList.add('menu-is-open');
+
+          mobileMenu.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height') {
+              mobileMenu.style.height = 'auto';
+              mobileMenu.removeEventListener('transitionend', handler);
+            }
+          });
+        } else {
+          // Closing: lock height from auto -> scrollHeight, force reflow, then animate to 0
+          mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
+          void mobileMenu.offsetHeight; // force reflow so browser registers starting height
+          mobileMenu.style.height = '0';
+          mobileMenu.style.opacity = '0';
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.setAttribute('title', 'Open navigation menu');
+          mobileMenuToggle.classList.remove('menu-is-open');
+        }
       });
     }
 
@@ -417,7 +481,6 @@
         trigger.addEventListener('click', function() {
           modal.classList.remove('tw-hidden');
           document.body.style.overflow = 'hidden';
-          // Focus trap
           const firstInput = modal.querySelector('input, textarea, button');
           if (firstInput) firstInput.focus();
         });
@@ -430,7 +493,6 @@
         document.body.style.overflow = '';
       });
       
-      // Close on backdrop click
       modal.addEventListener('click', function(e) {
         if (e.target === modal) {
           modal.classList.add('tw-hidden');
@@ -438,7 +500,6 @@
         }
       });
       
-      // Close on Escape key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modal.classList.contains('tw-hidden')) {
           modal.classList.add('tw-hidden');

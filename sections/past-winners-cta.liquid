@@ -1,0 +1,106 @@
+{% comment %}
+  Past Winners Final CTA Section
+  Dark navy background with centered heading and CTA
+  ADA compliant, responsive, matches header/footer navy
+{% endcomment %}
+
+{%- liquid
+  assign bg_color = section.settings.bg_color | default: '#1e3a5f'
+  assign heading_color = section.settings.heading_color | default: '#ffffff'
+-%}
+
+<style>
+  .past-winners-cta-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+</style>
+
+<section class="past-winners-cta-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="past-winners-cta-heading">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+
+      <h2 
+        id="past-winners-cta-heading" 
+        class="tw-mb-10 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl"
+        style="color: {{ heading_color }}"
+      >
+        {{ section.settings.heading | default: 'Ready to Earn Your Entries?' }}
+      </h2>
+
+      {% if section.settings.show_cta %}
+        
+          <a href="{{ section.settings.cta_link | default: '/how-to-enter' }}"
+          class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-white focus:tw-ring-offset-2 focus:tw-ring-offset-transparent"
+        >
+          {{ section.settings.cta_text | default: 'See How to Enter' }}
+          <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Past Winners CTA",
+  "class": "past-winners-cta-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1e3a5f",
+      "info": "Matches the header/footer navy color"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ready to Earn Your Entries?"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "See How to Enter"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Past Winners CTA",
+      "category": "Call to Action"
+    }
+  ]
+}
+{% endschema %}

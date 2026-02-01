@@ -1,0 +1,89 @@
+{% comment %}
+  Past Winners Trust Callout Section
+  Centered messaging about the shared sweepstakes model
+  ADA compliant, responsive
+{% endcomment %}
+
+{%- liquid
+  assign bg_color = section.settings.bg_color | default: '#ffffff'
+  assign heading_color = section.settings.heading_color | default: '#000000'
+  assign text_color = section.settings.text_color | default: '#4b5563'
+-%}
+
+<style>
+  .past-winners-trust-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+</style>
+
+<section class="past-winners-trust-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="past-winners-trust-heading">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+
+      <h2 
+        id="past-winners-trust-heading" 
+        class="tw-mb-6 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl"
+        style="color: {{ heading_color }}"
+      >
+        {{ section.settings.heading | default: 'One Shared Sweepstakes. One Life-Changing Prize.' }}
+      </h2>
+
+      <p class="tw-text-lg tw-leading-relaxed" style="color: {{ text_color }}">
+        {{ section.settings.description | default: 'All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign.' }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Past Winners Trust",
+  "class": "past-winners-trust-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One Shared Sweepstakes. One Life-Changing Prize."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Past Winners Trust Callout",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

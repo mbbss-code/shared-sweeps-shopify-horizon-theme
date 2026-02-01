@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "past_winners_hero_9ETYWd": {
+      "type": "past-winners-hero",
+      "name": "Past Winners Hero",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "heading": "Real People. Real Winners.",
+        "description": "Shared Sweeps awards real cash prizes to real shoppers — funded by participating Shopify brands.",
+        "show_cta": true,
+        "cta_text": "See How to Enter",
+        "cta_link": ""
+      }
+    },
+    "past_winners_grid_AQEXeA": {
+      "type": "past-winners-grid",
+      "blocks": {
+        "winner_hiKpgg": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/jason.png",
+            "name": "Jason H.",
+            "city": "Marshall",
+            "state": "MO",
+            "brand": "Synister Speed",
+            "prize": "$10,000"
+          }
+        },
+        "winner_cdDcBy": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/kaitlin.jpg",
+            "name": "Kaitlin M.",
+            "city": "Montague",
+            "state": "NJ",
+            "brand": "Cirkul",
+            "prize": "$100,000"
+          }
+        },
+        "winner_VypGpP": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/dre-c.png",
+            "name": "Dre C.",
+            "city": "Bozeman",
+            "state": "MT",
+            "brand": "Caraway Home",
+            "prize": "$100,000"
+          }
+        },
+        "winner_W9xUQU": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/shannon-r.png",
+            "name": "Shannon R.",
+            "city": "Austin",
+            "state": "TX",
+            "brand": "Cariloha",
+            "prize": "$100,000"
+          }
+        },
+        "winner_JHdLde": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/morty-t.jpg",
+            "name": "Morty T.",
+            "city": "Miami",
+            "state": "FL",
+            "brand": "Allbirds",
+            "prize": "$100,000"
+          }
+        },
+        "winner_Y6pzKz": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/laura-c.jpg",
+            "name": "Laura C.",
+            "city": "Portland",
+            "state": "OR",
+            "brand": "Brooklinen",
+            "prize": "$100,000"
+          }
+        },
+        "winner_pWMzz3": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/MiguelQ-CmW5lG_G.jpg",
+            "name": "Miguel Q.",
+            "city": "Chicago",
+            "state": "IL",
+            "brand": "Caraway Home",
+            "prize": "$100,000"
+          }
+        },
+        "winner_3pmi8f": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/JesseT-B4eknULA.jpg",
+            "name": "Jesse T.",
+            "city": "Nashville",
+            "state": "TN",
+            "brand": "Parade",
+            "prize": "$100,000"
+          }
+        }
+      },
+      "block_order": [
+        "winner_hiKpgg",
+        "winner_cdDcBy",
+        "winner_VypGpP",
+        "winner_W9xUQU",
+        "winner_JHdLde",
+        "winner_Y6pzKz",
+        "winner_pWMzz3",
+        "winner_3pmi8f"
+      ],
+      "name": "Past Winners Grid",
+      "settings": {
+        "bg_color": "#f3f4f6",
+        "initial_winner_count": 6,
+        "show_more_text": "Show all winners",
+        "show_less_text": "Show fewer"
+      }
+    },
+    "past_winners_trust_h8PBw7": {
+      "type": "past-winners-trust",
+      "name": "Past Winners Trust Callout",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#4b5563",
+        "heading": "One Shared Sweepstakes. One Life-Changing Prize.",
+        "description": "All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign."
+      }
+    }
+  },
+  "order": [
+    "past_winners_hero_9ETYWd",
+    "past_winners_grid_AQEXeA",
+    "past_winners_trust_h8PBw7"
+  ]
+}
