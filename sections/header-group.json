@@ -125,8 +125,14 @@
         "button_bg_color": "#3099d3",
         "button_text_color": "#ffffff",
         "modal_title": "Contact Our Team",
+        "show_company_field": true,
+        "company_required": true,
+        "show_website_field": true,
+        "website_required": false,
         "show_phone_field": false,
         "phone_required": false,
+        "show_revenue_field": true,
+        "revenue_required": false,
         "submit_button_text": "Send Message",
         "success_message": "Thanks for contacting us! We'll get back to you soon."
       }

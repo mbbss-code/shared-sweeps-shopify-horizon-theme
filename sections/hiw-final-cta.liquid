@@ -53,9 +53,8 @@
           </button>
         {% else %}
           
-            href="{{ section.settings.final_cta_url | default: '#' }}"
-            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
-          >
+          <a href="{{ section.settings.final_cta_url | default: '#' }}"
+            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl">
             {{ section.settings.final_cta_text | default: 'Talk to Our Team' }}
             <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
