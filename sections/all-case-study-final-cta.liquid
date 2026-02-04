@@ -1,0 +1,141 @@
+{% comment %}
+  All Case Studies — Closing CTA
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign bg_color           = section.settings.background_color   | default: '#f9fafb'
+  assign heading_color      = section.settings.heading_color      | default: '#1a1a1a'
+  assign primary_color      = section.settings.primary_color      | default: '#3b82f6'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+-%}
+
+<style>
+  .acs-cta-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+  .acs-cta-{{ section.id }} .acs-cta-btn {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .acs-cta-{{ section.id }} .acs-cta-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  .acs-cta-{{ section.id }} .acs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }}, 0 0 0 4px #fff;
+  }
+</style>
+
+<div class="acs-cta-{{ section.id }}" {{ section.shopify_attributes }}>
+  <section
+    class="tw-px-4 tw-py-20"
+    aria-labelledby="acs-cta-heading-{{ section.id }}"
+  >
+    <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+      <h2 
+        id="acs-cta-heading-{{ section.id }}"
+        class="tw-mb-6 tw-text-2xl tw-font-bold md:tw-text-3xl"
+        style="color: {{ heading_color }};"
+      >
+        {{ section.settings.heading | default: 'Want to See What Shared Sweeps Could Do for Your Brand?' }}
+      </h2>
+      
+      {% if section.settings.cta_opens_modal %}
+        <button
+          type="button"
+          class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+          data-contact-modal-trigger
+          aria-haspopup="dialog"
+        >
+          {{ section.settings.cta_text | default: 'Talk to Our Team' }}
+          <svg class="tw-ml-2 tw-h-4 tw-w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      {% else %}
+        <a 
+          href="{{ section.settings.cta_url | default: '#' }}"
+          class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-full tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+        >
+          {{ section.settings.cta_text | default: 'Talk to Our Team' }}
+          <svg class="tw-ml-2 tw-h-4 tw-w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "ACS — Closing CTA",
+  "class": "acs-closing-cta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Button color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Want to See What Shared Sweeps Could Do for Your Brand?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the contact modal. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL",
+      "info": "Used only when 'Open contact modal' is unchecked"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ACS — Closing CTA"
+    }
+  ]
+}
+{% endschema %}

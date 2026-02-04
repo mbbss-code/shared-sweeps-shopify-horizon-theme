@@ -1,0 +1,163 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "case_study_hero_zMpV7y": {
+      "type": "case-study-hero",
+      "name": "Case Studies Hero",
+      "settings": {
+        "heading": "Real Results from Shopify Brands",
+        "subheading": "See how Shopify brands use Shared Sweeps to drive revenue, retention, and excitement — without relying on discounts or paid ads.",
+        "heading_color": "#1a1a1a",
+        "subheading_color": "#6b7280",
+        "show_background_decoration": false,
+        "decoration_color": "#3b82f6"
+      }
+    },
+    "case_study_grid_NdaNHX": {
+      "type": "case-study-grid",
+      "blocks": {
+        "case_study_kcLmj3": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Fresh Chile Co",
+            "metric": "$1.5M in revenue with only $22K in fees",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "link_url": "",
+            "link_text": "Read Case Study"
+          }
+        },
+        "case_study_EPJDRi": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Pair of Thieves",
+            "metric": "18% increase in gross sales",
+            "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
+            "link_url": "",
+            "link_text": "Read Case Study"
+          }
+        },
+        "case_study_bRyBKR": {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Caraway Home",
+            "metric": "61% increase in YoY top-line revenue",
+            "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
+            "link_url": "",
+            "link_text": "Read Case Study"
+          }
+        }
+      },
+      "block_order": [
+        "case_study_kcLmj3",
+        "case_study_EPJDRi",
+        "case_study_bRyBKR"
+      ],
+      "name": "Case Studies Grid",
+      "settings": {
+        "section_heading": "Featured Case Studies",
+        "background_color": "#f9fafb",
+        "border_color": "#e5e7eb",
+        "card_background": "#ffffff",
+        "card_border_color": "#e5e7eb",
+        "logo_background": "#f3f4f6",
+        "heading_color": "#1a1a1a",
+        "metric_color": "#3b82f6",
+        "summary_color": "#6b7280",
+        "muted_text_color": "#9ca3af",
+        "button_border_color": "#d1d5db",
+        "button_text_color": "#374151",
+        "show_all_link": true,
+        "all_case_studies_url": "#",
+        "all_case_studies_text": "See All Case Studies"
+      }
+    },
+    "case_study_benefits_CC6ctz": {
+      "type": "case-study-benefits",
+      "blocks": {
+        "benefit_LCJhie": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "No upfront prize costs"
+          }
+        },
+        "benefit_dm94QN": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Fully managed legal compliance"
+          }
+        },
+        "benefit_cXMLbF": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Seamless Shopify integration"
+          }
+        },
+        "benefit_kHin8L": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Revenue-first growth, not discounts"
+          }
+        },
+        "benefit_qJVcGT": {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Capped fees with unlimited upside"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_LCJhie",
+        "benefit_dm94QN",
+        "benefit_cXMLbF",
+        "benefit_kHin8L",
+        "benefit_qJVcGT"
+      ],
+      "name": "Benefits List",
+      "settings": {
+        "heading": "Why Brands Choose Shared Sweeps",
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "text_color": "#1a1a1a",
+        "icon_color": "#3b82f6",
+        "show_cta": false,
+        "cta_url": "",
+        "cta_text": "Learn More",
+        "show_cta_arrow": true,
+        "cta_background": "#3b82f6",
+        "cta_text_color": "#ffffff"
+      }
+    },
+    "case_study_final_cta_6a87cP": {
+      "type": "case-study-final-cta",
+      "name": "Case Studies — CTA",
+      "settings": {
+        "background_color": "#1e3a5f",
+        "heading_color": "#ffffff",
+        "subheading_color": "#cbd5e1",
+        "primary_color": "#3099d3",
+        "primary_text_color": "#ffffff",
+        "heading": "Want Results Like These?",
+        "subheading": "Let's talk about whether Shared Sweeps is a fit for your brand.",
+        "cta_text": "Talk to Our Team",
+        "cta_opens_modal": true,
+        "cta_url": "",
+        "show_secondary_text": false,
+        "secondary_text": "No commitment required. Free consultation."
+      }
+    }
+  },
+  "order": [
+    "case_study_hero_zMpV7y",
+    "case_study_grid_NdaNHX",
+    "case_study_benefits_CC6ctz",
+    "case_study_final_cta_6a87cP"
+  ]
+}

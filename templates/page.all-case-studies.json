@@ -1,0 +1,28 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "all_case_study_hero_kjwHFn": {
+      "type": "all-case-study-hero",
+      "name": "ACS — Hero",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "subheading_color": "#6b7280",
+        "heading": "All Shared Sweeps Case Studies",
+        "subheading": "Browse real results from Shopify brands across categories, sizes, and growth stages.",
+        "secondary_text": "Each case study highlights how Shared Sweeps drives revenue without discounts or upfront prize costs."
+      }
+    }
+  },
+  "order": [
+    "all_case_study_hero_kjwHFn"
+  ]
+}

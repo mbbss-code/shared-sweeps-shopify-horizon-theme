@@ -1,0 +1,314 @@
+{% comment %}
+  Case Studies Grid Section
+  - Responsive design
+  - ADA Compliant
+  - SEO Optimized
+  - Fully Customizable
+{% endcomment %}
+
+<section 
+  class="tw-border-y tw-py-20 md:tw-py-28"
+  style="border-color: {{ section.settings.border_color }}; background-color: {{ section.settings.background_color }};"
+  aria-labelledby="case-studies-grid-heading"
+>
+  <div class="tw-container tw-mx-auto tw-px-4">
+    {% if section.settings.section_heading != blank %}
+      <h2 
+        id="case-studies-grid-heading"
+        class="tw-sr-only"
+      >
+        {{ section.settings.section_heading }}
+      </h2>
+    {% endif %}
+
+    <div 
+      class="tw-grid tw-gap-8 md:tw-grid-cols-2 lg:tw-grid-cols-3"
+      role="list"
+      aria-label="Case studies"
+    >
+      {% for block in section.blocks %}
+        {% if block.type == 'case_study' %}
+          <article 
+            class="tw-rounded-lg tw-border tw-p-6 tw-transition-all tw-duration-300 hover:tw-shadow-lg hover:tw--translate-y-1"
+            style="background-color: {{ section.settings.card_background }}; border-color: {{ section.settings.card_border_color }};"
+            role="listitem"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.brand_logo != blank %}
+              <div class="tw-mb-4 tw-flex tw-h-16 tw-w-32 tw-items-center tw-justify-center tw-rounded-lg tw-overflow-hidden" style="background-color: {{ section.settings.logo_background }};">
+                <img 
+                  src="{{ block.settings.brand_logo | image_url: width: 128 }}"
+                  alt="{{ block.settings.brand_name }} logo"
+                  width="128"
+                  height="64"
+                  loading="lazy"
+                  class="tw-max-h-full tw-max-w-full tw-object-contain"
+                >
+              </div>
+            {% else %}
+              <div 
+                class="tw-mb-4 tw-flex tw-h-16 tw-w-32 tw-items-center tw-justify-center tw-rounded-lg"
+                style="background-color: {{ section.settings.logo_background }};"
+                aria-hidden="true"
+              >
+                <span class="tw-text-xs" style="color: {{ section.settings.muted_text_color }};">Brand Logo</span>
+              </div>
+            {% endif %}
+            
+            <h3 class="tw-mb-3 tw-text-xl tw-font-semibold" style="color: {{ section.settings.heading_color }};">
+              {{ block.settings.brand_name }}
+            </h3>
+            
+            <p class="tw-mb-4 tw-text-2xl tw-font-bold" style="color: {{ section.settings.metric_color }};">
+              {{ block.settings.metric }}
+            </p>
+            
+            <p class="tw-mb-6" style="color: {{ section.settings.summary_color }};">
+              {{ block.settings.summary }}
+            </p>
+            
+            {% if block.settings.link_url != blank %}
+              <a 
+                href="{{ block.settings.link_url }}"
+                class="tw-inline-flex tw-w-full tw-items-center tw-justify-center tw-gap-2 tw-rounded-md tw-border tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2"
+                style="border-color: {{ section.settings.button_border_color }}; color: {{ section.settings.button_text_color }};"
+                aria-label="Read case study about {{ block.settings.brand_name }}"
+              >
+                {{ block.settings.link_text | default: 'Read Case Study' }}
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="16" 
+                  height="16" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                  class="tw-h-4 tw-w-4"
+                >
+                  <path d="M5 12h14"/>
+                  <path d="m12 5 7 7-7 7"/>
+                </svg>
+              </a>
+            {% endif %}
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_all_link and section.settings.all_case_studies_url != blank %}
+      <div class="tw-mt-12 tw-text-center">
+        <a 
+          href="{{ section.settings.all_case_studies_url }}"
+          class="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-md tw-border tw-px-6 tw-py-3 tw-text-base tw-font-medium tw-transition-colors hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2"
+          style="border-color: {{ section.settings.button_border_color }}; color: {{ section.settings.button_text_color }};"
+        >
+          {{ section.settings.all_case_studies_text | default: 'See All Case Studies' }}
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            stroke-width="2" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"
+            aria-hidden="true"
+            class="tw-h-4 tw-w-4"
+          >
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Case Studies Grid",
+  "tag": "section",
+  "class": "case-studies-grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading (Screen Reader)",
+      "default": "Featured Case Studies",
+      "info": "Hidden visually but read by screen readers for accessibility"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Section Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "logo_background",
+      "label": "Logo Placeholder Background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Brand Name Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "metric_color",
+      "label": "Metric Color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "summary_color",
+      "label": "Summary Text Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Muted Text Color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#374151"
+    },
+    {
+      "type": "header",
+      "content": "See All Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_link",
+      "label": "Show 'See All' Link",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "all_case_studies_url",
+      "label": "All Case Studies URL"
+    },
+    {
+      "type": "text",
+      "id": "all_case_studies_text",
+      "label": "Button Text",
+      "default": "See All Case Studies"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "case_study",
+      "name": "Case Study",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand Logo"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Primary Metric",
+          "default": "$1.5M in revenue"
+        },
+        {
+          "type": "textarea",
+          "id": "summary",
+          "label": "Summary",
+          "default": "A brief description of the results achieved with Shared Sweeps."
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Case Study Link"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Read Case Study"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Case Studies Grid",
+      "blocks": [
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Fresh Chile Co",
+            "metric": "$1.5M in revenue with only $22K in fees",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel."
+          }
+        },
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Pair of Thieves",
+            "metric": "18% increase in gross sales",
+            "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction."
+          }
+        },
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Caraway Home",
+            "metric": "61% increase in YoY top-line revenue",
+            "summary": "Sweepstakes drove substantial growth across email and SMS lists."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
