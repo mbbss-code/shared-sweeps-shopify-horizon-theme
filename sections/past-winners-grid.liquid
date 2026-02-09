@@ -8,6 +8,24 @@
 
 {%- liquid
   assign bg_color = section.settings.bg_color | default: '#f3f4f6'
+  assign border_color = section.settings.border_color | default: '#e5e7eb'
+  assign card_bg = section.settings.card_bg | default: '#ffffff'
+  assign card_border = section.settings.card_border | default: '#e5e7eb'
+  assign name_color = section.settings.name_color | default: '#111827'
+  assign meta_color = section.settings.meta_color | default: '#4b5563'
+  assign icon_color = section.settings.icon_color | default: '#9ca3af'
+  assign brand_color = section.settings.brand_color | default: '#111827'
+  assign accent_color = section.settings.accent_color | default: '#3099d3'
+  assign prize_badge_bg = section.settings.prize_badge_bg | default: '#3099d3'
+  assign prize_badge_text = section.settings.prize_badge_text | default: '#ffffff'
+  assign placeholder_bg = section.settings.placeholder_bg | default: '#f3f4f6'
+  assign placeholder_text = section.settings.placeholder_text | default: '#9ca3af'
+  assign btn_bg = section.settings.btn_bg | default: '#ffffff'
+  assign btn_text = section.settings.btn_text | default: '#374151'
+  assign btn_border = section.settings.btn_border | default: '#d1d5db'
+  assign btn_hover_bg = section.settings.btn_hover_bg | default: '#f9fafb'
+  assign btn_hover_text = section.settings.btn_hover_text | default: '#374151'
+  assign btn_hover_border = section.settings.btn_hover_border | default: '#9ca3af'
   assign initial_count = section.settings.initial_winner_count | default: 6 | plus: 0
   assign winner_index = 0
   assign total_winners = 0
@@ -23,6 +41,35 @@
 <style>
   .past-winners-grid-{{ section.id }} {
     background-color: {{ bg_color }};
+    border-color: {{ border_color }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+  }
+  .past-winners-grid-{{ section.id }} .acs-prize-badge {
+    background-color: {{ prize_badge_bg }}1a;
+    color: {{ prize_badge_text }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-prize-amount {
+    color: {{ accent_color }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-toggle-btn {
+    background-color: {{ btn_bg }};
+    color: {{ btn_text }};
+    border: 2px solid {{ btn_border }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-toggle-btn:hover {
+    background-color: {{ btn_hover_bg }};
+    color: {{ btn_hover_text }};
+    border-color: {{ btn_hover_border }};
+  }
+  .past-winners-grid-{{ section.id }} .acs-toggle-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ btn_border }}, 0 0 0 4px #fff;
   }
 </style>
 
@@ -63,7 +110,7 @@
 }
 </script>
 
-<section class="past-winners-grid-{{ section.id }} tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28" role="region" aria-labelledby="past-winners-grid-heading">
+<section class="past-winners-grid-{{ section.id }} tw-border-y tw-py-20 md:tw-py-28" role="region" aria-labelledby="past-winners-grid-heading">
   <div class="tw-container tw-mx-auto tw-px-4">
     <h2 id="past-winners-grid-heading" class="tw-sr-only">Past Winners</h2>
 
@@ -75,7 +122,7 @@
           {% assign winner_index = winner_index | plus: 1 %}
 
           <article 
-            class="tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-overflow-hidden tw-shadow-sm tw-transition-all hover:tw-shadow-md {% if winner_index > initial_count %}tw-hidden{% endif %}"
+            class="acs-card tw-rounded-lg tw-border tw-overflow-hidden tw-shadow-sm tw-transition-all {% if winner_index > initial_count %}tw-hidden{% endif %}"
             role="listitem"
             {% if winner_index > initial_count %}data-winner-extra{% endif %}
             itemscope itemtype="https://schema.org/Person"
@@ -96,8 +143,8 @@
                 />
               </div>
             {% else %}
-              <div class="tw-aspect-[4/3] tw-bg-gray-100 tw-flex tw-items-center tw-justify-center" aria-hidden="true">
-                <span class="tw-text-sm tw-text-gray-400">Photo coming soon</span>
+              <div class="tw-aspect-[4/3] tw-flex tw-items-center tw-justify-center" style="background-color: {{ placeholder_bg }};" aria-hidden="true">
+                <span class="tw-text-sm" style="color: {{ placeholder_text }};">Photo coming soon</span>
               </div>
             {% endif %}
 
@@ -105,16 +152,17 @@
             <div class="tw-p-5">
 
               {%- comment -%} Winner Name {%- endcomment -%}
-              <h3 class="tw-mb-2 tw-text-lg tw-font-semibold tw-text-gray-900" itemprop="name">
+              <h3 class="tw-mb-2 tw-text-lg tw-font-semibold" style="color: {{ name_color }};" itemprop="name">
                 {{ block.settings.name }}
               </h3>
 
               {%- comment -%} Location {%- endcomment -%}
               <div 
-                class="tw-mb-3 tw-flex tw-items-center tw-gap-1.5 tw-text-sm tw-text-gray-600"
+                class="tw-mb-3 tw-flex tw-items-center tw-gap-1.5 tw-text-sm"
+                style="color: {{ meta_color }};"
                 itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"
               >
-                <svg class="tw-h-3.5 tw-w-3.5 tw-shrink-0 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg class="tw-h-3.5 tw-w-3.5 tw-shrink-0" style="color: {{ icon_color }};" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                 </svg>
@@ -124,16 +172,16 @@
               </div>
 
               {%- comment -%} Brand Shopped {%- endcomment -%}
-              <div class="tw-mb-4 tw-flex tw-items-center tw-gap-1.5 tw-text-sm tw-text-gray-600">
-                <svg class="tw-h-3.5 tw-w-3.5 tw-shrink-0 tw-text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <div class="tw-mb-4 tw-flex tw-items-center tw-gap-1.5 tw-text-sm" style="color: {{ meta_color }};">
+                <svg class="tw-h-3.5 tw-w-3.5 tw-shrink-0" style="color: {{ icon_color }};" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                 </svg>
-                <span>Shopped at <strong class="tw-font-medium tw-text-gray-900">{{ block.settings.brand }}</strong></span>
+                <span>Shopped at <strong class="tw-font-medium" style="color: {{ brand_color }};">{{ block.settings.brand }}</strong></span>
               </div>
 
               {%- comment -%} Prize Amount {%- endcomment -%}
-              <div class="tw-rounded-lg tw-bg-purple-50 tw-px-3 tw-py-2 tw-text-center">
-                <span class="tw-text-xl tw-font-bold tw-text-purple-600" itemprop="award">
+              <div class="acs-prize-badge tw-rounded-lg tw-px-3 tw-py-2 tw-text-center">
+                <span class="acs-prize-amount tw-text-xl tw-font-bold" itemprop="award">
                   {{ block.settings.prize | default: '$100,000' }}
                 </span>
               </div>
@@ -148,7 +196,7 @@
       <div class="tw-mt-8 tw-text-center">
         <button
           type="button"
-          class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-border-2 tw-border-gray-300 tw-bg-white tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-gray-700 tw-transition-all hover:tw-border-gray-400 hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-gray-500 focus:tw-ring-offset-2"
+          class="acs-toggle-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
           data-toggle-winners
           aria-expanded="false"
           aria-controls="past-winners-grid"
@@ -182,21 +230,17 @@
         card.classList.toggle('tw-hidden', !isExpanded);
       });
 
-      // Swap visible button text
       expandText.classList.toggle('tw-hidden', isExpanded);
       collapseText.classList.toggle('tw-hidden', !isExpanded);
 
-      // Update ARIA state
       toggleBtn.setAttribute('aria-expanded', String(isExpanded));
 
-      // Announce change to screen readers
       if (liveRegion) {
         liveRegion.textContent = isExpanded
           ? 'Showing all ' + extraCards.length + ' additional winners'
           : 'Showing fewer winners';
       }
 
-      // If collapsing, scroll back up to grid top
       if (!isExpanded) {
         var grid = document.querySelector('[role="list"][aria-label="Past winners"]');
         if (grid) {
@@ -221,6 +265,127 @@
       "id": "bg_color",
       "label": "Background color",
       "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Section border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "Winner name color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "meta_color",
+      "label": "Meta text color (location, brand label)",
+      "default": "#4b5563"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "color",
+      "id": "brand_color",
+      "label": "Brand name color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_bg",
+      "label": "Image placeholder background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_text",
+      "label": "Image placeholder text",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "header",
+      "content": "Prize Badge Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Prize text color",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "prize_badge_bg",
+      "label": "Prize badge background",
+      "default": "#3099d3",
+      "info": "Displayed at 10% opacity"
+    },
+    {
+      "type": "color",
+      "id": "prize_badge_text",
+      "label": "Prize badge text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Toggle Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Border color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover border color",
+      "default": "#9ca3af"
     },
     {
       "type": "header",
@@ -296,88 +461,88 @@
       "name": "Past Winners Grid",
       "category": "Content",
       "blocks": [
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Jason H.",
-            "city": "Marshall",
-            "state": "MO",
-            "brand": "Synister Speed",
-            "prize": "$10,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Kaitlin M.",
-            "city": "Montague",
-            "state": "NJ",
-            "brand": "Cirkul",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Dre C.",
-            "city": "Bozeman",
-            "state": "MT",
-            "brand": "Caraway Home",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Shannon R.",
-            "city": "Austin",
-            "state": "TX",
-            "brand": "Cariloha",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Morty T.",
-            "city": "Miami",
-            "state": "FL",
-            "brand": "Allbirds",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Laura C.",
-            "city": "Portland",
-            "state": "OR",
-            "brand": "Brooklinen",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Miguel Q.",
-            "city": "Chicago",
-            "state": "IL",
-            "brand": "Caraway Home",
-            "prize": "$100,000"
-          }
-        },
-        {
-          "type": "winner",
-          "settings": {
-            "name": "Jesse T.",
-            "city": "Nashville",
-            "state": "TN",
-            "brand": "Parade",
-            "prize": "$100,000"
-          }
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Jason H.",
+          "city": "Marshall",
+          "state": "MO",
+          "brand": "Synister Speed",
+          "prize": "$10,000"
         }
-      ]
-    }
-  ]
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Kaitlin M.",
+          "city": "Montague",
+          "state": "NJ",
+          "brand": "Cirkul",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Dre C.",
+          "city": "Bozeman",
+          "state": "MT",
+          "brand": "Caraway Home",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Shannon R.",
+          "city": "Austin",
+          "state": "TX",
+          "brand": "Cariloha",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Morty T.",
+          "city": "Miami",
+          "state": "FL",
+          "brand": "Allbirds",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Laura C.",
+          "city": "Portland",
+          "state": "OR",
+          "brand": "Brooklinen",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Miguel Q.",
+          "city": "Chicago",
+          "state": "IL",
+          "brand": "Caraway Home",
+          "prize": "$100,000"
+        }
+      },
+      {
+        "type": "winner",
+        "settings": {
+          "name": "Jesse T.",
+          "city": "Nashville",
+          "state": "TN",
+          "brand": "Parade",
+          "prize": "$100,000"
+        }
+      }
+    ]
+  }
+]
 }
 {% endschema %}
