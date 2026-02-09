@@ -6,11 +6,35 @@
 {%- liquid
   assign bg_color = section.settings.bg_color | default: '#ffffff'
   assign heading_color = section.settings.heading_color | default: '#000000'
+  assign description_color = section.settings.description_color | default: '#4b5563'
+  assign decoration_color = section.settings.decoration_color | default: '#3099d3'
+  assign btn_bg = section.settings.btn_bg | default: '#3099d3'
+  assign btn_text = section.settings.btn_text | default: '#ffffff'
+  assign btn_border = section.settings.btn_border | default: '#3099d3'
+  assign btn_hover_bg = section.settings.btn_hover_bg | default: '#2780b3'
+  assign btn_hover_text = section.settings.btn_hover_text | default: '#ffffff'
+  assign btn_hover_border = section.settings.btn_hover_border | default: '#2780b3'
 -%}
 
 <style>
   .past-winners-hero-{{ section.id }} {
     background-color: {{ bg_color }};
+  }
+  .past-winners-hero-{{ section.id }} .acs-cta-btn {
+    background-color: {{ btn_bg }};
+    color: {{ btn_text }};
+    border: 1px solid {{ btn_border }};
+  }
+  .past-winners-hero-{{ section.id }} .acs-cta-btn:hover {
+    background-color: {{ btn_hover_bg }};
+    color: {{ btn_hover_text }};
+    border-color: {{ btn_hover_border }};
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  }
+  .past-winners-hero-{{ section.id }} .acs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ btn_bg }}, 0 0 0 4px #fff;
   }
 </style>
 
@@ -54,19 +78,19 @@
       <h1 
         id="past-winners-hero-heading" 
         class="tw-mb-6 tw-text-4xl tw-font-bold tw-leading-tight lg:tw-text-5xl xl:tw-text-6xl"
-        style="color: {{ heading_color }}"
+        style="color: {{ heading_color }};"
       >
         {{ section.settings.heading | default: 'Real People. Real Winners.' }}
       </h1>
 
-      <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-lg tw-text-gray-600 md:tw-text-xl">
+      <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-lg md:tw-text-xl" style="color: {{ description_color }};">
         {{ section.settings.description | default: 'Shared Sweeps awards real cash prizes to real shoppers — funded by participating Shopify brands.' }}
       </p>
 
       {% if section.settings.show_cta %}
-        
-        <a href="{{ section.settings.cta_link | default: '/how-to-enter' }}"
-          class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+        <a 
+          href="{{ section.settings.cta_link | default: '/how-to-enter' }}"
+          class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
         >
           {{ section.settings.cta_text | default: 'See How to Enter' }}
           <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -78,7 +102,13 @@
   </div>
 
   {%- comment -%} Background decoration {%- endcomment -%}
-  <div class="tw-absolute -tw-top-40 tw-left-1/2 -tw-z-10 tw-h-96 tw-w-96 -tw-translate-x-1/2 tw-rounded-full tw-bg-purple-500/5 tw-blur-3xl" aria-hidden="true"></div>
+  {% if section.settings.show_decoration %}
+    <div 
+      class="tw-absolute -tw-top-40 tw-left-1/2 -tw-z-10 tw-h-96 tw-w-96 -tw-translate-x-1/2 tw-rounded-full tw-blur-3xl"
+      style="background-color: {{ decoration_color }}; opacity: 0.05;"
+      aria-hidden="true"
+    ></div>
+  {% endif %}
 </section>
 
 {% schema %}
@@ -101,6 +131,68 @@
       "id": "heading_color",
       "label": "Heading color",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Border color",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover background",
+      "default": "#2780b3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover border color",
+      "default": "#2780b3"
+    },
+    {
+      "type": "header",
+      "content": "Background Decoration"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decoration",
+      "label": "Show background decoration",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "decoration_color",
+      "label": "Decoration color",
+      "default": "#3099d3"
     },
     {
       "type": "header",
