@@ -6,11 +6,78 @@
 {%- liquid
   assign bg_color = section.settings.bg_color | default: '#ffffff'
   assign heading_color = section.settings.heading_color | default: '#000000'
+  assign description_color = section.settings.description_color | default: '#4b5563'
+  assign primary_btn_bg = section.settings.primary_btn_bg | default: '#9333ea'
+  assign primary_btn_text = section.settings.primary_btn_text | default: '#ffffff'
+  assign primary_btn_border = section.settings.primary_btn_border | default: '#9333ea'
+  assign primary_btn_hover_bg = section.settings.primary_btn_hover_bg | default: '#7e22ce'
+  assign primary_btn_hover_text = section.settings.primary_btn_hover_text | default: '#ffffff'
+  assign primary_btn_hover_border = section.settings.primary_btn_hover_border | default: '#7e22ce'
+  assign secondary_btn_bg = section.settings.secondary_btn_bg | default: '#ffffff'
+  assign secondary_btn_text = section.settings.secondary_btn_text | default: '#374151'
+  assign secondary_btn_border = section.settings.secondary_btn_border | default: '#d1d5db'
+  assign secondary_btn_hover_bg = section.settings.secondary_btn_hover_bg | default: '#f9fafb'
+  assign secondary_btn_hover_text = section.settings.secondary_btn_hover_text | default: '#374151'
+  assign secondary_btn_hover_border = section.settings.secondary_btn_hover_border | default: '#9ca3af'
+  assign toggle_active_bg = section.settings.toggle_active_bg | default: '#3099d3'
+  assign toggle_active_text = section.settings.toggle_active_text | default: '#ffffff'
+  assign toggle_inactive_bg = section.settings.toggle_inactive_bg | default: 'transparent'
+  assign toggle_inactive_text = section.settings.toggle_inactive_text | default: '#374151'
+  assign toggle_container_bg = section.settings.toggle_container_bg | default: '#f3f4f6'
+  assign toggle_container_border = section.settings.toggle_container_border | default: '#e5e7eb'
 -%}
 
 <style>
   .hero-section-{{ section.id }} {
     background-color: {{ bg_color }};
+  }
+
+  /* Toggle buttons */
+  .hero-section-{{ section.id }} .acs-toggle-container {
+    background-color: {{ toggle_container_bg }};
+    border-color: {{ toggle_container_border }};
+  }
+  .hero-section-{{ section.id }} .acs-toggle-btn {
+    background-color: {{ toggle_inactive_bg }};
+    color: {{ toggle_inactive_text }};
+  }
+  .hero-section-{{ section.id }} .acs-toggle-btn[aria-pressed="true"] {
+    background-color: {{ toggle_active_bg }};
+    color: {{ toggle_active_text }};
+  }
+
+  /* Primary CTA */
+  .hero-section-{{ section.id }} .acs-primary-btn {
+    background-color: {{ primary_btn_bg }};
+    color: {{ primary_btn_text }};
+    border: 1px solid {{ primary_btn_border }};
+  }
+  .hero-section-{{ section.id }} .acs-primary-btn:hover {
+    background-color: {{ primary_btn_hover_bg }};
+    color: {{ primary_btn_hover_text }};
+    border-color: {{ primary_btn_hover_border }};
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  }
+  .hero-section-{{ section.id }} .acs-primary-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_btn_bg }}, 0 0 0 4px #fff;
+  }
+
+  /* Secondary CTA */
+  .hero-section-{{ section.id }} .acs-secondary-btn {
+    background-color: {{ secondary_btn_bg }};
+    color: {{ secondary_btn_text }};
+    border: 2px solid {{ secondary_btn_border }};
+  }
+  .hero-section-{{ section.id }} .acs-secondary-btn:hover {
+    background-color: {{ secondary_btn_hover_bg }};
+    color: {{ secondary_btn_hover_text }};
+    border-color: {{ secondary_btn_hover_border }};
+  }
+  .hero-section-{{ section.id }} .acs-secondary-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ secondary_btn_border }}, 0 0 0 4px #fff;
   }
 </style>
 
@@ -32,10 +99,10 @@
       {%- comment -%} Audience Toggle {%- endcomment -%}
       {% if section.settings.show_toggle %}
         <div class="tw-mb-8 tw-flex tw-justify-center" role="group" aria-label="Select audience">
-          <div class="tw-rounded-full tw-border tw-border-gray-200 tw-bg-gray-100 tw-p-1" data-audience-toggle>
+          <div class="acs-toggle-container tw-rounded-full tw-border tw-p-1" data-audience-toggle>
             <button 
               type="button"
-              class="tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors"
+              class="acs-toggle-btn tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors"
               data-audience="customers"
               aria-pressed="false"
             >
@@ -43,7 +110,7 @@
             </button>
             <button 
               type="button"
-              class="tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors tw-bg-primary tw-text-white"
+              class="acs-toggle-btn tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors"
               data-audience="brands"
               aria-pressed="true"
             >
@@ -60,7 +127,7 @@
       </h1>
       
       {%- comment -%} Description {%- endcomment -%}
-      <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-lg tw-text-gray-600 md:tw-text-xl">
+      <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-lg md:tw-text-xl" style="color: {{ description_color }};">
         <span data-brands-content>{{ section.settings.brands_description }}</span>
         <span data-customers-content class="tw-hidden">{{ section.settings.customers_description }}</span>
       </p>
@@ -72,7 +139,7 @@
           {% if section.settings.brands_primary_cta_type == 'modal' %}
             <button 
               type="button"
-              class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+              class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
               data-contact-modal-trigger
               aria-haspopup="dialog"
             >
@@ -84,7 +151,7 @@
           {% else %}
             <a 
               href="{{ section.settings.brands_primary_cta_link }}"
-              class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+              class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
             >
               {{ section.settings.brands_primary_cta_text | default: 'Talk to Our Team' }}
               <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -97,7 +164,7 @@
         <span data-customers-content class="tw-hidden">
           <a 
             href="{{ section.settings.customers_primary_cta_link | default: '/how-to-enter' }}"
-            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+            class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
           >
             {{ section.settings.customers_primary_cta_text | default: 'See How to Enter' }}
             <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -110,7 +177,7 @@
         <span data-brands-content>
           <a 
             href="{{ section.settings.brands_secondary_cta_link | default: '/how-it-works' }}"
-            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-border-2 tw-border-gray-300 tw-bg-white tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-gray-700 tw-transition-all hover:tw-border-gray-400 hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-gray-500 focus:tw-ring-offset-2"
+            class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
           >
             {{ section.settings.brands_secondary_cta_text | default: 'See How It Works' }}
           </a>
@@ -119,7 +186,7 @@
         <span data-customers-content class="tw-hidden">
           <a 
             href="{{ section.settings.customers_secondary_cta_link | default: '/participating-brands' }}"
-            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-border-2 tw-border-gray-300 tw-bg-white tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-text-gray-700 tw-transition-all hover:tw-border-gray-400 hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-gray-500 focus:tw-ring-offset-2"
+            class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
           >
             {{ section.settings.customers_secondary_cta_text | default: 'View Participating Brands' }}
           </a>
@@ -167,30 +234,21 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const toggleContainer = document.querySelector('[data-audience-toggle]');
+    const section = document.querySelector('.hero-section-{{ section.id }}');
+    if (!section) return;
+
+    const toggleContainer = section.querySelector('[data-audience-toggle]');
     if (!toggleContainer) return;
 
-    const buttons = toggleContainer.querySelectorAll('button');
-    const brandsContent = document.querySelectorAll('[data-brands-content]');
-    const customersContent = document.querySelectorAll('[data-customers-content]');
+    const buttons = toggleContainer.querySelectorAll('.acs-toggle-btn');
+    const brandsContent = section.querySelectorAll('[data-brands-content]');
+    const customersContent = section.querySelectorAll('[data-customers-content]');
 
     function switchAudience(audience) {
-      // Update button states
       buttons.forEach(btn => {
-        const isActive = btn.dataset.audience === audience;
-        btn.setAttribute('aria-pressed', isActive);
-        
-        if (isActive) {
-          btn.classList.add('tw-bg-primary', 'tw-text-white');
-          btn.classList.add('tw-bg-[#3099d3]');
-          btn.classList.remove('tw-bg-transparent', 'tw-text-gray-700');
-        } else {
-          btn.classList.remove('tw-bg-primary', 'tw-text-white');
-          btn.classList.add('tw-bg-transparent', 'tw-text-gray-700');
-        }
+        btn.setAttribute('aria-pressed', btn.dataset.audience === audience);
       });
 
-      // Toggle content visibility
       if (audience === 'brands') {
         brandsContent.forEach(el => el.classList.remove('tw-hidden'));
         customersContent.forEach(el => el.classList.add('tw-hidden'));
@@ -199,16 +257,13 @@
         customersContent.forEach(el => el.classList.remove('tw-hidden'));
       }
 
-      // Save preference
       localStorage.setItem('sharedSweepsAudience', audience);
     }
 
-    // Set up click handlers
     buttons.forEach(btn => {
       btn.addEventListener('click', () => switchAudience(btn.dataset.audience));
     });
 
-    // Load saved preference
     const savedAudience = localStorage.getItem('sharedSweepsAudience');
     if (savedAudience && savedAudience !== 'brands') {
       switchAudience(savedAudience);
@@ -236,6 +291,132 @@
       "id": "heading_color",
       "label": "Heading color",
       "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description text color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "Toggle Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "toggle_container_bg",
+      "label": "Toggle container background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "toggle_container_border",
+      "label": "Toggle container border",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_bg",
+      "label": "Active toggle background",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_text",
+      "label": "Active toggle text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "toggle_inactive_bg",
+      "label": "Inactive toggle background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "toggle_inactive_text",
+      "label": "Inactive toggle text",
+      "default": "#374151"
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA Button"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_bg",
+      "label": "Background",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_text",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_border",
+      "label": "Border color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_hover_bg",
+      "label": "Hover background",
+      "default": "#7e22ce"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_hover_border",
+      "label": "Hover border color",
+      "default": "#7e22ce"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA Button"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_text",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_border",
+      "label": "Border color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_hover_bg",
+      "label": "Hover background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_hover_text",
+      "label": "Hover text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "secondary_btn_hover_border",
+      "label": "Hover border color",
+      "default": "#9ca3af"
     },
     {
       "type": "header",

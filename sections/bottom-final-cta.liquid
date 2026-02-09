@@ -5,26 +5,56 @@
 
 {%- liquid
   assign bg_color = section.settings.bg_color | default: '#ffffff'
+  assign card_bg = section.settings.card_bg | default: '#f0f9ff'
+  assign card_border = section.settings.card_border | default: '#93c5fd'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign description_color = section.settings.description_color | default: '#4b5563'
+  assign btn_bg = section.settings.btn_bg | default: '#3099d3'
+  assign btn_text = section.settings.btn_text | default: '#ffffff'
+  assign btn_border = section.settings.btn_border | default: '#3099d3'
+  assign btn_hover_bg = section.settings.btn_hover_bg | default: '#2780b3'
+  assign btn_hover_text = section.settings.btn_hover_text | default: '#ffffff'
+  assign btn_hover_border = section.settings.btn_hover_border | default: '#2780b3'
 -%}
 
 <style>
   .final-cta-{{ section.id }} {
     background-color: {{ bg_color }};
   }
+  .final-cta-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
+  }
+  .final-cta-{{ section.id }} .acs-cta-btn {
+    background-color: {{ btn_bg }};
+    color: {{ btn_text }};
+    border: 1px solid {{ btn_border }};
+  }
+  .final-cta-{{ section.id }} .acs-cta-btn:hover {
+    background-color: {{ btn_hover_bg }};
+    color: {{ btn_hover_text }};
+    border-color: {{ btn_hover_border }};
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  }
+  .final-cta-{{ section.id }} .acs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ btn_bg }}, 0 0 0 4px #fff;
+  }
 </style>
 
 <section class="final-cta-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="final-cta-heading">
   <div class="tw-container tw-mx-auto tw-px-4">
-    <div class="tw-mx-auto tw-max-w-3xl tw-rounded-lg tw-border-2 tw-border-purple-200 tw-bg-gradient-to-br tw-from-purple-50 tw-to-transparent tw-p-8 tw-text-center tw-shadow-lg md:tw-p-12">
+    <div class="acs-card tw-mx-auto tw-max-w-3xl tw-rounded-lg tw-border-2 tw-p-8 tw-text-center tw-shadow-lg md:tw-p-12">
       
       {%- comment -%} Heading {%- endcomment -%}
-      <h2 id="final-cta-heading" class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 lg:tw-text-4xl xl:tw-text-5xl">
+      <h2 id="final-cta-heading" class="tw-mb-4 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl" style="color: {{ heading_color }};">
         <span data-brands-content>{{ section.settings.brands_heading | default: 'Ready to Make Your Ad Spend Work Harder?' }}</span>
         <span data-customers-content class="tw-hidden">{{ section.settings.customers_heading | default: 'Ready to Turn Shopping Into a Chance to Win?' }}</span>
       </h2>
       
       {%- comment -%} Description {%- endcomment -%}
-      <p class="tw-mx-auto tw-mb-8 tw-max-w-xl tw-text-lg tw-text-gray-600">
+      <p class="tw-mx-auto tw-mb-8 tw-max-w-xl tw-text-lg" style="color: {{ description_color }};">
         <span data-brands-content>{{ section.settings.brands_description }}</span>
         <span data-customers-content class="tw-hidden">{{ section.settings.customers_description }}</span>
       </p>
@@ -34,7 +64,7 @@
         {% if section.settings.brands_cta_type == 'modal' %}
           <button 
             type="button"
-            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+            class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all"
             data-contact-modal-trigger
             aria-haspopup="dialog"
           >
@@ -46,7 +76,7 @@
         {% else %}
           <a 
             href="{{ section.settings.brands_cta_link }}"
-            class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+            class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all"
           >
             {{ section.settings.brands_cta_text | default: 'Talk to Our Team' }}
             <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -59,7 +89,7 @@
       <span data-customers-content class="tw-hidden">
         <a 
           href="{{ section.settings.customers_cta_link | default: '/participating-brands' }}"
-          class="tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-bg-gradient-to-r tw-from-purple-600 tw-to-pink-600 tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-text-white tw-shadow-lg tw-transition-all hover:tw-shadow-xl hover:tw-scale-105 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2"
+          class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-8 tw-py-4 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all"
         >
           {{ section.settings.customers_cta_text | default: 'View Participating Brands' }}
           <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -83,8 +113,72 @@
     {
       "type": "color",
       "id": "bg_color",
-      "label": "Background color",
+      "label": "Section background",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#f0f9ff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#93c5fd"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Border color",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover background",
+      "default": "#2780b3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover border color",
+      "default": "#2780b3"
     },
     {
       "type": "header",

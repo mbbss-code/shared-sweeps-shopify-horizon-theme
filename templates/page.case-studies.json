@@ -75,7 +75,7 @@
         "button_border_color": "#d1d5db",
         "button_text_color": "#374151",
         "show_all_link": true,
-        "all_case_studies_url": "#",
+        "all_case_studies_url": "shopify://pages/all-case-studies",
         "all_case_studies_text": "See All Case Studies"
       }
     },

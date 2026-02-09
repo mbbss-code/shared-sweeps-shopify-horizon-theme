@@ -25,6 +25,28 @@
       ],
       "name": "Brands Hero",
       "settings": {
+        "bg_color": "#ffffff",
+        "section_border_color": "#e5e7eb",
+        "heading_color": "#111827",
+        "subheading_color": "#4b5563",
+        "badge_bg": "#e0f2fe",
+        "badge_text_color": "#0c4a6e",
+        "primary_btn_bg": "#3099d3",
+        "primary_btn_text": "#ffffff",
+        "primary_btn_border": "#3099d3",
+        "primary_btn_hover_bg": "#ffffff",
+        "primary_btn_hover_text": "#3099d3",
+        "primary_btn_hover_border": "#2780b3",
+        "secondary_btn_bg": "#ffffff",
+        "secondary_btn_text": "#374151",
+        "secondary_btn_border": "#d1d5db",
+        "secondary_btn_hover_bg": "#f9fafb",
+        "secondary_btn_hover_text": "#374151",
+        "secondary_btn_hover_border": "#9ca3af",
+        "trust_text_color": "#6b7280",
+        "trust_icon_color": "#22c55e",
+        "pattern_color": "#3099d3",
+        "show_background_pattern": false,
         "badge_text": "",
         "heading": "Trusted by Growing Shopify Brands",
         "subheading": "Shared Sweeps brings together high-quality Shopify brands to fund one life-changing $100,000 sweepstakes — without upfront costs.",
@@ -34,9 +56,6 @@
         "show_button_icon": true,
         "secondary_button_text": "",
         "secondary_button_link": "",
-        "primary_color": "indigo",
-        "gradient_from": "indigo",
-        "show_background_pattern": false,
         "show_trust_indicators": false
       }
     },
@@ -138,8 +157,8 @@
         "show_stats": false,
         "button_text": "",
         "button_link": "",
-        "background_style": "gray-50/30",
-        "primary_color": "indigo"
+        "background_style": "gray-100/50",
+        "primary_color": "blue"
       }
     },
     "participating_brands_winners_preview_KX6n4q": {
@@ -189,13 +208,34 @@
         "button_text": "See All Winners",
         "button_link": "",
         "background_color": "white",
-        "primary_color": "indigo"
+        "primary_color": "blue"
       }
     },
     "participating_brands_final_cta_CmTC4H": {
       "type": "participating-brands-final-cta",
       "name": "Final CTA",
       "settings": {
+        "bg_color": "#ffffff",
+        "border_color": "#e5e7eb",
+        "heading_color": "#111827",
+        "description_color": "#4b5563",
+        "eyebrow_color": "#3099d3",
+        "trust_text_color": "#6b7280",
+        "primary_btn_bg": "#ffffff",
+        "primary_btn_text": "#3099d3",
+        "primary_btn_border": "#3099d3",
+        "primary_btn_hover_bg": "#3099d3",
+        "primary_btn_hover_text": "#ffffff",
+        "primary_btn_hover_border": "#3099d3",
+        "secondary_btn_bg": "#ffffff",
+        "secondary_btn_text": "#374151",
+        "secondary_btn_border": "#d1d5db",
+        "secondary_btn_hover_bg": "#f9fafb",
+        "secondary_btn_hover_text": "#374151",
+        "secondary_btn_hover_border": "#9ca3af",
+        "show_decorative_elements": true,
+        "decor_color_1": "#3099d3",
+        "decor_color_2": "#3099d3",
         "eyebrow_text": "",
         "heading": "Ready to Join the Next Sweepstakes?",
         "description": "",
@@ -207,12 +247,7 @@
         "secondary_button_link": "",
         "show_trust_text": false,
         "trust_text": "No credit card required • Free to get started",
-        "show_social_proof": false,
-        "background_style": "gradient",
-        "gradient_from": "indigo",
-        "background_color": "gray-50",
-        "primary_color": "indigo",
-        "show_decorative_elements": true
+        "show_social_proof": false
       }
     }
   },
