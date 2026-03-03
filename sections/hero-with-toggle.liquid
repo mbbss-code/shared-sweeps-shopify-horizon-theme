@@ -241,33 +241,36 @@
     if (!toggleContainer) return;
 
     const buttons = toggleContainer.querySelectorAll('.acs-toggle-btn');
-    const brandsContent = section.querySelectorAll('[data-brands-content]');
-    const customersContent = section.querySelectorAll('[data-customers-content]');
 
     function switchAudience(audience) {
+      // Update toggle button states within this section
       buttons.forEach(btn => {
         btn.setAttribute('aria-pressed', btn.dataset.audience === audience);
       });
 
-      if (audience === 'brands') {
-        brandsContent.forEach(el => el.classList.remove('tw-hidden'));
-        customersContent.forEach(el => el.classList.add('tw-hidden'));
-      } else {
-        brandsContent.forEach(el => el.classList.add('tw-hidden'));
-        customersContent.forEach(el => el.classList.remove('tw-hidden'));
-      }
-
+      // Persist and notify ALL sections globally
       localStorage.setItem('sharedSweepsAudience', audience);
+      window.dispatchEvent(new Event('audienceChanged'));
     }
 
+    // Click handlers
     buttons.forEach(btn => {
       btn.addEventListener('click', () => switchAudience(btn.dataset.audience));
     });
 
-    const savedAudience = localStorage.getItem('sharedSweepsAudience');
-    if (savedAudience && savedAudience !== 'brands') {
-      switchAudience(savedAudience);
-    }
+    // Sync toggle button state when changed from elsewhere
+    window.addEventListener('audienceChanged', function() {
+      const current = localStorage.getItem('sharedSweepsAudience') || 'brands';
+      buttons.forEach(btn => {
+        btn.setAttribute('aria-pressed', btn.dataset.audience === current);
+      });
+    });
+
+    // Initialize from saved preference
+    const savedAudience = localStorage.getItem('sharedSweepsAudience') || 'brands';
+    buttons.forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.dataset.audience === savedAudience);
+    });
   });
 </script>
 
