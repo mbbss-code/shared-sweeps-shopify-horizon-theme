@@ -1,0 +1,134 @@
+{% comment %}
+  Audience Toggle Snippet
+  Renders a Brands/Customers toggle that switches content across all sections
+  using data-brands-content / data-customers-content attributes.
+
+  Usage: {% render 'audience-toggle' %}
+  Place in header, announcement bar, or wherever appropriate.
+{% endcomment %}
+
+<div class="audience-toggle-wrapper tw-inline-flex tw-items-center tw-gap-2" role="radiogroup" aria-label="Select audience view">
+  
+  {%- comment -%} Optional label {%- endcomment -%}
+  <span class="tw-text-sm tw-font-medium tw-text-gray-600 tw-mr-1" aria-hidden="true">I'm a:</span>
+
+  <div class="audience-toggle tw-relative tw-inline-flex tw-rounded-full tw-bg-gray-200 tw-p-0.5">
+    <button
+      type="button"
+      id="audience-toggle-brands"
+      class="audience-toggle__btn audience-toggle__btn--brands tw-relative tw-z-10 tw-rounded-full tw-px-4 tw-py-1.5 tw-text-sm tw-font-semibold tw-transition-colors tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-1 focus:tw-ring-blue-500"
+      role="radio"
+      aria-checked="true"
+      data-audience="brands"
+    >
+      Brand
+    </button>
+    <button
+      type="button"
+      id="audience-toggle-customers"
+      class="audience-toggle__btn audience-toggle__btn--customers tw-relative tw-z-10 tw-rounded-full tw-px-4 tw-py-1.5 tw-text-sm tw-font-semibold tw-transition-colors tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-1 focus:tw-ring-blue-500"
+      role="radio"
+      aria-checked="false"
+      data-audience="customers"
+    >
+      Shopper
+    </button>
+
+    {%- comment -%} Sliding indicator {%- endcomment -%}
+    <span 
+      class="audience-toggle__indicator tw-absolute tw-top-0.5 tw-bottom-0.5 tw-rounded-full tw-bg-white tw-shadow-sm tw-transition-all tw-duration-200 tw-ease-in-out"
+      aria-hidden="true"
+    ></span>
+  </div>
+</div>
+
+<style>
+  .audience-toggle {
+    position: relative;
+  }
+  .audience-toggle__btn {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .audience-toggle__btn[aria-checked="true"] {
+    color: #111827;
+  }
+  .audience-toggle__indicator {
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  (function() {
+    const STORAGE_KEY = 'sharedSweepsAudience';
+    const wrapper = document.currentScript.closest('.shopify-section') 
+      || document.currentScript.parentElement;
+
+    const brandsBtn = wrapper.querySelector('#audience-toggle-brands');
+    const customersBtn = wrapper.querySelector('#audience-toggle-customers');
+    const indicator = wrapper.querySelector('.audience-toggle__indicator');
+    const buttons = [brandsBtn, customersBtn];
+
+    if (!brandsBtn || !customersBtn || !indicator) return;
+
+    // Position the sliding indicator over the active button
+    function updateIndicator(activeBtn) {
+      indicator.style.left = activeBtn.offsetLeft + 'px';
+      indicator.style.width = activeBtn.offsetWidth + 'px';
+    }
+
+    // Set active state
+    function setAudience(audience) {
+      const isB = audience === 'brands';
+      const activeBtn = isB ? brandsBtn : customersBtn;
+      const inactiveBtn = isB ? customersBtn : brandsBtn;
+
+      activeBtn.setAttribute('aria-checked', 'true');
+      inactiveBtn.setAttribute('aria-checked', 'false');
+
+      updateIndicator(activeBtn);
+
+      // Persist and notify
+      localStorage.setItem(STORAGE_KEY, audience);
+      window.dispatchEvent(new Event('audienceChanged'));
+    }
+
+    // Click handlers
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setAudience(btn.dataset.audience);
+      });
+    });
+
+    // Keyboard: arrow keys to switch between options
+    buttons.forEach(function(btn) {
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          const next = btn === brandsBtn ? customersBtn : brandsBtn;
+          next.focus();
+          setAudience(next.dataset.audience);
+        }
+      });
+    });
+
+    // Initialize from saved preference
+    var saved = localStorage.getItem(STORAGE_KEY) || 'brands';
+
+    // Wait a tick so the DOM is laid out for offsetLeft/offsetWidth
+    requestAnimationFrame(function() {
+      setAudience(saved);
+    });
+
+    // Recalculate indicator on resize
+    window.addEventListener('resize', function() {
+      var current = localStorage.getItem(STORAGE_KEY) || 'brands';
+      var activeBtn = current === 'brands' ? brandsBtn : customersBtn;
+      updateIndicator(activeBtn);
+    });
+  })();
+</script>

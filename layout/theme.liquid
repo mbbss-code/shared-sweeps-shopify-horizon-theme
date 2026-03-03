@@ -46,9 +46,47 @@
            location.href = '/products/shared-sweeps-premium';
         </script>
     {% endif %} {% endcomment %}
+
+    <script>
+      // Global audience toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+
+        function applySavedAudience() {
+          // Read fresh from localStorage every time
+          const audience = localStorage.getItem('sharedSweepsAudience') || 'brands';
+          const brandsContent = document.querySelectorAll('[data-brands-content]');
+          const customersContent = document.querySelectorAll('[data-customers-content]');
+
+          if (audience === 'brands') {
+            brandsContent.forEach(el => el.classList.remove('tw-hidden'));
+            customersContent.forEach(el => el.classList.add('tw-hidden'));
+          } else {
+            brandsContent.forEach(el => el.classList.add('tw-hidden'));
+            customersContent.forEach(el => el.classList.remove('tw-hidden'));
+          }
+        }
+
+        // Apply on load
+        applySavedAudience();
+
+        // Cross-tab sync (storage event only fires in other tabs)
+        window.addEventListener('storage', function(e) {
+          if (e.key === 'sharedSweepsAudience') {
+            applySavedAudience();
+          }
+        });
+
+        // Same-tab sync — fired by the audience-toggle snippet
+        window.addEventListener('audienceChanged', applySavedAudience);
+
+        // Expose globally as fallback
+        window.applySavedAudience = applySavedAudience;
+      });
+    </script>
+    
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} dd card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
@@ -124,36 +162,6 @@
       {% render 'quick-add-modal' %}
     {% endif %}
 
-    <script>
-      // Global audience toggle functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        // Get saved audience preference
-        const savedAudience = localStorage.getItem('sharedSweepsAudience') || 'brands';
-        
-        // Apply saved preference on page load
-        function applySavedAudience() {
-          const brandsContent = document.querySelectorAll('[data-brands-content]');
-          const customersContent = document.querySelectorAll('[data-customers-content]');
-          
-          if (savedAudience === 'brands') {
-            brandsContent.forEach(el => el.classList.remove('tw-hidden'));
-            customersContent.forEach(el => el.classList.add('tw-hidden'));
-          } else {
-            brandsContent.forEach(el => el.classList.add('tw-hidden'));
-            customersContent.forEach(el => el.classList.remove('tw-hidden'));
-          }
-        }
-        
-        // Apply on load
-        applySavedAudience();
-        
-        // Listen for storage changes (if user changes in another tab)
-        window.addEventListener('storage', function(e) {
-          if (e.key === 'sharedSweepsAudience') {
-            applySavedAudience();
-          }
-        });
-      });
-    </script>
+
   </body>
 </html>
