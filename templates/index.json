@@ -47,8 +47,8 @@
         "brands_indicator_1": "No upfront costs",
         "brands_indicator_2": "Shopify integrated",
         "brands_indicator_3": "Trusted by 100+ brands",
-        "customers_heading": "Win $100,000 by purchasing from your favorite brands.",
-        "customers_description": "Shop from your favorite brands — and discover new ones you'll love. Earn entries with every dollar you spend and get a real chance at a life-changing prize, with no extra steps required.",
+        "customers_heading": "Win $100,000 just by shopping your favorite brands.",
+        "customers_description": "Shop from your favorite brands and discover new ones you'll love. Earn entries with every dollar you spend and get a real chance at life-changing prizes.",
         "customers_primary_cta_text": "See How to Enter",
         "customers_primary_cta_link": "",
         "customers_secondary_cta_text": "View Participating Brands",
@@ -141,7 +141,7 @@
         "customers_benefit_LnJf8a": {
           "type": "customers_benefit",
           "settings": {
-            "text": "Real $100,000 prize"
+            "text": "Real $100K and $10K prizes"
           }
         },
         "customers_benefit_NrgURm": {
@@ -150,22 +150,16 @@
             "text": "Earn entries automatically"
           }
         },
-        "customers_benefit_rM7g8Q": {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "No gimmicks or fine print"
-          }
-        },
         "customers_benefit_fTceFX": {
           "type": "customers_benefit",
           "settings": {
-            "text": "Trusted Shopify brands"
+            "text": "Trusted brands"
           }
         },
         "customers_benefit_jANRQW": {
           "type": "customers_benefit",
           "settings": {
-            "text": "One real winner every sweepstakes"
+            "text": "Third party randomly selects winners"
           }
         }
       },
@@ -182,14 +176,13 @@
         "sharedsweeps_item_fF8BMQ",
         "customers_benefit_LnJf8a",
         "customers_benefit_NrgURm",
-        "customers_benefit_rM7g8Q",
         "customers_benefit_fTceFX",
         "customers_benefit_jANRQW"
       ],
       "name": "Comparison",
       "settings": {
         "bg_color": "#ffffff",
-        "brands_heading": "Why Shared Sweeps Beats Traditional Giveaways",
+        "brands_heading": "Why Shared Sweeps Beats Traditional Giveawaysdsdsd",
         "customers_heading": "Why Shared Sweeps Is Different",
         "traditional_heading": "Traditional Giveaways",
         "sharedsweeps_heading": "Shared Sweeps",
@@ -204,7 +197,7 @@
           "type": "brands_step",
           "settings": {
             "step_number": "01",
-            "title": "We Set Up Your Campaign",
+            "title": "We Set Up Your Campaign aaa",
             "description": "Install Shared Sweeps, configure your sweepstakes, and launch in days. We handle the $100K prize and legal compliance."
           }
         },
@@ -248,20 +241,12 @@
             "description": "Every dollar you spend is one entry toward the $100K prize."
           }
         },
-        "customers_step_A4G8Cm": {
-          "type": "customers_step",
-          "settings": {
-            "step_number": "03",
-            "title": "Increase Your Entries",
-            "description": "Be on the lookout for entry multipliers and bonus entries."
-          }
-        },
         "customers_step_m8wDQT": {
           "type": "customers_step",
           "settings": {
-            "step_number": "04",
-            "title": "One Real Winner",
-            "description": "One shopper wins the $100,000 prize at the end of the sweepstakes."
+            "step_number": "03",
+            "title": "Real Winners",
+            "description": "Shared Sweeps has given away nearly $1 million to real people like you."
           }
         }
       },
@@ -272,7 +257,6 @@
         "brands_step_D6PDmx",
         "customers_step_f6TayE",
         "customers_step_hRiRFY",
-        "customers_step_A4G8Cm",
         "customers_step_m8wDQT"
       ],
       "name": "How It Works",
@@ -365,6 +349,18 @@
       "name": "Social Proof",
       "settings": {
         "bg_color": "#ffffff",
+        "heading_color": "#111827",
+        "accent_color": "#3099d3",
+        "card_bg": "#ffffff",
+        "card_border": "#e5e7eb",
+        "card_title_color": "#111827",
+        "card_text_color": "#4b5563",
+        "btn_bg": "#ffffff",
+        "btn_text": "#374151",
+        "btn_border": "#d1d5db",
+        "btn_hover_bg": "#f9fafb",
+        "btn_hover_text": "#374151",
+        "btn_hover_border": "#9ca3af",
         "brands_heading": "Real Results from Shopify Brands",
         "customers_heading": "Real People. Real Winners.",
         "show_brands_cta": true,
@@ -380,13 +376,23 @@
       "name": "Final CTA",
       "settings": {
         "bg_color": "#ffffff",
+        "card_bg": "#f0f9ff",
+        "card_border": "#93c5fd",
+        "heading_color": "#111827",
+        "description_color": "#4b5563",
+        "btn_bg": "#3099d3",
+        "btn_text": "#ffffff",
+        "btn_border": "#3099d3",
+        "btn_hover_bg": "#2780b3",
+        "btn_hover_text": "#ffffff",
+        "btn_hover_border": "#2780b3",
         "brands_heading": "Ready to Make Your Ad Spend Work Harder?",
         "brands_description": "Join Shopify brands turning sweepstakes into one of their most efficient growth channels. Shared Sweeps funds the prize, handles compliance, and helps your ads convert better — so every dollar goes further.",
         "brands_cta_text": "Talk to Our Team",
         "brands_cta_type": "modal",
         "brands_cta_link": "",
         "customers_heading": "Ready to Turn Shopping Into a Chance to Win?",
-        "customers_description": "Every purchase counts. Shop participating brands and earn entries toward a real $100,000 prize.",
+        "customers_description": "Every purchase counts. Shop participating brands and earn entries toward real prizes.",
         "customers_cta_text": "View Participating Brands",
         "customers_cta_link": ""
       }

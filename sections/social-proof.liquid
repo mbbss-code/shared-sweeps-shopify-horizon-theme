@@ -53,6 +53,13 @@
     outline: none;
     box-shadow: 0 0 0 2px {{ btn_border }}, 0 0 0 4px #fff;
   }
+  .social-proof-{{ section.id }} .acs-winner-img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 9999px;
+    border: 2px solid {{ accent_color }}33;
+  }
 </style>
 
 <section id="results" class="social-proof-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="social-proof-heading">
@@ -132,12 +139,25 @@
           {% if block.type == 'winner' %}
             <article class="acs-card tw-rounded-lg tw-border tw-p-6 tw-shadow-sm tw-text-center">
               
-              {%- comment -%} Trophy Icon {%- endcomment -%}
-              <div class="acs-accent-bg tw-mx-auto tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full" aria-hidden="true">
-                <svg class="acs-accent tw-h-8 tw-w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                </svg>
-              </div>
+              {%- comment -%} Winner Image or Fallback Trophy Icon {%- endcomment -%}
+              {% if block.settings.winner_image != blank %}
+                <div class="tw-mx-auto tw-mb-4 tw-flex tw-justify-center">
+                  <img
+                    src="{{ block.settings.winner_image | image_url: width: 200 }}"
+                    alt="{{ block.settings.winner_name }}"
+                    class="acs-winner-img"
+                    loading="lazy"
+                    width="64"
+                    height="64"
+                  />
+                </div>
+              {% else %}
+                <div class="acs-accent-bg tw-mx-auto tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full" aria-hidden="true">
+                  <svg class="acs-accent tw-h-8 tw-w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                </div>
+              {% endif %}
               
               <h3 class="tw-text-lg tw-font-semibold" style="color: {{ card_title_color }};">
                 {{ block.settings.winner_name }}
@@ -367,6 +387,11 @@
       "type": "winner",
       "name": "Winner",
       "settings": [
+        {
+          "type": "image_picker",
+          "id": "winner_image",
+          "label": "Winner photo"
+        },
         {
           "type": "text",
           "id": "winner_name",

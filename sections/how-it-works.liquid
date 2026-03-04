@@ -42,6 +42,32 @@
     outline: none;
     box-shadow: 0 0 0 2px {{ btn_bg }}, 0 0 0 4px #fff;
   }
+
+  /* Flex-based steps grid for odd-count centering */
+  .how-it-works-{{ section.id }} .acs-steps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .how-it-works-{{ section.id }} .acs-step-item {
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .how-it-works-{{ section.id }} .acs-step-item {
+      width: calc(50% - 1rem);
+    }
+  }
+  @media (min-width: 1024px) {
+    .how-it-works-{{ section.id }} .acs-step-item {
+      width: calc(25% - 1.5rem);
+    }
+  }
 </style>
 
 <section id="how-it-works" class="how-it-works-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="how-it-works-heading">
@@ -56,10 +82,10 @@
     </div>
 
     {%- comment -%} Steps Grid {%- endcomment -%}
-    <div class="tw-mx-auto tw-grid tw-max-w-5xl tw-gap-8 md:tw-grid-cols-2 lg:tw-grid-cols-4">
+    <div class="acs-steps-grid">
       {% for block in section.blocks %}
         {% if block.type == 'brands_step' %}
-          <article data-brands-content class="tw-relative tw-text-center">
+          <article data-brands-content class="acs-step-item">
             <div class="acs-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold" aria-hidden="true">
               {{ block.settings.step_number }}
             </div>
@@ -73,7 +99,7 @@
         {% endif %}
         
         {% if block.type == 'customers_step' %}
-          <article data-customers-content class="tw-hidden tw-relative tw-text-center">
+          <article data-customers-content class="acs-step-item tw-hidden">
             <div class="acs-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold" aria-hidden="true">
               {{ block.settings.step_number }}
             </div>
