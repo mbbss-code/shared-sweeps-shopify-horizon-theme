@@ -18,7 +18,7 @@
         "subheading_color": "#6b7280",
         "heading": "All Shared Sweeps Case Studies",
         "subheading": "Browse real results from Shopify brands across categories, sizes, and growth stages.",
-        "secondary_text": "Each case study highlights how Shared Sweeps drives revenue without discounts or upfront prize costs."
+        "secondary_text": ""
       }
     },
     "all_case_study_grid_LQ8cVC": {
@@ -57,10 +57,11 @@
         "case_study_iWnhDQ": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
             "brand_name": "Fresh Chile Co",
             "industry": "Food & Beverage",
-            "metric": "$1.5M in revenue",
-            "summary": "Top growth channel with minimal fees",
+            "metric": "$117K in ad spend savings",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
             "case_study_url": "",
             "link_text": "View Case Study"
           }
@@ -68,10 +69,11 @@
         "case_study_TFde7F": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/s_slogo.jpg",
             "brand_name": "Shaker & Spoon",
             "industry": "Subscription",
-            "metric": "30% less churn",
-            "summary": "Replaced discounts with engagement",
+            "metric": "30% reduction in monthly churn",
+            "summary": "Acquisition with less discounts, resulting in higher-value customers.",
             "case_study_url": "",
             "link_text": "View Case Study"
           }
@@ -79,32 +81,11 @@
         "case_study_zEzVUU": {
           "type": "case_study",
           "settings": {
-            "brand_name": "Cozy Earth",
+            "brand_logo": "shopify://shop_images/potlogo.jpg",
+            "brand_name": "Pair of Thieves",
             "industry": "Home",
-            "metric": "Six-figure lift",
-            "summary": "Multi-channel sales increase",
-            "case_study_url": "",
-            "link_text": "View Case Study"
-          }
-        },
-        "case_study_GVdMTc": {
-          "type": "case_study",
-          "settings": {
-            "brand_name": "Outdoor Voices",
-            "industry": "Apparel",
-            "metric": "45% more signups",
-            "summary": "Email list growth without paid ads",
-            "case_study_url": "",
-            "link_text": "View Case Study"
-          }
-        },
-        "case_study_CiQtMM": {
-          "type": "case_study",
-          "settings": {
-            "brand_name": "Beekeeper's Naturals",
-            "industry": "Health & Wellness",
-            "metric": "3x ROAS",
-            "summary": "Outperformed traditional campaigns",
+            "metric": "18% increase in gross sales",
+            "summary": "Drove more site visits, repeated touches, and channel interaction.",
             "case_study_url": "",
             "link_text": "View Case Study"
           }
@@ -112,10 +93,11 @@
         "case_study_WwEJtx": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
             "brand_name": "Caraway Home",
             "industry": "Home",
-            "metric": "$800K revenue",
-            "summary": "Holiday campaign success",
+            "metric": "61% increase in YoY  top-line revenue",
+            "summary": "Substantial growth across email and SMS lists.",
             "case_study_url": "",
             "link_text": "View Case Study"
           }
@@ -130,8 +112,6 @@
         "case_study_iWnhDQ",
         "case_study_TFde7F",
         "case_study_zEzVUU",
-        "case_study_GVdMTc",
-        "case_study_CiQtMM",
         "case_study_WwEJtx"
       ],
       "name": "ACS — Filter & Grid",

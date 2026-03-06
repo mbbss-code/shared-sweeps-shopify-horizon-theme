@@ -49,7 +49,7 @@
         "show_background_pattern": false,
         "badge_text": "",
         "heading": "Trusted by Growing Shopify Brands",
-        "subheading": "Shared Sweeps brings together high-quality Shopify brands to fund one life-changing $100,000 sweepstakes — without upfront costs.",
+        "subheading": "Over 100 brands have partnered with Shared Sweeps to run engaging giveaways and reward their customers.",
         "button_text": "Talk to Our Team",
         "button_link": "",
         "button_opens_modal": true,
@@ -65,57 +65,96 @@
         "current_brand_cnfbwd": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Deckiez",
-            "brand_url": ""
+            "brand_name": "STATE Bags",
+            "brand_logo": "shopify://shop_images/statelogo.svg",
+            "brand_url": "https://statebags.com"
           }
         },
         "current_brand_wdCgDw": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Cozy Earth",
-            "brand_url": ""
+            "brand_name": "Gains in Bulk",
+            "brand_logo": "shopify://shop_images/gainslogo2.png",
+            "brand_url": "https://gainsinbulk.com"
           }
         },
         "current_brand_VhhPYA": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Shaker & Spoon",
-            "brand_url": ""
+            "brand_name": "QUAY Sunglasses",
+            "brand_logo": "shopify://shop_images/quaylogo.avif",
+            "brand_url": "https://www.quay.com/"
           }
         },
         "current_brand_zbJGpt": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Portland Leather Goods",
-            "brand_url": ""
+            "brand_name": "Overkill Battalion",
+            "brand_logo": "shopify://shop_images/overkilllogo.png",
+            "brand_url": "https://overkillbattalion.com/"
           }
         },
         "current_brand_wWRGYX": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Caraway",
-            "brand_url": ""
+            "brand_name": "Customly Gifts",
+            "brand_logo": "shopify://shop_images/customlylogo.png",
+            "brand_url": "https://customlygifts.com"
           }
         },
         "current_brand_QDGm4i": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Pair of Thieves",
-            "brand_url": ""
+            "brand_name": "Throttle Society",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-03-04_at_1.30.49_PM.png",
+            "brand_url": "https://throttlesociety.co"
           }
         },
-        "past_brand_M8XbLF": {
-          "type": "past_brand",
+        "current_brand_Ci3JFh": {
+          "type": "current_brand",
           "settings": {
-            "brand_name": "Fresh Chile Co",
-            "brand_url": "",
-            "case_study_url": ""
+            "brand_name": "Willow & Luna",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-03-04_at_1.32.17_PM.png",
+            "brand_url": "https://willowluna.com"
+          }
+        },
+        "current_brand_KapkRY": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Albatross Reserve",
+            "brand_logo": "shopify://shop_images/albatrosslogo.avif",
+            "brand_url": "https://albreserve.com/"
+          }
+        },
+        "current_brand_jex66X": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "eSix Sportswear",
+            "brand_logo": "shopify://shop_images/esixlogo.jpg",
+            "brand_url": "https://shopesixsportswear.com/"
+          }
+        },
+        "current_brand_tgG4zF": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Pulse Fish",
+            "brand_logo": "shopify://shop_images/pulselogo.avif",
+            "brand_url": "https://pulsefish.com"
+          }
+        },
+        "current_brand_EXBnmt": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Synister Speed",
+            "brand_logo": "shopify://shop_images/synisterlogo.webp",
+            "brand_url": "https://synisterspeed.com"
           }
         },
         "past_brand_33DhWy": {
           "type": "past_brand",
           "settings": {
-            "brand_name": "Final Boss Sour",
+            "brand_name": "Caraway Home",
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
             "brand_url": "",
             "case_study_url": ""
           }
@@ -128,22 +167,83 @@
         "current_brand_zbJGpt",
         "current_brand_wWRGYX",
         "current_brand_QDGm4i",
-        "past_brand_M8XbLF",
+        "current_brand_Ci3JFh",
+        "current_brand_KapkRY",
+        "current_brand_jex66X",
+        "current_brand_tgG4zF",
+        "current_brand_EXBnmt",
         "past_brand_33DhWy"
       ],
       "name": "Brands Grid",
       "settings": {
         "heading": "Participating Brands",
-        "subheading": "These brands are part of the Shared Sweeps network",
-        "enable_tabs": true,
+        "subheading": "These brands are part of the current Shared Sweeps giveaway",
+        "enable_tabs": false,
         "current_tab_label": "Current Brands",
-        "past_tab_label": "Past Participants",
+        "past_tab_label": "",
         "initial_brands_shown": 9,
         "show_all_text": "Show all current brands",
         "show_less_text": "Show fewer",
         "case_study_link_text": "See case study",
-        "background_color": "white",
+        "background_color": "gray-50",
         "primary_color": "indigo"
+      }
+    },
+    "1772774289561360d9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_9818f4b_nh9pgJ": {
+          "type": "ai_gen_block_9818f4b",
+          "settings": {
+            "logo_1": "shopify://shop_images/cirkullogo.jpg",
+            "logo_2": "shopify://shop_images/fbslogo.jpg",
+            "logo_3": "shopify://shop_images/carawaylogo.jpg",
+            "logo_4": "shopify://shop_images/potlogo.jpg",
+            "logo_5": "shopify://shop_images/byltlogo2.png",
+            "logo_6": "shopify://shop_images/carilohalogo.jpg",
+            "logo_7": "shopify://shop_images/nobllogo.png",
+            "logo_8": "shopify://shop_images/fctlogo.jpg",
+            "logo_height": 60,
+            "logo_spacing": 60,
+            "vertical_padding": 30,
+            "scroll_speed": 10,
+            "logo_opacity": 70,
+            "grayscale_percent": 0,
+            "background_color": "#f5f5f5",
+            "placeholder_color": "#e6e6e6"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_9818f4b_nh9pgJ"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "participating_brands_trust_callout_eMi9XU": {
@@ -153,7 +253,7 @@
         "show_icon": true,
         "icon": "building",
         "heading": "You're in Good Company",
-        "description": "Shared Sweeps partners with Shopify brands across apparel, home, food, and lifestyle. Every brand participates in the same shared sweepstakes — creating more excitement and stronger results for everyone.",
+        "description": "Shared Sweeps hand-selects brands across various verticals to reward their customers with the chance to win life-changing prizes.",
         "show_stats": false,
         "button_text": "",
         "button_link": "",
@@ -167,6 +267,7 @@
         "winner_nj7dA8": {
           "type": "winner",
           "settings": {
+            "winner_image": "shopify://shop_images/jason.png",
             "winner_name": "Jason H.",
             "winner_location": "Marshall, MO",
             "winner_brand": "Synister Speed",
@@ -177,7 +278,8 @@
         "winner_PqPdrx": {
           "type": "winner",
           "settings": {
-            "winner_name": "Caitlin M.",
+            "winner_image": "shopify://shop_images/kaitlin.jpg",
+            "winner_name": "Kaitlin M.",
             "winner_location": "Montague, NJ",
             "winner_brand": "Cirkul",
             "prize_amount": "$100,000",
@@ -187,6 +289,7 @@
         "winner_qaEfxg": {
           "type": "winner",
           "settings": {
+            "winner_image": "shopify://shop_images/dre-c.png",
             "winner_name": "Dre C.",
             "winner_location": "Bozeman, MT",
             "winner_brand": "Caraway Home",
@@ -206,7 +309,7 @@
         "heading": "Recent Winners",
         "subheading": "Real people winning real prizes",
         "button_text": "See All Winners",
-        "button_link": "",
+        "button_link": "shopify://pages/past-winners",
         "background_color": "white",
         "primary_color": "blue"
       }
@@ -254,6 +357,7 @@
   "order": [
     "participating_brands_hero_CGMNmY",
     "participating_brands_grid_jqzcDq",
+    "1772774289561360d9",
     "participating_brands_trust_callout_eMi9XU",
     "participating_brands_winners_preview_KX6n4q",
     "participating_brands_final_cta_CmTC4H"

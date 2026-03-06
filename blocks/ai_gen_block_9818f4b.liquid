@@ -1,0 +1,307 @@
+{% doc %}
+  @prompt
+    Can you create a skinny section between the participating brands and the trust callout where various brand logos can move across the screen?, Can you make the section the width of the page?
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-logo-marquee-{{ ai_gen_id }} {
+    display: block;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.vertical_padding }}px 0;
+  }
+
+  .ai-logo-marquee-track-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.logo_spacing }}px;
+    animation: ai-logo-marquee-scroll-{{ ai_gen_id }} {{ block.settings.scroll_speed }}s linear infinite;
+    will-change: transform;
+  }
+
+  .ai-logo-marquee-{{ ai_gen_id }}:hover .ai-logo-marquee-track-{{ ai_gen_id }} {
+    animation-play-state: paused;
+  }
+
+  .ai-logo-marquee-item-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: {{ block.settings.logo_height }}px;
+  }
+
+  .ai-logo-marquee-item-{{ ai_gen_id }} img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+    opacity: {{ block.settings.logo_opacity | divided_by: 100.0 }};
+    transition: opacity 0.3s ease;
+    filter: grayscale({{ block.settings.grayscale_percent }}%);
+  }
+
+  .ai-logo-marquee-item-{{ ai_gen_id }}:hover img {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  .ai-logo-marquee-placeholder-{{ ai_gen_id }} {
+    width: {{ block.settings.logo_height | times: 1.5 }}px;
+    height: {{ block.settings.logo_height }}px;
+    background-color: {{ block.settings.placeholder_color }};
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: {{ block.settings.logo_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-logo-marquee-placeholder-{{ ai_gen_id }} svg {
+    width: 50%;
+    height: 50%;
+    opacity: 0.3;
+  }
+
+  @keyframes ai-logo-marquee-scroll-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-logo-marquee-item-{{ ai_gen_id }} {
+      height: {{ block.settings.logo_height | times: 0.7 }}px;
+    }
+
+    .ai-logo-marquee-placeholder-{{ ai_gen_id }} {
+      width: {{ block.settings.logo_height | times: 1.05 }}px;
+      height: {{ block.settings.logo_height | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<logo-marquee-{{ ai_gen_id }} class="ai-logo-marquee-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-logo-marquee-track-{{ ai_gen_id }}">
+    {% liquid
+      assign logos_array = ''
+      for i in (1..8)
+        assign logo_key = 'logo_' | append: i
+        assign logo = block.settings[logo_key]
+        if logo != blank
+          assign logos_array = logos_array | append: i | append: ','
+        endif
+      endfor
+      assign logos_array = logos_array | split: ','
+      assign logo_count = logos_array.size
+    %}
+
+    {% if logo_count > 0 %}
+      {% for j in (1..2) %}
+        {% for i in (1..8) %}
+          {% assign logo_key = 'logo_' | append: i %}
+          {% assign logo = block.settings[logo_key] %}
+          {% if logo != blank %}
+            <div class="ai-logo-marquee-item-{{ ai_gen_id }}">
+              <img
+                src="{{ logo | image_url: width: 400 }}"
+                alt="{{ logo.alt | escape }}"
+                loading="lazy"
+                width="{{ logo.width }}"
+                height="{{ logo.height }}"
+              >
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% else %}
+      {% for j in (1..2) %}
+        {% for i in (1..8) %}
+          <div class="ai-logo-marquee-item-{{ ai_gen_id }}">
+            <div class="ai-logo-marquee-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</logo-marquee-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class LogoMarquee{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-logo-marquee-track-{{ ai_gen_id }}');
+        this.adjustSpeed();
+      }
+
+      adjustSpeed() {
+        if (!this.track) return;
+        
+        const trackWidth = this.track.scrollWidth / 2;
+        const speed = {{ block.settings.scroll_speed }};
+        const duration = (trackWidth / 100) * speed;
+        
+        this.track.style.animationDuration = duration + 's';
+      }
+    }
+
+    customElements.define('logo-marquee-{{ ai_gen_id }}', LogoMarquee{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Scrolling brand logos",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logos"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_3",
+      "label": "Logo 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_4",
+      "label": "Logo 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_5",
+      "label": "Logo 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_6",
+      "label": "Logo 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_7",
+      "label": "Logo 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_8",
+      "label": "Logo 8"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 30,
+      "max": 120,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "label": "Logo spacing",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "default": 30,
+      "info": "Lower is faster"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Logo opacity",
+      "min": 30,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "grayscale_percent",
+      "label": "Grayscale",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#e6e6e6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling brand logos"
+    }
+  ]
+}
+{% endschema %}

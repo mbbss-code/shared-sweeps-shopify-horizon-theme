@@ -134,63 +134,75 @@
 
       {%- comment -%} CTA Buttons {%- endcomment -%}
       <div class="tw-flex tw-flex-col tw-items-center tw-justify-center tw-gap-4 sm:tw-flex-row" role="group" aria-label="Call to action buttons">
-        {%- comment -%} Primary CTA {%- endcomment -%}
-        <span data-brands-content>
-          {% if section.settings.brands_primary_cta_type == 'modal' %}
-            <button 
-              type="button"
-              class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
-              data-contact-modal-trigger
-              aria-haspopup="dialog"
-            >
-              {{ section.settings.brands_primary_cta_text | default: 'Talk to Our Team' }}
-              <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </button>
-          {% else %}
+
+        {%- comment -%} Brands Primary CTA {%- endcomment -%}
+        {% if section.settings.brands_primary_cta_text != blank %}
+          <span data-brands-content>
+            {% if section.settings.brands_primary_cta_type == 'modal' %}
+              <button 
+                type="button"
+                class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
+                data-contact-modal-trigger
+                aria-haspopup="dialog"
+              >
+                {{ section.settings.brands_primary_cta_text }}
+                <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </button>
+            {% else %}
+              <a 
+                href="{{ section.settings.brands_primary_cta_link }}"
+                class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
+              >
+                {{ section.settings.brands_primary_cta_text }}
+                <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </a>
+            {% endif %}
+          </span>
+        {% endif %}
+
+        {%- comment -%} Customers Primary CTA {%- endcomment -%}
+        {% if section.settings.customers_primary_cta_text != blank %}
+          <span data-customers-content class="tw-hidden">
             <a 
-              href="{{ section.settings.brands_primary_cta_link }}"
+              href="{{ section.settings.customers_primary_cta_link | default: '/how-to-enter' }}"
               class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
             >
-              {{ section.settings.brands_primary_cta_text | default: 'Talk to Our Team' }}
+              {{ section.settings.customers_primary_cta_text }}
               <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
               </svg>
             </a>
-          {% endif %}
-        </span>
-        
-        <span data-customers-content class="tw-hidden">
-          <a 
-            href="{{ section.settings.customers_primary_cta_link | default: '/how-to-enter' }}"
-            class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
-          >
-            {{ section.settings.customers_primary_cta_text | default: 'See How to Enter' }}
-            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-            </svg>
-          </a>
-        </span>
+          </span>
+        {% endif %}
 
-        {%- comment -%} Secondary CTA {%- endcomment -%}
-        <span data-brands-content>
-          <a 
-            href="{{ section.settings.brands_secondary_cta_link | default: '/how-it-works' }}"
-            class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
-          >
-            {{ section.settings.brands_secondary_cta_text | default: 'See How It Works' }}
-          </a>
-        </span>
-        
-        <span data-customers-content class="tw-hidden">
-          <a 
-            href="{{ section.settings.customers_secondary_cta_link | default: '/participating-brands' }}"
-            class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
-          >
-            {{ section.settings.customers_secondary_cta_text | default: 'View Participating Brands' }}
-          </a>
-        </span>
+        {%- comment -%} Brands Secondary CTA {%- endcomment -%}
+        {% if section.settings.brands_secondary_cta_text != blank %}
+          <span data-brands-content>
+            <a 
+              href="{{ section.settings.brands_secondary_cta_link | default: '/how-it-works' }}"
+              class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
+            >
+              {{ section.settings.brands_secondary_cta_text }}
+            </a>
+          </span>
+        {% endif %}
+
+        {%- comment -%} Customers Secondary CTA {%- endcomment -%}
+        {% if section.settings.customers_secondary_cta_text != blank %}
+          <span data-customers-content class="tw-hidden">
+            <a 
+              href="{{ section.settings.customers_secondary_cta_link | default: '/participating-brands' }}"
+              class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
+            >
+              {{ section.settings.customers_secondary_cta_text }}
+            </a>
+          </span>
+        {% endif %}
+
       </div>
 
       {%- comment -%} Trust Indicators {%- endcomment -%}
@@ -243,22 +255,18 @@
     const buttons = toggleContainer.querySelectorAll('.acs-toggle-btn');
 
     function switchAudience(audience) {
-      // Update toggle button states within this section
       buttons.forEach(btn => {
         btn.setAttribute('aria-pressed', btn.dataset.audience === audience);
       });
 
-      // Persist and notify ALL sections globally
       localStorage.setItem('sharedSweepsAudience', audience);
       window.dispatchEvent(new Event('audienceChanged'));
     }
 
-    // Click handlers
     buttons.forEach(btn => {
       btn.addEventListener('click', () => switchAudience(btn.dataset.audience));
     });
 
-    // Sync toggle button state when changed from elsewhere
     window.addEventListener('audienceChanged', function() {
       const current = localStorage.getItem('sharedSweepsAudience') || 'brands';
       buttons.forEach(btn => {
@@ -266,7 +274,6 @@
       });
     });
 
-    // Initialize from saved preference
     const savedAudience = localStorage.getItem('sharedSweepsAudience') || 'brands';
     buttons.forEach(btn => {
       btn.setAttribute('aria-pressed', btn.dataset.audience === savedAudience);

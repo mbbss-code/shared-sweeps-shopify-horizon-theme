@@ -37,21 +37,21 @@
         "show_toggle": true,
         "toggle_brands_label": "For Brands",
         "toggle_customers_label": "For Customers",
-        "brands_heading": "A Better Way for Brands to Run Sweepstakes",
-        "brands_description": "Shared Sweeps enables brands to give their customers entries into a $100,000 sweepstakes simply by shopping on their site — with no financial risk.",
+        "brands_heading": "Run Sweepstakes Like the Big Brands",
+        "brands_description": "Shared Sweeps enables brands to offer their customers entries into a $100,000 sweepstakes simply by shopping on their site — something traditionally only the largest companies could afford to do.",
         "brands_primary_cta_text": "Talk to Our Team",
         "brands_primary_cta_type": "modal",
         "brands_primary_cta_link": "",
-        "brands_secondary_cta_text": "See How It Works",
+        "brands_secondary_cta_text": "",
         "brands_secondary_cta_link": "",
-        "brands_indicator_1": "No upfront costs",
-        "brands_indicator_2": "Shopify integrated",
-        "brands_indicator_3": "Trusted by 100+ brands",
-        "customers_heading": "Win $100,000 just by shopping your favorite brands.",
+        "brands_indicator_1": "No prize funding required",
+        "brands_indicator_2": "Fully managed legal and compliance",
+        "brands_indicator_3": "Shopify-native and easy to launch",
+        "customers_heading": "Win $100,000 Just by Shopping Your Favorite Brands",
         "customers_description": "Shop from your favorite brands and discover new ones you'll love. Earn entries with every dollar you spend and get a real chance at life-changing prizes.",
-        "customers_primary_cta_text": "See How to Enter",
-        "customers_primary_cta_link": "",
-        "customers_secondary_cta_text": "View Participating Brands",
+        "customers_primary_cta_text": "View Participating Brands",
+        "customers_primary_cta_link": "shopify://pages/participating-brands",
+        "customers_secondary_cta_text": "",
         "customers_secondary_cta_link": "",
         "customers_indicator_1": "One $100,000 prize",
         "customers_indicator_2": "Monthly $10,000 prizes",
@@ -65,10 +65,10 @@
       "name": "Problem Solution",
       "settings": {
         "bg_color": "#f9fafb",
-        "brands_problem_heading": "Growing an Online Brand Has Gotten Harder",
-        "brands_problem_description": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards.",
+        "brands_problem_heading": "Running Your Own Sweepstakes Is Hard",
+        "brands_problem_description": "Between legal compliance, prize funding, marketing execution, and technical setup, running a large-scale giveaway on your own can be complicated, expensive, and risky for most brands.",
         "brands_solution_heading": "A Smarter Way for Everyone to Win",
-        "brands_solution_description": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win.",
+        "brands_solution_description": "Shared Sweeps gives brands the ability to run powerful giveaways without funding the prize or navigating complex legal requirements. Our team has helped run hundreds of campaigns and handles the heavy lifting so you can focus on your customers.",
         "customers_problem_heading": "Everyday Shopping",
         "customers_problem_description": "Shopping your favorite brands is already rewarding — great products, great experiences.",
         "customers_solution_heading": "Shopping With a Chance to Win",
@@ -102,12 +102,6 @@
             "text": "Time-consuming setup"
           }
         },
-        "traditional_item_bgBqBp": {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Unpredictable ROI"
-          }
-        },
         "sharedsweeps_item_74FQVP": {
           "type": "sharedsweeps_item",
           "settings": {
@@ -132,12 +126,6 @@
             "text": "Seamless Shopify integration"
           }
         },
-        "sharedsweeps_item_fF8BMQ": {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "No upfront cost, capped fees"
-          }
-        },
         "customers_benefit_LnJf8a": {
           "type": "customers_benefit",
           "settings": {
@@ -159,7 +147,7 @@
         "customers_benefit_jANRQW": {
           "type": "customers_benefit",
           "settings": {
-            "text": "Third party randomly selects winners"
+            "text": "Third party, randomly-selected winners"
           }
         }
       },
@@ -168,12 +156,10 @@
         "traditional_item_KwMNjK",
         "traditional_item_n3Kxb6",
         "traditional_item_xCRefp",
-        "traditional_item_bgBqBp",
         "sharedsweeps_item_74FQVP",
         "sharedsweeps_item_CP6pdN",
         "sharedsweeps_item_k7xbWe",
         "sharedsweeps_item_8WHKAx",
-        "sharedsweeps_item_fF8BMQ",
         "customers_benefit_LnJf8a",
         "customers_benefit_NrgURm",
         "customers_benefit_fTceFX",
@@ -182,7 +168,7 @@
       "name": "Comparison",
       "settings": {
         "bg_color": "#ffffff",
-        "brands_heading": "Why Shared Sweeps Beats Traditional Giveawaysdsdsd",
+        "brands_heading": "Why Shared Sweeps Beats Traditional Giveaways",
         "customers_heading": "Why Shared Sweeps Is Different",
         "traditional_heading": "Traditional Giveaways",
         "sharedsweeps_heading": "Shared Sweeps",
@@ -197,7 +183,7 @@
           "type": "brands_step",
           "settings": {
             "step_number": "01",
-            "title": "We Set Up Your Campaign aaa",
+            "title": "We Set Up Your Campaign",
             "description": "Install Shared Sweeps, configure your sweepstakes, and launch in days. We handle the $100K prize and legal compliance."
           }
         },
@@ -206,7 +192,7 @@
           "settings": {
             "step_number": "02",
             "title": "Customers Earn Entries",
-            "description": "Every $1 spent equals 1 entry. Built-in multipliers create urgency and repeat purchases."
+            "description": "Every $1 spent equals 1 entry. Use multipliers and bonus entries to keep your customers excited and engaged."
           }
         },
         "brands_step_XxXB7H": {
@@ -222,7 +208,7 @@
           "settings": {
             "step_number": "04",
             "title": "We Award the Winner",
-            "description": "Winners are selected at random using a trusted third-party system."
+            "description": "Winners are selected at random using a trusted third-party administrator."
           }
         },
         "customers_step_f6TayE": {
@@ -277,7 +263,7 @@
         "customers_heading": "How It Works for Shoppers",
         "show_brands_cta": true,
         "brands_cta_text": "Real Winners",
-        "brands_cta_link": "#"
+        "brands_cta_link": "shopify://pages/past-winners"
       }
     },
     "social_proof_yLW97D": {
@@ -313,6 +299,7 @@
         "winner_XHYQEH": {
           "type": "winner",
           "settings": {
+            "winner_image": "shopify://shop_images/JesseT-B4eknULA.jpg",
             "winner_name": "Jason H.",
             "location": "Marshall, MO",
             "brand": "Synister Speed",
@@ -322,6 +309,7 @@
         "winner_yF8UX8": {
           "type": "winner",
           "settings": {
+            "winner_image": "shopify://shop_images/kaitlin.jpg",
             "winner_name": "Kaitlin M.",
             "location": "Montague, NJ",
             "brand": "Cirkul",
@@ -331,6 +319,7 @@
         "winner_YUAWCL": {
           "type": "winner",
           "settings": {
+            "winner_image": "shopify://shop_images/dre-c.png",
             "winner_name": "Dre C.",
             "location": "Bozeman, MT",
             "brand": "Caraway Home",
@@ -365,10 +354,63 @@
         "customers_heading": "Real People. Real Winners.",
         "show_brands_cta": true,
         "brands_cta_text": "See All Case Studies",
-        "brands_cta_link": "",
+        "brands_cta_link": "shopify://pages/all-case-studies",
         "show_customers_cta": true,
         "customers_cta_text": "See All Winners",
-        "customers_cta_link": ""
+        "customers_cta_link": "shopify://pages/past-winners"
+      }
+    },
+    "hiw_faq_9hTpza": {
+      "type": "hiw-faq",
+      "blocks": {
+        "faq_item_iwCxL8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does it cost?",
+            "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn."
+          }
+        },
+        "faq_item_FYVNPV": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if my brand is small?",
+            "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost."
+          }
+        },
+        "faq_item_FPMUKi": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Who provides the prize?",
+            "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all."
+          }
+        },
+        "faq_item_hg7rdN": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is it legally compliant?",
+            "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it."
+          }
+        },
+        "faq_item_NUxTUM": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is the giveaway shared across brands?",
+            "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved."
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_iwCxL8",
+        "faq_item_FYVNPV",
+        "faq_item_FPMUKi",
+        "faq_item_hg7rdN",
+        "faq_item_NUxTUM"
+      ],
+      "name": "HIW — FAQ",
+      "settings": {
+        "primary_color": "#9333ea",
+        "alt_bg_color": "#f3f4f6",
+        "faq_title": "Frequently Asked Questions"
       }
     },
     "bottom_final_cta_MpLdAR": {
@@ -386,15 +428,15 @@
         "btn_hover_bg": "#2780b3",
         "btn_hover_text": "#ffffff",
         "btn_hover_border": "#2780b3",
-        "brands_heading": "Ready to Make Your Ad Spend Work Harder?",
-        "brands_description": "Join Shopify brands turning sweepstakes into one of their most efficient growth channels. Shared Sweeps funds the prize, handles compliance, and helps your ads convert better — so every dollar goes further.",
+        "brands_heading": "Ready to Run Your First Giveaway?",
+        "brands_description": "Join 100+ brands using Shared Sweeps to turn everyday purchases into entries for exciting prizes.",
         "brands_cta_text": "Talk to Our Team",
         "brands_cta_type": "modal",
         "brands_cta_link": "",
         "customers_heading": "Ready to Turn Shopping Into a Chance to Win?",
         "customers_description": "Every purchase counts. Shop participating brands and earn entries toward real prizes.",
         "customers_cta_text": "View Participating Brands",
-        "customers_cta_link": ""
+        "customers_cta_link": "shopify://pages/participating-brands"
       }
     }
   },
@@ -404,6 +446,7 @@
     "comparison_FNDeBU",
     "how_it_works_eJFfVt",
     "social_proof_yLW97D",
+    "hiw_faq_9hTpza",
     "bottom_final_cta_MpLdAR"
   ]
 }

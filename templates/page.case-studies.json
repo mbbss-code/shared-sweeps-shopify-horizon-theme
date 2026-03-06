@@ -13,8 +13,8 @@
       "type": "case-study-hero",
       "name": "Case Studies Hero",
       "settings": {
-        "heading": "Real Results from Shopify Brands",
-        "subheading": "See how Shopify brands use Shared Sweeps to drive revenue, retention, and excitement — without relying on discounts or paid ads.",
+        "heading": "Real Results from Top-Tier Brands",
+        "subheading": "See how Shopify brands use Shared Sweeps to drive revenue, retention, and excitement.",
         "heading_color": "#1a1a1a",
         "subheading_color": "#6b7280",
         "show_background_decoration": false,
@@ -27,8 +27,9 @@
         "case_study_kcLmj3": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
             "brand_name": "Fresh Chile Co",
-            "metric": "$1.5M in revenue with only $22K in fees",
+            "metric": "$117K in ad spend savings",
             "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
             "link_url": "",
             "link_text": "Read Case Study"
@@ -37,6 +38,7 @@
         "case_study_EPJDRi": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/pairofthieveslogo.webp",
             "brand_name": "Pair of Thieves",
             "metric": "18% increase in gross sales",
             "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
@@ -47,9 +49,21 @@
         "case_study_bRyBKR": {
           "type": "case_study",
           "settings": {
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
             "brand_name": "Caraway Home",
             "metric": "61% increase in YoY top-line revenue",
-            "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
+            "summary": "Substantial growth across email and SMS lists.",
+            "link_url": "",
+            "link_text": "Read Case Study"
+          }
+        },
+        "case_study_fHabyh": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/shakerspoonlogo.png",
+            "brand_name": "Shaker & Spoon",
+            "metric": "30% reduction in average monthly churn",
+            "summary": "Acquisition with less discounts, resulting in higher-value customers.",
             "link_url": "",
             "link_text": "Read Case Study"
           }
@@ -58,7 +72,8 @@
       "block_order": [
         "case_study_kcLmj3",
         "case_study_EPJDRi",
-        "case_study_bRyBKR"
+        "case_study_bRyBKR",
+        "case_study_fHabyh"
       ],
       "name": "Case Studies Grid",
       "settings": {
@@ -85,31 +100,25 @@
         "benefit_LCJhie": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "No upfront prize costs"
+            "benefit_text": "Most experienced giveaway team in the industry"
           }
         },
         "benefit_dm94QN": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Fully managed legal compliance"
+            "benefit_text": "Strategic plan customized for your business"
           }
         },
         "benefit_cXMLbF": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Seamless Shopify integration"
-          }
-        },
-        "benefit_kHin8L": {
-          "type": "benefit",
-          "settings": {
-            "benefit_text": "Revenue-first growth, not discounts"
+            "benefit_text": "Full support for the duration of your giveaway"
           }
         },
         "benefit_qJVcGT": {
           "type": "benefit",
           "settings": {
-            "benefit_text": "Capped fees with unlimited upside"
+            "benefit_text": "Tech and legal compliance covered by us"
           }
         }
       },
@@ -117,7 +126,6 @@
         "benefit_LCJhie",
         "benefit_dm94QN",
         "benefit_cXMLbF",
-        "benefit_kHin8L",
         "benefit_qJVcGT"
       ],
       "name": "Benefits List",
