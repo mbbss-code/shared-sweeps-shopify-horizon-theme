@@ -289,11 +289,11 @@
         "winner_qaEfxg": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/dre-c.png",
-            "winner_name": "Dre C.",
-            "winner_location": "Bozeman, MT",
-            "winner_brand": "Caraway Home",
-            "prize_amount": "$100,000",
+            "winner_image": "shopify://shop_images/Brandon_1.heic",
+            "winner_name": "Brandon B.",
+            "winner_location": "Tampa, FL",
+            "winner_brand": "Emoto Supply Co.",
+            "prize_amount": "$10,000",
             "winner_quote": ""
           }
         }

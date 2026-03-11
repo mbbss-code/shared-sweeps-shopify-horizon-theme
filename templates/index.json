@@ -299,7 +299,7 @@
         "winner_XHYQEH": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/JesseT-B4eknULA.jpg",
+            "winner_image": "shopify://shop_images/jason.png",
             "winner_name": "Jason H.",
             "location": "Marshall, MO",
             "brand": "Synister Speed",
@@ -365,6 +365,7 @@
       "blocks": {
         "faq_item_iwCxL8": {
           "type": "faq_item",
+          "name": "Brands FAQ ",
           "settings": {
             "question": "What does it cost?",
             "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn."
@@ -372,6 +373,7 @@
         },
         "faq_item_FYVNPV": {
           "type": "faq_item",
+          "name": "Brands FAQ ",
           "settings": {
             "question": "What if my brand is small?",
             "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost."
@@ -379,6 +381,7 @@
         },
         "faq_item_FPMUKi": {
           "type": "faq_item",
+          "name": "Brands FAQ ",
           "settings": {
             "question": "Who provides the prize?",
             "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all."
@@ -386,6 +389,7 @@
         },
         "faq_item_hg7rdN": {
           "type": "faq_item",
+          "name": "Brands FAQ ",
           "settings": {
             "question": "Is it legally compliant?",
             "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it."
@@ -393,9 +397,42 @@
         },
         "faq_item_NUxTUM": {
           "type": "faq_item",
+          "name": "Brands FAQ ",
           "settings": {
             "question": "Why is the giveaway shared across brands?",
             "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved."
+          }
+        },
+        "faq_item_p93zta": {
+          "type": "faq_item",
+          "name": "Customers FAQ",
+          "settings": {
+            "question": "How many prizes are there?",
+            "answer": "For each giveaway period, there will be two monthly $10K winners and one $100K grand prize winner. Please see sharedsweeps.com/rules for giveaway periods."
+          }
+        },
+        "faq_item_dqUBzE": {
+          "type": "faq_item",
+          "name": "Customers FAQ",
+          "settings": {
+            "question": "When will a winner be announced?",
+            "answer": "The winner will be announced about 2 weeks after the giveaway period ends. For giveaway period dates, please reference sharedsweeps.com/rules."
+          }
+        },
+        "faq_item_UmVFd7": {
+          "type": "faq_item",
+          "name": "Customers FAQ",
+          "settings": {
+            "question": "How will I know if I've won?",
+            "answer": "We will contact the winner directly, via email and phone number, within 48 hours of the drawing. We will never ask for money to collect your prize."
+          }
+        },
+        "faq_item_kLK7Kf": {
+          "type": "faq_item",
+          "name": "Customers FAQ",
+          "settings": {
+            "question": "Can I request a brand to participate?",
+            "answer": "Absolutely! Please use the Talk to Our Team button at the top of the page. We'd love to hear from you!"
           }
         }
       },
@@ -404,7 +441,11 @@
         "faq_item_FYVNPV",
         "faq_item_FPMUKi",
         "faq_item_hg7rdN",
-        "faq_item_NUxTUM"
+        "faq_item_NUxTUM",
+        "faq_item_p93zta",
+        "faq_item_dqUBzE",
+        "faq_item_UmVFd7",
+        "faq_item_kLK7Kf"
       ],
       "name": "HIW — FAQ",
       "settings": {
