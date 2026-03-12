@@ -81,7 +81,6 @@
     border: 1px solid var(--cs-card-border);
   }
   .cs-btn {
-    display: tw-inline-flex;
     display: inline-flex;
     align-items: center;
     gap: .375rem;
@@ -89,6 +88,8 @@
     color: var(--cs-btn-text);
     font-weight: 600;
     border-radius: .5rem;
+    border: none;
+    cursor: pointer;
     transition: opacity .2s, transform .15s;
   }
   .cs-btn:hover  { opacity: .9; transform: translateY(-1px); }
@@ -102,6 +103,7 @@
     border: 1px solid var(--cs-btn-outline-bdr);
     font-weight: 600;
     border-radius: .5rem;
+    cursor: pointer;
     transition: background .2s;
   }
   .cs-btn-outline:hover { background: rgba(255,255,255,.1); }
@@ -111,8 +113,6 @@
   ══════════════════════════════════════════
   SVG icon render helper
   ══════════════════════════════════════════
-  Usage:  {%- render 'icon' is not available cross-section,
-           so we use capture + case inline. -%}
 {%- endcomment -%}
 
 {%- capture icon_trending_down -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>{%- endcapture -%}
@@ -213,15 +213,17 @@
             </p>
           {%- endif -%}
 
-          {%- if section.settings.hero_btn_text != blank and section.settings.hero_btn_url != blank -%}
-            <a
-              href="{{ section.settings.hero_btn_url }}"
+          {%- if section.settings.hero_btn_text != blank -%}
+            <button
+              type="button"
               class="cs-btn tw-px-6 tw-py-3 md:tw-px-8 md:tw-py-4"
               style="font-size: var(--cs-fs-body)"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
             >
               {{ section.settings.hero_btn_text }}
               {{ icon_arrow_right }}
-            </a>
+            </button>
           {%- endif -%}
         </div>
 
@@ -704,19 +706,21 @@
         {%- endif -%}
 
         <div class="tw-flex tw-flex-col tw-items-center tw-gap-3 sm:tw-flex-row sm:tw-justify-center sm:tw-gap-4">
-          {%- if section.settings.cta_btn_primary_text != blank and section.settings.cta_btn_primary_url != blank -%}
-            <a
-              href="{{ section.settings.cta_btn_primary_url }}"
+          {%- if section.settings.cta_btn_primary_text != blank -%}
+            <button
+              type="button"
               class="cs-btn tw-px-6 tw-py-3 md:tw-px-8 md:tw-py-4"
               style="font-size: var(--cs-fs-body)"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
             >
               {{ section.settings.cta_btn_primary_text }}
               {{ icon_arrow_right }}
-            </a>
+            </button>
           {%- endif -%}
 
           {%- if section.settings.cta_btn_secondary_text != blank and section.settings.cta_btn_secondary_url != blank -%}
-            <a
+          <a
               href="{{ section.settings.cta_btn_secondary_url }}"
               class="cs-btn-outline tw-px-5 tw-py-3 md:tw-px-6"
               style="font-size: var(--cs-fs-body); color: var(--cs-cta-text); border-color: {{ c_cta_text }}4D"
@@ -733,9 +737,9 @@
 
 {% schema %}
 {
-  "name": "Case Study Article",
+  "name": "Pair of Thieves",
   "tag": "section",
-  "class": "case-study-section",
+  "class": "case-study-pair-of-thieves-section",
   "settings": [
     {
       "type": "header",
@@ -927,11 +931,6 @@
       "default": "Run a Giveaway With Shared Sweeps"
     },
     {
-      "type": "url",
-      "id": "hero_btn_url",
-      "label": "Hero button URL"
-    },
-    {
       "type": "header",
       "content": "── §1 Hero Stat Card ──"
     },
@@ -1106,11 +1105,6 @@
       "default": "Apply to Run a Giveaway"
     },
     {
-      "type": "url",
-      "id": "cta_btn_primary_url",
-      "label": "Primary button URL"
-    },
-    {
       "type": "text",
       "id": "cta_btn_secondary_text",
       "label": "Secondary button text",
@@ -1246,7 +1240,7 @@
   ],
   "presets": [
     {
-      "name": "Case Study Article",
+      "name": "Pair of Thieves",
       "blocks": [
         {
           "type": "stat_card",
