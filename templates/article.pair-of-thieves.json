@@ -10,7 +10,7 @@
 {
   "sections": {
     "pair-of-thieves": {
-      "type": "article-pair-of-thieves",
+      "type": "case-study-template",
       "blocks": {
         "stat_1": {
           "type": "stat_card",

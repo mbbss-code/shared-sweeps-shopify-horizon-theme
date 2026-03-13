@@ -1,0 +1,1433 @@
+{% comment %}
+  ══════════════════════════════════════════════════════════
+  Section: article-case-study
+  ──────────────────────────────────────────────────────────
+  Full-page case-study template for Shopify blog articles.
+
+  • Semantic HTML5 (article, section, header, figure, blockquote)
+  • ADA / WCAG 2.1 AA (alt text, aria, roles, focus-visible, heading hierarchy)
+  • SEO (JSON-LD Article structured data, logical heading tree)
+  • Every element auto-hides when its schema value is blank
+  • All colours, font sizes, button labels schema-driven
+  • Per-section reverse/flip toggle for two-column layouts
+  • Uses 'tw-' Tailwind CSS prefix
+  ══════════════════════════════════════════════════════════
+{% endcomment %}
+
+{%- liquid
+  comment
+    ── Colour aliases ──
+  endcomment
+  assign c_primary         = section.settings.color_primary
+  assign c_heading         = section.settings.color_heading
+  assign c_body            = section.settings.color_body
+  assign c_muted           = section.settings.color_muted
+  assign c_bg              = section.settings.color_bg
+  assign c_bg_alt          = section.settings.color_bg_alt
+  assign c_card_bg         = section.settings.color_card_bg
+  assign c_card_border     = section.settings.color_card_border
+  assign c_cta_bg          = section.settings.color_cta_section_bg
+  assign c_cta_text        = section.settings.color_cta_section_text
+  assign c_btn_bg          = section.settings.color_btn_bg
+  assign c_btn_text        = section.settings.color_btn_text
+  assign c_btn_outline_bdr = section.settings.color_btn_outline_border
+  assign c_btn_outline_txt = section.settings.color_btn_outline_text
+
+  comment
+    ── Font-size aliases ──
+  endcomment
+  assign fs_hero_heading    = section.settings.fs_hero_heading
+  assign fs_section_heading = section.settings.fs_section_heading
+  assign fs_body            = section.settings.fs_body
+  assign fs_small           = section.settings.fs_small
+  assign fs_stat_value      = section.settings.fs_stat_value
+
+  comment
+    ── Reverse / flip order helpers ──
+    When reversed the first visual column moves right on md+.
+    We use CSS order utilities scoped to md breakpoint.
+  endcomment
+  if section.settings.hero_reverse
+    assign hero_order_a = 'cs-order-last-md'
+    assign hero_order_b = 'cs-order-first-md'
+  else
+    assign hero_order_a = ''
+    assign hero_order_b = ''
+  endif
+
+  if section.settings.about_reverse
+    assign about_order_a = 'cs-order-last-md'
+    assign about_order_b = 'cs-order-first-md'
+  else
+    assign about_order_a = ''
+    assign about_order_b = ''
+  endif
+
+  if section.settings.solution_reverse
+    assign solution_order_a = 'cs-order-last-md'
+    assign solution_order_b = 'cs-order-first-md'
+  else
+    assign solution_order_a = ''
+    assign solution_order_b = ''
+  endif
+
+  if section.settings.results_reverse
+    assign results_order_a = 'cs-order-last-md'
+    assign results_order_b = 'cs-order-first-md'
+  else
+    assign results_order_a = ''
+    assign results_order_b = ''
+  endif
+-%}
+
+{%- comment -%}── CSS custom properties ──{%- endcomment -%}
+{% style %}
+  #shopify-section-{{ section.id }} {
+    --cs-primary:          {{ c_primary }};
+    --cs-heading:          {{ c_heading }};
+    --cs-body:             {{ c_body }};
+    --cs-muted:            {{ c_muted }};
+    --cs-bg:               {{ c_bg }};
+    --cs-bg-alt:           {{ c_bg_alt }};
+    --cs-card-bg:          {{ c_card_bg }};
+    --cs-card-border:      {{ c_card_border }};
+    --cs-cta-bg:           {{ c_cta_bg }};
+    --cs-cta-text:         {{ c_cta_text }};
+    --cs-btn-bg:           {{ c_btn_bg }};
+    --cs-btn-text:         {{ c_btn_text }};
+    --cs-btn-outline-bdr:  {{ c_btn_outline_bdr }};
+    --cs-btn-outline-txt:  {{ c_btn_outline_txt }};
+    --cs-fs-hero:          {{ fs_hero_heading }}px;
+    --cs-fs-section:       {{ fs_section_heading }}px;
+    --cs-fs-body:          {{ fs_body }}px;
+    --cs-fs-small:         {{ fs_small }}px;
+    --cs-fs-stat:          {{ fs_stat_value }}px;
+  }
+  /* ── Base resets scoped to section ── */
+  .cs-wrap { color: var(--cs-body); background: var(--cs-bg); }
+  .cs-wrap *:focus-visible {
+    outline: 2px solid var(--cs-primary);
+    outline-offset: 2px;
+  }
+  .cs-heading   { color: var(--cs-heading); }
+  .cs-body      { color: var(--cs-body); }
+  .cs-muted     { color: var(--cs-muted); }
+  .cs-primary   { color: var(--cs-primary); }
+  .cs-bg-alt    { background: var(--cs-bg-alt); }
+  .cs-card {
+    background: var(--cs-card-bg);
+    border: 1px solid var(--cs-card-border);
+  }
+  .cs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+    background: var(--cs-btn-bg);
+    color: var(--cs-btn-text);
+    font-weight: 600;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity .2s, transform .15s;
+  }
+  .cs-btn:hover  { opacity: .9; transform: translateY(-1px); }
+  .cs-btn:active { transform: translateY(0); }
+  .cs-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: .375rem;
+    background: transparent;
+    color: var(--cs-btn-outline-txt);
+    border: 1px solid var(--cs-btn-outline-bdr);
+    font-weight: 600;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .cs-btn-outline:hover { background: rgba(255,255,255,.1); }
+
+  /* ── Reverse / flip order utilities (md+ only) ── */
+  @media (min-width: 768px) {
+    .cs-order-first-md { order: -1; }
+    .cs-order-last-md  { order: 99; }
+  }
+{% endstyle %}
+
+{%- comment -%}
+  ══════════════════════════════════════════
+  SVG icon render helper
+  ══════════════════════════════════════════
+{%- endcomment -%}
+
+{%- capture icon_trending_down -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>{%- endcapture -%}
+{%- capture icon_trending_up -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>{%- endcapture -%}
+{%- capture icon_repeat -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>{%- endcapture -%}
+{%- capture icon_bar_chart -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>{%- endcapture -%}
+{%- capture icon_package -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>{%- endcapture -%}
+{%- capture icon_users -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>{%- endcapture -%}
+{%- capture icon_sparkles -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>{%- endcapture -%}
+{%- capture icon_zap -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>{%- endcapture -%}
+{%- capture icon_quote -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3z"/></svg>{%- endcapture -%}
+{%- capture icon_arrow_right -%}<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>{%- endcapture -%}
+{%- capture icon_arrow_left -%}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>{%- endcapture -%}
+{%- capture icon_shield -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>{%- endcapture -%}
+{%- capture icon_target -%}<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>{%- endcapture -%}
+
+{%- comment -%}── Collect blocks by type ──{%- endcomment -%}
+{%- assign stat_blocks      = section.blocks | where: 'type', 'stat_card' -%}
+{%- assign challenge_blocks = section.blocks | where: 'type', 'challenge_card' -%}
+{%- assign solution_blocks  = section.blocks | where: 'type', 'solution_item' -%}
+{%- assign result_blocks    = section.blocks | where: 'type', 'result_card' -%}
+
+<article class="cs-wrap" aria-label="{{ section.settings.hero_title | default: article.title | escape }}">
+
+  {%- comment -%}── JSON-LD Structured Data ──{%- endcomment -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": {{ section.settings.hero_title | default: article.title | json }},
+      "description": {{ section.settings.hero_description | default: article.excerpt | strip_html | json }},
+      "author": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "logo": {
+          "@type": "ImageObject",
+          "url": {{ shop.brand.logo | image_url: width: 600 | prepend: 'https:' | json }}
+        }
+      },
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%S%z' | json }},
+      "mainEntityOfPage": {{ request.origin | append: article.url | json }}
+    }
+  </script>
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §1  HERO  (reversible)
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  <header class="tw-relative tw-overflow-hidden tw-px-4 tw-pb-16 tw-pt-20 md:tw-pb-24 md:tw-pt-28 lg:tw-pb-28 lg:tw-pt-32">
+    <div class="tw-mx-auto tw-max-w-7xl">
+
+      {%- if section.settings.back_link_text != blank and section.settings.back_link_url != blank -%}
+        <nav aria-label="Breadcrumb" class="tw-mb-8 md:tw-mb-10">
+          <a
+            href="{{ section.settings.back_link_url }}"
+            class="cs-muted tw-inline-flex tw-items-center tw-gap-1 tw-transition-colors hover:tw-opacity-80"
+            style="font-size: var(--cs-fs-small)"
+          >
+            {{ icon_arrow_left }}
+            {{ section.settings.back_link_text }}
+          </a>
+        </nav>
+      {%- endif -%}
+
+      <div class="tw-grid tw-items-center tw-gap-8 md:tw-gap-12 md:tw-grid-cols-5">
+        {%- comment -%}── Left: Copy (3 cols) ──{%- endcomment -%}
+        <div class="md:tw-col-span-3 {{ hero_order_a }}">
+          {%- if section.settings.hero_eyebrow != blank -%}
+            <p
+              class="cs-primary tw-mb-3 tw-font-semibold tw-uppercase tw-tracking-widest md:tw-mb-4"
+              style="font-size: var(--cs-fs-small)"
+            >
+              {{ section.settings.hero_eyebrow }}
+            </p>
+          {%- endif -%}
+
+          {%- if section.settings.hero_title != blank -%}
+            <h1
+              class="cs-heading tw-mb-4 tw-font-bold tw-leading-tight md:tw-mb-6"
+              style="font-size: clamp(1.75rem, 4vw, var(--cs-fs-hero))"
+            >
+              {{ section.settings.hero_title }}
+            </h1>
+          {%- endif -%}
+
+          {%- if section.settings.hero_description != blank -%}
+            <p
+              class="cs-muted tw-mb-6 tw-max-w-xl tw-leading-relaxed md:tw-mb-8"
+              style="font-size: var(--cs-fs-body)"
+            >
+              {{ section.settings.hero_description }}
+            </p>
+          {%- endif -%}
+
+          {%- if section.settings.hero_btn_text != blank -%}
+            <button
+              type="button"
+              class="cs-btn tw-px-6 tw-py-3 md:tw-px-8 md:tw-py-4"
+              style="font-size: var(--cs-fs-body)"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
+            >
+              {{ section.settings.hero_btn_text }}
+              {{ icon_arrow_right }}
+            </button>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%}── Right: Hero stat card (2 cols) ──{%- endcomment -%}
+        {%- if section.settings.stat_card_label != blank -%}
+          <div class="md:tw-col-span-2 {{ hero_order_b }}">
+            <div
+              class="cs-card tw-rounded-xl tw-p-6 tw-text-center tw-shadow-lg md:tw-p-8"
+              style="border-color: {{ c_primary }}33"
+            >
+              {%- if section.settings.stat_card_label != blank -%}
+                <p
+                  class="cs-muted tw-mb-1 tw-font-medium tw-uppercase tw-tracking-wider"
+                  style="font-size: var(--cs-fs-small)"
+                >
+                  {{ section.settings.stat_card_label }}
+                </p>
+              {%- endif -%}
+
+              <div class="tw-flex tw-items-center tw-justify-center tw-gap-3 tw-my-2">
+                {%- if section.settings.stat_card_before != blank -%}
+                  <span
+                    class="cs-muted tw-font-bold tw-line-through tw-opacity-50"
+                    style="font-size: var(--cs-fs-stat); text-decoration-color: #ef4444"
+                  >
+                    {{ section.settings.stat_card_before }}
+                  </span>
+                {%- endif -%}
+
+                {%- if section.settings.stat_card_before != blank and section.settings.stat_card_after != blank -%}
+                  <span class="cs-primary">{{ icon_arrow_right }}</span>
+                {%- endif -%}
+
+                {%- if section.settings.stat_card_after != blank -%}
+                  <span class="cs-primary tw-font-bold" style="font-size: var(--cs-fs-stat)">
+                    {{ section.settings.stat_card_after }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+              {%- if section.settings.stat_card_caption != blank -%}
+                <p class="cs-muted tw-mt-2" style="font-size: var(--cs-fs-small)">
+                  {{ section.settings.stat_card_caption }}
+                </p>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%}── Decorative blur ──{%- endcomment -%}
+    <div
+      class="tw-pointer-events-none tw-absolute -tw-top-40 tw-left-1/2 -tw-z-10 tw-h-96 tw-w-96 -tw-translate-x-1/2 tw-rounded-full tw-blur-3xl"
+      style="background: {{ c_primary }}0D"
+      aria-hidden="true"
+    ></div>
+  </header>
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §2  KEY RESULTS
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if stat_blocks.size > 0 -%}
+    <section
+      class="tw-border-y tw-py-12 md:tw-py-16 lg:tw-py-20"
+      style="border-color: {{ c_card_border }}80; background: {{ c_bg_alt }}"
+      aria-label="Key results"
+    >
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+        <div class="tw-grid tw-gap-4 sm:tw-grid-cols-2 lg:tw-grid-cols-{{ stat_blocks.size | at_most: 4 }} md:tw-gap-6">
+          {%- for block in stat_blocks -%}
+            <div class="cs-card tw-rounded-xl tw-p-5 tw-text-center md:tw-p-6" {{ block.shopify_attributes }}>
+              {%- assign blk_icon = block.settings.icon -%}
+              {%- if blk_icon != blank -%}
+                <div class="cs-primary tw-mx-auto tw-mb-3 tw-h-7 tw-w-7">
+                  {%- case blk_icon -%}
+                    {%- when 'trending_down' -%}{{ icon_trending_down }}
+                    {%- when 'trending_up' -%}{{ icon_trending_up }}
+                    {%- when 'repeat' -%}{{ icon_repeat }}
+                    {%- when 'bar_chart' -%}{{ icon_bar_chart }}
+                    {%- when 'package' -%}{{ icon_package }}
+                    {%- when 'users' -%}{{ icon_users }}
+                    {%- when 'sparkles' -%}{{ icon_sparkles }}
+                    {%- when 'zap' -%}{{ icon_zap }}
+                    {%- when 'shield' -%}{{ icon_shield }}
+                    {%- when 'target' -%}{{ icon_target }}
+                  {%- endcase -%}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.value != blank -%}
+                <p class="cs-heading tw-font-bold" style="font-size: var(--cs-fs-stat)">
+                  {{ block.settings.value }}
+                </p>
+              {%- endif -%}
+
+              {%- if block.settings.label != blank -%}
+                <p class="cs-muted tw-mt-2" style="font-size: var(--cs-fs-small)">
+                  {{ block.settings.label }}
+                </p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §3  ABOUT THE BRAND  (reversible)
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.about_heading != blank or section.settings.about_body_1 != blank -%}
+    <section class="tw-py-16 md:tw-py-20 lg:tw-py-28" aria-label="About the brand">
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+        <div class="tw-grid tw-items-center tw-gap-8 md:tw-gap-12 md:tw-grid-cols-2">
+          <div class="{{ about_order_a }}">
+            {%- if section.settings.about_heading != blank -%}
+              <h2
+                class="cs-heading tw-mb-4 tw-font-bold md:tw-mb-6"
+                style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+              >
+                {{ section.settings.about_heading }}
+              </h2>
+            {%- endif -%}
+
+            {%- if section.settings.about_body_1 != blank -%}
+              <p class="cs-muted tw-mb-4 tw-leading-relaxed" style="font-size: var(--cs-fs-body)">
+                {{ section.settings.about_body_1 }}
+              </p>
+            {%- endif -%}
+
+            {%- if section.settings.about_body_2 != blank -%}
+              <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-body)">
+                {{ section.settings.about_body_2 }}
+              </p>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.about_image != blank -%}
+            <figure class="tw-flex tw-items-center tw-justify-center {{ about_order_b }}">
+              {{
+                section.settings.about_image
+                | image_url: width: 800
+                | image_tag:
+                    class: 'tw-w-full tw-rounded-2xl tw-object-cover',
+                    loading: 'lazy',
+                    widths: '400,600,800',
+                    sizes: '(min-width: 768px) 50vw, 100vw',
+                    alt: section.settings.about_image_alt
+              }}
+            </figure>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §4  THE CHALLENGE
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.challenge_heading != blank or challenge_blocks.size > 0 -%}
+    <section
+      class="tw-py-16 md:tw-py-20 lg:tw-py-28"
+      style="background: var(--cs-bg-alt)"
+      aria-label="The challenge"
+    >
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+
+        {%- if section.settings.challenge_heading != blank or section.settings.challenge_description != blank -%}
+          <div class="tw-mx-auto tw-mb-10 tw-max-w-3xl tw-text-center md:tw-mb-12">
+            {%- if section.settings.challenge_heading != blank -%}
+              <h2
+                class="cs-heading tw-mb-3 tw-font-bold md:tw-mb-4"
+                style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+              >
+                {{ section.settings.challenge_heading }}
+              </h2>
+            {%- endif -%}
+
+            {%- if section.settings.challenge_description != blank -%}
+              <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-body)">
+                {{ section.settings.challenge_description }}
+              </p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if challenge_blocks.size > 0 -%}
+          <div class="tw-grid tw-gap-4 sm:tw-grid-cols-2 lg:tw-grid-cols-{{ challenge_blocks.size | at_most: 4 }} md:tw-gap-6">
+            {%- for block in challenge_blocks -%}
+              <div class="cs-card tw-rounded-xl tw-p-5 md:tw-p-6" {{ block.shopify_attributes }}>
+                {%- assign blk_icon = block.settings.icon -%}
+                {%- if blk_icon != blank -%}
+                  <div class="cs-primary tw-mb-3 tw-h-8 tw-w-8 md:tw-mb-4">
+                    {%- case blk_icon -%}
+                      {%- when 'trending_down' -%}{{ icon_trending_down }}
+                      {%- when 'trending_up' -%}{{ icon_trending_up }}
+                      {%- when 'repeat' -%}{{ icon_repeat }}
+                      {%- when 'bar_chart' -%}{{ icon_bar_chart }}
+                      {%- when 'package' -%}{{ icon_package }}
+                      {%- when 'users' -%}{{ icon_users }}
+                      {%- when 'sparkles' -%}{{ icon_sparkles }}
+                      {%- when 'zap' -%}{{ icon_zap }}
+                      {%- when 'shield' -%}{{ icon_shield }}
+                      {%- when 'target' -%}{{ icon_target }}
+                    {%- endcase -%}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.title != blank -%}
+                  <h3
+                    class="cs-heading tw-mb-2 tw-font-semibold"
+                    style="font-size: var(--cs-fs-body)"
+                  >
+                    {{ block.settings.title }}
+                  </h3>
+                {%- endif -%}
+
+                {%- if block.settings.body != blank -%}
+                  <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-small)">
+                    {{ block.settings.body }}
+                  </p>
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §5  THE SOLUTION  (reversible)
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.solution_heading != blank or solution_blocks.size > 0 -%}
+    <section class="tw-py-16 md:tw-py-20 lg:tw-py-28" aria-label="The solution">
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+        <div class="tw-grid tw-items-start tw-gap-8 md:tw-gap-12 md:tw-grid-cols-2">
+          <div class="{{ solution_order_a }}">
+            {%- if section.settings.solution_heading != blank -%}
+              <h2
+                class="cs-heading tw-mb-4 tw-font-bold md:tw-mb-6"
+                style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+              >
+                {{ section.settings.solution_heading }}
+              </h2>
+            {%- endif -%}
+
+            {%- if section.settings.solution_body != blank -%}
+              <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-body)">
+                {{ section.settings.solution_body }}
+              </p>
+            {%- endif -%}
+          </div>
+
+          {%- if solution_blocks.size > 0 -%}
+            <ul class="tw-space-y-3 md:tw-space-y-4 {{ solution_order_b }}" role="list">
+              {%- for block in solution_blocks -%}
+                {%- if block.settings.text != blank -%}
+                  <li
+                    class="tw-flex tw-items-start tw-gap-3"
+                    {{ block.shopify_attributes }}
+                  >
+                    <span class="cs-primary tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0">
+                      {{ icon_zap }}
+                    </span>
+                    <span class="cs-muted" style="font-size: var(--cs-fs-body)">
+                      {{ block.settings.text }}
+                    </span>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §6  THE RESULTS  (reversible)
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.results_heading != blank or result_blocks.size > 0 or section.settings.results_media != blank -%}
+    <section
+      class="tw-border-y tw-py-16 md:tw-py-20 lg:tw-py-28"
+      style="border-color: {{ c_card_border }}80; background: {{ c_bg_alt }}"
+      aria-label="The results"
+    >
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+        {%- if section.settings.results_heading != blank -%}
+          <h2
+            class="cs-heading tw-mb-10 tw-text-center tw-font-bold md:tw-mb-12"
+            style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+          >
+            {{ section.settings.results_heading }}
+          </h2>
+        {%- endif -%}
+
+        <div class="tw-mx-auto tw-grid tw-max-w-6xl tw-items-center tw-gap-8 md:tw-gap-10 md:tw-grid-cols-2">
+          {%- comment -%}── Media column ──{%- endcomment -%}
+          {%- if section.settings.results_media != blank -%}
+            <figure class="tw-mx-auto tw-w-full tw-max-w-sm md:tw-mx-0 {{ results_order_a }}">
+              {%- if section.settings.results_video_url != blank -%}
+                <div class="tw-relative tw-aspect-[9/16] tw-overflow-hidden tw-rounded-xl tw-shadow-lg">
+                  <video
+                    class="tw-h-full tw-w-full tw-object-cover"
+                    poster="{{ section.settings.results_media | image_url: width: 600 }}"
+                    controls
+                    preload="none"
+                    playsinline
+                    aria-label="{{ section.settings.results_media_alt | default: 'Case study video' | escape }}"
+                  >
+                    <source src="{{ section.settings.results_video_url }}" type="video/mp4">
+                  </video>
+                </div>
+              {%- else -%}
+                {{
+                  section.settings.results_media
+                  | image_url: width: 600
+                  | image_tag:
+                      class: 'tw-w-full tw-rounded-xl tw-shadow-lg tw-object-cover',
+                      loading: 'lazy',
+                      widths: '300,400,600',
+                      sizes: '(min-width: 768px) 384px, 100vw',
+                      alt: section.settings.results_media_alt
+                }}
+              {%- endif -%}
+            </figure>
+          {%- endif -%}
+
+          {%- comment -%}── Result cards column ──{%- endcomment -%}
+          {%- if result_blocks.size > 0 -%}
+            <div class="tw-space-y-4 md:tw-space-y-6 {{ results_order_b }}">
+              {%- for block in result_blocks -%}
+                <div
+                  class="cs-card tw-flex tw-items-start tw-gap-4 tw-rounded-xl tw-p-5 md:tw-gap-5 md:tw-p-6 lg:tw-p-8"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- assign blk_icon = block.settings.icon -%}
+                  {%- if blk_icon != blank -%}
+                    <span class="cs-primary tw-mt-0.5 tw-h-7 tw-w-7 tw-shrink-0">
+                      {%- case blk_icon -%}
+                        {%- when 'trending_down' -%}{{ icon_trending_down }}
+                        {%- when 'trending_up' -%}{{ icon_trending_up }}
+                        {%- when 'repeat' -%}{{ icon_repeat }}
+                        {%- when 'bar_chart' -%}{{ icon_bar_chart }}
+                        {%- when 'package' -%}{{ icon_package }}
+                        {%- when 'users' -%}{{ icon_users }}
+                        {%- when 'sparkles' -%}{{ icon_sparkles }}
+                        {%- when 'zap' -%}{{ icon_zap }}
+                        {%- when 'shield' -%}{{ icon_shield }}
+                        {%- when 'target' -%}{{ icon_target }}
+                      {%- endcase -%}
+                    </span>
+                  {%- endif -%}
+
+                  <div>
+                    {%- if block.settings.title != blank -%}
+                      <h3
+                        class="cs-heading tw-mb-1 tw-font-semibold"
+                        style="font-size: var(--cs-fs-body)"
+                      >
+                        {{ block.settings.title }}
+                      </h3>
+                    {%- endif -%}
+
+                    {%- if block.settings.body != blank -%}
+                      <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-small)">
+                        {{ block.settings.body }}
+                      </p>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §7  TESTIMONIAL
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.testimonial_quote != blank -%}
+    <section class="tw-py-16 md:tw-py-20 lg:tw-py-28" aria-label="Testimonial">
+      <div class="tw-mx-auto tw-max-w-3xl tw-px-4 tw-text-center">
+        <div class="cs-primary tw-mx-auto tw-mb-5 tw-h-10 tw-w-10 tw-opacity-30 md:tw-mb-6" aria-hidden="true">
+          {{ icon_quote }}
+        </div>
+
+        <blockquote>
+          <p
+            class="cs-heading tw-font-semibold tw-leading-relaxed"
+            style="font-size: clamp(1.125rem, 2.5vw, 1.5rem)"
+          >
+            "{{ section.settings.testimonial_quote }}"
+          </p>
+
+          {%- if section.settings.testimonial_attribution != blank -%}
+            <footer class="tw-mt-5 md:tw-mt-6">
+              <cite class="cs-muted tw-not-italic" style="font-size: var(--cs-fs-body)">
+                — {{ section.settings.testimonial_attribution }}
+              </cite>
+            </footer>
+          {%- endif -%}
+        </blockquote>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §8  WHY IT WORKED
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.why_heading != blank or section.settings.why_body != blank -%}
+    <section
+      class="tw-py-16 md:tw-py-20 lg:tw-py-28"
+      style="background: var(--cs-bg-alt)"
+      aria-label="Why it worked"
+    >
+      <div class="tw-mx-auto tw-max-w-3xl tw-px-4">
+        {%- if section.settings.why_heading != blank -%}
+          <h2
+            class="cs-heading tw-mb-4 tw-font-bold md:tw-mb-6"
+            style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+          >
+            {{ section.settings.why_heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if section.settings.why_body != blank -%}
+          <p class="cs-muted tw-leading-relaxed" style="font-size: var(--cs-fs-body)">
+            {{ section.settings.why_body }}
+          </p>
+        {%- endif -%}
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §9  FINAL CTA
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.cta_heading != blank -%}
+    <section
+      class="tw-py-16 md:tw-py-20 lg:tw-py-28"
+      style="background: var(--cs-cta-bg); color: var(--cs-cta-text)"
+      aria-label="Call to action"
+    >
+      <div class="tw-mx-auto tw-max-w-2xl tw-px-4 tw-text-center">
+        <h2
+          class="tw-mb-3 tw-font-bold tw-leading-tight md:tw-mb-4"
+          style="font-size: clamp(1.5rem, 3.5vw, var(--cs-fs-hero)); color: var(--cs-cta-text)"
+        >
+          {{ section.settings.cta_heading }}
+        </h2>
+
+        {%- if section.settings.cta_description != blank -%}
+          <p
+            class="tw-mx-auto tw-mb-6 tw-max-w-lg tw-leading-relaxed tw-opacity-70 md:tw-mb-8"
+            style="font-size: var(--cs-fs-body)"
+          >
+            {{ section.settings.cta_description }}
+          </p>
+        {%- endif -%}
+
+        <div class="tw-flex tw-flex-col tw-items-center tw-gap-3 sm:tw-flex-row sm:tw-justify-center sm:tw-gap-4">
+          {%- if section.settings.cta_btn_primary_text != blank -%}
+            <button
+              type="button"
+              class="cs-btn tw-px-6 tw-py-3 md:tw-px-8 md:tw-py-4"
+              style="font-size: var(--cs-fs-body)"
+              data-contact-modal-trigger
+              aria-haspopup="dialog"
+            >
+              {{ section.settings.cta_btn_primary_text }}
+              {{ icon_arrow_right }}
+            </button>
+          {%- endif -%}
+
+          {%- if section.settings.cta_btn_secondary_text != blank and section.settings.cta_btn_secondary_url != blank -%}
+            <a
+              href="{{ section.settings.cta_btn_secondary_url }}"
+              class="cs-btn-outline tw-px-5 tw-py-3 md:tw-px-6"
+              style="font-size: var(--cs-fs-body); color: var(--cs-cta-text); border-color: {{ c_cta_text }}4D"
+            >
+              {{ section.settings.cta_btn_secondary_text }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+</article>
+
+{% schema %}
+{
+  "name": "Case Study Article",
+  "tag": "section",
+  "class": "case-study-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "── Global Colours ──"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary / accent colour",
+      "default": "#6366f1"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading text colour",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "color_body",
+      "label": "Body text colour",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "color_muted",
+      "label": "Muted / secondary text colour",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Page background colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_alt",
+      "label": "Alternate section background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_card_border",
+      "label": "Card border colour",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "header",
+      "content": "── Button Colours ──"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_bg",
+      "label": "Primary button background",
+      "default": "#6366f1"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Primary button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_outline_border",
+      "label": "Outline button border",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_outline_text",
+      "label": "Outline button text",
+      "default": "#374151"
+    },
+    {
+      "type": "header",
+      "content": "── CTA Section Colours ──"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_section_bg",
+      "label": "CTA section background",
+      "default": "#1e1b4b"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_section_text",
+      "label": "CTA section text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "── Font Sizes (px) ──"
+    },
+    {
+      "type": "range",
+      "id": "fs_hero_heading",
+      "label": "Hero heading max size",
+      "min": 28,
+      "max": 64,
+      "step": 2,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fs_section_heading",
+      "label": "Section heading max size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fs_body",
+      "label": "Body text size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fs_small",
+      "label": "Small / caption text size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fs_stat_value",
+      "label": "Stat value size",
+      "min": 24,
+      "max": 56,
+      "step": 2,
+      "default": 36,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "── §1 Hero ──"
+    },
+    {
+      "type": "checkbox",
+      "id": "hero_reverse",
+      "label": "Reverse hero layout",
+      "default": false,
+      "info": "Swap stat card to left, copy to right on desktop."
+    },
+    {
+      "type": "text",
+      "id": "back_link_text",
+      "label": "Back link text",
+      "default": "Back to Case Studies"
+    },
+    {
+      "type": "url",
+      "id": "back_link_url",
+      "label": "Back link URL"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Eyebrow text",
+      "default": "Case Study — Pair of Thieves"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_title",
+      "label": "Headline",
+      "default": "How Pair of Thieves Reduced Discounts, Increased Sales, and Re‑Engaged Customers with Shared Sweeps"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Sub-headline",
+      "default": "Pair of Thieves used a Shared Sweeps $100K giveaway to move inventory, reduce discount dependence, and create a meaningful brand activation moment — without sacrificing margins."
+    },
+    {
+      "type": "text",
+      "id": "hero_btn_text",
+      "label": "Hero button text",
+      "default": "Run a Giveaway With Shared Sweeps"
+    },
+    {
+      "type": "header",
+      "content": "── §1 Hero Stat Card ──"
+    },
+    {
+      "type": "text",
+      "id": "stat_card_label",
+      "label": "Stat card label",
+      "default": "Blended Discount Rate"
+    },
+    {
+      "type": "text",
+      "id": "stat_card_before",
+      "label": "Before value",
+      "default": "47%"
+    },
+    {
+      "type": "text",
+      "id": "stat_card_after",
+      "label": "After value",
+      "default": "23%"
+    },
+    {
+      "type": "text",
+      "id": "stat_card_caption",
+      "label": "Stat card caption",
+      "default": "Reduction in blended discount rate"
+    },
+    {
+      "type": "header",
+      "content": "── §3 About the Brand ──"
+    },
+    {
+      "type": "checkbox",
+      "id": "about_reverse",
+      "label": "Reverse about layout",
+      "default": false,
+      "info": "Swap image to left, text to right on desktop."
+    },
+    {
+      "type": "text",
+      "id": "about_heading",
+      "label": "Heading",
+      "default": "About Pair of Thieves"
+    },
+    {
+      "type": "textarea",
+      "id": "about_body_1",
+      "label": "Paragraph 1",
+      "default": "Pair of Thieves is an apparel brand known for comfortable men's basics and a bold design approach. Founded in 2013, the company has built a loyal following by balancing style, comfort, and value."
+    },
+    {
+      "type": "textarea",
+      "id": "about_body_2",
+      "label": "Paragraph 2",
+      "default": "Like many apparel brands, Pair of Thieves needed a way to move inventory, protect margins, and re‑engage customers without leaning harder on discounting."
+    },
+    {
+      "type": "image_picker",
+      "id": "about_image",
+      "label": "Brand image"
+    },
+    {
+      "type": "text",
+      "id": "about_image_alt",
+      "label": "Brand image alt text",
+      "default": "Pair of Thieves products"
+    },
+    {
+      "type": "header",
+      "content": "── §4 The Challenge ──"
+    },
+    {
+      "type": "text",
+      "id": "challenge_heading",
+      "label": "Heading",
+      "default": "The Challenge"
+    },
+    {
+      "type": "textarea",
+      "id": "challenge_description",
+      "label": "Description",
+      "default": "Before partnering with Shared Sweeps, Pair of Thieves was facing several familiar ecommerce challenges."
+    },
+    {
+      "type": "header",
+      "content": "── §5 The Solution ──"
+    },
+    {
+      "type": "checkbox",
+      "id": "solution_reverse",
+      "label": "Reverse solution layout",
+      "default": false,
+      "info": "Swap checklist to left, description to right on desktop."
+    },
+    {
+      "type": "text",
+      "id": "solution_heading",
+      "label": "Heading",
+      "default": "The Shared Sweeps Solution"
+    },
+    {
+      "type": "textarea",
+      "id": "solution_body",
+      "label": "Description",
+      "default": "Pair of Thieves partnered with Shared Sweeps to run a $100K giveaway as a strategic alternative to a traditional promotion. Instead of relying on deep discounts, the campaign used a high‑perceived‑value incentive to drive urgency, increase engagement, and support sales goals."
+    },
+    {
+      "type": "header",
+      "content": "── §6 The Results ──"
+    },
+    {
+      "type": "checkbox",
+      "id": "results_reverse",
+      "label": "Reverse results layout",
+      "default": false,
+      "info": "Swap result cards to left, media to right on desktop."
+    },
+    {
+      "type": "text",
+      "id": "results_heading",
+      "label": "Heading",
+      "default": "The Results"
+    },
+    {
+      "type": "image_picker",
+      "id": "results_media",
+      "label": "Results image or video poster"
+    },
+    {
+      "type": "text",
+      "id": "results_media_alt",
+      "label": "Media alt text",
+      "default": "Pair of Thieves campaign"
+    },
+    {
+      "type": "text",
+      "id": "results_video_url",
+      "label": "Video URL (mp4, optional)",
+      "info": "Leave blank to display the image as a static figure."
+    },
+    {
+      "type": "header",
+      "content": "── §7 Testimonial ──"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_quote",
+      "label": "Quote",
+      "default": "What started as a sweepstakes became a breakthrough moment, helping us clear slow‑moving inventory, strengthen our brand position, and re‑ignite relationships with customers we hadn't reached in years."
+    },
+    {
+      "type": "text",
+      "id": "testimonial_attribution",
+      "label": "Attribution",
+      "default": "Timothy P., Pair of Thieves"
+    },
+    {
+      "type": "header",
+      "content": "── §8 Why It Worked ──"
+    },
+    {
+      "type": "text",
+      "id": "why_heading",
+      "label": "Heading",
+      "default": "Why It Worked"
+    },
+    {
+      "type": "textarea",
+      "id": "why_body",
+      "label": "Body",
+      "default": "For Pair of Thieves, Shared Sweeps delivered more than a short‑term promotional lift. It gave the brand a way to reduce discount reliance, move inventory more strategically, re‑engage past customers, and create a meaningful activation moment — without sacrificing brand value."
+    },
+    {
+      "type": "header",
+      "content": "── §9 Final CTA ──"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "Heading",
+      "default": "Want Results Like This for Your Brand?"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_description",
+      "label": "Description",
+      "default": "Shared Sweeps helps Shopify brands run high‑impact giveaways that drive revenue, grow engagement, and reduce reliance on discounting."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_primary_text",
+      "label": "Primary button text",
+      "default": "Apply to Run a Giveaway"
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_secondary_text",
+      "label": "Secondary button text",
+      "default": "See More Case Studies"
+    },
+    {
+      "type": "url",
+      "id": "cta_btn_secondary_url",
+      "label": "Secondary button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_card",
+      "name": "Key Result Stat",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "trending_up",
+          "options": [
+            { "value": "trending_down", "label": "Trending Down" },
+            { "value": "trending_up", "label": "Trending Up" },
+            { "value": "repeat", "label": "Repeat" },
+            { "value": "bar_chart", "label": "Bar Chart" },
+            { "value": "package", "label": "Package" },
+            { "value": "users", "label": "Users" },
+            { "value": "sparkles", "label": "Sparkles" },
+            { "value": "zap", "label": "Zap" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "target", "label": "Target" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Stat value",
+          "default": "+18%"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Stat label",
+          "default": "Increase in gross sales"
+        }
+      ]
+    },
+    {
+      "type": "challenge_card",
+      "name": "Challenge Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "trending_down",
+          "options": [
+            { "value": "trending_down", "label": "Trending Down" },
+            { "value": "trending_up", "label": "Trending Up" },
+            { "value": "repeat", "label": "Repeat" },
+            { "value": "bar_chart", "label": "Bar Chart" },
+            { "value": "package", "label": "Package" },
+            { "value": "users", "label": "Users" },
+            { "value": "sparkles", "label": "Sparkles" },
+            { "value": "zap", "label": "Zap" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "target", "label": "Target" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Challenge title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Challenge description goes here."
+        }
+      ]
+    },
+    {
+      "type": "solution_item",
+      "name": "Solution Checklist Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Item text",
+          "default": "Solution benefit goes here"
+        }
+      ]
+    },
+    {
+      "type": "result_card",
+      "name": "Result Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "trending_up",
+          "options": [
+            { "value": "trending_down", "label": "Trending Down" },
+            { "value": "trending_up", "label": "Trending Up" },
+            { "value": "repeat", "label": "Repeat" },
+            { "value": "bar_chart", "label": "Bar Chart" },
+            { "value": "package", "label": "Package" },
+            { "value": "users", "label": "Users" },
+            { "value": "sparkles", "label": "Sparkles" },
+            { "value": "zap", "label": "Zap" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "target", "label": "Target" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Result title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Description",
+          "default": "Result description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Case Study Article",
+      "blocks": [
+        {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_down",
+            "value": "47% → 23%",
+            "label": "Reduction in blended discount rate"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_up",
+            "value": "+18%",
+            "label": "Increase in gross sales during the sweepstakes period"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "icon": "repeat",
+            "value": "Higher",
+            "label": "Repeat purchase rate compared to previous years"
+          }
+        },
+        {
+          "type": "stat_card",
+          "settings": {
+            "icon": "bar_chart",
+            "value": "Up",
+            "label": "Orders & conversion despite flat sessions YoY"
+          }
+        },
+        {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Heavy Discount Dependence",
+            "body": "The prior year's blended discount rate reached 47%, putting pressure on margins and customer behavior."
+          }
+        },
+        {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "package",
+            "title": "Slow‑Moving Inventory",
+            "body": "Seasonal lines needed to move, but markdown‑heavy strategies risked hurting brand value."
+          }
+        },
+        {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "users",
+            "title": "Dormant Customers",
+            "body": "The brand wanted to re‑engage customers whose lifetime value had plateaued."
+          }
+        },
+        {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "sparkles",
+            "title": "Need for a Bigger Brand Moment",
+            "body": "Traditional activations often require major upfront investment and don't always create sustained momentum."
+          }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Create urgency around slower‑moving inventory" }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Incentivize purchases without deep discounting" }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Re‑activate dormant customers" }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Increase repeat purchases" }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Drive stronger interaction across channels" }
+        },
+        {
+          "type": "solution_item",
+          "settings": { "text": "Create a memorable brand activation moment without major sunk costs" }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Reduced Discount Rate by Half",
+            "body": "Blended discount rate dropped from 47% to 23%, protecting margins while still driving action."
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_up",
+            "title": "+18% Gross Sales",
+            "body": "Sales increased 18% during the sweepstakes period with flat year-over-year traffic."
+          }
+        },
+        {
+          "type": "result_card",
+          "settings": {
+            "icon": "repeat",
+            "title": "Higher Repeat Purchase Rate",
+            "body": "Re-engaged dormant customers drove stronger repeat purchase behavior compared to prior years."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
