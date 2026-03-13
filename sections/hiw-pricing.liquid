@@ -1,0 +1,116 @@
+{% comment %}
+  How It Works — Pricing Preview
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color = section.settings.primary_color | default: '#9333ea'
+-%}
+
+<style>
+  .hiw-pricing-{{ section.id }} .hiw-pricing-card {
+    border-color: {{ primary_color }}4D;
+    background-color: {{ primary_color }}0D;
+  }
+  .hiw-pricing-{{ section.id }} .hiw-primary-highlight { color: {{ primary_color }}; }
+</style>
+
+<div class="hiw-pricing-{{ section.id }}" {{ section.shopify_attributes }}>
+  <section
+    class="tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-pricing-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-3xl tw-text-center">
+
+        <h2 id="hiw-pricing-{{ section.id }}" class="tw-mb-6 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.pricing_title | default: 'No Upfront Costs. Simple, Capped Fees.' }}
+        </h2>
+
+        <p class="tw-mb-4 tw-text-lg tw-text-gray-600">
+          {{ section.settings.pricing_description | default: 'Shared Sweeps charges a small percentage of revenue generated during the sweepstakes.' }}
+        </p>
+
+        <p class="tw-mb-10 tw-text-lg tw-text-gray-600">
+          {{ section.settings.pricing_description_2 | default: 'Fees are capped, so once you hit the cap, you never pay more — no matter how much you sell.' }}
+        </p>
+
+        <div class="hiw-pricing-card tw-rounded-xl tw-border tw-p-6 md:tw-p-8">
+          <p class="tw-text-lg tw-font-medium tw-text-gray-800 tw-text-left">
+            <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_brand | default: 'Fresh Chile Co' }}</span> saved <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_savings | default: '$175,000' }}</span> on ads and paid only <span class="hiw-primary-highlight tw-font-bold">{{ section.settings.case_study_fees | default: '$22,093' }}</span> in fees.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "HIW — Pricing",
+  "class": "hiw-pricing",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Accent color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "pricing_title",
+      "label": "Section title",
+      "default": "No Upfront Costs. Simple, Capped Fees."
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_description",
+      "label": "Description",
+      "default": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes."
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_description_2",
+      "label": "Secondary description",
+      "default": "Fees are capped, so once you hit the cap, you never pay more — no matter how much you sell."
+    },
+    {
+      "type": "header",
+      "content": "Case Study"
+    },
+    {
+      "type": "text",
+      "id": "case_study_brand",
+      "label": "Brand name",
+      "default": "Fresh Chile Co"
+    },
+    {
+      "type": "text",
+      "id": "case_study_savings",
+      "label": "Ad savings",
+      "default": "$175,000"
+    },
+    {
+      "type": "text",
+      "id": "case_study_fees",
+      "label": "Fees paid",
+      "default": "$22,093"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — Pricing",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

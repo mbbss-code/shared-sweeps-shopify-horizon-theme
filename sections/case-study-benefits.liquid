@@ -1,0 +1,233 @@
+{% comment %}
+  Benefits Section - Why Brands Choose Us
+  - Responsive design
+  - ADA Compliant
+  - SEO Optimized
+  - Fully Customizable
+{% endcomment %}
+
+<section 
+  class="tw-py-20 md:tw-py-28"
+  style="background-color: {{ section.settings.background_color }};"
+  aria-labelledby="benefits-section-heading"
+>
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+      <h2 
+        id="benefits-section-heading"
+        class="tw-mb-12 tw-text-3xl tw-font-bold tw-tracking-tight md:tw-text-4xl"
+        style="color: {{ section.settings.heading_color }};"
+      >
+        {{ section.settings.heading }}
+      </h2>
+      
+      <ul 
+        class="tw-mx-auto tw-max-w-md tw-space-y-4 tw-text-left"
+        role="list"
+        aria-label="Benefits list"
+      >
+        {% for block in section.blocks %}
+          {% if block.type == 'benefit' %}
+            <li 
+              class="tw-flex tw-items-center tw-gap-3"
+              {{ block.shopify_attributes }}
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                class="tw-h-5 tw-w-5 tw-shrink-0"
+                style="color: {{ section.settings.icon_color }};"
+                aria-hidden="true"
+                role="img"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span 
+                class="tw-text-lg"
+                style="color: {{ section.settings.text_color }};"
+              >
+                {{ block.settings.benefit_text }}
+              </span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      {% if section.settings.show_cta and section.settings.cta_url != blank %}
+        <div class="tw-mt-10">
+          <a 
+            href="{{ section.settings.cta_url }}"
+            class="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-md tw-px-6 tw-py-3 tw-text-base tw-font-medium tw-transition-colors focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2"
+            style="background-color: {{ section.settings.cta_background }}; color: {{ section.settings.cta_text_color }};"
+          >
+            {{ section.settings.cta_text | default: 'Learn More' }}
+            {% if section.settings.show_cta_arrow %}
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="16" 
+                height="16" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="tw-h-4 tw-w-4"
+              >
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits List",
+  "tag": "section",
+  "class": "benefits-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Brands Choose Shared Sweeps"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Check Icon Color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Button",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Learn More"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta_arrow",
+      "label": "Show Arrow Icon",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "cta_background",
+      "label": "CTA Background Color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "CTA Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "benefit_text",
+          "label": "Benefit Text",
+          "default": "Enter your benefit here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits List",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "No upfront prize costs"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Fully managed legal compliance"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Seamless Shopify integration"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Revenue-first growth, not discounts"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "benefit_text": "Capped fees with unlimited upside"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

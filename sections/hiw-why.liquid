@@ -1,0 +1,115 @@
+{% comment %}
+  How It Works — Why It Works (Navy Comparison)
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color      = section.settings.primary_color      | default: '#9333ea'
+  assign navy_bg_color      = section.settings.navy_bg_color      | default: '#0a1128'
+  assign comparison_blocks  = section.blocks | where: 'type', 'comparison_item'
+-%}
+
+<style>
+  .hiw-why-{{ section.id }} .hiw-navy-bg        { background-color: {{ navy_bg_color }}; }
+  .hiw-why-{{ section.id }} .hiw-solution-icon  { color: {{ primary_color }}; }
+</style>
+
+<div class="hiw-why-{{ section.id }}" {{ section.shopify_attributes }}>
+  {% if comparison_blocks.size > 0 %}
+  <section
+    class="hiw-navy-bg tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-why-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-4xl">
+        <div class="tw-mx-auto tw-mb-12 tw-max-w-2xl tw-text-center">
+          <h2 id="hiw-why-{{ section.id }}" class="tw-text-3xl tw-font-bold tw-text-white md:tw-text-4xl">
+            {{ section.settings.why_title | default: 'A Smarter Alternative to Ads and Discounts' }}
+          </h2>
+        </div>
+
+        <ul class="tw-mx-auto tw-max-w-2xl tw-space-y-4">
+          {% for block in comparison_blocks %}
+            <li {{ block.shopify_attributes }} class="tw-flex tw-items-start tw-gap-4 tw-text-lg">
+              {% if block.settings.item_type == 'problem' %}
+                <svg class="tw-mt-1 tw-h-6 tw-w-6 tw-shrink-0 tw-text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              {% else %}
+                <svg class="hiw-solution-icon tw-mt-1 tw-h-6 tw-w-6 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 003.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152z"/>
+                </svg>
+              {% endif %}
+              <span class="tw-text-white">{{ block.settings.text }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "HIW — Why It Works",
+  "class": "hiw-why",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Solution icon color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "navy_bg_color",
+      "label": "Section background",
+      "default": "#0a1128"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "why_title",
+      "label": "Section title",
+      "default": "A Smarter Alternative to Ads and Discounts"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_item",
+      "name": "Comparison Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "item_type",
+          "label": "Type",
+          "options": [
+            { "value": "problem",  "label": "✗ Problem" },
+            { "value": "solution", "label": "✓ Solution" }
+          ],
+          "default": "problem"
+        },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — Why It Works",
+      "blocks": [
+        { "type": "comparison_item", "settings": { "item_type": "problem",  "text": "Ads are expensive and unpredictable" } },
+        { "type": "comparison_item", "settings": { "item_type": "problem",  "text": "Discounts erode margins and train customers to wait" } },
+        { "type": "comparison_item", "settings": { "item_type": "solution", "text": "Sweepstakes create urgency, excitement, and loyalty without sacrificing profit" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

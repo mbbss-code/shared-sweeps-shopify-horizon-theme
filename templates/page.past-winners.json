@@ -1,0 +1,210 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "past_winners_hero_9ETYWd": {
+      "type": "past-winners-hero",
+      "name": "Past Winners Hero",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "description_color": "#4b5563",
+        "btn_bg": "#3099d3",
+        "btn_text": "#ffffff",
+        "btn_border": "#3099d3",
+        "btn_hover_bg": "#2780b3",
+        "btn_hover_text": "#ffffff",
+        "btn_hover_border": "#2780b3",
+        "show_decoration": true,
+        "decoration_color": "#3099d3",
+        "heading": "Real People. Real Winners.",
+        "description": "Shared Sweeps awards real cash prizes to real shoppers — funded by participating brands.",
+        "show_cta": true,
+        "cta_text": "Shop Participating Brands to Enter",
+        "cta_link": "shopify://pages/participating-brands"
+      }
+    },
+    "past_winners_grid_AQEXeA": {
+      "type": "past-winners-grid",
+      "blocks": {
+        "winner_tybHyf": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-10_at_2.18.34_PM.png",
+            "name": "Brandon B.",
+            "city": "Tampa",
+            "state": "FL",
+            "brand": "Emoto Supply Co.",
+            "prize": "$10,000"
+          }
+        },
+        "winner_hiKpgg": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/jason.png",
+            "name": "Jason H.",
+            "city": "Marshall",
+            "state": "MO",
+            "brand": "Synister Speed",
+            "prize": "$10,000"
+          }
+        },
+        "winner_cdDcBy": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/kaitlin.jpg",
+            "name": "Kaitlin M.",
+            "city": "Montague",
+            "state": "NJ",
+            "brand": "Cirkul",
+            "prize": "$100,000"
+          }
+        },
+        "winner_VypGpP": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/dre-c.png",
+            "name": "Dre C.",
+            "city": "Bozeman",
+            "state": "MT",
+            "brand": "Caraway Home",
+            "prize": "$100,000"
+          }
+        },
+        "winner_W9xUQU": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/shannon-r.png",
+            "name": "Shannon R.",
+            "city": "Austin",
+            "state": "TX",
+            "brand": "Cariloha",
+            "prize": "$100,000"
+          }
+        },
+        "winner_JHdLde": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/morty-t.jpg",
+            "name": "Morty T.",
+            "city": "Miami",
+            "state": "FL",
+            "brand": "",
+            "prize": "$100,000"
+          }
+        },
+        "winner_Y6pzKz": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/laura-c.jpg",
+            "name": "Laura C.",
+            "city": "Portland",
+            "state": "OR",
+            "brand": "",
+            "prize": "$100,000"
+          }
+        },
+        "winner_pWMzz3": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/MiguelQ-CmW5lG_G.jpg",
+            "name": "Miguel Q.",
+            "city": "Chicago",
+            "state": "IL",
+            "brand": "",
+            "prize": "$100,000"
+          }
+        },
+        "winner_3pmi8f": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/JesseT-B4eknULA.jpg",
+            "name": "Jesse T.",
+            "city": "Nashville",
+            "state": "TN",
+            "brand": "",
+            "prize": "$100,000"
+          }
+        }
+      },
+      "block_order": [
+        "winner_tybHyf",
+        "winner_hiKpgg",
+        "winner_cdDcBy",
+        "winner_VypGpP",
+        "winner_W9xUQU",
+        "winner_JHdLde",
+        "winner_Y6pzKz",
+        "winner_pWMzz3",
+        "winner_3pmi8f"
+      ],
+      "name": "Past Winners Grid",
+      "settings": {
+        "bg_color": "#f3f4f6",
+        "border_color": "#e5e7eb",
+        "card_bg": "#ffffff",
+        "card_border": "#e5e7eb",
+        "name_color": "#111827",
+        "meta_color": "#4b5563",
+        "icon_color": "#9ca3af",
+        "brand_color": "#111827",
+        "placeholder_bg": "#f3f4f6",
+        "placeholder_text": "#9ca3af",
+        "accent_color": "#3099d3",
+        "prize_badge_bg": "#3099d3",
+        "prize_badge_text": "#ffffff",
+        "btn_bg": "#ffffff",
+        "btn_text": "#374151",
+        "btn_border": "#d1d5db",
+        "btn_hover_bg": "#333333",
+        "btn_hover_text": "#ffffff",
+        "btn_hover_border": "#9ca3af",
+        "initial_winner_count": 6,
+        "show_more_text": "Show all winners",
+        "show_less_text": "Show fewer"
+      }
+    },
+    "past_winners_trust_h8PBw7": {
+      "type": "past-winners-trust",
+      "name": "Past Winners Trust Callout",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading_color": "#000000",
+        "text_color": "#4b5563",
+        "heading": "One Shared Sweepstakes. One Life-Changing Prize.",
+        "description": "All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign."
+      }
+    },
+    "past_winners_cta_irjC7c": {
+      "type": "past-winners-cta",
+      "name": "Past Winners CTA",
+      "settings": {
+        "bg_color": "#1e3a5f",
+        "heading_color": "#ffffff",
+        "btn_bg": "#3099d3",
+        "btn_text": "#ffffff",
+        "btn_border": "#3099d3",
+        "btn_hover_bg": "#2780b3",
+        "btn_hover_text": "#ffffff",
+        "btn_hover_border": "#2780b3",
+        "heading": "Ready to Earn Your Entries?",
+        "show_cta": true,
+        "cta_text": "Shop Participating Brands",
+        "cta_link": "shopify://pages/participating-brands"
+      }
+    }
+  },
+  "order": [
+    "past_winners_hero_9ETYWd",
+    "past_winners_grid_AQEXeA",
+    "past_winners_trust_h8PBw7",
+    "past_winners_cta_irjC7c"
+  ]
+}

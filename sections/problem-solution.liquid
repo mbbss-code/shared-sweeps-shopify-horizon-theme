@@ -1,0 +1,151 @@
+{% comment %}
+  Problem to Solution section with audience toggle support
+  SEO optimized, ADA compliant, responsive
+{% endcomment %}
+
+{%- liquid
+  assign bg_color = section.settings.bg_color | default: '#f9fafb'
+-%}
+
+<style>
+  .problem-solution-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+</style>
+
+<section class="problem-solution-{{ section.id }} tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28" role="region" aria-labelledby="problem-solution-heading">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-4xl">
+      <h2 id="problem-solution-heading" class="tw-sr-only">Problem and Solution</h2>
+      
+      <div class="tw-grid tw-gap-8 lg:tw-grid-cols-2 lg:tw-gap-12">
+        {%- comment -%} Problem {%- endcomment -%}
+        <article class="tw-text-center lg:tw-text-left">
+          <div class="tw-mb-4 tw-inline-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-bg-red-100" aria-hidden="true">
+            <svg class="tw-h-6 tw-w-6 tw-text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </div>
+          
+          <h3 class="tw-mb-4 tw-text-2xl tw-font-bold tw-text-gray-900">
+            <span data-brands-content>{{ section.settings.brands_problem_heading | default: 'Growing an Online Brand Has Gotten Harder' }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_problem_heading | default: 'Everyday Shopping' }}</span>
+          </h3>
+          
+          <p class="tw-text-gray-600">
+            <span data-brands-content>{{ section.settings.brands_problem_description }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_problem_description }}</span>
+          </p>
+        </article>
+
+        {%- comment -%} Solution {%- endcomment -%}
+        <article class="tw-text-center lg:tw-text-left">
+          <div class="tw-mb-4 tw-inline-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-full tw-bg-green-100" aria-hidden="true">
+            <svg class="tw-h-6 tw-w-6 tw-text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="tw-mb-4 tw-text-2xl tw-font-bold tw-text-gray-900">
+            <span data-brands-content>{{ section.settings.brands_solution_heading | default: 'A Smarter Way for Everyone to Win' }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_solution_heading | default: 'Shopping With a Chance to Win' }}</span>
+          </h3>
+          
+          <p class="tw-text-gray-600">
+            <span data-brands-content>{{ section.settings.brands_solution_description }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_solution_description }}</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem Solution",
+  "class": "problem-solution-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "header",
+      "content": "Brands Content - Problem"
+    },
+    {
+      "type": "text",
+      "id": "brands_problem_heading",
+      "label": "Problem heading",
+      "default": "Growing an Online Brand Has Gotten Harder"
+    },
+    {
+      "type": "textarea",
+      "id": "brands_problem_description",
+      "label": "Problem description",
+      "default": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards."
+    },
+    {
+      "type": "header",
+      "content": "Brands Content - Solution"
+    },
+    {
+      "type": "text",
+      "id": "brands_solution_heading",
+      "label": "Solution heading",
+      "default": "A Smarter Way for Everyone to Win"
+    },
+    {
+      "type": "textarea",
+      "id": "brands_solution_description",
+      "label": "Solution description",
+      "default": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win."
+    },
+    {
+      "type": "header",
+      "content": "Customers Content - Problem"
+    },
+    {
+      "type": "text",
+      "id": "customers_problem_heading",
+      "label": "Problem heading",
+      "default": "Everyday Shopping"
+    },
+    {
+      "type": "textarea",
+      "id": "customers_problem_description",
+      "label": "Problem description",
+      "default": "Shopping your favorite brands is already rewarding — great products, great experiences."
+    },
+    {
+      "type": "header",
+      "content": "Customers Content - Solution"
+    },
+    {
+      "type": "text",
+      "id": "customers_solution_heading",
+      "label": "Solution heading",
+      "default": "Shopping With a Chance to Win"
+    },
+    {
+      "type": "textarea",
+      "id": "customers_solution_description",
+      "label": "Solution description",
+      "default": "Shared Sweeps turns everyday shopping into something more. Discover new brands and earn entries toward real prizes with every purchase."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Solution",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

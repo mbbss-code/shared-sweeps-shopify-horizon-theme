@@ -1,0 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hiw_final_cta_8QxXX3": {
+      "type": "hiw-final-cta",
+      "name": "HIW — Final CTA",
+      "settings": {
+        "primary_color": "#3099d3",
+        "primary_text_color": "#ffffff",
+        "final_cta_title": "Still have questions — or ready to launch your first sweepstakes?",
+        "final_cta_description": "Our team is happy to walk through how Shared Sweeps works and whether it's a fit for your brand.",
+        "final_cta_text": "Talk to Our Team",
+        "final_cta_opens_modal": true,
+        "final_cta_url": ""
+      }
+    }
+  },
+  "order": [
+    "hiw_final_cta_8QxXX3"
+  ]
+}

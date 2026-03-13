@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "all_case_study_hero_kjwHFn": {
+      "type": "all-case-study-hero",
+      "name": "ACS — Hero",
+      "settings": {
+        "background_color": "#ffffff",
+        "heading_color": "#1a1a1a",
+        "subheading_color": "#6b7280",
+        "heading": "All Shared Sweeps Case Studies",
+        "subheading": "Browse real results from brands across categories, sizes, and growth stages.",
+        "secondary_text": ""
+      }
+    },
+    "all_case_study_grid_LQ8cVC": {
+      "type": "all-case-study-grid",
+      "blocks": {
+        "industry_filter_MnfCrN": {
+          "type": "industry_filter",
+          "settings": {
+            "industry_name": "Food & Beverage"
+          }
+        },
+        "industry_filter_qEteMa": {
+          "type": "industry_filter",
+          "settings": {
+            "industry_name": "Apparel"
+          }
+        },
+        "industry_filter_XEFCPQ": {
+          "type": "industry_filter",
+          "settings": {
+            "industry_name": "Home"
+          }
+        },
+        "industry_filter_aByWra": {
+          "type": "industry_filter",
+          "settings": {
+            "industry_name": "Subscription"
+          }
+        },
+        "industry_filter_xHUTwW": {
+          "type": "industry_filter",
+          "settings": {
+            "industry_name": "Health & Wellness"
+          }
+        },
+        "case_study_iWnhDQ": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
+            "brand_name": "Fresh Chile Co",
+            "industry": "Food & Beverage",
+            "metric": "$117K in ad spend savings",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "case_study_url": "",
+            "link_text": "View Case Study"
+          }
+        },
+        "case_study_TFde7F": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/s_slogo.jpg",
+            "brand_name": "Shaker & Spoon",
+            "industry": "Subscription",
+            "metric": "30% reduction in monthly churn",
+            "summary": "Acquisition with less discounts, resulting in higher-value customers.",
+            "case_study_url": "",
+            "link_text": "View Case Study"
+          }
+        },
+        "case_study_zEzVUU": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/potlogo.jpg",
+            "brand_name": "Pair of Thieves",
+            "industry": "Home",
+            "metric": "18% increase in gross sales",
+            "summary": "Drove more site visits, repeated touches, and channel interaction.",
+            "case_study_url": "",
+            "link_text": "View Case Study"
+          }
+        },
+        "case_study_WwEJtx": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
+            "brand_name": "Caraway Home",
+            "industry": "Home",
+            "metric": "61% increase in YoY  top-line revenue",
+            "summary": "Substantial growth across email and SMS lists.",
+            "case_study_url": "",
+            "link_text": "View Case Study"
+          }
+        }
+      },
+      "block_order": [
+        "industry_filter_MnfCrN",
+        "industry_filter_qEteMa",
+        "industry_filter_XEFCPQ",
+        "industry_filter_aByWra",
+        "industry_filter_xHUTwW",
+        "case_study_iWnhDQ",
+        "case_study_TFde7F",
+        "case_study_zEzVUU",
+        "case_study_WwEJtx"
+      ],
+      "name": "ACS — Filter & Grid",
+      "settings": {
+        "background_color": "#ffffff",
+        "card_background": "#ffffff",
+        "card_border_color": "#e5e7eb",
+        "logo_bg_color": "#f3f4f6",
+        "heading_color": "#1a1a1a",
+        "muted_color": "#6b7280",
+        "primary_color": "#3b82f6",
+        "filter_bg_color": "#3b82f6",
+        "filter_text_color": "#ffffff",
+        "filter_outline_bg": "#ffffff",
+        "filter_outline_text": "#374151",
+        "filter_outline_border": "#d1d5db"
+      }
+    },
+    "all_case_study_final_cta_N9FPc6": {
+      "type": "all-case-study-final-cta",
+      "name": "ACS — Closing CTA",
+      "settings": {
+        "background_color": "#f9fafb",
+        "heading_color": "#1a1a1a",
+        "primary_color": "#3b82f6",
+        "primary_text_color": "#ffffff",
+        "heading": "Want to See What Shared Sweeps Could Do for Your Brand?",
+        "cta_text": "Talk to Our Team",
+        "cta_opens_modal": true,
+        "cta_url": ""
+      }
+    }
+  },
+  "order": [
+    "all_case_study_hero_kjwHFn",
+    "all_case_study_grid_LQ8cVC",
+    "all_case_study_final_cta_N9FPc6"
+  ]
+}

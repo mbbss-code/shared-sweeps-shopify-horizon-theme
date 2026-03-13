@@ -1,0 +1,223 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "caraway-home": {
+      "type": "case-study-template",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_up",
+            "value": "+61%",
+            "label": "Increase in YoY top-line revenue"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_up",
+            "value": "+91%",
+            "label": "Increase in YoY bottom-line revenue"
+          }
+        },
+        "stat_3": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "repeat",
+            "value": "Higher",
+            "label": "Repeat purchase rate during sweepstakes period"
+          }
+        },
+        "stat_4": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "bar_chart",
+            "value": "Stronger",
+            "label": "Overall channel performance across email & SMS"
+          }
+        },
+        "challenge_1": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Reducing Discounting",
+            "body": "Caraway wanted to continue driving revenue without increasing promotional pressure or eroding margins through heavier discounts."
+          }
+        },
+        "challenge_2": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "target",
+            "title": "Maintaining Paid Efficiency",
+            "body": "As marketing investment increased, the team needed to ensure their paid channels continued to perform efficiently and profitably."
+          }
+        },
+        "challenge_3": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "trending_up",
+            "title": "Driving Incremental Growth",
+            "body": "Caraway was looking for new ways to unlock additional revenue and grow their email and SMS lists beyond their existing acquisition channels."
+          }
+        },
+        "challenge_4": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "repeat",
+            "title": "Scaling What Worked",
+            "body": "Rather than reinventing their strategy, the goal was to build on existing marketing momentum and amplify results without disrupting current performance."
+          }
+        },
+        "solution_1": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Integrate a gamified giveaway into Caraway’s existing paid and owned marketing channels."
+          }
+        },
+        "solution_2": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Replace deeper discounting with an experience-driven customer incentive that protected margins."
+          }
+        },
+        "solution_3": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Capture high-intent leads through interactive entry mechanics that encouraged repeat engagement."
+          }
+        },
+        "solution_4": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Enable paid media scaling by improving funnel efficiency without increasing CAC."
+          }
+        },
+        "solution_5": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Generate incremental revenue while reinforcing Caraway’s existing performance strategy."
+          }
+        },
+        "result_1": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_up",
+            "title": "+61% YoY Top-Line Revenue",
+            "body": "Caraway saw a 61% increase in year-over-year top-line revenue during the sweepstakes campaign period."
+          }
+        },
+        "result_2": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Significantly Less Discounting",
+            "body": "Because of improved efficiency and profitability, Caraway also saw a 91% increase in bottom-line performance."
+          }
+        },
+        "result_3": {
+          "type": "result_card",
+          "settings": {
+            "icon": "target",
+            "title": "Efficient Paid Media Scaling",
+            "body": "Paid media spend increased by 45% while CAC remained stable, enabling sustainable growth at scale."
+          }
+        },
+        "result_card_gBYVmV": {
+          "type": "result_card",
+          "settings": {
+            "icon": "users",
+            "title": "List Growth Acceleration",
+            "body": "Lead generation increased significantly, driving substantial growth across both email and SMS lists."
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "challenge_1",
+        "challenge_2",
+        "challenge_3",
+        "challenge_4",
+        "solution_1",
+        "solution_2",
+        "solution_3",
+        "solution_4",
+        "solution_5",
+        "result_1",
+        "result_2",
+        "result_3",
+        "result_card_gBYVmV"
+      ],
+      "settings": {
+        "color_primary": "#2a6049",
+        "color_heading": "#111827",
+        "color_body": "#374151",
+        "color_muted": "#6b7280",
+        "color_bg": "#ffffff",
+        "color_bg_alt": "#f9fafb",
+        "color_card_bg": "#ffffff",
+        "color_card_border": "#e5e7eb",
+        "color_btn_bg": "#2a6049",
+        "color_btn_text": "#ffffff",
+        "color_btn_outline_border": "#d1d5db",
+        "color_btn_outline_text": "#374151",
+        "color_cta_section_bg": "#1a3a2a",
+        "color_cta_section_text": "#ffffff",
+        "fs_hero_heading": 48,
+        "fs_section_heading": 30,
+        "fs_body": 18,
+        "fs_small": 14,
+        "fs_stat_value": 36,
+        "hero_reverse": true,
+        "back_link_text": "Back to Case Studies",
+        "back_link_url": "/blogs/case-studies",
+        "hero_eyebrow": "Case Study — Caraway Home",
+        "hero_title": "How Caraway Home Drove a 61% Increase in YoY Revenue and Accelerated List Growth with Shared Sweeps",
+        "hero_description": "Caraway Home used a Shared Sweeps $100K giveaway to drive revenue, grow their email and SMS lists, and create a high-impact brand activation — without compromising Brand or CAC.",
+        "hero_btn_text": "Run a Giveaway With Shared Sweeps",
+        "stat_card_label": "YoY Top-Line Revenue",
+        "stat_card_before": "",
+        "stat_card_after": "+61%",
+        "stat_card_caption": "Increase in year-over-year top-line revenue",
+        "about_reverse": true,
+        "about_heading": "About Caraway Home",
+        "about_body_1": "Caraway Home is a design-forward kitchen brand known for its non-toxic, ceramic-coated cookware that blends performance, sustainability, and elevated aesthetics.",
+        "about_body_2": "With a strong focus on quality and intentional design, Caraway has built a loyal customer base and continues to scale through thoughtful, brand-aligned growth strategies.",
+        "about_image": "shopify://shop_images/Carawaywhite.jpg",
+        "about_image_alt": "Caraway Home cookware products",
+        "challenge_heading": "The Challenge",
+        "challenge_description": "As Caraway Home entered a key growth phase, the team was focused on scaling performance without sacrificing the efficiency that had fueled their success. Several key challenges stood in the way:",
+        "solution_reverse": false,
+        "solution_heading": "The Shared Sweeps Solution",
+        "solution_body": "Shared Sweeps provided a high-perceived-value incentive that did not erode margins. Using sweepstakes entries and multipliers, Caraway was able to:",
+        "results_reverse": true,
+        "results_heading": "The Results",
+        "results_media": "shopify://shop_images/carawaypink.avif",
+        "results_media_alt": "Caraway Home campaign",
+        "results_video_url": "",
+        "testimonial_quote": "",
+        "testimonial_attribution": "",
+        "why_heading": "Why It Worked",
+        "why_body": "For Caraway Home, Shared Sweeps delivered more than a short-term sales spike. It provided a scalable mechanism to drive top-line revenue, substantially grow email and SMS lists, re-engage past customers, and build brand excitement — all without sacrificing the premium positioning that defines the Caraway brand.",
+        "cta_heading": "Want Results Like This for Your Brand?",
+        "cta_description": "Shared Sweeps helps Shopify brands run high-impact giveaways that drive revenue, grow engagement, and reduce reliance on discounting.",
+        "cta_btn_primary_text": "Run a Giveaway",
+        "cta_btn_secondary_text": "See More Case Studies",
+        "cta_btn_secondary_url": "/blogs/case-studies"
+      }
+    }
+  },
+  "order": [
+    "caraway-home"
+  ]
+}

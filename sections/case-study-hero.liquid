@@ -1,0 +1,99 @@
+{% comment %}
+  Case Studies Hero Section
+  - Responsive design
+  - ADA Compliant
+  - SEO Optimized
+  - Fully Customizable
+{% endcomment %}
+
+<section 
+  class="tw-relative tw-overflow-hidden tw-px-4 tw-pb-20 tw-pt-16 md:tw-pb-28 md:tw-pt-24"
+  aria-labelledby="case-studies-hero-heading"
+>
+  <div class="tw-container tw-mx-auto">
+    <div class="tw-mx-auto tw-max-w-3xl tw-text-center">
+      <h1 
+        id="case-studies-hero-heading"
+        class="tw-mb-6 tw-text-4xl tw-font-bold tw-tracking-tight md:tw-text-5xl lg:tw-text-6xl"
+        style="color: {{ section.settings.heading_color }};"
+      >
+        {{ section.settings.heading }}
+      </h1>
+      
+      <p class="tw-mx-auto tw-max-w-2xl tw-text-lg md:tw-text-xl" style="color: {{ section.settings.subheading_color }};">
+        {{ section.settings.subheading }}
+      </p>
+    </div>
+  </div>
+
+  {% if section.settings.show_background_decoration %}
+    <div 
+      class="tw-absolute tw--top-40 tw-left-1/2 tw--z-10 tw-h-96 tw-w-96 tw--translate-x-1/2 tw-rounded-full tw-blur-3xl"
+      style="background-color: {{ section.settings.decoration_color }};"
+      aria-hidden="true"
+    ></div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Case Studies Hero",
+  "tag": "section",
+  "class": "case-studies-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real Results from Shopify Brands"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "See how Shopify brands use Shared Sweeps to drive revenue, retention, and excitement — without relying on discounts or paid ads."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Background Decoration"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background_decoration",
+      "label": "Show Background Decoration",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "decoration_color",
+      "label": "Decoration Color",
+      "default": "#3b82f6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Case Studies Hero"
+    }
+  ]
+}
+{% endschema %}

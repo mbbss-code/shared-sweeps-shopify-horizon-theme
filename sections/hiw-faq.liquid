@@ -1,0 +1,217 @@
+{% comment %}
+  How It Works — FAQ Accordion
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color = section.settings.primary_color | default: '#9333ea'
+  assign alt_bg_color  = section.settings.alt_bg_color  | default: '#f3f4f6'
+  assign faq_blocks    = section.blocks | where: 'type', 'faq_item'
+-%}
+
+<style>
+  .hiw-faq-{{ section.id }} .hiw-alt-bg { background-color: {{ alt_bg_color }}; }
+  .hiw-faq-{{ section.id }} .hiw-accordion-content {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.2s ease;
+  }
+  .hiw-faq-{{ section.id }} .hiw-accordion-chevron {
+    transition: transform 0.3s ease;
+  }
+  .hiw-faq-{{ section.id }} .hiw-accordion-item.is-open .hiw-accordion-chevron {
+    transform: rotate(180deg);
+  }
+  .hiw-faq-{{ section.id }} .hiw-accordion-trigger:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }};
+    border-radius: 0.25rem;
+  }
+</style>
+
+{% if faq_blocks.size > 0 %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in faq_blocks -%}
+    {
+      "@type": "Question",
+      "name": {{ block.settings.question | json }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ block.settings.answer | json }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{% endif %}
+
+<div class="hiw-faq-{{ section.id }}" {{ section.shopify_attributes }}>
+  {% if faq_blocks.size > 0 %}
+  <section
+    class="hiw-alt-bg tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-faq-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-3xl">
+
+        <h2 id="hiw-faq-{{ section.id }}" class="tw-mb-12 tw-text-center tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.faq_title | default: 'Frequently Asked Questions' }}
+        </h2>
+
+        <div class="tw-w-full">
+          {% for block in faq_blocks %}
+            <div {{ block.shopify_attributes }} class="hiw-accordion-item tw-border-b tw-border-gray-200">
+
+              <button
+                type="button"
+                class="hiw-accordion-trigger tw-flex tw-w-full tw-items-center tw-justify-between tw-py-4 tw-text-left tw-text-lg tw-font-medium tw-text-gray-900 tw-transition-colors hover:tw-text-gray-700"
+                aria-expanded="false"
+                aria-controls="hiw-faq-{{ section.id }}-{{ forloop.index }}"
+                id="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
+              >
+                <span>{{ block.settings.question }}</span>
+                <svg
+                  class="hiw-accordion-chevron tw-ml-4 tw-h-5 tw-w-5 tw-shrink-0 tw-text-gray-500"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </button>
+
+              <div
+                id="hiw-faq-{{ section.id }}-{{ forloop.index }}"
+                class="hiw-accordion-content"
+                role="region"
+                aria-labelledby="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
+              >
+                <p class="tw-pb-4 tw-text-gray-600">
+                  {{ block.settings.answer }}
+                </p>
+              </div>
+
+            </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var wrapper = document.querySelector('.hiw-faq-{{ section.id }}');
+    if (!wrapper) return;
+
+    var items = wrapper.querySelectorAll('.hiw-accordion-item');
+
+    items.forEach(function(item) {
+      var trigger  = item.querySelector('.hiw-accordion-trigger');
+      var content  = item.querySelector('.hiw-accordion-content');
+
+      trigger.addEventListener('click', function() {
+        var isOpen = item.classList.contains('is-open');
+
+        items.forEach(function(other) {
+          if (other !== item && other.classList.contains('is-open')) {
+            var otherContent = other.querySelector('.hiw-accordion-content');
+            var otherTrigger = other.querySelector('.hiw-accordion-trigger');
+            other.classList.remove('is-open');
+            otherContent.style.height  = otherContent.scrollHeight + 'px';
+            void otherContent.offsetHeight;
+            otherContent.style.height  = '0';
+            otherContent.style.opacity = '0';
+            otherTrigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        if (!isOpen) {
+          item.classList.add('is-open');
+          content.style.height  = content.scrollHeight + 'px';
+          content.style.opacity = '1';
+          trigger.setAttribute('aria-expanded', 'true');
+
+          content.addEventListener('transitionend', function handler(e) {
+            if (e.propertyName === 'height' && item.classList.contains('is-open')) {
+              content.style.height = 'auto';
+              content.removeEventListener('transitionend', handler);
+            }
+          });
+        } else {
+          item.classList.remove('is-open');
+          content.style.height  = content.scrollHeight + 'px';
+          void content.offsetHeight;
+          content.style.height  = '0';
+          content.style.opacity = '0';
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "HIW — FAQ",
+  "class": "hiw-faq",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Focus ring color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "alt_bg_color",
+      "label": "Section background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "Section title",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text",     "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer",   "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — FAQ",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "What does it cost?", "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn." } },
+        { "type": "faq_item", "settings": { "question": "What if my brand is small?", "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost." } },
+        { "type": "faq_item", "settings": { "question": "Who provides the prize?", "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all." } },
+        { "type": "faq_item", "settings": { "question": "Is it legally compliant?", "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it." } },
+        { "type": "faq_item", "settings": { "question": "Why is the giveaway shared across brands?", "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

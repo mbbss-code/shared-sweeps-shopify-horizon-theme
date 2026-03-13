@@ -1,0 +1,134 @@
+{% comment %}
+  How It Works — Final CTA
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color      = section.settings.primary_color      | default: '#9333ea'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+-%}
+
+<style>
+  .hiw-final-cta-{{ section.id }} .hiw-cta-btn {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .hiw-final-cta-{{ section.id }} .hiw-cta-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  .hiw-final-cta-{{ section.id }} .hiw-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }}, 0 0 0 4px #fff;
+  }
+</style>
+
+<div class="hiw-final-cta-{{ section.id }}" {{ section.shopify_attributes }}>
+  <section
+    class="tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-final-cta-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+
+        <h2 id="hiw-final-cta-{{ section.id }}" class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.final_cta_title | default: 'Still have questions — or ready to launch your first sweepstakes?' }}
+        </h2>
+
+        <p class="tw-mb-8 tw-text-lg tw-text-gray-600">
+          {{ section.settings.final_cta_description | default: "Our team is happy to walk through how Shared Sweeps works and whether it's a fit for your brand." }}
+        </p>
+
+        {% if section.settings.final_cta_opens_modal %}
+          <button
+            type="button"
+            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+            data-contact-modal-trigger
+            aria-haspopup="dialog"
+          >
+            {{ section.settings.final_cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        {% else %}
+          
+          <a href="{{ section.settings.final_cta_url | default: '#' }}"
+            class="hiw-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl">
+            {{ section.settings.final_cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "HIW — Final CTA",
+  "class": "hiw-final-cta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Button color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_title",
+      "label": "Title",
+      "default": "Still have questions — or ready to launch your first sweepstakes?"
+    },
+    {
+      "type": "textarea",
+      "id": "final_cta_description",
+      "label": "Description",
+      "default": "Our team is happy to walk through how Shared Sweeps works and whether it's a fit for your brand."
+    },
+    {
+      "type": "text",
+      "id": "final_cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "final_cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the contact modal. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "final_cta_url",
+      "label": "CTA URL",
+      "info": "Used only when Open contact modal is unchecked"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — Final CTA",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

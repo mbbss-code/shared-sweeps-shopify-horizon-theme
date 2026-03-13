@@ -1,0 +1,95 @@
+{% comment %}
+  All Case Studies — Hero Section
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign heading_color    = section.settings.heading_color    | default: '#1a1a1a'
+  assign subheading_color = section.settings.subheading_color | default: '#6b7280'
+  assign bg_color         = section.settings.background_color | default: '#ffffff'
+-%}
+
+<div class="acs-hero-{{ section.id }}" style="background-color: {{ bg_color }};" {{ section.shopify_attributes }}>
+  <section
+    class="tw-px-4 tw-pb-16 tw-pt-32"
+    aria-labelledby="acs-hero-heading-{{ section.id }}"
+  >
+    <div class="tw-mx-auto tw-max-w-4xl tw-text-center">
+      <h1 
+        id="acs-hero-heading-{{ section.id }}"
+        class="tw-mb-6 tw-text-4xl tw-font-bold md:tw-text-5xl"
+        style="color: {{ heading_color }};"
+      >
+        {{ section.settings.heading | default: 'All Shared Sweeps Case Studies' }}
+      </h1>
+      
+      <p class="tw-mb-4 tw-text-xl" style="color: {{ subheading_color }};">
+        {{ section.settings.subheading | default: 'Browse real results from Shopify brands across categories, sizes, and growth stages.' }}
+      </p>
+      
+      {% if section.settings.secondary_text != blank %}
+        <p style="color: {{ subheading_color }};">
+          {{ section.settings.secondary_text }}
+        </p>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "ACS — Hero",
+  "class": "acs-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "All Shared Sweeps Case Studies"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Browse real results from Shopify brands across categories, sizes, and growth stages."
+    },
+    {
+      "type": "textarea",
+      "id": "secondary_text",
+      "label": "Secondary text",
+      "default": "Each case study highlights how Shared Sweeps drives revenue without discounts or upfront prize costs."
+    }
+  ],
+  "presets": [
+    {
+      "name": "ACS — Hero"
+    }
+  ]
+}
+{% endschema %}

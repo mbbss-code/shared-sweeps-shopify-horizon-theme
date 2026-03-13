@@ -1,0 +1,184 @@
+{% comment %}
+  Case Studies — Final CTA
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color      = section.settings.primary_color      | default: '#f97316'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+  assign bg_color           = section.settings.background_color   | default: '#1e3a5f'
+  assign heading_color      = section.settings.heading_color      | default: '#ffffff'
+  assign subheading_color   = section.settings.subheading_color   | default: '#cbd5e1'
+-%}
+
+<style>
+  .cs-final-cta-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+  .cs-final-cta-{{ section.id }} .cs-cta-btn {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+  .cs-final-cta-{{ section.id }} .cs-cta-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+  .cs-final-cta-{{ section.id }} .cs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ primary_color }}, 0 0 0 4px #fff;
+  }
+</style>
+
+<div class="cs-final-cta-{{ section.id }}" {{ section.shopify_attributes }}>
+  <section
+    class="tw-py-20 md:tw-py-28"
+    aria-labelledby="cs-final-cta-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-max-w-2xl tw-text-center">
+
+        <h2 
+          id="cs-final-cta-{{ section.id }}" 
+          class="tw-mb-4 tw-text-3xl tw-font-bold md:tw-text-4xl"
+          style="color: {{ heading_color }};"
+        >
+          {{ section.settings.heading | default: 'Want Results Like These?' }}
+        </h2>
+
+        <p class="tw-mb-8 tw-text-lg" style="color: {{ subheading_color }};">
+          {{ section.settings.subheading | default: "Let's talk about whether Shared Sweeps is a fit for your brand." }}
+        </p>
+
+        {% if section.settings.cta_opens_modal %}
+          <button
+            type="button"
+            class="cs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+            data-contact-modal-trigger
+            aria-haspopup="dialog"
+          >
+            {{ section.settings.cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        {% else %}
+          <a 
+            href="{{ section.settings.cta_url | default: '#' }}"
+            class="cs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-lg tw-font-semibold tw-shadow-lg tw-transition-all hover:tw-shadow-xl"
+          >
+            {{ section.settings.cta_text | default: 'Talk to Our Team' }}
+            <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.show_secondary_text and section.settings.secondary_text != blank %}
+          <p class="tw-mt-6 tw-text-sm" style="color: {{ subheading_color }};">
+            {{ section.settings.secondary_text }}
+          </p>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+</div>
+
+{% schema %}
+{
+  "name": "Case Studies — CTA",
+  "class": "cs-final-cta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#1e3a5f"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#cbd5e1"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Button color",
+      "default": "#f97316"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Want Results Like These?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Let's talk about whether Shared Sweeps is a fit for your brand."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA button text",
+      "default": "Talk to Our Team"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta_opens_modal",
+      "label": "Open contact modal",
+      "default": true,
+      "info": "Triggers the contact modal. Uncheck to link to a URL."
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL",
+      "info": "Used only when 'Open contact modal' is unchecked"
+    },
+    {
+      "type": "header",
+      "content": "Secondary Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_text",
+      "label": "Show secondary text",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Secondary text",
+      "default": "No commitment required. Free consultation."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Case Studies — CTA"
+    }
+  ]
+}
+{% endschema %}

@@ -41,18 +41,22 @@
 
     {{ content_for_header }}
 
-    {% if template contains 'index' %}
+    {% comment %} {% if template contains 'index' %}
         <script>
            location.href = '/products/shared-sweeps-premium';
         </script>
-    {% endif %}
+    {% endif %} {% endcomment %}
+
+
+    
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  <body class="page-width-{{ settings.page_width }} dd card-hover-effect-{{ settings.card_hover_effect }}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
     </div>
+
 
     <script>
       // Inline header height calculation to prevent layout shift
@@ -123,5 +127,44 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+        <script>
+      // Global audience toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+
+        function applySavedAudience() {
+          // Read fresh from localStorage every time
+          const audience = localStorage.getItem('sharedSweepsAudience') || 'brands';
+          const brandsContent = document.querySelectorAll('[data-brands-content]');
+          const customersContent = document.querySelectorAll('[data-customers-content]');
+
+          if (audience === 'brands') {
+            brandsContent.forEach(el => el.classList.remove('tw-hidden'));
+            customersContent.forEach(el => el.classList.add('tw-hidden'));
+          } else {
+            brandsContent.forEach(el => el.classList.add('tw-hidden'));
+            customersContent.forEach(el => el.classList.remove('tw-hidden'));
+          }
+        }
+
+        // Apply on load
+        applySavedAudience();
+
+        // Cross-tab sync (storage event only fires in other tabs)
+        window.addEventListener('storage', function(e) {
+          if (e.key === 'sharedSweepsAudience') {
+            applySavedAudience();
+          }
+        });
+
+        // Same-tab sync — fired by the audience-toggle snippet
+        window.addEventListener('audienceChanged', applySavedAudience);
+
+        // Expose globally as fallback
+        window.applySavedAudience = applySavedAudience;
+      });
+    </script>
+
+
   </body>
 </html>

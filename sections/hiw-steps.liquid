@@ -1,0 +1,117 @@
+{% comment %}
+  How It Works — Steps
+  Tailwind CSS with tw- prefix
+{% endcomment %}
+
+{%- liquid
+  assign primary_color = section.settings.primary_color | default: '#9333ea'
+  assign primary_text_color = section.settings.primary_text_color | default: '#ffffff'
+  assign alt_bg_color  = section.settings.alt_bg_color  | default: '#f3f4f6'
+  assign step_blocks   = section.blocks | where: 'type', 'step'
+-%}
+
+<style>
+  .hiw-steps-{{ section.id }} .hiw-alt-bg   { background-color: {{ alt_bg_color }}; }
+  .hiw-steps-{{ section.id }} .hiw-step-badge {
+    background-color: {{ primary_color }};
+    color: {{ primary_text_color }};
+  }
+</style>
+
+<div class="hiw-steps-{{ section.id }}" {{ section.shopify_attributes }}>
+  {% if step_blocks.size > 0 %}
+  <section
+    class="hiw-alt-bg tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28"
+    aria-labelledby="hiw-steps-{{ section.id }}"
+  >
+    <div class="tw-container tw-mx-auto tw-px-4">
+      <div class="tw-mx-auto tw-mb-16 tw-max-w-2xl tw-text-center">
+        <h2 id="hiw-steps-{{ section.id }}" class="tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+          {{ section.settings.steps_title | default: 'How It Works' }}
+        </h2>
+      </div>
+
+      <div class="tw-mx-auto tw-max-w-5xl tw-grid tw-gap-12 md:tw-grid-cols-2 lg:tw-grid-cols-4">
+        {% for block in step_blocks %}
+          <div {{ block.shopify_attributes }} class="tw-text-center">
+            <div
+              class="hiw-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold"
+              aria-hidden="true"
+            >
+              {% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}
+            </div>
+            <h3 class="tw-mb-3 tw-text-xl tw-font-semibold tw-text-gray-900">
+              {{ block.settings.title }}
+            </h3>
+            <p class="tw-text-gray-600">
+              {{ block.settings.description }}
+            </p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "HIW — Steps",
+  "class": "hiw-steps",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Badge color",
+      "default": "#9333ea"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "alt_bg_color",
+      "label": "Section background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "steps_title",
+      "label": "Section title",
+      "default": "How It Works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text",     "id": "title",       "label": "Step title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "HIW — Steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Setup in Days", "description": "Shared Sweeps installs directly with your Shopify store. Our team configures your campaign, covers official rules, legal compliance, and funds the $100,000 prize." } },
+        { "type": "step", "settings": { "title": "Every Purchase Earns Entries", "description": "Customers automatically earn 1 entry per $1 spent. Built-in multipliers create urgency and drive repeat purchases." } },
+        { "type": "step", "settings": { "title": "Track Growth in Real Time", "description": "View revenue, entries, and campaign performance directly inside Shopify. No spreadsheets or manual reporting." } },
+        { "type": "step", "settings": { "title": "We Award the Winner", "description": "Shared Sweeps selects the winner, fulfills the prize, and closes the campaign. You keep the revenue and the new customers." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

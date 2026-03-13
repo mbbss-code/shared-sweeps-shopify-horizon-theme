@@ -1,0 +1,427 @@
+{% comment %}
+  All Case Studies — Filter & Grid Section
+  Tailwind CSS with tw- prefix
+  Includes industry filter buttons and case study cards with hover/tap reveal
+{% endcomment %}
+
+{%- liquid
+  assign bg_color           = section.settings.background_color       | default: '#ffffff'
+  assign card_bg            = section.settings.card_background        | default: '#ffffff'
+  assign card_border        = section.settings.card_border_color      | default: '#e5e7eb'
+  assign heading_color      = section.settings.heading_color          | default: '#1a1a1a'
+  assign muted_color        = section.settings.muted_color            | default: '#6b7280'
+  assign primary_color      = section.settings.primary_color          | default: '#3b82f6'
+  assign filter_bg          = section.settings.filter_bg_color        | default: '#3b82f6'
+  assign filter_text        = section.settings.filter_text_color      | default: '#ffffff'
+  assign filter_outline_bg  = section.settings.filter_outline_bg      | default: '#ffffff'
+  assign filter_outline_text = section.settings.filter_outline_text   | default: '#374151'
+  assign filter_outline_border = section.settings.filter_outline_border | default: '#d1d5db'
+-%}
+
+<style>
+  .acs-grid-{{ section.id }} .acs-filter-btn {
+    background-color: {{ filter_outline_bg }};
+    color: {{ filter_outline_text }};
+    border-color: {{ filter_outline_border }};
+  }
+  .acs-grid-{{ section.id }} .acs-filter-btn:hover,
+  .acs-grid-{{ section.id }} .acs-filter-btn[aria-pressed="true"] {
+    background-color: {{ filter_bg }};
+    color: {{ filter_text }};
+    border-color: {{ filter_bg }};
+  }
+  .acs-grid-{{ section.id }} .acs-filter-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ filter_bg }}, 0 0 0 4px #fff;
+  }
+  .acs-grid-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
+  }
+  .acs-grid-{{ section.id }} .acs-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+  .acs-grid-{{ section.id }} .acs-industry-tag {
+    background-color: {{ primary_color }}1a;
+    color: {{ primary_color }};
+  }
+  .acs-grid-{{ section.id }} .acs-card-link:hover {
+    text-decoration: underline;
+  }
+  .acs-grid-{{ section.id }} .acs-card-link:hover .acs-arrow {
+    transform: translateX(4px);
+  }
+</style>
+
+<div class="acs-grid-{{ section.id }}" style="background-color: {{ bg_color }};" {{ section.shopify_attributes }}>
+  
+  <!-- Filter Section -->
+  <section class="tw-px-4 tw-pb-8" aria-label="Filter case studies by industry">
+    <div class="tw-mx-auto tw-max-w-6xl">
+      <div class="tw-flex tw-flex-wrap tw-justify-center tw-gap-2" role="group" aria-label="Industry filters">
+        <button
+          type="button"
+          class="acs-filter-btn tw-rounded-full tw-border tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-transition-all"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          All
+        </button>
+        {% for block in section.blocks %}
+          {% if block.type == 'industry_filter' %}
+            <button
+              type="button"
+              class="acs-filter-btn tw-rounded-full tw-border tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-transition-all"
+              data-filter="{{ block.settings.industry_name | handleize }}"
+              aria-pressed="false"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.industry_name }}
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Grid -->
+  <section class="tw-px-4 tw-py-12" aria-labelledby="acs-grid-heading-{{ section.id }}">
+    <h2 id="acs-grid-heading-{{ section.id }}" class="tw-sr-only">Case Studies</h2>
+    
+    <div class="tw-mx-auto tw-max-w-6xl">
+      <div 
+        class="tw-grid tw-grid-cols-1 tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3"
+        role="list"
+        aria-label="Case studies"
+        id="acs-cards-container-{{ section.id }}"
+      >
+        {% for block in section.blocks %}
+          {% if block.type == 'case_study' %}
+            <article 
+              class="acs-card tw-group tw-cursor-pointer tw-rounded-lg tw-border tw-transition-all tw-duration-300"
+              role="listitem"
+              data-industry="{{ block.settings.industry | handleize }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="tw-p-6">
+                <!-- Brand Logo -->
+                {% if block.settings.brand_logo != blank %}
+                  <div class="tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-overflow-hidden tw-rounded-lg" style="background-color: {{ section.settings.logo_bg_color | default: '#f3f4f6' }};">
+                    <img 
+                      src="{{ block.settings.brand_logo | image_url: width: 64 }}"
+                      alt="{{ block.settings.brand_name }} logo"
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      class="tw-max-h-full tw-max-w-full tw-object-contain"
+                    >
+                  </div>
+                {% else %}
+                  <div class="tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-lg" style="background-color: {{ section.settings.logo_bg_color | default: '#f3f4f6' }};">
+                    <svg class="tw-h-8 tw-w-8" style="color: {{ muted_color }};" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                  </div>
+                {% endif %}
+                
+                <!-- Brand Name -->
+                <h3 class="tw-mb-2 tw-text-lg tw-font-semibold" style="color: {{ heading_color }};">
+                  {{ block.settings.brand_name }}
+                </h3>
+                
+                <!-- Industry Tag -->
+                <span class="acs-industry-tag tw-mb-4 tw-inline-block tw-rounded-full tw-px-3 tw-py-1 tw-text-xs tw-font-medium">
+                  {{ block.settings.industry }}
+                </span>
+                
+                <!-- Headline Metric -->
+                <p class="tw-mb-2 tw-text-2xl tw-font-bold" style="color: {{ primary_color }};">
+                  {{ block.settings.metric }}
+                </p>
+                
+                <!-- Hover/Tap Reveal Content -->
+                <div class="acs-reveal-content tw-mt-3 tw-max-h-0 tw-overflow-hidden tw-opacity-0 tw-transition-all tw-duration-300 group-hover:tw-max-h-24 group-hover:tw-opacity-100">
+                  <p class="tw-mb-3 tw-text-sm" style="color: {{ muted_color }};">
+                    {{ block.settings.summary }}
+                  </p>
+                </div>
+                
+                <!-- CTA Link -->
+                {% if block.settings.case_study_url != blank %}
+                  <a 
+                    href="{{ block.settings.case_study_url }}"
+                    class="acs-card-link tw-inline-flex tw-h-auto tw-items-center tw-p-0 tw-font-medium tw-transition-colors group-hover:tw-underline"
+                    style="color: {{ primary_color }};"
+                    aria-label="View case study for {{ block.settings.brand_name }}"
+                  >
+                    {{ block.settings.link_text | default: 'View Case Study' }}
+                    <svg class="acs-arrow tw-ml-1 tw-h-4 tw-w-4 tw-transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </a>
+                {% else %}
+                  <span 
+                    class="acs-card-link tw-inline-flex tw-h-auto tw-items-center tw-p-0 tw-font-medium"
+                    style="color: {{ primary_color }};"
+                  >
+                    {{ block.settings.link_text | default: 'View Case Study' }}
+                    <svg class="acs-arrow tw-ml-1 tw-h-4 tw-w-4 tw-transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                  </span>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      <!-- No Results Message -->
+      <div 
+        id="acs-no-results-{{ section.id }}"
+        class="tw-hidden tw-py-12 tw-text-center"
+        aria-live="polite"
+      >
+        <p class="tw-text-lg" style="color: {{ muted_color }};">
+          No case studies found for this industry.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (function() {
+    const section = document.querySelector('.acs-grid-{{ section.id }}');
+    if (!section) return;
+    
+    const filterButtons = section.querySelectorAll('.acs-filter-btn');
+    const cards = section.querySelectorAll('.acs-card');
+    const noResults = section.querySelector('#acs-no-results-{{ section.id }}');
+    
+    filterButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        
+        // Update button states
+        filterButtons.forEach(function(b) {
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.setAttribute('aria-pressed', 'true');
+        
+        // Filter cards
+        let visibleCount = 0;
+        cards.forEach(function(card) {
+          const industry = card.dataset.industry;
+          if (filter === 'all' || industry === filter) {
+            card.style.display = '';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Show/hide no results message
+        if (visibleCount === 0) {
+          noResults.classList.remove('tw-hidden');
+        } else {
+          noResults.classList.add('tw-hidden');
+        }
+      });
+    });
+    
+    // Touch support for reveal content
+    cards.forEach(function(card) {
+      card.addEventListener('touchstart', function(e) {
+        // Toggle active state on touch
+        const isActive = this.classList.contains('acs-card-active');
+        
+        // Remove active from all cards
+        cards.forEach(function(c) {
+          c.classList.remove('acs-card-active');
+        });
+        
+        // Toggle on current card
+        if (!isActive) {
+          this.classList.add('acs-card-active');
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  .acs-grid-{{ section.id }} .acs-card-active .acs-reveal-content {
+    max-height: 6rem;
+    opacity: 1;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "ACS — Filter & Grid",
+  "class": "acs-filter-grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "logo_bg_color",
+      "label": "Logo placeholder background",
+      "default": "#f3f4f6"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Muted text color",
+      "default": "#6b7280"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary/accent color",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "header",
+      "content": "Filter Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "filter_bg_color",
+      "label": "Active filter background",
+      "default": "#3b82f6"
+    },
+    {
+      "type": "color",
+      "id": "filter_text_color",
+      "label": "Active filter text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "filter_outline_bg",
+      "label": "Inactive filter background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "filter_outline_text",
+      "label": "Inactive filter text",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "filter_outline_border",
+      "label": "Inactive filter border",
+      "default": "#d1d5db"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "industry_filter",
+      "name": "Industry Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "industry_name",
+          "label": "Industry name",
+          "default": "Food & Beverage"
+        }
+      ]
+    },
+    {
+      "type": "case_study",
+      "name": "Case Study",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "brand_logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "text",
+          "id": "industry",
+          "label": "Industry",
+          "default": "Food & Beverage",
+          "info": "Must match an industry filter exactly"
+        },
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Headline metric",
+          "default": "$1.5M in revenue"
+        },
+        {
+          "type": "textarea",
+          "id": "summary",
+          "label": "Summary (shown on hover)",
+          "default": "Brief description of results achieved."
+        },
+        {
+          "type": "url",
+          "id": "case_study_url",
+          "label": "Case study URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "View Case Study"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ACS — Filter & Grid",
+      "blocks": [
+        { "type": "industry_filter", "settings": { "industry_name": "Food & Beverage" } },
+        { "type": "industry_filter", "settings": { "industry_name": "Apparel" } },
+        { "type": "industry_filter", "settings": { "industry_name": "Home" } },
+        { "type": "industry_filter", "settings": { "industry_name": "Subscription" } },
+        { "type": "industry_filter", "settings": { "industry_name": "Health & Wellness" } },
+        { "type": "case_study", "settings": { "brand_name": "Fresh Chile Co", "industry": "Food & Beverage", "metric": "$1.5M in revenue", "summary": "Top growth channel with minimal fees" } },
+        { "type": "case_study", "settings": { "brand_name": "Shaker & Spoon", "industry": "Subscription", "metric": "30% less churn", "summary": "Replaced discounts with engagement" } },
+        { "type": "case_study", "settings": { "brand_name": "Cozy Earth", "industry": "Home", "metric": "Six-figure lift", "summary": "Multi-channel sales increase" } },
+        { "type": "case_study", "settings": { "brand_name": "Outdoor Voices", "industry": "Apparel", "metric": "45% more signups", "summary": "Email list growth without paid ads" } },
+        { "type": "case_study", "settings": { "brand_name": "Beekeeper's Naturals", "industry": "Health & Wellness", "metric": "3x ROAS", "summary": "Outperformed traditional campaigns" } },
+        { "type": "case_study", "settings": { "brand_name": "Caraway Home", "industry": "Home", "metric": "$800K revenue", "summary": "Holiday campaign success" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

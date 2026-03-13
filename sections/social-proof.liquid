@@ -1,0 +1,485 @@
+{% comment %}
+  Social Proof / Results section with audience toggle support
+  SEO optimized, ADA compliant, responsive
+{% endcomment %}
+
+{%- liquid
+  assign bg_color = section.settings.bg_color | default: '#ffffff'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign accent_color = section.settings.accent_color | default: '#3099d3'
+  assign card_bg = section.settings.card_bg | default: '#ffffff'
+  assign card_border = section.settings.card_border | default: '#e5e7eb'
+  assign card_title_color = section.settings.card_title_color | default: '#111827'
+  assign card_text_color = section.settings.card_text_color | default: '#4b5563'
+  assign btn_bg = section.settings.btn_bg | default: '#ffffff'
+  assign btn_text = section.settings.btn_text | default: '#374151'
+  assign btn_border = section.settings.btn_border | default: '#d1d5db'
+  assign btn_hover_bg = section.settings.btn_hover_bg | default: '#f9fafb'
+  assign btn_hover_text = section.settings.btn_hover_text | default: '#374151'
+  assign btn_hover_border = section.settings.btn_hover_border | default: '#9ca3af'
+-%}
+
+<style>
+  .social-proof-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+  .social-proof-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
+  }
+  .social-proof-{{ section.id }} .acs-accent {
+    color: {{ accent_color }};
+  }
+  .social-proof-{{ section.id }} .acs-accent-bg {
+    background-color: {{ accent_color }}1a;
+  }
+  .social-proof-{{ section.id }} .acs-card-link {
+    color: {{ accent_color }};
+  }
+  .social-proof-{{ section.id }} .acs-card-link:hover {
+    text-decoration: underline;
+  }
+  .social-proof-{{ section.id }} .acs-cta-btn {
+    background-color: {{ btn_bg }};
+    color: {{ btn_text }};
+    border: 2px solid {{ btn_border }};
+  }
+  .social-proof-{{ section.id }} .acs-cta-btn:hover {
+    background-color: {{ btn_hover_bg }};
+    color: {{ btn_hover_text }};
+    border-color: {{ btn_hover_border }};
+  }
+  .social-proof-{{ section.id }} .acs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ btn_border }}, 0 0 0 4px #fff;
+  }
+  .social-proof-{{ section.id }} .acs-winner-img {
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 9999px;
+    border: 2px solid {{ accent_color }}33;
+  }
+</style>
+
+<section id="results" class="social-proof-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="social-proof-heading">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    
+    {%- comment -%} Section Heading {%- endcomment -%}
+    <div class="tw-mx-auto tw-mb-12 tw-max-w-2xl tw-text-center">
+      <h2 id="social-proof-heading" class="tw-mb-4 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl" style="color: {{ heading_color }};">
+        <span data-brands-content>{{ section.settings.brands_heading | default: 'Real Results from Shopify Brands' }}</span>
+        <span data-customers-content class="tw-hidden">{{ section.settings.customers_heading | default: 'Real People. Real Winners.' }}</span>
+      </h2>
+    </div>
+
+    {%- comment -%} Brands Content - Case Studies {%- endcomment -%}
+    <div data-brands-content>
+      <div class="tw-grid tw-gap-6 md:tw-grid-cols-2 lg:tw-grid-cols-3">
+        {% for block in section.blocks %}
+          {% if block.type == 'case_study' %}
+            <article class="acs-card tw-rounded-lg tw-border tw-p-6 tw-shadow-sm">
+              
+              {%- comment -%} Logo Placeholder {%- endcomment -%}
+              <div class="tw-mb-4 tw-flex tw-h-12 tw-w-12 tw-items-center tw-justify-center tw-rounded-lg tw-bg-gray-100">
+                {% if block.settings.logo != blank %}
+                  <img 
+                    src="{{ block.settings.logo | image_url: width: 100 }}"
+                    alt="{{ block.settings.brand_name }}"
+                    class="tw-h-10 tw-w-10 tw-object-contain"
+                    loading="lazy"
+                  />
+                {% else %}
+                  <span class="tw-text-xs tw-text-gray-400">Logo</span>
+                {% endif %}
+              </div>
+              
+              <h3 class="tw-mb-2 tw-text-lg tw-font-semibold" style="color: {{ card_title_color }};">
+                {{ block.settings.brand_name }}
+              </h3>
+              
+              <p class="acs-accent tw-mb-3 tw-text-xl tw-font-bold">
+                {{ block.settings.stat }}
+              </p>
+              
+              <p class="tw-mb-4 tw-text-sm" style="color: {{ card_text_color }};">
+                {{ block.settings.summary }}
+              </p>
+              
+              {% if block.settings.link != blank %}
+                <a 
+                  href="{{ block.settings.link }}" 
+                  class="acs-card-link tw-text-sm tw-font-medium focus:tw-outline-none focus:tw-underline"
+                >
+                  Read Case Study →
+                </a>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {%- comment -%} View All CTA {%- endcomment -%}
+      {% if section.settings.show_brands_cta %}
+        <div class="tw-mt-8 tw-flex tw-justify-center">
+          <a 
+            href="{{ section.settings.brands_cta_link | default: '/case-studies' }}"
+            class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
+          >
+            {{ section.settings.brands_cta_text | default: 'See All Case Studies' }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Customers Content - Winners {%- endcomment -%}
+    <div data-customers-content class="tw-hidden">
+      <div class="tw-mx-auto tw-mb-8 tw-grid tw-max-w-3xl tw-gap-6 md:tw-grid-cols-3">
+        {% for block in section.blocks %}
+          {% if block.type == 'winner' %}
+            <article class="acs-card tw-rounded-lg tw-border tw-p-6 tw-shadow-sm tw-text-center">
+              
+              {%- comment -%} Winner Image or Fallback Trophy Icon {%- endcomment -%}
+              {% if block.settings.winner_image != blank %}
+                <div class="tw-mx-auto tw-mb-4 tw-flex tw-justify-center">
+                  <img
+                    src="{{ block.settings.winner_image | image_url: width: 200 }}"
+                    alt="{{ block.settings.winner_name }}"
+                    class="acs-winner-img"
+                    loading="lazy"
+                    width="64"
+                    height="64"
+                  />
+                </div>
+              {% else %}
+                <div class="acs-accent-bg tw-mx-auto tw-mb-4 tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-full" aria-hidden="true">
+                  <svg class="acs-accent tw-h-8 tw-w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                </div>
+              {% endif %}
+              
+              <h3 class="tw-text-lg tw-font-semibold" style="color: {{ card_title_color }};">
+                {{ block.settings.winner_name }}
+              </h3>
+              
+              <p class="tw-mb-3 tw-text-sm" style="color: {{ card_text_color }};">
+                {{ block.settings.location }}
+              </p>
+              
+              <p class="tw-text-sm" style="color: {{ card_text_color }};">
+                Shopped with: <span class="tw-font-medium" style="color: {{ card_title_color }};">{{ block.settings.brand }}</span>
+              </p>
+              
+              <p class="acs-accent tw-mt-2 tw-text-2xl tw-font-bold">
+                {{ block.settings.prize }}
+              </p>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+      
+      {%- comment -%} View All Winners CTA {%- endcomment -%}
+      {% if section.settings.show_customers_cta %}
+        <div class="tw-flex tw-justify-center">
+          <a 
+            href="{{ section.settings.customers_cta_link | default: '/past-winners' }}"
+            class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
+          >
+            {{ section.settings.customers_cta_text | default: 'See All Winners' }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof",
+  "class": "social-proof-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (stats, prizes, links)",
+      "default": "#3099d3"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card title color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Border color",
+      "default": "#d1d5db"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover background",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover text color",
+      "default": "#374151"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover border color",
+      "default": "#9ca3af"
+    },
+    {
+      "type": "header",
+      "content": "Headings"
+    },
+    {
+      "type": "text",
+      "id": "brands_heading",
+      "label": "Brands heading",
+      "default": "Real Results from Shopify Brands"
+    },
+    {
+      "type": "text",
+      "id": "customers_heading",
+      "label": "Customers heading",
+      "default": "Real People. Real Winners."
+    },
+    {
+      "type": "header",
+      "content": "Brands CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brands_cta",
+      "label": "Show brands CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "brands_cta_text",
+      "label": "CTA button text",
+      "default": "See All Case Studies"
+    },
+    {
+      "type": "url",
+      "id": "brands_cta_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "header",
+      "content": "Customers CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_customers_cta",
+      "label": "Show customers CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "customers_cta_text",
+      "label": "CTA button text",
+      "default": "See All Winners"
+    },
+    {
+      "type": "url",
+      "id": "customers_cta_link",
+      "label": "CTA button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "case_study",
+      "name": "Case Study",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "text",
+          "id": "stat",
+          "label": "Key statistic",
+          "default": "35.97% increase in ROAS"
+        },
+        {
+          "type": "textarea",
+          "id": "summary",
+          "label": "Summary",
+          "default": "A brief summary of the case study results."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Case study link"
+        }
+      ]
+    },
+    {
+      "type": "winner",
+      "name": "Winner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "winner_image",
+          "label": "Winner photo"
+        },
+        {
+          "type": "text",
+          "id": "winner_name",
+          "label": "Winner name",
+          "default": "Jason H."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Marshall, MO"
+        },
+        {
+          "type": "text",
+          "id": "brand",
+          "label": "Brand shopped",
+          "default": "Synister Speed"
+        },
+        {
+          "type": "text",
+          "id": "prize",
+          "label": "Prize amount",
+          "default": "$10,000"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Fresh Chile Co",
+            "stat": "35.97% increase in ROAS",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "link": "/case-studies/fresh-chile-co"
+          }
+        },
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Pair of Thieves",
+            "stat": "18% increase in gross sales",
+            "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
+            "link": "/case-studies/pair-of-thieves"
+          }
+        },
+        {
+          "type": "case_study",
+          "settings": {
+            "brand_name": "Caraway Home",
+            "stat": "61% increase in YoY top-line revenue",
+            "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
+            "link": "/case-studies/caraway-home"
+          }
+        },
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Jason H.",
+            "location": "Marshall, MO",
+            "brand": "Synister Speed",
+            "prize": "$10,000"
+          }
+        },
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Kaitlin M.",
+            "location": "Montague, NJ",
+            "brand": "Cirkul",
+            "prize": "$100,000"
+          }
+        },
+        {
+          "type": "winner",
+          "settings": {
+            "winner_name": "Dre C.",
+            "location": "Bozeman, MT",
+            "brand": "Caraway Home",
+            "prize": "$100,000"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

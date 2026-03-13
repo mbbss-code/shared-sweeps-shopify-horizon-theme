@@ -1,0 +1,740 @@
+{%- comment -%}
+  Shared Sweeps Premium Membership — Custom Product Page Section
+  ADA Compliant · Semantic HTML · SEO Optimized · Fully Responsive
+  Product data (title, price, images, variants) pulled from the assigned product.
+  Marketing copy, buttons, and colors are customizable via section settings.
+  Tailwind classes use the 'tw-' prefix.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+
+  assign primary_bg     = s.primary_btn_bg
+  assign primary_border = s.primary_btn_border
+  assign primary_text   = s.primary_btn_text
+  assign accent         = s.accent_color
+
+  assign current_variant = product.selected_or_first_available_variant
+  assign product_form_id = 'ss-product-form-' | append: section.id
+-%}
+
+{%- comment -%} ── JSON-LD Structured Data (from product object) ── {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "description": {{ product.description | strip_html | truncate: 500 | json }},
+  "url": {{ canonical_url | json }},
+  {%- if product.featured_image -%}
+  "image": {{ product.featured_image | image_url: width: 1200 | json }},
+  {%- endif -%}
+  "brand": {
+    "@type": "Organization",
+    "name": {{ product.vendor | json }}
+  },
+  "sku": {{ current_variant.sku | json }},
+  "offers": {
+    "@type": "Offer",
+    "price": {{ current_variant.price | money_without_currency | json }},
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "availability": "https://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}",
+    "url": {{ canonical_url | json }},
+    "seller": {
+      "@type": "Organization",
+      "name": {{ shop.name | json }}
+    }
+  }
+}
+</script>
+
+<div
+  id="ss-premium"
+  class="tw-min-h-screen tw-bg-white tw-text-gray-900"
+  style="
+    --ss-accent: {{ accent }};
+    --ss-primary-btn-bg: {{ primary_bg }};
+    --ss-primary-btn-border: {{ primary_border }};
+    --ss-primary-btn-text: {{ primary_text }};
+  "
+>
+
+  {%- comment -%} ═══════════════════════════════════════
+    SECTION 1 — PDP (Product Detail Page)
+  ═══════════════════════════════════════ {%- endcomment -%}
+  <section class="tw-py-12 md:tw-py-20" aria-labelledby="premium-heading">
+    <div class="tw-mx-auto tw-max-w-5xl tw-px-4">
+      <div class="tw-grid tw-grid-cols-1 tw-items-start tw-gap-10 md:tw-grid-cols-2 md:tw-gap-16">
+
+        {%- comment -%} ── Left Column: Product Image + Value Card ── {%- endcomment -%}
+        <div class="tw-flex tw-flex-col tw-gap-6">
+
+          {%- comment -%} Product Image {%- endcomment -%}
+          {%- if product.featured_image -%}
+            {%- assign img_alt = product.featured_image.alt | default: product.title | escape -%}
+            <div class="tw-overflow-hidden tw-rounded-xl tw-border tw-border-gray-200 tw-bg-gray-50">
+              <img
+                src="{{ product.featured_image | image_url: width: 800 }}"
+                srcset="
+                  {{ product.featured_image | image_url: width: 400 }} 400w,
+                  {{ product.featured_image | image_url: width: 600 }} 600w,
+                  {{ product.featured_image | image_url: width: 800 }} 800w
+                "
+                sizes="(min-width: 768px) 50vw, 100vw"
+                alt="{{ img_alt }}"
+                loading="eager"
+                width="{{ product.featured_image.width }}"
+                height="{{ product.featured_image.height }}"
+                class="tw-w-full tw-h-auto tw-object-cover"
+              >
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} Value Card {%- endcomment -%}
+          <div
+            class="tw-overflow-hidden tw-rounded-xl tw-border tw-p-8 md:tw-p-10"
+            style="border-color: {{ accent | color_modify: 'alpha', 0.2 }}; background: linear-gradient(135deg, {{ accent | color_modify: 'alpha', 0.05 }}, white, {{ accent | color_modify: 'alpha', 0.03 }});"
+          >
+            <div class="tw-flex tw-flex-col tw-items-center tw-gap-6 tw-text-center">
+              {%- comment -%} Star icon {%- endcomment -%}
+              <div
+                class="tw-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl"
+                style="background: {{ accent | color_modify: 'alpha', 0.1 }};"
+                aria-hidden="true"
+              >
+                <svg class="tw-h-8 tw-w-8" style="color: var(--ss-accent);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+              </div>
+
+              <h2 class="tw-text-2xl tw-font-bold">{{ s.card_title }}</h2>
+
+              <p class="tw-max-w-xs tw-text-sm tw-text-gray-500">
+                {{ s.card_description }}
+              </p>
+
+              <hr class="tw-w-full tw-border-gray-200" aria-hidden="true">
+
+              {%- comment -%} Benefits list inside card {%- endcomment -%}
+              <ul class="tw-w-full tw-space-y-3 tw-text-left tw-list-none tw-p-0" aria-label="Premium benefits">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'benefit' -%}
+                    <li class="tw-flex tw-items-start tw-gap-3" {{ block.shopify_attributes }}>
+                      <svg class="tw-mt-0.5 tw-h-4 tw-w-4 tw-flex-shrink-0" style="color: var(--ss-accent);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                      <span class="tw-text-sm">{{ block.settings.text }}</span>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {%- comment -%} ── Right Column: Purchase Block ── {%- endcomment -%}
+        <div class="tw-flex tw-flex-col tw-gap-6">
+
+          {%- comment -%} Label + Product Title {%- endcomment -%}
+          <div>
+            {%- if s.product_label != blank -%}
+              <p class="tw-mb-1 tw-text-sm tw-font-medium" style="color: var(--ss-accent);">{{ s.product_label }}</p>
+            {%- endif -%}
+            <h1 id="premium-heading" class="tw-text-3xl tw-font-bold tw-tracking-tight md:tw-text-4xl">
+              {{ product.title }}
+            </h1>
+          </div>
+
+          {%- comment -%} Price {%- endcomment -%}
+          <div class="tw-flex tw-items-baseline tw-gap-2" id="ss-price-display">
+            {%- if current_variant.compare_at_price > current_variant.price -%}
+              <span class="tw-text-4xl tw-font-bold" style="color: var(--ss-accent);">
+                {{ current_variant.price | money }}
+              </span>
+              <s class="tw-text-lg tw-text-gray-400">
+                <span class="tw-sr-only">Regular price</span>
+                {{ current_variant.compare_at_price | money }}
+              </s>
+            {%- else -%}
+              <span class="tw-text-4xl tw-font-bold">
+                {{ current_variant.price | money }}
+              </span>
+            {%- endif -%}
+            {%- if s.price_period != blank -%}
+              <span class="tw-text-base tw-text-gray-500">{{ s.price_period }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- comment -%} Product Description {%- endcomment -%}
+          {%- if product.description != blank -%}
+            <div class="tw-text-sm tw-leading-relaxed tw-text-gray-500 ss-product-description">
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+
+          {%- comment -%} ── Add to Cart Form ── {%- endcomment -%}
+          {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+            {%- comment -%} Variant selector (hidden if single default variant) {%- endcomment -%}
+            {%- unless product.has_only_default_variant -%}
+              <fieldset class="tw-mb-4 tw-border-0 tw-p-0">
+                <legend class="tw-sr-only">{{ 'products.product.variant' | t | default: 'Options' }}</legend>
+                {%- for option in product.options_with_values -%}
+                  <div class="tw-mb-3">
+                    <label
+                      for="ss-option-{{ section.id }}-{{ forloop.index0 }}"
+                      class="tw-mb-1.5 tw-block tw-text-sm tw-font-medium"
+                    >
+                      {{ option.name }}
+                    </label>
+                    <select
+                      id="ss-option-{{ section.id }}-{{ forloop.index0 }}"
+                      class="tw-w-full tw-rounded-lg tw-border tw-border-gray-300 tw-bg-white tw-px-4 tw-py-3 tw-text-sm focus:tw-border-blue-500 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500/20"
+                      data-option-index="{{ forloop.index0 }}"
+                      aria-label="{{ option.name }}"
+                    >
+                      {%- for value in option.values -%}
+                        <option
+                          value="{{ value | escape }}"
+                          {% if option.selected_value == value %}selected{% endif %}
+                        >
+                          {{ value }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                  </div>
+                {%- endfor -%}
+              </fieldset>
+            {%- endunless -%}
+
+            {%- comment -%} Hidden variant ID input {%- endcomment -%}
+            <input
+              type="hidden"
+              name="id"
+              value="{{ current_variant.id }}"
+              id="ss-variant-id-{{ section.id }}"
+            >
+
+            {%- comment -%} Add to Cart Button {%- endcomment -%}
+            <button
+              type="submit"
+              class="ss-btn--primary tw-flex tw-w-full tw-cursor-pointer tw-items-center tw-justify-center tw-gap-2 tw-rounded-lg tw-px-8 tw-py-4 tw-text-base tw-font-semibold tw-transition-opacity hover:tw-opacity-90 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"
+              style="background: var(--ss-primary-btn-bg); color: var(--ss-primary-btn-text); border: 1px solid var(--ss-primary-btn-border);"
+              {% unless current_variant.available %}disabled{% endunless %}
+              aria-label="{% if current_variant.available %}{{ s.cta_label | default: 'Add to cart' }}{% else %}{{ 'products.product.sold_out' | t | default: 'Sold out' }}{% endif %}"
+              id="ss-add-to-cart-{{ section.id }}"
+            >
+              <span id="ss-btn-text-{{ section.id }}">
+                {%- if current_variant.available -%}
+                  {{ s.cta_label | default: 'Add to cart' }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t | default: 'Sold out' }}
+                {%- endif -%}
+              </span>
+              <svg class="tw-h-5 tw-w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
+
+          {%- endform -%}
+
+          {%- comment -%} Micro trust badges {%- endcomment -%}
+          <div class="tw-flex tw-items-center tw-gap-4 tw-text-xs tw-text-gray-500">
+            <span class="tw-flex tw-items-center tw-gap-1.5">
+              <svg class="tw-h-3.5 tw-w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              {{ s.badge_billing | default: 'Billed monthly' }}
+            </span>
+            <span class="tw-flex tw-items-center tw-gap-1.5">
+              <svg class="tw-h-3.5 tw-w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              {{ s.badge_security | default: 'Secure checkout' }}
+            </span>
+          </div>
+
+          <p class="tw-text-xs tw-text-gray-500">{{ s.badge_cancel | default: 'Cancel anytime · No contracts · No hidden fees' }}</p>
+
+          <hr class="tw-border-gray-200" aria-hidden="true">
+
+          {%- comment -%} What's Included {%- endcomment -%}
+          <div>
+            <h3 class="tw-mb-3 tw-text-sm tw-font-semibold tw-uppercase tw-tracking-wide">{{ s.included_heading | default: "What's Included" }}</h3>
+            <ul class="tw-space-y-2.5 tw-list-none tw-p-0" role="list">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'benefit' -%}
+                  <li class="tw-flex tw-items-start tw-gap-2.5" {{ block.shopify_attributes }}>
+                    <svg class="tw-mt-0.5 tw-h-4 tw-w-4 tw-flex-shrink-0" style="color: var(--ss-accent);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span class="tw-text-sm">{{ block.settings.text }}</span>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  {%- comment -%} ═══════════════════════════════════════
+    SECTION 2 — HOW IT WORKS
+  ═══════════════════════════════════════ {%- endcomment -%}
+  <section
+    class="tw-py-14 tw-bg-gray-50/50 md:tw-py-20"
+    aria-labelledby="how-it-works-heading"
+  >
+    <div class="tw-mx-auto tw-max-w-4xl tw-px-4">
+      <h2 id="how-it-works-heading" class="tw-mb-10 tw-text-center tw-text-2xl tw-font-bold md:tw-text-3xl">
+        {{ s.how_heading | default: 'How It Works' }}
+      </h2>
+
+      <ol class="tw-grid tw-grid-cols-1 tw-gap-6 tw-list-none tw-p-0 sm:tw-grid-cols-2 md:tw-grid-cols-4" role="list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'step' -%}
+            <li class="tw-flex tw-flex-col tw-items-center tw-gap-3 tw-text-center" {{ block.shopify_attributes }}>
+              <div
+                class="tw-flex tw-h-10 tw-w-10 tw-items-center tw-justify-center tw-rounded-full tw-text-lg tw-font-bold"
+                style="background: var(--ss-accent); color: var(--ss-primary-btn-text);"
+                aria-hidden="true"
+              >
+                {{ block.settings.number }}
+              </div>
+              <h3 class="tw-text-sm tw-font-semibold">{{ block.settings.title }}</h3>
+              <p class="tw-text-xs tw-text-gray-500">{{ block.settings.description }}</p>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ol>
+    </div>
+  </section>
+
+
+  {%- comment -%} ═══════════════════════════════════════
+    SECTION 3 — TRUST & REASSURANCE
+  ═══════════════════════════════════════ {%- endcomment -%}
+  <section
+    class="tw-py-14 md:tw-py-20"
+    aria-labelledby="trust-heading"
+  >
+    <div class="tw-mx-auto tw-max-w-2xl tw-px-4">
+      <h2 id="trust-heading" class="tw-mb-8 tw-text-center tw-text-2xl tw-font-bold md:tw-text-3xl">
+        {{ s.trust_heading | default: 'Why You Can Trust Us' }}
+      </h2>
+
+      <ul class="tw-space-y-3 tw-list-none tw-p-0" role="list" aria-label="Trust points">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'trust_point' -%}
+            <li
+              class="tw-flex tw-items-center tw-gap-3 tw-rounded-lg tw-border tw-border-gray-100 tw-bg-white tw-p-3.5"
+              {{ block.shopify_attributes }}
+            >
+              <svg class="tw-h-4 tw-w-4 tw-flex-shrink-0" style="color: var(--ss-accent);" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <p class="tw-text-sm">{{ block.settings.text }}</p>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  </section>
+
+
+  {%- comment -%} ═══════════════════════════════════════
+    SECTION 4 — FINAL CTA
+  ═══════════════════════════════════════ {%- endcomment -%}
+  <section
+    class="tw-py-14 md:tw-py-20"
+    style="background: linear-gradient(135deg, {{ accent | color_modify: 'alpha', 0.05 }}, transparent, {{ accent | color_modify: 'alpha', 0.03 }});"
+    aria-labelledby="final-cta-heading"
+  >
+    <div class="tw-mx-auto tw-max-w-xl tw-px-4 tw-text-center">
+      <h2 id="final-cta-heading" class="tw-mb-3 tw-text-2xl tw-font-bold md:tw-text-3xl">
+        {{ s.final_cta_heading }}
+      </h2>
+      <p class="tw-mb-6 tw-text-gray-500">
+        {{ s.final_cta_text }}
+      </p>
+      <a
+        href="#ss-premium"
+        class="ss-btn--primary tw-inline-flex tw-items-center tw-gap-2 tw-rounded-lg tw-px-8 tw-py-4 tw-text-base tw-font-semibold tw-transition-opacity hover:tw-opacity-90 focus-visible:tw-outline focus-visible:tw-outline-2 focus-visible:tw-outline-offset-2"
+        style="background: var(--ss-primary-btn-bg); color: var(--ss-primary-btn-text); border: 1px solid var(--ss-primary-btn-border);"
+      >
+        {{ s.final_cta_label }}
+        <svg class="tw-h-5 tw-w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+      <p class="tw-mt-3 tw-text-xs tw-text-gray-500">{{ s.final_cta_footnote }}</p>
+    </div>
+  </section>
+
+</div>
+
+
+{%- comment -%} ═══════════════════════════════════════
+  JAVASCRIPT — Variant Selector
+═══════════════════════════════════════ {%- endcomment -%}
+<script>
+  (function() {
+    var sectionId = {{ section.id | json }};
+    var productData = {{ product.variants | json }};
+    var form = document.getElementById('ss-product-form-' + sectionId);
+    if (!form) return;
+
+    var variantInput = document.getElementById('ss-variant-id-' + sectionId);
+    var addToCartBtn = document.getElementById('ss-add-to-cart-' + sectionId);
+    var btnText = document.getElementById('ss-btn-text-' + sectionId);
+    var priceDisplay = document.getElementById('ss-price-display');
+    var selects = form.querySelectorAll('select[data-option-index]');
+    var ctaLabel = {{ s.cta_label | default: 'Add to cart' | json }};
+    var soldOutLabel = {{ 'products.product.sold_out' | t | default: 'Sold out' | json }};
+
+    function getSelectedVariant() {
+      var selectedOptions = [];
+      selects.forEach(function(select) {
+        selectedOptions.push(select.value);
+      });
+
+      for (var i = 0; i < productData.length; i++) {
+        var variant = productData[i];
+        var match = true;
+        for (var j = 0; j < selectedOptions.length; j++) {
+          if (variant.options[j] !== selectedOptions[j]) {
+            match = false;
+            break;
+          }
+        }
+        if (match) return variant;
+      }
+      return null;
+    }
+
+    function formatMoney(cents) {
+      return (cents / 100).toLocaleString(undefined, {
+        style: 'currency',
+        currency: {{ cart.currency.iso_code | json }}
+      });
+    }
+
+    function updateVariant() {
+      var variant = getSelectedVariant();
+      if (!variant) return;
+
+      /* Update hidden input */
+      variantInput.value = variant.id;
+
+      /* Update URL without reload */
+      var url = new URL(window.location);
+      url.searchParams.set('variant', variant.id);
+      window.history.replaceState({}, '', url.toString());
+
+      /* Update button state */
+      if (variant.available) {
+        addToCartBtn.disabled = false;
+        btnText.textContent = ctaLabel;
+        addToCartBtn.setAttribute('aria-label', ctaLabel);
+      } else {
+        addToCartBtn.disabled = true;
+        btnText.textContent = soldOutLabel;
+        addToCartBtn.setAttribute('aria-label', soldOutLabel);
+      }
+
+      /* Update price */
+      if (priceDisplay) {
+        var priceHTML = '';
+        if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+          priceHTML += '<span class="tw-text-4xl tw-font-bold" style="color: var(--ss-accent);">' + formatMoney(variant.price) + '</span>';
+          priceHTML += ' <s class="tw-text-lg tw-text-gray-400"><span class="tw-sr-only">Regular price</span>' + formatMoney(variant.compare_at_price) + '</s>';
+        } else {
+          priceHTML += '<span class="tw-text-4xl tw-font-bold">' + formatMoney(variant.price) + '</span>';
+        }
+        var periodEl = priceDisplay.querySelector('.tw-text-base.tw-text-gray-500');
+        var periodHTML = periodEl ? ' ' + periodEl.outerHTML : '';
+        priceDisplay.innerHTML = priceHTML + periodHTML;
+      }
+    }
+
+    selects.forEach(function(select) {
+      select.addEventListener('change', updateVariant);
+    });
+  })();
+</script>
+
+
+{%- comment -%} ═══════════════════════════════════════
+  SCOPED STYLES
+═══════════════════════════════════════ {%- endcomment -%}
+{% stylesheet %}
+  /* Clean up product description HTML from Shopify RTE */
+  .ss-product-description p {
+    margin-bottom: 0.5em;
+  }
+  .ss-product-description p:last-child {
+    margin-bottom: 0;
+  }
+{% endstylesheet %}
+
+
+{% schema %}
+{
+  "name": "PDP SSP",
+  "tag": "section",
+  "class": "ss-premium-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Benefit text",
+          "default": "2× entries on every purchase from participating brands"
+        }
+      ]
+    },
+    {
+      "type": "step",
+      "name": "How It Works Step",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Start your membership"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Sign up in under a minute — just $10/month."
+        }
+      ]
+    },
+    {
+      "type": "trust_point",
+      "name": "Trust Point",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Trust point text",
+          "default": "Real prizes, real winners — verified and published"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "─── Button & Accent Colors ───"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Primary color",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_bg",
+      "label": "Primary button — background",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_border",
+      "label": "Primary button — border",
+      "default": "#2563eb"
+    },
+    {
+      "type": "color",
+      "id": "primary_btn_text",
+      "label": "Primary button — text",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "─── Product Display ───"
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Label above title (e.g. Digital Subscription)",
+      "default": "Digital Subscription"
+    },
+    {
+      "type": "text",
+      "id": "price_period",
+      "label": "Price period suffix (e.g. /month)",
+      "default": "/month"
+    },
+
+    {
+      "type": "header",
+      "content": "─── Value Card (left column) ───"
+    },
+    {
+      "type": "text",
+      "id": "card_title",
+      "label": "Card title",
+      "default": "Shared Sweeps Premium"
+    },
+    {
+      "type": "textarea",
+      "id": "card_description",
+      "label": "Card description",
+      "default": "Double your entries, unlock exclusive deals, and get closer to the $100,000 grand prize with every purchase."
+    },
+
+    {
+      "type": "header",
+      "content": "─── CTA Button ───"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Add to cart button label",
+      "default": "Start Premium Membership"
+    },
+
+    {
+      "type": "header",
+      "content": "─── Micro Badges ───"
+    },
+    {
+      "type": "text",
+      "id": "badge_billing",
+      "label": "Billing badge",
+      "default": "Billed monthly"
+    },
+    {
+      "type": "text",
+      "id": "badge_security",
+      "label": "Security badge",
+      "default": "Secure checkout"
+    },
+    {
+      "type": "text",
+      "id": "badge_cancel",
+      "label": "Cancel policy text",
+      "default": "Cancel anytime · No contracts · No hidden fees"
+    },
+    {
+      "type": "text",
+      "id": "included_heading",
+      "label": "What's Included heading",
+      "default": "What's Included"
+    },
+
+    {
+      "type": "header",
+      "content": "─── How It Works ───"
+    },
+    {
+      "type": "text",
+      "id": "how_heading",
+      "label": "Section heading",
+      "default": "How It Works"
+    },
+
+    {
+      "type": "header",
+      "content": "─── Trust Section ───"
+    },
+    {
+      "type": "text",
+      "id": "trust_heading",
+      "label": "Section heading",
+      "default": "Why You Can Trust Us"
+    },
+
+    {
+      "type": "header",
+      "content": "─── Final CTA ───"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_heading",
+      "label": "Heading",
+      "default": "Ready to get started?"
+    },
+    {
+      "type": "textarea",
+      "id": "final_cta_text",
+      "label": "Body text",
+      "default": "Join now and start earning 2× entries on every purchase."
+    },
+    {
+      "type": "text",
+      "id": "final_cta_label",
+      "label": "Button label",
+      "default": "Start Premium Membership – $10/month"
+    },
+    {
+      "type": "text",
+      "id": "final_cta_footnote",
+      "label": "Footnote text",
+      "default": "Cancel anytime · Winners selected by an independent third party"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP SSP",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": { "text": "2× entries on every purchase from participating brands" }
+        },
+        {
+          "type": "benefit",
+          "settings": { "text": "Members-only deals: extra entries, discounts & exclusive perks" }
+        },
+        {
+          "type": "benefit",
+          "settings": { "text": "One membership that works across all participating brands" }
+        },
+        {
+          "type": "benefit",
+          "settings": { "text": "Better odds to win the $100,000 prize and monthly prizes" }
+        },
+        {
+          "type": "step",
+          "settings": { "number": "1", "title": "Start your membership", "description": "Sign up in under a minute — just $10/month." }
+        },
+        {
+          "type": "step",
+          "settings": { "number": "2", "title": "Shop participating brands", "description": "Every purchase automatically earns you 2× entries." }
+        },
+        {
+          "type": "step",
+          "settings": { "number": "3", "title": "Win real prizes", "description": "You're entered into monthly drawings and the grand prize." }
+        },
+        {
+          "type": "step",
+          "settings": { "number": "4", "title": "Cancel anytime", "description": "No contracts, no fees — manage or cancel whenever you want." }
+        },
+        {
+          "type": "trust_point",
+          "settings": { "text": "Winners selected by an independent third party" }
+        },
+        {
+          "type": "trust_point",
+          "settings": { "text": "Real prizes, real winners — verified and published" }
+        },
+        {
+          "type": "trust_point",
+          "settings": { "text": "Secure checkout & encrypted billing" }
+        },
+        {
+          "type": "trust_point",
+          "settings": { "text": "Cancel anytime — no penalties, no hassle" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

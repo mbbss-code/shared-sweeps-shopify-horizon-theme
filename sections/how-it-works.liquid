@@ -1,0 +1,384 @@
+{% comment %}
+  How It Works section with audience toggle support
+  SEO optimized, ADA compliant, responsive
+{% endcomment %}
+
+{%- liquid
+  assign bg_color = section.settings.bg_color | default: '#f9fafb'
+  assign heading_color = section.settings.heading_color | default: '#111827'
+  assign step_title_color = section.settings.step_title_color | default: '#111827'
+  assign step_desc_color = section.settings.step_desc_color | default: '#4b5563'
+  assign step_badge_bg = section.settings.step_badge_bg | default: '#3099d3'
+  assign step_badge_text = section.settings.step_badge_text | default: '#ffffff'
+  assign btn_bg = section.settings.btn_bg | default: '#3099d3'
+  assign btn_text = section.settings.btn_text | default: '#ffffff'
+  assign btn_border = section.settings.btn_border | default: '#3099d3'
+  assign btn_hover_bg = section.settings.btn_hover_bg | default: '#2780b3'
+  assign btn_hover_text = section.settings.btn_hover_text | default: '#ffffff'
+  assign btn_hover_border = section.settings.btn_hover_border | default: '#2780b3'
+-%}
+
+<style>
+  .how-it-works-{{ section.id }} {
+    background-color: {{ bg_color }};
+  }
+  .how-it-works-{{ section.id }} .acs-step-badge {
+    background-color: {{ step_badge_bg }};
+    color: {{ step_badge_text }};
+  }
+  .how-it-works-{{ section.id }} .acs-cta-btn {
+    background-color: {{ btn_bg }};
+    color: {{ btn_text }};
+    border: 1px solid {{ btn_border }};
+  }
+  .how-it-works-{{ section.id }} .acs-cta-btn:hover {
+    background-color: {{ btn_hover_bg }};
+    color: {{ btn_hover_text }};
+    border-color: {{ btn_hover_border }};
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+  }
+  .how-it-works-{{ section.id }} .acs-cta-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px {{ btn_bg }}, 0 0 0 4px #fff;
+  }
+
+  /* Flex-based steps grid for odd-count centering */
+  .how-it-works-{{ section.id }} .acs-steps-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .how-it-works-{{ section.id }} .acs-step-item {
+    width: 100%;
+    text-align: center;
+    position: relative;
+  }
+  @media (min-width: 768px) {
+    .how-it-works-{{ section.id }} .acs-step-item {
+      width: calc(50% - 1rem);
+    }
+  }
+  @media (min-width: 1024px) {
+    .how-it-works-{{ section.id }} .acs-step-item {
+      width: calc(25% - 1.5rem);
+    }
+  }
+</style>
+
+<section id="how-it-works" class="how-it-works-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="how-it-works-heading">
+  <div class="tw-container tw-mx-auto tw-px-4">
+    
+    {%- comment -%} Section Heading {%- endcomment -%}
+    <div class="tw-mx-auto tw-mb-16 tw-max-w-2xl tw-text-center">
+      <h2 id="how-it-works-heading" class="tw-mb-4 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl" style="color: {{ heading_color }};">
+        <span data-brands-content>{{ section.settings.brands_heading | default: 'How Shared Sweeps Works for Your Shopify Store' }}</span>
+        <span data-customers-content class="tw-hidden">{{ section.settings.customers_heading | default: 'How It Works for Shoppers' }}</span>
+      </h2>
+    </div>
+
+    {%- comment -%} Steps Grid {%- endcomment -%}
+    <div class="acs-steps-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'brands_step' %}
+          <article data-brands-content class="acs-step-item">
+            <div class="acs-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold" aria-hidden="true">
+              {{ block.settings.step_number }}
+            </div>
+            <h3 class="tw-mb-2 tw-text-xl tw-font-semibold" style="color: {{ step_title_color }};">
+              {{ block.settings.title }}
+            </h3>
+            <p style="color: {{ step_desc_color }};">
+              {{ block.settings.description }}
+            </p>
+          </article>
+        {% endif %}
+        
+        {% if block.type == 'customers_step' %}
+          <article data-customers-content class="acs-step-item tw-hidden">
+            <div class="acs-step-badge tw-mb-4 tw-inline-flex tw-h-16 tw-w-16 tw-items-center tw-justify-center tw-rounded-2xl tw-text-2xl tw-font-bold" aria-hidden="true">
+              {{ block.settings.step_number }}
+            </div>
+            <h3 class="tw-mb-2 tw-text-xl tw-font-semibold" style="color: {{ step_title_color }};">
+              {{ block.settings.title }}
+            </h3>
+            <p style="color: {{ step_desc_color }};">
+              {{ block.settings.description }}
+            </p>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} CTA Button (Brands only) {%- endcomment -%}
+    {% if section.settings.show_brands_cta %}
+      <div data-brands-content class="tw-mx-auto tw-mt-12 tw-max-w-2xl tw-text-center">
+        <a 
+          href="{{ section.settings.brands_cta_link | default: '/past-winners' }}"
+          class="acs-cta-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
+        >
+          {{ section.settings.brands_cta_text | default: 'Real Winners' }}
+          <svg class="tw-ml-2 tw-h-5 tw-w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "class": "how-it-works-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "step_title_color",
+      "label": "Step title color",
+      "default": "#111827"
+    },
+    {
+      "type": "color",
+      "id": "step_desc_color",
+      "label": "Step description color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "Step Badge Colors"
+    },
+    {
+      "type": "color",
+      "id": "step_badge_bg",
+      "label": "Badge background",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "step_badge_text",
+      "label": "Badge text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Background",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_border",
+      "label": "Border color",
+      "default": "#3099d3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Hover background",
+      "default": "#2780b3"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Hover text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Hover border color",
+      "default": "#2780b3"
+    },
+    {
+      "type": "header",
+      "content": "Headings"
+    },
+    {
+      "type": "text",
+      "id": "brands_heading",
+      "label": "Brands heading",
+      "default": "How Shared Sweeps Works for Your Shopify Store"
+    },
+    {
+      "type": "text",
+      "id": "customers_heading",
+      "label": "Customers heading",
+      "default": "How It Works for Shoppers"
+    },
+    {
+      "type": "header",
+      "content": "Brands CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_brands_cta",
+      "label": "Show brands CTA button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "brands_cta_text",
+      "label": "CTA button text",
+      "default": "Real Winners"
+    },
+    {
+      "type": "url",
+      "id": "brands_cta_link",
+      "label": "CTA button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brands_step",
+      "name": "Brands Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Step description goes here"
+        }
+      ]
+    },
+    {
+      "type": "customers_step",
+      "name": "Customers Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Step description goes here"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "category": "Content",
+      "blocks": [
+        {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "01",
+            "title": "We Set Up Your Campaign",
+            "description": "Install Shared Sweeps, configure your sweepstakes, and launch in days. We handle the $100K prize and legal compliance."
+          }
+        },
+        {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "02",
+            "title": "Customers Earn Entries",
+            "description": "Every $1 spent equals 1 entry. Built-in multipliers create urgency and repeat purchases."
+          }
+        },
+        {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "03",
+            "title": "Track Growth in Shopify",
+            "description": "See revenue, entries, and performance directly in your Shopify dashboard."
+          }
+        },
+        {
+          "type": "brands_step",
+          "settings": {
+            "step_number": "04",
+            "title": "We Award the Winner",
+            "description": "Winners are selected at random using a trusted third-party system."
+          }
+        },
+        {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "01",
+            "title": "Shop Participating Brands",
+            "description": "Buy from your favorite Shopify stores."
+          }
+        },
+        {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "02",
+            "title": "Earn Entries Automatically",
+            "description": "Every dollar you spend is one entry toward the $100K prize."
+          }
+        },
+        {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "03",
+            "title": "Increase Your Entries",
+            "description": "Be on the lookout for entry multipliers and bonus entries."
+          }
+        },
+        {
+          "type": "customers_step",
+          "settings": {
+            "step_number": "04",
+            "title": "One Real Winner",
+            "description": "One shopper wins the $100,000 prize at the end of the sweepstakes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

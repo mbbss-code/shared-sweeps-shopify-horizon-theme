@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_page_ssp_Km4x7P": {
+      "type": "product-page-ssp",
+      "blocks": {
+        "benefit_Xk2m9A": {
+          "type": "benefit",
+          "settings": {
+            "text": "2× entries on every purchase from participating brands"
+          }
+        },
+        "benefit_Rp4v7B": {
+          "type": "benefit",
+          "settings": {
+            "text": "Members-only deals: extra entries, discounts & exclusive perks"
+          }
+        },
+        "benefit_Wn8c3D": {
+          "type": "benefit",
+          "settings": {
+            "text": "One membership that works across all participating brands"
+          }
+        },
+        "benefit_Yt6f1E": {
+          "type": "benefit",
+          "settings": {
+            "text": "Better odds to win the $100,000 prize and monthly prizes"
+          }
+        },
+        "step_Qm3h8F": {
+          "type": "step",
+          "settings": {
+            "number": "1",
+            "title": "Start your membership",
+            "description": "Sign up in under a minute — just $10/month."
+          }
+        },
+        "step_Lx7j2G": {
+          "type": "step",
+          "settings": {
+            "number": "2",
+            "title": "Shop participating brands",
+            "description": "Every purchase automatically earns you 2× entries."
+          }
+        },
+        "step_Hd9k5H": {
+          "type": "step",
+          "settings": {
+            "number": "3",
+            "title": "Win real prizes",
+            "description": "You're entered into monthly drawings and the grand prize."
+          }
+        },
+        "step_Bp1n4J": {
+          "type": "step",
+          "settings": {
+            "number": "4",
+            "title": "Cancel anytime",
+            "description": "No contracts, no fees — manage or cancel whenever you want."
+          }
+        },
+        "trust_point_Fg5r6K": {
+          "type": "trust_point",
+          "settings": {
+            "text": "Winners selected by an independent third party"
+          }
+        },
+        "trust_point_Cv8t3L": {
+          "type": "trust_point",
+          "settings": {
+            "text": "Real prizes, real winners — verified and published"
+          }
+        },
+        "trust_point_Nw2x9M": {
+          "type": "trust_point",
+          "settings": {
+            "text": "Secure checkout & encrypted billing"
+          }
+        },
+        "trust_point_Ej4z7N": {
+          "type": "trust_point",
+          "settings": {
+            "text": "Cancel anytime — no penalties, no hassle"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_Xk2m9A",
+        "benefit_Rp4v7B",
+        "benefit_Wn8c3D",
+        "benefit_Yt6f1E",
+        "step_Qm3h8F",
+        "step_Lx7j2G",
+        "step_Hd9k5H",
+        "step_Bp1n4J",
+        "trust_point_Fg5r6K",
+        "trust_point_Cv8t3L",
+        "trust_point_Nw2x9M",
+        "trust_point_Ej4z7N"
+      ],
+      "settings": {
+        "accent_color": "#2563eb",
+        "primary_btn_bg": "#2563eb",
+        "primary_btn_border": "#2563eb",
+        "primary_btn_text": "#ffffff",
+        "product_label": "Digital Subscription",
+        "price_period": "/month",
+        "card_title": "Shared Sweeps Premium",
+        "card_description": "Double your entries, unlock exclusive deals, and get closer to the $100,000 grand prize with every purchase.",
+        "cta_label": "Start Premium Membership",
+        "badge_billing": "Billed monthly",
+        "badge_security": "Secure checkout",
+        "badge_cancel": "Cancel anytime · No contracts · No hidden fees",
+        "included_heading": "What's Included",
+        "how_heading": "How It Works",
+        "trust_heading": "Why You Can Trust Us",
+        "final_cta_heading": "Ready to get started?",
+        "final_cta_text": "Join now and start earning 2× entries on every purchase.",
+        "final_cta_label": "Start Premium Membership – $10/month",
+        "final_cta_footnote": "Cancel anytime · Winners selected by an independent third party"
+      }
+    }
+  },
+  "order": [
+    "product_page_ssp_Km4x7P"
+  ]
+}
