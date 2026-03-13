@@ -180,7 +180,7 @@
         "fs_stat_value": 36,
         "hero_reverse": true,
         "back_link_text": "Back to Case Studies",
-        "back_link_url": "/blogs/case-studies",
+        "back_link_url": "shopify://pages/case-studies",
         "hero_eyebrow": "Case Study — Caraway Home",
         "hero_title": "How Caraway Home Drove a 61% Increase in YoY Revenue and Accelerated List Growth with Shared Sweeps",
         "hero_description": "Caraway Home used a Shared Sweeps $100K giveaway to drive revenue, grow their email and SMS lists, and create a high-impact brand activation — without compromising Brand or CAC.",
