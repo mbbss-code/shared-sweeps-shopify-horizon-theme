@@ -67,6 +67,33 @@
     });
   }
 
+  // SharedSweeps - Set cart attributes from URL params
+  async function setSharedSweepsCartAttributes() {
+    var params = new URLSearchParams(window.location.search);
+    var ref = params.get('ref');
+    var orderId = params.get('order_id');
+
+    if (!ref && !orderId) return;
+
+    var attributes = {};
+    if (ref) attributes['ss_ref'] = ref;
+    if (orderId) attributes['ss_order_id'] = orderId;
+
+    try {
+      const res = await fetch('/cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ attributes: attributes }),
+      });
+      const data = await res.json();
+      console.log('[SharedSweeps] Cart attributes set:', data.attributes);
+    } catch (err) {
+      console.error('[SharedSweeps] Failed to set cart attributes:', err);
+    }
+  }
+
+  setSharedSweepsCartAttributes();
+
   // Clear Cart Function - Enhanced with better debugging
   async function clearCart() {
     console.log('🛒 Starting cart clear process...');
