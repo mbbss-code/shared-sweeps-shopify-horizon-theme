@@ -104,7 +104,7 @@
               type="button"
               class="acs-toggle-btn tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors"
               data-audience="customers"
-              aria-pressed="false"
+              aria-pressed="true"
             >
               {{ section.settings.toggle_customers_label | default: 'For Customers' }}
             </button>
@@ -112,7 +112,7 @@
               type="button"
               class="acs-toggle-btn tw-rounded-full tw-px-6 tw-py-2 tw-text-sm tw-font-medium tw-transition-colors"
               data-audience="brands"
-              aria-pressed="true"
+              aria-pressed="false"
             >
               {{ section.settings.toggle_brands_label | default: 'For Brands' }}
             </button>
@@ -122,14 +122,14 @@
       
       {%- comment -%} Main Heading {%- endcomment -%}
       <h1 class="tw-mb-6 tw-text-4xl tw-font-bold tw-leading-tight lg:tw-text-5xl xl:tw-text-6xl" style="color: {{ heading_color }}">
-        <span data-brands-content>{{ section.settings.brands_heading | default: 'A Better Way for Brands to Run Sweepstakes' }}</span>
-        <span data-customers-content class="tw-hidden">{{ section.settings.customers_heading | default: 'Win $100,000 by purchasing from your favorite brands.' }}</span>
+        <span data-brands-content class="tw-hidden">{{ section.settings.brands_heading | default: 'A Better Way for Brands to Run Sweepstakes' }}</span>
+        <span data-customers-content>{{ section.settings.customers_heading | default: 'Win $100,000 by purchasing from your favorite brands.' }}</span>
       </h1>
       
       {%- comment -%} Description {%- endcomment -%}
       <p class="tw-mx-auto tw-mb-10 tw-max-w-2xl tw-text-lg md:tw-text-xl" style="color: {{ description_color }};">
-        <span data-brands-content>{{ section.settings.brands_description }}</span>
-        <span data-customers-content class="tw-hidden">{{ section.settings.customers_description }}</span>
+        <span data-brands-content class="tw-hidden">{{ section.settings.brands_description }}</span>
+        <span data-customers-content>{{ section.settings.customers_description }}</span>
       </p>
 
       {%- comment -%} CTA Buttons {%- endcomment -%}
@@ -137,7 +137,7 @@
 
         {%- comment -%} Brands Primary CTA {%- endcomment -%}
         {% if section.settings.brands_primary_cta_text != blank %}
-          <span data-brands-content>
+          <span data-brands-content class="tw-hidden">
             {% if section.settings.brands_primary_cta_type == 'modal' %}
               <button 
                 type="button"
@@ -166,7 +166,7 @@
 
         {%- comment -%} Customers Primary CTA {%- endcomment -%}
         {% if section.settings.customers_primary_cta_text != blank %}
-          <span data-customers-content class="tw-hidden">
+          <span data-customers-content>
             <a 
               href="{{ section.settings.customers_primary_cta_link | default: '/how-to-enter' }}"
               class="acs-primary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-shadow-lg tw-transition-all"
@@ -181,7 +181,7 @@
 
         {%- comment -%} Brands Secondary CTA {%- endcomment -%}
         {% if section.settings.brands_secondary_cta_text != blank %}
-          <span data-brands-content>
+          <span data-brands-content class="tw-hidden">
             <a 
               href="{{ section.settings.brands_secondary_cta_link | default: '/how-it-works' }}"
               class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
@@ -193,7 +193,7 @@
 
         {%- comment -%} Customers Secondary CTA {%- endcomment -%}
         {% if section.settings.customers_secondary_cta_text != blank %}
-          <span data-customers-content class="tw-hidden">
+          <span data-customers-content>
             <a 
               href="{{ section.settings.customers_secondary_cta_link | default: '/participating-brands' }}"
               class="acs-secondary-btn tw-inline-flex tw-items-center tw-justify-center tw-rounded-lg tw-px-6 tw-py-3 tw-text-base tw-font-semibold tw-transition-all"
@@ -208,7 +208,7 @@
       {%- comment -%} Trust Indicators {%- endcomment -%}
       {% if section.settings.show_trust_indicators %}
         <div class="tw-mt-12 tw-flex tw-flex-wrap tw-items-center tw-justify-center tw-gap-4 lg:tw-gap-6 tw-text-sm tw-text-gray-600" role="list" aria-label="Trust indicators">
-          <span data-brands-content class="tw-contents">
+          <span data-brands-content class="tw-hidden tw-contents">
             {% for i in (1..3) %}
               {% assign indicator_text = 'brands_indicator_' | append: i %}
               {% if section.settings[indicator_text] != blank %}
@@ -222,7 +222,7 @@
             {% endfor %}
           </span>
           
-          <span data-customers-content class="tw-hidden tw-contents">
+          <span data-customers-content class="tw-contents">
             {% for i in (1..4) %}
               {% assign indicator_text = 'customers_indicator_' | append: i %}
               {% if section.settings[indicator_text] != blank %}
@@ -268,16 +268,14 @@
     });
 
     window.addEventListener('audienceChanged', function() {
-      const current = localStorage.getItem('sharedSweepsAudience') || 'brands';
+      const current = localStorage.getItem('sharedSweepsAudience') || 'customers';
       buttons.forEach(btn => {
         btn.setAttribute('aria-pressed', btn.dataset.audience === current);
       });
     });
 
-    const savedAudience = localStorage.getItem('sharedSweepsAudience') || 'brands';
-    buttons.forEach(btn => {
-      btn.setAttribute('aria-pressed', btn.dataset.audience === savedAudience);
-    });
+    // Always pre-select "For Customers" on every page load
+    switchAudience('customers');
   });
 </script>
 
