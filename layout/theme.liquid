@@ -44,6 +44,7 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-schemes' -%}
+    {{ 'referral-tracker.js' | asset_url | script_tag }}
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}

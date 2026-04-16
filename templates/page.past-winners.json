@@ -34,6 +34,17 @@
     "past_winners_grid_AQEXeA": {
       "type": "past-winners-grid",
       "blocks": {
+        "winner_H3FpEb": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-04-09_at_9.35.36_AM.png",
+            "name": "Greg S.",
+            "city": "Seattle",
+            "state": "WA",
+            "brand": "Fresh Clean Threads",
+            "prize": "$100,000"
+          }
+        },
         "winner_tybHyf": {
           "type": "winner",
           "settings": {
@@ -93,10 +104,10 @@
           "type": "winner",
           "settings": {
             "image": "shopify://shop_images/morty-t.jpg",
-            "name": "Morty T.",
+            "name": "Marty T.",
             "city": "Miami",
             "state": "FL",
-            "brand": "",
+            "brand": "WelderUp",
             "prize": "$100,000"
           }
         },
@@ -107,7 +118,7 @@
             "name": "Laura C.",
             "city": "Portland",
             "state": "OR",
-            "brand": "",
+            "brand": "Nomadik",
             "prize": "$100,000"
           }
         },
@@ -118,7 +129,7 @@
             "name": "Miguel Q.",
             "city": "Chicago",
             "state": "IL",
-            "brand": "",
+            "brand": "Nine Line Apparel",
             "prize": "$100,000"
           }
         },
@@ -129,12 +140,13 @@
             "name": "Jesse T.",
             "city": "Nashville",
             "state": "TN",
-            "brand": "",
+            "brand": "Gas Monkey Garage",
             "prize": "$100,000"
           }
         }
       },
       "block_order": [
+        "winner_H3FpEb",
         "winner_tybHyf",
         "winner_hiKpgg",
         "winner_cdDcBy",

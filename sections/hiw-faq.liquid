@@ -1,6 +1,7 @@
 {% comment %}
   How It Works — FAQ Accordion
   Tailwind CSS with tw- prefix
+  Audience-aware: FAQs can target customers, brands, or both
 {% endcomment %}
 
 {%- liquid
@@ -28,6 +29,9 @@
     outline: none;
     box-shadow: 0 0 0 2px {{ primary_color }};
     border-radius: 0.25rem;
+  }
+  .hiw-faq-{{ section.id }} .hiw-accordion-item.is-hidden {
+    display: none;
   }
 </style>
 
@@ -65,9 +69,14 @@
           {{ section.settings.faq_title | default: 'Frequently Asked Questions' }}
         </h2>
 
-        <div class="tw-w-full">
+        <div class="tw-w-full" data-faq-list>
           {% for block in faq_blocks %}
-            <div {{ block.shopify_attributes }} class="hiw-accordion-item tw-border-b tw-border-gray-200">
+            {%- assign audience = block.settings.audience | default: 'both' -%}
+            <div
+              {{ block.shopify_attributes }}
+              class="hiw-accordion-item tw-border-b tw-border-gray-200"
+              data-faq-audience="{{ audience }}"
+            >
 
               <button
                 type="button"
@@ -114,6 +123,27 @@
 
     var items = wrapper.querySelectorAll('.hiw-accordion-item');
 
+    function closeItem(item) {
+      var content = item.querySelector('.hiw-accordion-content');
+      var trigger = item.querySelector('.hiw-accordion-trigger');
+      if (!content || !trigger) return;
+      item.classList.remove('is-open');
+      content.style.height  = '0';
+      content.style.opacity = '0';
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function filterByAudience() {
+      var audience = localStorage.getItem('sharedSweepsAudience') || 'customers';
+      items.forEach(function(item) {
+        var target = item.getAttribute('data-faq-audience') || 'both';
+        var visible = target === 'both' || target === audience;
+        item.classList.toggle('is-hidden', !visible);
+        // Collapse anything that gets hidden so state doesn't leak across toggles
+        if (!visible) closeItem(item);
+      });
+    }
+
     items.forEach(function(item) {
       var trigger  = item.querySelector('.hiw-accordion-trigger');
       var content  = item.querySelector('.hiw-accordion-content');
@@ -156,6 +186,10 @@
         }
       });
     });
+
+    // Initial filter + sync with hero toggle
+    filterByAudience();
+    window.addEventListener('audienceChanged', filterByAudience);
   });
 </script>
 
@@ -196,6 +230,18 @@
       "type": "faq_item",
       "name": "FAQ Item",
       "settings": [
+        {
+          "type": "select",
+          "id": "audience",
+          "label": "Show for",
+          "options": [
+            { "value": "both",      "label": "Both (Customers & Brands)" },
+            { "value": "customers", "label": "Customers only" },
+            { "value": "brands",    "label": "Brands only" }
+          ],
+          "default": "both",
+          "info": "Controls which audience sees this FAQ based on the hero toggle."
+        },
         { "type": "text",     "id": "question", "label": "Question" },
         { "type": "textarea", "id": "answer",   "label": "Answer" }
       ]
@@ -205,11 +251,11 @@
     {
       "name": "HIW — FAQ",
       "blocks": [
-        { "type": "faq_item", "settings": { "question": "What does it cost?", "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn." } },
-        { "type": "faq_item", "settings": { "question": "What if my brand is small?", "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost." } },
-        { "type": "faq_item", "settings": { "question": "Who provides the prize?", "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all." } },
-        { "type": "faq_item", "settings": { "question": "Is it legally compliant?", "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it." } },
-        { "type": "faq_item", "settings": { "question": "Why is the giveaway shared across brands?", "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved." } }
+        { "type": "faq_item", "settings": { "audience": "brands",    "question": "What does it cost?", "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn." } },
+        { "type": "faq_item", "settings": { "audience": "brands",    "question": "What if my brand is small?", "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost." } },
+        { "type": "faq_item", "settings": { "audience": "both",      "question": "Who provides the prize?", "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all." } },
+        { "type": "faq_item", "settings": { "audience": "both",      "question": "Is it legally compliant?", "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it." } },
+        { "type": "faq_item", "settings": { "audience": "customers", "question": "Why is the giveaway shared across brands?", "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved." } }
       ]
     }
   ]
