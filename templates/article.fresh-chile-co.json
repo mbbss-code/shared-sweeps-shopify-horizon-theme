@@ -1,0 +1,226 @@
+{
+  "sections": {
+    "fresh-chile-co": {
+      "type": "case-study-template",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_up",
+            "value": "Biggest Ever",
+            "label": "Revenue day ever recorded"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_down",
+            "value": "$117K",
+            "label": "In ad spend savings"
+          }
+        },
+        "stat_3": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "bar_chart",
+            "value": "+35.97%",
+            "label": "Increase in ROAS year over year"
+          }
+        },
+        "stat_4": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "users",
+            "value": "60%",
+            "label": "New customers acquired during the campaign"
+          }
+        },
+        "challenge_1": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Heavy Discount Reliance",
+            "body": "Traditional percentage discounts were eroding margins and training customers to wait for markdowns rather than buy at full price."
+          }
+        },
+        "challenge_2": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "bar_chart",
+            "title": "Rising Ad Spend Costs",
+            "body": "Increasing paid media costs made it harder to maintain a profitable ROAS and scale customer acquisition efficiently year over year."
+          }
+        },
+        "challenge_3": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "users",
+            "title": "Need to Acquire New Customers",
+            "body": "Fresh Chile wanted to bring in a wave of new customers without leaning harder on deep discounts or expanding ad budgets."
+          }
+        },
+        "challenge_4": {
+          "type": "challenge_card",
+          "settings": {
+            "icon": "sparkles",
+            "title": "Driving a Record Sales Moment",
+            "body": "The brand was looking for a campaign that could deliver a breakthrough sales day without sacrificing profitability or brand equity."
+          }
+        },
+        "solution_1": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Replace traditional discounting with a high‑perceived‑value giveaway"
+          }
+        },
+        "solution_2": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Improve ad spend efficiency and lift ROAS year over year"
+          }
+        },
+        "solution_3": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Acquire new customers at scale without eroding margins"
+          }
+        },
+        "solution_4": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Drive record‑breaking revenue during the campaign period"
+          }
+        },
+        "solution_5": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Leverage a performance‑based fee model with a built‑in $60K cap"
+          }
+        },
+        "solution_6": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Turn a traditional expense (discounting) into a profit‑generating campaign"
+          }
+        },
+        "result_1": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_up",
+            "title": "Biggest Revenue Day Ever",
+            "body": "Fresh Chile hit its highest single‑day revenue ever during the Shared Sweeps campaign, contributing to $736,427.79 in total sales."
+          }
+        },
+        "result_2": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "$117K in Ad Spend Savings",
+            "body": "Fresh Chile spent 28.45% less on ads than the prior year while driving stronger outcomes, saving $117K in paid media."
+          }
+        },
+        "result_3": {
+          "type": "result_card",
+          "settings": {
+            "icon": "bar_chart",
+            "title": "+35.97% Increase in ROAS",
+            "body": "Ad efficiency climbed to a 4.12 ROAS — a 35.97% YoY improvement over the prior year's performance."
+          }
+        },
+        "result_card_xJ9TnW": {
+          "type": "result_card",
+          "settings": {
+            "icon": "users",
+            "title": "60% New Customers",
+            "body": "Six out of every ten buyers during the campaign were brand‑new to Fresh Chile, expanding the customer base without deep discounts."
+          }
+        },
+        "result_card_T379He": {
+          "type": "result_card",
+          "settings": {
+            "icon": "target",
+            "title": "Profit‑Generating Campaign",
+            "body": "By replacing discounts with a giveaway, Fresh Chile turned a traditional margin expense into a scalable, performance‑aligned revenue driver."
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "challenge_1",
+        "challenge_2",
+        "challenge_3",
+        "challenge_4",
+        "solution_1",
+        "solution_2",
+        "solution_3",
+        "solution_4",
+        "solution_5",
+        "solution_6",
+        "result_1",
+        "result_2",
+        "result_3",
+        "result_card_xJ9TnW",
+        "result_card_T379He"
+      ],
+      "settings": {
+        "color_primary": "#c1272d",
+        "color_heading": "#111827",
+        "color_body": "#374151",
+        "color_muted": "#6b7280",
+        "color_bg": "#ffffff",
+        "color_bg_alt": "#f9fafb",
+        "color_card_bg": "#ffffff",
+        "color_card_border": "#e5e7eb",
+        "color_btn_bg": "#c1272d",
+        "color_btn_text": "#ffffff",
+        "color_btn_outline_border": "#d1d5db",
+        "color_btn_outline_text": "#374151",
+        "color_cta_section_bg": "#172945",
+        "color_cta_section_text": "#ffffff",
+        "fs_hero_heading": 48,
+        "fs_section_heading": 30,
+        "fs_body": 18,
+        "fs_small": 14,
+        "fs_stat_value": 36,
+        "back_link_text": "Back to Case Studies",
+        "back_link_url": "shopify://pages/case-studies",
+        "hero_eyebrow": "Case Study — Fresh Chile Co",
+        "hero_title": "How Fresh Chile Co Drove Its Biggest Revenue Day Ever, Saved $117K in Ad Spend, and Lifted ROAS 35.97% with Shared Sweeps",
+        "hero_description": "Fresh Chile Co partnered with Shared Sweeps to run a high‑impact giveaway that delivered its biggest revenue day ever, saved $117K in ad spend, and lifted ROAS by 35.97% — all while acquiring 60% new customers.",
+        "hero_btn_text": "Run a Giveaway With Shared Sweeps",
+        "stat_card_label": "Return on Ad Spend (ROAS)",
+        "stat_card_before": "3.03",
+        "stat_card_after": "4.12",
+        "stat_card_caption": "35.97% increase in ROAS year over year",
+        "about_heading": "About Fresh Chile Co",
+        "about_body_1": "Fresh Chile Co is a specialty food brand with a loyal direct‑to‑consumer following, known for delivering authentic, high‑quality chile products to customers across the country.",
+        "about_body_2": "Like many ecommerce brands, Fresh Chile needed a way to drive record sales and acquire new customers without leaning harder on discounting or rising paid acquisition costs.",
+        "about_image": "shopify://shop_images/freshchilelogo.webp",
+        "about_image_alt": "Fresh Chile Co products",
+        "challenge_heading": "The Challenge",
+        "challenge_description": "Before partnering with Shared Sweeps, Fresh Chile Co was facing several familiar ecommerce challenges.",
+        "solution_heading": "The Shared Sweeps Solution",
+        "solution_body": "Fresh Chile Co partnered with Shared Sweeps to run a high‑value giveaway as a strategic alternative to deeper discounting and heavier ad spend. The campaign created urgency, drove new customer acquisition, and delivered a record sales moment — all under a transparent, performance‑based fee structure capped at $60,000 per giveaway period.",
+        "results_heading": "The Results",
+        "results_media": "shopify://shop_images/freshchilecampaign.webp",
+        "results_media_alt": "Fresh Chile Co campaign",
+        "results_video_url": "",
+        "testimonial_quote": "The Shared Sweeps fee structure is a fair and profitable investment. The capped fee ensures costs remain manageable for larger brands, and the performance‑based model aligns directly with revenue growth. For us, it was a no‑brainer.",
+        "testimonial_attribution": "Chris Lang, Founder, Fresh Chile Co",
+        "why_heading": "Why It Worked",
+        "why_body": "For Fresh Chile Co, Shared Sweeps turned a traditional margin expense — discounting — into a profit‑generating campaign. The performance‑based fee model kept costs aligned with revenue growth, and the giveaway format delivered record sales, 60% new customer acquisition, and a 35.97% lift in ROAS without leaning harder on paid media.",
+        "cta_heading": "Want Results Like This for Your Brand?",
+        "cta_description": "Shared Sweeps helps Shopify brands run high‑impact giveaways that drive revenue, improve ROAS, and reduce reliance on discounting.",
+        "cta_btn_primary_text": "Run a Giveaway",
+        "cta_btn_secondary_text": "See More Case Studies",
+        "cta_btn_secondary_url": "shopify://pages/case-studies"
+      }
+    }
+  },
+  "order": [
+    "fresh-chile-co"
+  ]
+}
