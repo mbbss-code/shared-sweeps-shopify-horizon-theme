@@ -36,7 +36,7 @@
         "secondary_btn_hover_border": "#9ca3af",
         "show_toggle": true,
         "toggle_brands_label": "For Brands",
-        "toggle_customers_label": "For Customers",
+        "toggle_customers_label": "For Shoppers",
         "brands_heading": "Run Sweepstakes Like the Big Brands",
         "brands_description": "Shared Sweeps enables brands to offer their customers entries into a $100,000 sweepstakes simply by shopping on their site — something traditionally only the largest companies could afford to do.",
         "brands_primary_cta_text": "Talk to Our Team",
@@ -299,11 +299,11 @@
         "winner_XHYQEH": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/jason.png",
-            "winner_name": "Jason H.",
-            "location": "Marshall, MO",
-            "brand": "Synister Speed",
-            "prize": "$10,000"
+            "winner_image": "shopify://shop_images/Screenshot_2026-04-09_at_9.35.36_AM.png",
+            "winner_name": "Greg S.",
+            "location": "Seattle, WA",
+            "brand": "Fresh Clean Threads",
+            "prize": "$100,000"
           }
         },
         "winner_yF8UX8": {
@@ -367,6 +367,7 @@
           "type": "faq_item",
           "name": "Brands FAQ ",
           "settings": {
+            "audience": "brands",
             "question": "What does it cost?",
             "answer": "Shared Sweeps charges a small percentage of revenue generated during the sweepstakes, with a cap. There are no upfront costs — you only pay when you earn."
           }
@@ -375,6 +376,7 @@
           "type": "faq_item",
           "name": "Brands FAQ ",
           "settings": {
+            "audience": "brands",
             "question": "What if my brand is small?",
             "answer": "Shared Sweeps works with brands of all sizes. The shared prize pool means even smaller brands can offer a $100,000 prize without the upfront cost."
           }
@@ -383,6 +385,7 @@
           "type": "faq_item",
           "name": "Brands FAQ ",
           "settings": {
+            "audience": "brands",
             "question": "Who provides the prize?",
             "answer": "Shared Sweeps fully funds the $100,000 prize. You don't have to contribute to or manage the prize at all."
           }
@@ -391,6 +394,7 @@
           "type": "faq_item",
           "name": "Brands FAQ ",
           "settings": {
+            "audience": "brands",
             "question": "Is it legally compliant?",
             "answer": "Yes. Shared Sweeps handles all legal compliance, including official rules, state registrations, and winner fulfillment, so you don't have to worry about it."
           }
@@ -399,6 +403,7 @@
           "type": "faq_item",
           "name": "Brands FAQ ",
           "settings": {
+            "audience": "brands",
             "question": "Why is the giveaway shared across brands?",
             "answer": "Shared Sweeps runs one large, shared $100,000 sweepstakes across multiple participating brands. This allows us to fund a truly life-changing prize without requiring any single brand to cover the full cost. Customers earn entries when they shop participating brands, and all entries roll up into one sweepstakes — creating more excitement, higher participation, and better results for everyone involved."
           }
@@ -407,6 +412,7 @@
           "type": "faq_item",
           "name": "Customers FAQ",
           "settings": {
+            "audience": "customers",
             "question": "How many prizes are there?",
             "answer": "For each giveaway period, there will be two monthly $10K winners and one $100K grand prize winner. Please see sharedsweeps.com/rules for giveaway periods."
           }
@@ -415,6 +421,7 @@
           "type": "faq_item",
           "name": "Customers FAQ",
           "settings": {
+            "audience": "customers",
             "question": "When will a winner be announced?",
             "answer": "The winner will be announced about 2 weeks after the giveaway period ends. For giveaway period dates, please reference sharedsweeps.com/rules."
           }
@@ -423,6 +430,7 @@
           "type": "faq_item",
           "name": "Customers FAQ",
           "settings": {
+            "audience": "customers",
             "question": "How will I know if I've won?",
             "answer": "We will contact the winner directly, via email and phone number, within 48 hours of the drawing. We will never ask for money to collect your prize."
           }
@@ -431,6 +439,7 @@
           "type": "faq_item",
           "name": "Customers FAQ",
           "settings": {
+            "audience": "customers",
             "question": "Can I request a brand to participate?",
             "answer": "Absolutely! Please use the Talk to Our Team button at the top of the page. We'd love to hear from you!"
           }

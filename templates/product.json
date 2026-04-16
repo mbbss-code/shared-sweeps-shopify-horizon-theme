@@ -192,12 +192,11 @@
             "subscriptions_app_block_YKVtir": {
               "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
               "settings": {
+                "subscription_policy_url": "",
                 "color_text_body": "#ffffff",
                 "dividers_color": "#ffffff",
-                "bacgkround_color": "#3099d3",
                 "border_thickness": 1,
                 "border_radius": 14,
-                "subscription_policy_url": "",
                 "product": "{{product}}"
               }
             },

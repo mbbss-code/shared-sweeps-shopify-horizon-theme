@@ -62,14 +62,6 @@
     "participating_brands_grid_jqzcDq": {
       "type": "participating-brands-grid",
       "blocks": {
-        "current_brand_cnfbwd": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "STATE Bags",
-            "brand_logo": "shopify://shop_images/statelogo.svg",
-            "brand_url": "https://statebags.com"
-          }
-        },
         "current_brand_wdCgDw": {
           "type": "current_brand",
           "settings": {
@@ -150,6 +142,78 @@
             "brand_url": "https://synisterspeed.com"
           }
         },
+        "current_brand_KtJaFz": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Lucky Joe's Garage",
+            "brand_logo": "shopify://shop_images/luckyjoeslogo.png",
+            "brand_url": "https://luckyjoesgarage.com"
+          }
+        },
+        "current_brand_EapLRb": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Rally Sports",
+            "brand_logo": "shopify://shop_images/rallysportslogo.png",
+            "brand_url": "https://rallysportsnation.com/"
+          }
+        },
+        "current_brand_3648RU": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Sticker Express",
+            "brand_logo": "shopify://shop_images/stickerexpresslogo.avif",
+            "brand_url": "https://stickerexpress.co"
+          }
+        },
+        "current_brand_cYkjB3": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Vegan Cuts",
+            "brand_logo": "shopify://shop_images/vegancutslogo.jpg",
+            "brand_url": "https://vegancuts.com"
+          }
+        },
+        "current_brand_DYxjwM": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Shiftin Gears",
+            "brand_logo": "shopify://shop_images/shiftinlogo.png",
+            "brand_url": "https://vegancuts.com"
+          }
+        },
+        "current_brand_WEbtgb": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Wink Active",
+            "brand_logo": "shopify://shop_images/winkactivelogo.webp",
+            "brand_url": "https://winkactive.com/"
+          }
+        },
+        "current_brand_C7bpjb": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Cove Smart",
+            "brand_logo": "shopify://shop_images/covelogo.png",
+            "brand_url": "https://covesmart.com"
+          }
+        },
+        "current_brand_9HWGyz": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Chemical Guys",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-04-13_at_8.22.42_AM.png",
+            "brand_url": "https://chemicalguys.com"
+          }
+        },
+        "current_brand_R8fPtW": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "WOLFpak",
+            "brand_logo": "shopify://shop_images/wolfpaklogo.webp",
+            "brand_url": "https://wolfpak.com"
+          }
+        },
         "past_brand_33DhWy": {
           "type": "past_brand",
           "settings": {
@@ -161,7 +225,6 @@
         }
       },
       "block_order": [
-        "current_brand_cnfbwd",
         "current_brand_wdCgDw",
         "current_brand_VhhPYA",
         "current_brand_zbJGpt",
@@ -172,6 +235,15 @@
         "current_brand_jex66X",
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
+        "current_brand_KtJaFz",
+        "current_brand_EapLRb",
+        "current_brand_3648RU",
+        "current_brand_cYkjB3",
+        "current_brand_DYxjwM",
+        "current_brand_WEbtgb",
+        "current_brand_C7bpjb",
+        "current_brand_9HWGyz",
+        "current_brand_R8fPtW",
         "past_brand_33DhWy"
       ],
       "name": "Brands Grid",
