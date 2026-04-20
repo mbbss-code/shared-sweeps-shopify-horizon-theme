@@ -100,12 +100,6 @@
             "text": "Drive record‑breaking revenue during the campaign period"
           }
         },
-        "solution_5": {
-          "type": "solution_item",
-          "settings": {
-            "text": "Leverage a performance‑based fee model with a built‑in $60K cap"
-          }
-        },
         "solution_6": {
           "type": "solution_item",
           "settings": {
@@ -166,7 +160,6 @@
         "solution_2",
         "solution_3",
         "solution_4",
-        "solution_5",
         "solution_6",
         "result_1",
         "result_2",
@@ -194,6 +187,7 @@
         "fs_body": 18,
         "fs_small": 14,
         "fs_stat_value": 36,
+        "hero_reverse": false,
         "back_link_text": "Back to Case Studies",
         "back_link_url": "shopify://pages/case-studies",
         "hero_eyebrow": "Case Study — Fresh Chile Co",
@@ -204,17 +198,18 @@
         "stat_card_before": "3.03",
         "stat_card_after": "4.12",
         "stat_card_caption": "35.97% increase in ROAS year over year",
+        "about_reverse": false,
         "about_heading": "About Fresh Chile Co",
         "about_body_1": "Fresh Chile Co is a specialty food brand with a loyal direct‑to‑consumer following, known for delivering authentic, high‑quality chile products to customers across the country.",
         "about_body_2": "Like many ecommerce brands, Fresh Chile needed a way to drive record sales and acquire new customers without leaning harder on discounting or rising paid acquisition costs.",
-        "about_image": "shopify://shop_images/freshchilelogo.webp",
         "about_image_alt": "Fresh Chile Co products",
         "challenge_heading": "The Challenge",
         "challenge_description": "Before partnering with Shared Sweeps, Fresh Chile Co was facing several familiar ecommerce challenges.",
+        "solution_reverse": false,
         "solution_heading": "The Shared Sweeps Solution",
         "solution_body": "Fresh Chile Co partnered with Shared Sweeps to run a high‑value giveaway as a strategic alternative to deeper discounting and heavier ad spend. The campaign created urgency, drove new customer acquisition, and delivered a record sales moment — all under a transparent, performance‑based fee structure capped at $60,000 per giveaway period.",
+        "results_reverse": false,
         "results_heading": "The Results",
-        "results_media": "shopify://shop_images/freshchilecampaign.webp",
         "results_media_alt": "Fresh Chile Co campaign",
         "results_video_url": "",
         "testimonial_quote": "The Shared Sweeps fee structure is a fair and profitable investment. The capped fee ensures costs remain manageable for larger brands, and the performance‑based model aligns directly with revenue growth. For us, it was a no‑brainer.",
