@@ -34,6 +34,17 @@
     "past_winners_grid_AQEXeA": {
       "type": "past-winners-grid",
       "blocks": {
+        "winner_rKdNkp": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/image1.jpg",
+            "name": "Jocelyn J.",
+            "city": "Lawnside",
+            "state": "NJ",
+            "brand": "QUAY",
+            "prize": "$10,000"
+          }
+        },
         "winner_H3FpEb": {
           "type": "winner",
           "settings": {
@@ -146,6 +157,7 @@
         }
       },
       "block_order": [
+        "winner_rKdNkp",
         "winner_H3FpEb",
         "winner_tybHyf",
         "winner_hiKpgg",
