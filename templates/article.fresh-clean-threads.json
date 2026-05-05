@@ -16,39 +16,39 @@
           "type": "stat_card",
           "settings": {
             "icon": "trending_up",
-            "value": "Biggest Ever",
-            "label": "Revenue day ever recorded"
+            "value": "Increased",
+            "label": "New and returning customers at scale"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
-            "icon": "trending_down",
-            "value": "$117K",
-            "label": "In ad spend savings"
+            "icon": "target",
+            "value": "+9%",
+            "label": "Revenue to plan during the sweeps period"
           }
         },
         "stat_3": {
           "type": "stat_card",
           "settings": {
-            "icon": "bar_chart",
-            "value": "+35.97%",
-            "label": "Increase in ROAS year over year"
+            "icon": "sparkles",
+            "value": "+233%",
+            "label": "Email revenue for giveaway-specific emails vs. standard product sends"
           }
         },
         "stat_4": {
           "type": "stat_card",
           "settings": {
-            "icon": "users",
-            "value": "60%",
-            "label": "New customers acquired during the campaign"
+            "icon": "trending_up",
+            "value": "+40%",
+            "label": "Increase in ROAS on giveaway ads vs. non-giveaway ads"
           }
         },
         "challenge_1": {
           "type": "challenge_card",
           "settings": {
-            "icon": "trending_down",
-            "title": "Heavy Discount Reliance",
+            "icon": "users",
+            "title": "Re-energize Demand",
             "body": "Traditional percentage discounts were eroding margins and training customers to wait for markdowns rather than buy at full price."
           }
         },
@@ -130,14 +130,6 @@
             "body": "Ad efficiency climbed to a 4.12 ROAS — a 35.97% YoY improvement over the prior year's performance."
           }
         },
-        "result_card_xJ9TnW": {
-          "type": "result_card",
-          "settings": {
-            "icon": "users",
-            "title": "60% New Customers",
-            "body": "Six out of every ten buyers during the campaign were brand‑new to Fresh Chile, expanding the customer base without deep discounts."
-          }
-        },
         "result_card_T379He": {
           "type": "result_card",
           "settings": {
@@ -164,11 +156,10 @@
         "result_1",
         "result_2",
         "result_3",
-        "result_card_xJ9TnW",
         "result_card_T379He"
       ],
       "settings": {
-        "color_primary": "#c1272d",
+        "color_primary": "#002b4a",
         "color_heading": "#111827",
         "color_body": "#374151",
         "color_muted": "#6b7280",
@@ -176,7 +167,7 @@
         "color_bg_alt": "#f9fafb",
         "color_card_bg": "#ffffff",
         "color_card_border": "#e5e7eb",
-        "color_btn_bg": "#c1272d",
+        "color_btn_bg": "#002b4a",
         "color_btn_text": "#ffffff",
         "color_btn_outline_border": "#d1d5db",
         "color_btn_outline_text": "#374151",
@@ -190,28 +181,28 @@
         "hero_reverse": false,
         "back_link_text": "Back to Case Studies",
         "back_link_url": "shopify://pages/case-studies",
-        "hero_eyebrow": "Case Study — Fresh Chile Co",
-        "hero_title": "How Fresh Chile Co Drove Its Biggest Revenue Day Ever, Saved $117K in Ad Spend, and Lifted ROAS 35.97% with Shared Sweeps",
-        "hero_description": "Fresh Chile Co partnered with Shared Sweeps to run a high‑impact giveaway that delivered its biggest revenue day ever, saved $117K in ad spend, and lifted ROAS by 35.97% — all while acquiring 60% new customers.",
+        "hero_eyebrow": "Case Study — Fresh Clean Threads (February 2026)",
+        "hero_title": "How Fresh Clean Threads Turned a Slow Month Into a Big Revenue Win With Shared Sweeps",
+        "hero_description": "Fresh Clean Threads used a Shared Sweeps giveaway to drive incremental revenue, re-engage customers, and outperform monthly targets — without relying on heavy discounting.",
         "hero_btn_text": "Run a Giveaway With Shared Sweeps",
-        "stat_card_label": "Return on Ad Spend (ROAS)",
-        "stat_card_before": "3.03",
-        "stat_card_after": "4.12",
-        "stat_card_caption": "35.97% increase in ROAS year over year",
+        "stat_card_label": "Revenue VS. Plan",
+        "stat_card_before": "$2.65M",
+        "stat_card_after": "$2.89M",
+        "stat_card_caption": "+9% above plan (+$238,985)",
         "about_reverse": false,
-        "about_heading": "About Fresh Chile Co",
-        "about_body_1": "Fresh Chile Co is a specialty food brand with a loyal direct‑to‑consumer following, known for delivering authentic, high‑quality chile products to customers across the country.",
-        "about_body_2": "Like many ecommerce brands, Fresh Chile needed a way to drive record sales and acquire new customers without leaning harder on discounting or rising paid acquisition costs.",
-        "about_image": "shopify://shop_images/freshchile2.jpg",
-        "about_image_alt": "Fresh Chile Co products",
+        "about_heading": "About Fresh Clean Threads",
+        "about_body_1": "Fresh Clean Threads is a San Diego-based DTC apparel brand founded in 2015, focused on creating high-quality, affordable everyday essentials.",
+        "about_body_2": "Originally launched as a t-shirt subscription service, the company has expanded into a full basics brand offering tees, polos, activewear, and other wardrobe staples.",
+        "about_image": "shopify://shop_images/vneck_walking.webp",
+        "about_image_alt": "FCT V-neck",
         "challenge_heading": "The Challenge",
-        "challenge_description": "Before partnering with Shared Sweeps, Fresh Chile Co was facing several familiar ecommerce challenges.",
+        "challenge_description": "Before partnering with Shared Sweeps, Fresh Clean Threads was navigating a slower-than-expected month and looking for ways to drive incremental revenue without sacrificing long-term brand value.",
         "solution_reverse": false,
         "solution_heading": "The Shared Sweeps Solution",
         "solution_body": "Fresh Chile Co partnered with Shared Sweeps to run a high‑value giveaway as a strategic alternative to deeper discounting and heavier ad spend. The campaign created urgency, drove new customer acquisition, and delivered a record sales moment — all under a transparent, performance‑based fee structure capped at $60,000 per giveaway period.",
         "results_reverse": false,
         "results_heading": "The Results",
-        "results_media": "shopify://shop_images/freshchile3.webp",
+        "results_media": "shopify://shop_images/Screenshot_2026-05-05_at_2.19.37_PM.png",
         "results_media_alt": "Fresh Chile Co campaign",
         "results_video_url": "",
         "testimonial_quote": "The Shared Sweeps fee structure is a fair and profitable investment. The capped fee ensures costs remain manageable for larger brands, and the performance‑based model aligns directly with revenue growth. For us, it was a no‑brainer.",
