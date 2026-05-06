@@ -62,6 +62,14 @@
     "participating_brands_grid_jqzcDq": {
       "type": "participating-brands-grid",
       "blocks": {
+        "current_brand_9HWGyz": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Chemical Guys",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-04-13_at_8.22.42_AM.png",
+            "brand_url": "https://chemicalguys.com"
+          }
+        },
         "current_brand_wdCgDw": {
           "type": "current_brand",
           "settings": {
@@ -70,12 +78,12 @@
             "brand_url": "https://gainsinbulk.com"
           }
         },
-        "current_brand_VhhPYA": {
+        "current_brand_C7bpjb": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "QUAY Sunglasses",
-            "brand_logo": "shopify://shop_images/quaylogo.avif",
-            "brand_url": "https://www.quay.com/"
+            "brand_name": "Cove Smart",
+            "brand_logo": "shopify://shop_images/covelogo.png",
+            "brand_url": "https://covesmart.com"
           }
         },
         "current_brand_zbJGpt": {
@@ -190,28 +198,12 @@
             "brand_url": "https://winkactive.com/"
           }
         },
-        "current_brand_C7bpjb": {
+        "current_brand_fj3jJ7": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Cove Smart",
-            "brand_logo": "shopify://shop_images/covelogo.png",
-            "brand_url": "https://covesmart.com"
-          }
-        },
-        "current_brand_9HWGyz": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Chemical Guys",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-04-13_at_8.22.42_AM.png",
-            "brand_url": "https://chemicalguys.com"
-          }
-        },
-        "current_brand_R8fPtW": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "WOLFpak",
-            "brand_logo": "shopify://shop_images/wolfpaklogo.webp",
-            "brand_url": "https://wolfpak.com"
+            "brand_name": "BÆRSkin Tactical Supply Co.",
+            "brand_logo": "shopify://shop_images/images_6.png",
+            "brand_url": "https://winkactive.com/"
           }
         },
         "past_brand_33DhWy": {
@@ -225,8 +217,9 @@
         }
       },
       "block_order": [
+        "current_brand_9HWGyz",
         "current_brand_wdCgDw",
-        "current_brand_VhhPYA",
+        "current_brand_C7bpjb",
         "current_brand_zbJGpt",
         "current_brand_wWRGYX",
         "current_brand_QDGm4i",
@@ -241,9 +234,7 @@
         "current_brand_cYkjB3",
         "current_brand_DYxjwM",
         "current_brand_WEbtgb",
-        "current_brand_C7bpjb",
-        "current_brand_9HWGyz",
-        "current_brand_R8fPtW",
+        "current_brand_fj3jJ7",
         "past_brand_33DhWy"
       ],
       "name": "Brands Grid",
