@@ -78,6 +78,14 @@
             "brand_url": "https://gainsinbulk.com"
           }
         },
+        "current_brand_FwrXdX": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Kenny Flowers",
+            "brand_logo": "shopify://shop_images/kflogo.png",
+            "brand_url": "https://kennyflowers.com"
+          }
+        },
         "current_brand_C7bpjb": {
           "type": "current_brand",
           "settings": {
@@ -219,6 +227,7 @@
       "block_order": [
         "current_brand_9HWGyz",
         "current_brand_wdCgDw",
+        "current_brand_FwrXdX",
         "current_brand_C7bpjb",
         "current_brand_zbJGpt",
         "current_brand_wWRGYX",
