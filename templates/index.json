@@ -272,6 +272,7 @@
         "case_study_Ekjf6Y": {
           "type": "case_study",
           "settings": {
+            "logo": "shopify://shop_images/freshchileco_logo.jpg",
             "brand_name": "Fresh Chile Co",
             "stat": "35.97% increase in ROAS",
             "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
@@ -281,6 +282,7 @@
         "case_study_tDaeYn": {
           "type": "case_study",
           "settings": {
+            "logo": "shopify://shop_images/potlogo.jpg",
             "brand_name": "Pair of Thieves",
             "stat": "18% increase in gross sales",
             "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
@@ -290,10 +292,11 @@
         "case_study_btXTFF": {
           "type": "case_study",
           "settings": {
+            "logo": "shopify://shop_images/carawaylogo.jpg",
             "brand_name": "Caraway Home",
             "stat": "61% increase in YoY top-line revenue",
             "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
-            "link": "/case-studies/caraway-home"
+            "link": "shopify://blogs/case-studies/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps"
           }
         },
         "winner_XHYQEH": {
