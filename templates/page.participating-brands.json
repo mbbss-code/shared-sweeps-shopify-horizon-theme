@@ -214,6 +214,14 @@
             "brand_url": "https://winkactive.com/"
           }
         },
+        "current_brand_mG8jx6": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Homefield Apparel",
+            "brand_logo": "shopify://shop_images/homefield_logo.jpg",
+            "brand_url": "https://homefieldapparel.com"
+          }
+        },
         "past_brand_33DhWy": {
           "type": "past_brand",
           "settings": {
@@ -244,6 +252,7 @@
         "current_brand_DYxjwM",
         "current_brand_WEbtgb",
         "current_brand_fj3jJ7",
+        "current_brand_mG8jx6",
         "past_brand_33DhWy"
       ],
       "name": "Brands Grid",
