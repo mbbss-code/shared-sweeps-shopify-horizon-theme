@@ -3,14 +3,19 @@
   SEO optimized with structured data and semantic markup
   ADA compliant with semantic HTML and ARIA labels
   Navigation menu selectable from theme settings
-  Translucent navy + backdrop blur (glass) — sits above the page ombre
+  Solid frosted navy bar — always dark (never falls through to the page).
+
+  NOTE: backdrop-filter (the blur) only works if NO ancestor of <header>
+  has transform / filter / perspective / will-change / contain / overflow
+  clipping. If the blur isn't visible the bar still reads as solid navy.
 {% endcomment %}
 
 {%- liquid
   assign header_bg_color = section.settings.header_bg_color | default: '#0a1128'
-  assign header_opacity = section.settings.header_opacity | default: 80
+  assign header_opacity = section.settings.header_opacity | default: 90
   assign header_alpha = header_opacity | times: 0.01
   assign header_bg = header_bg_color | color_modify: 'alpha', header_alpha
+  assign header_bg_fallback = header_bg_color | color_modify: 'alpha', 0.97
   assign header_blur = section.settings.header_blur | default: 12
   assign button_bg_color = section.settings.button_bg_color | default: '#2f6fed'
   assign button_text_color = section.settings.button_text_color | default: '#ffffff'
@@ -20,7 +25,12 @@
   .header-custom-{{ section.id }} {
     background-color: {{ header_bg }};
     -webkit-backdrop-filter: blur({{ header_blur }}px);
-    backdrop-filter: blur({{ header_blur }}px);
+            backdrop-filter: blur({{ header_blur }}px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  /* If the browser/theme can't honor backdrop blur, keep the bar opaque enough to read. */
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    .header-custom-{{ section.id }} { background-color: {{ header_bg_fallback }}; }
   }
   .header-cta-button-{{ section.id }} {
     background-color: {{ button_bg_color }};
@@ -114,7 +124,7 @@
 }
 </script>
 
-<header class="header-custom-{{ section.id }} tw-sticky tw-top-0 tw-z-50 tw-border-b tw-border-white/10" role="banner" itemscope itemtype="https://schema.org/WPHeader">
+<header class="header-custom-{{ section.id }} tw-sticky tw-top-0 tw-z-50" role="banner" itemscope itemtype="https://schema.org/WPHeader">
   <nav class="tw-container tw-mx-auto tw-flex tw-h-16 tw-items-center tw-justify-between tw-px-4" role="navigation" aria-label="Main navigation" itemscope itemtype="https://schema.org/SiteNavigationElement">
     {%- comment -%} Logo with SEO optimization {%- endcomment -%}
     <a 
@@ -536,11 +546,12 @@
       "type": "range",
       "id": "header_opacity",
       "label": "Header background opacity",
-      "min": 0,
+      "min": 20,
       "max": 100,
       "step": 5,
       "unit": "%",
-      "default": 80
+      "default": 90,
+      "info": "Lower lets more of the page blur through; keep high if the header sits over light pages."
     },
     {
       "type": "range",

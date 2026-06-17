@@ -68,62 +68,95 @@
         "show_trust_indicators": true
       }
     },
-    "section_qYyECd": {
-      "type": "section",
+    "auto_scrolling_logos_KBNmXm": {
+      "type": "auto-scrolling-logos",
       "blocks": {
-        "ai_gen_block_9818f4b_4p8yPQ": {
-          "type": "ai_gen_block_9818f4b",
+        "logo_x6c8Gb": {
+          "type": "logo",
           "settings": {
-            "logo_1": "shopify://shop_images/cirkullogo.jpg",
-            "logo_2": "shopify://shop_images/fbslogo.jpg",
-            "logo_3": "shopify://shop_images/carawaylogo.jpg",
-            "logo_4": "shopify://shop_images/potlogo.jpg",
-            "logo_5": "shopify://shop_images/byltlogo2.png",
-            "logo_6": "shopify://shop_images/carilohalogo.jpg",
-            "logo_7": "shopify://shop_images/nobllogo.png",
-            "logo_8": "shopify://shop_images/fctlogo.jpg",
-            "logo_height": 60,
-            "logo_spacing": 60,
-            "vertical_padding": 30,
-            "scroll_speed": 10,
-            "logo_opacity": 70,
-            "grayscale_percent": 0,
-            "background_color": "#f5f5f5",
-            "placeholder_color": "#e6e6e6"
-          },
-          "blocks": {}
+            "logo": "shopify://shop_images/cirkullogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_VmYHY7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/fbslogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_fGTBDe": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/carawaylogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_fXDLKF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/potlogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_RMrwrL": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/byltlogo2.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_mPdGWz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/carilohalogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_xN3zWe": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/nobllogo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_c9PtJc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/fctlogo.jpg",
+            "alt": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "ai_gen_block_9818f4b_4p8yPQ"
+        "logo_x6c8Gb",
+        "logo_VmYHY7",
+        "logo_fGTBDe",
+        "logo_fXDLKF",
+        "logo_RMrwrL",
+        "logo_mPdGWz",
+        "logo_xN3zWe",
+        "logo_c9PtJc"
       ],
-      "name": "t:names.custom_section",
+      "name": "Auto Scrolling Logos",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 0,
-        "section_width": "full-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
+        "logo_height": 60,
+        "logo_spacing": 50,
+        "vertical_padding": 30,
+        "scroll_speed": 45,
+        "pause_on_hover": true,
+        "logo_opacity": 70,
+        "grayscale": 0,
+        "placeholder_color": "#e6e6e6",
+        "aria_label": "Brand logos"
       }
     },
     "problem_solution_other_4BkEeX": {
@@ -586,7 +619,7 @@
   },
   "order": [
     "hero_with_toggle_48eMRL",
-    "section_qYyECd",
+    "auto_scrolling_logos_KBNmXm",
     "problem_solution_other_4BkEeX",
     "comparison_FNDeBU",
     "how_it_works_eJFfVt",
