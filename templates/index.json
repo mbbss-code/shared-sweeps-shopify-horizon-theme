@@ -15,8 +15,8 @@
       "settings": {
         "bg_gradient_start": "#0a1124",
         "bg_gradient_end": "#24456e",
-        "heading_color": "#FFFFFF",
-        "description_color": "#C5DAEE",
+        "heading_color": "#ffffff",
+        "description_color": "#c5daee",
         "toggle_container_bg": "#f3f4f6",
         "toggle_container_border": "#e5e7eb",
         "toggle_active_bg": "#3099d3",
@@ -68,8 +68,29 @@
         "show_trust_indicators": true
       }
     },
+    "problem_solution_other_4BkEeX": {
+      "type": "problem-solution-other",
+      "name": "Problem Solution (Image)",
+      "settings": {
+        "heading_color": "#ffffff",
+        "text_color": "#9fb3d1",
+        "problem_image": "shopify://shop_images/shopping-rewards.png",
+        "problem_image_alt": "Shopping rewards on mobile",
+        "solution_image": "shopify://shop_images/winner-celebration.png",
+        "solution_image_alt": "Winner celebrating",
+        "brands_problem_heading": "Growing an Online Brand Has Gotten Harder",
+        "brands_problem_description": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards.",
+        "brands_solution_heading": "A Smarter Way for Everyone to Win",
+        "brands_solution_description": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win.",
+        "customers_problem_heading": "Everyday Shopping",
+        "customers_problem_description": "Shopping your favorite brands is already rewarding — great products, great experiences.",
+        "customers_solution_heading": "Shopping With a Chance to Win",
+        "customers_solution_description": "Shared Sweeps turns everyday shopping into something more. Discover new brands and earn entries toward real prizes with every purchase."
+      }
+    },
     "problem_solution_RCwd8k": {
       "type": "problem-solution",
+      "disabled": true,
       "name": "Problem Solution",
       "settings": {
         "bg_color": "#f9fafb",
@@ -256,9 +277,9 @@
       "name": "How It Works",
       "settings": {
         "bg_color": "#f9fafb",
-        "heading_color": "#111827",
-        "step_title_color": "#111827",
-        "step_desc_color": "#4b5563",
+        "heading_color": "#FFFFFF",
+        "step_title_color": "#FFFFFF",
+        "step_desc_color": "#C5DAEE",
         "step_badge_bg": "#3099d3",
         "step_badge_text": "#ffffff",
         "btn_bg": "#3099d3",
@@ -349,7 +370,7 @@
       "name": "Social Proof",
       "settings": {
         "bg_color": "#ffffff",
-        "heading_color": "#111827",
+        "heading_color": "#FFFFFF",
         "accent_color": "#3099d3",
         "card_bg": "#ffffff",
         "card_border": "#e5e7eb",
@@ -470,7 +491,9 @@
       "name": "HIW — FAQ",
       "settings": {
         "primary_color": "#9333ea",
-        "alt_bg_color": "#f3f4f6",
+        "heading_color": "#ffffff",
+        "question_color": "#ffffff",
+        "answer_color": "#9fb3d1",
         "faq_title": "Frequently Asked Questions"
       }
     },
@@ -499,15 +522,26 @@
         "customers_cta_text": "View Participating Brands",
         "customers_cta_link": "shopify://pages/participating-brands"
       }
+    },
+    "ombre_background_p8KmKN": {
+      "type": "ombre-background",
+      "name": "Page Ombre Background",
+      "settings": {
+        "top_color": "#0a1124",
+        "bottom_color": "#2a5891",
+        "selectors": ""
+      }
     }
   },
   "order": [
     "hero_with_toggle_48eMRL",
+    "problem_solution_other_4BkEeX",
     "problem_solution_RCwd8k",
     "comparison_FNDeBU",
     "how_it_works_eJFfVt",
     "social_proof_yLW97D",
     "hiw_faq_9hTpza",
-    "bottom_final_cta_MpLdAR"
+    "bottom_final_cta_MpLdAR",
+    "ombre_background_p8KmKN"
   ]
 }

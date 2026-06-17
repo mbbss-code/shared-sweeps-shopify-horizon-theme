@@ -3,17 +3,24 @@
   SEO optimized with structured data and semantic markup
   ADA compliant with semantic HTML and ARIA labels
   Navigation menu selectable from theme settings
+  Translucent navy + backdrop blur (glass) — sits above the page ombre
 {% endcomment %}
 
 {%- liquid
   assign header_bg_color = section.settings.header_bg_color | default: '#0a1128'
-  assign button_bg_color = section.settings.button_bg_color | default: '#9333ea'
+  assign header_opacity = section.settings.header_opacity | default: 80
+  assign header_alpha = header_opacity | times: 0.01
+  assign header_bg = header_bg_color | color_modify: 'alpha', header_alpha
+  assign header_blur = section.settings.header_blur | default: 12
+  assign button_bg_color = section.settings.button_bg_color | default: '#2f6fed'
   assign button_text_color = section.settings.button_text_color | default: '#ffffff'
 -%}
 
 <style>
   .header-custom-{{ section.id }} {
-    background-color: {{ header_bg_color }};
+    background-color: {{ header_bg }};
+    -webkit-backdrop-filter: blur({{ header_blur }}px);
+    backdrop-filter: blur({{ header_blur }}px);
   }
   .header-cta-button-{{ section.id }} {
     background-color: {{ button_bg_color }};
@@ -169,7 +176,7 @@
       {% if section.settings.show_cta_button %}
         <button 
           type="button"
-          class="header-cta-button-{{ section.id }} tw-hidden lg:tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}]"
+          class="header-cta-button-{{ section.id }} tw-hidden lg:tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}]"
           data-contact-modal-trigger
           aria-haspopup="dialog"
           title="{{ section.settings.cta_button_text | default: 'Talk to Our Team' }}"
@@ -226,7 +233,7 @@
         {% if section.settings.show_cta_button %}
           <button 
             type="button"
-            class="header-cta-button-{{ section.id }} tw-w-full tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-purple-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-mt-4"
+            class="header-cta-button-{{ section.id }} tw-w-full tw-inline-flex tw-items-center tw-justify-center tw-rounded-md tw-px-4 tw-py-2 tw-text-sm tw-font-medium tw-shadow-lg tw-transition-all hover:tw-shadow-xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-500 focus:tw-ring-offset-2 focus:tw-ring-offset-[{{ header_bg_color }}] tw-mt-4"
             data-contact-modal-trigger
             aria-haspopup="dialog"
             title="{{ section.settings.cta_button_text | default: 'Talk to Our Team' }}"
@@ -526,6 +533,26 @@
       "default": "#0a1128"
     },
     {
+      "type": "range",
+      "id": "header_opacity",
+      "label": "Header background opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "header_blur",
+      "label": "Backdrop blur",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
       "type": "header",
       "content": "Logo"
     },
@@ -572,7 +599,7 @@
       "type": "color",
       "id": "button_bg_color",
       "label": "Button background color",
-      "default": "#9333ea"
+      "default": "#2f6fed"
     },
     {
       "type": "color",

@@ -2,16 +2,24 @@
   How It Works — FAQ Accordion
   Tailwind CSS with tw- prefix
   Audience-aware: FAQs can target customers, brands, or both
+  Transparent background — painted by the Page Ombre Background section
 {% endcomment %}
 
 {%- liquid
-  assign primary_color = section.settings.primary_color | default: '#9333ea'
-  assign alt_bg_color  = section.settings.alt_bg_color  | default: '#f3f4f6'
-  assign faq_blocks    = section.blocks | where: 'type', 'faq_item'
+  assign primary_color  = section.settings.primary_color  | default: '#2f6fed'
+  assign heading_color  = section.settings.heading_color  | default: '#ffffff'
+  assign question_color = section.settings.question_color | default: '#ffffff'
+  assign answer_color   = section.settings.answer_color   | default: '#9fb3d1'
+  assign faq_blocks     = section.blocks | where: 'type', 'faq_item'
 -%}
 
 <style>
-  .hiw-faq-{{ section.id }} .hiw-alt-bg { background-color: {{ alt_bg_color }}; }
+  /* Background intentionally omitted — the Page Ombre Background paints this section. */
+  .hiw-faq-{{ section.id }} .hiw-faq-heading { color: {{ heading_color }}; }
+  .hiw-faq-{{ section.id }} .hiw-accordion-trigger { color: {{ question_color }}; }
+  .hiw-faq-{{ section.id }} .hiw-accordion-trigger:hover { opacity: 0.85; }
+  .hiw-faq-{{ section.id }} .hiw-faq-answer { color: {{ answer_color }}; }
+
   .hiw-faq-{{ section.id }} .hiw-accordion-content {
     height: 0;
     overflow: hidden;
@@ -25,7 +33,7 @@
   .hiw-faq-{{ section.id }} .hiw-accordion-item.is-open .hiw-accordion-chevron {
     transform: rotate(180deg);
   }
-  .hiw-faq-{{ section.id }} .hiw-accordion-trigger:focus {
+  .hiw-faq-{{ section.id }} .hiw-accordion-trigger:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px {{ primary_color }};
     border-radius: 0.25rem;
@@ -59,13 +67,13 @@
 <div class="hiw-faq-{{ section.id }}" {{ section.shopify_attributes }}>
   {% if faq_blocks.size > 0 %}
   <section
-    class="hiw-alt-bg tw-border-y tw-border-gray-200 tw-py-20 md:tw-py-28"
+    class="hiw-faq-bg-{{ section.id }} tw-border-y tw-border-white/10 tw-py-20 md:tw-py-28"
     aria-labelledby="hiw-faq-{{ section.id }}"
   >
     <div class="tw-container tw-mx-auto tw-px-4">
       <div class="tw-mx-auto tw-max-w-3xl">
 
-        <h2 id="hiw-faq-{{ section.id }}" class="tw-mb-12 tw-text-center tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl">
+        <h2 id="hiw-faq-{{ section.id }}" class="hiw-faq-heading tw-mb-12 tw-text-center tw-text-3xl tw-font-bold md:tw-text-4xl">
           {{ section.settings.faq_title | default: 'Frequently Asked Questions' }}
         </h2>
 
@@ -74,20 +82,20 @@
             {%- assign audience = block.settings.audience | default: 'both' -%}
             <div
               {{ block.shopify_attributes }}
-              class="hiw-accordion-item tw-border-b tw-border-gray-200"
+              class="hiw-accordion-item tw-border-b tw-border-white/10"
               data-faq-audience="{{ audience }}"
             >
 
               <button
                 type="button"
-                class="hiw-accordion-trigger tw-flex tw-w-full tw-items-center tw-justify-between tw-py-4 tw-text-left tw-text-lg tw-font-medium tw-text-gray-900 tw-transition-colors hover:tw-text-gray-700"
+                class="hiw-accordion-trigger tw-flex tw-w-full tw-items-center tw-justify-between tw-py-4 tw-text-left tw-text-lg tw-font-medium tw-transition-colors"
                 aria-expanded="false"
                 aria-controls="hiw-faq-{{ section.id }}-{{ forloop.index }}"
                 id="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
               >
                 <span>{{ block.settings.question }}</span>
                 <svg
-                  class="hiw-accordion-chevron tw-ml-4 tw-h-5 tw-w-5 tw-shrink-0 tw-text-gray-500"
+                  class="hiw-accordion-chevron tw-ml-4 tw-h-5 tw-w-5 tw-shrink-0 tw-text-white/50"
                   fill="none" stroke="currentColor" viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -101,7 +109,7 @@
                 role="region"
                 aria-labelledby="hiw-faq-btn-{{ section.id }}-{{ forloop.index }}"
               >
-                <p class="tw-pb-4 tw-text-gray-600">
+                <p class="hiw-faq-answer tw-pb-4">
                   {{ block.settings.answer }}
                 </p>
               </div>
@@ -206,13 +214,25 @@
       "type": "color",
       "id": "primary_color",
       "label": "Focus ring color",
-      "default": "#9333ea"
+      "default": "#2f6fed"
     },
     {
       "type": "color",
-      "id": "alt_bg_color",
-      "label": "Section background",
-      "default": "#f3f4f6"
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer text color",
+      "default": "#9fb3d1"
     },
     {
       "type": "header",
