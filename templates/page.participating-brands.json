@@ -62,52 +62,12 @@
     "participating_brands_grid_jqzcDq": {
       "type": "participating-brands-grid",
       "blocks": {
-        "current_brand_wdCgDw": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Gains in Bulk",
-            "brand_logo": "shopify://shop_images/gainslogo2.png",
-            "brand_url": "https://gainsinbulk.com"
-          }
-        },
-        "current_brand_VhhPYA": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "QUAY Sunglasses",
-            "brand_logo": "shopify://shop_images/quaylogo.avif",
-            "brand_url": "https://www.quay.com/"
-          }
-        },
         "current_brand_zbJGpt": {
           "type": "current_brand",
           "settings": {
             "brand_name": "Overkill Battalion",
             "brand_logo": "shopify://shop_images/overkilllogo.png",
             "brand_url": "https://overkillbattalion.com/"
-          }
-        },
-        "current_brand_wWRGYX": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Customly Gifts",
-            "brand_logo": "shopify://shop_images/customlylogo.png",
-            "brand_url": "https://customlygifts.com"
-          }
-        },
-        "current_brand_QDGm4i": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Throttle Society",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-03-04_at_1.30.49_PM.png",
-            "brand_url": "https://throttlesociety.co"
-          }
-        },
-        "current_brand_Ci3JFh": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Willow & Luna",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-03-04_at_1.32.17_PM.png",
-            "brand_url": "https://willowluna.com"
           }
         },
         "current_brand_KapkRY": {
@@ -142,6 +102,30 @@
             "brand_url": "https://synisterspeed.com"
           }
         },
+        "current_brand_iJgiDg": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Graveyard Carz",
+            "brand_logo": "shopify://shop_images/gyclogo.avif",
+            "brand_url": "https://www.gycgiveaways.com/"
+          }
+        },
+        "current_brand_aFG8em": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "The National Professional Fishing League",
+            "brand_logo": "shopify://shop_images/npfllogo.avif",
+            "brand_url": "https://shop.thenationalprofessionalfishingleague.com/"
+          }
+        },
+        "current_brand_qmcFHy": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Cloud 9 Giveaways",
+            "brand_logo": "shopify://shop_images/cloud9logo.png",
+            "brand_url": "https://cloud9aviation.org/"
+          }
+        },
         "current_brand_KtJaFz": {
           "type": "current_brand",
           "settings": {
@@ -157,94 +141,19 @@
             "brand_logo": "shopify://shop_images/rallysportslogo.png",
             "brand_url": "https://rallysportsnation.com/"
           }
-        },
-        "current_brand_3648RU": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Sticker Express",
-            "brand_logo": "shopify://shop_images/stickerexpresslogo.avif",
-            "brand_url": "https://stickerexpress.co"
-          }
-        },
-        "current_brand_cYkjB3": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Vegan Cuts",
-            "brand_logo": "shopify://shop_images/vegancutslogo.jpg",
-            "brand_url": "https://vegancuts.com"
-          }
-        },
-        "current_brand_DYxjwM": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Shiftin Gears",
-            "brand_logo": "shopify://shop_images/shiftinlogo.png",
-            "brand_url": "https://vegancuts.com"
-          }
-        },
-        "current_brand_WEbtgb": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Wink Active",
-            "brand_logo": "shopify://shop_images/winkactivelogo.webp",
-            "brand_url": "https://winkactive.com/"
-          }
-        },
-        "current_brand_C7bpjb": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Cove Smart",
-            "brand_logo": "shopify://shop_images/covelogo.png",
-            "brand_url": "https://covesmart.com"
-          }
-        },
-        "current_brand_9HWGyz": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Chemical Guys",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-04-13_at_8.22.42_AM.png",
-            "brand_url": "https://chemicalguys.com"
-          }
-        },
-        "current_brand_R8fPtW": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "WOLFpak",
-            "brand_logo": "shopify://shop_images/wolfpaklogo.webp",
-            "brand_url": "https://wolfpak.com"
-          }
-        },
-        "past_brand_33DhWy": {
-          "type": "past_brand",
-          "settings": {
-            "brand_name": "Caraway Home",
-            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
-            "brand_url": "",
-            "case_study_url": ""
-          }
         }
       },
       "block_order": [
-        "current_brand_wdCgDw",
-        "current_brand_VhhPYA",
         "current_brand_zbJGpt",
-        "current_brand_wWRGYX",
-        "current_brand_QDGm4i",
-        "current_brand_Ci3JFh",
         "current_brand_KapkRY",
         "current_brand_jex66X",
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
+        "current_brand_iJgiDg",
+        "current_brand_aFG8em",
+        "current_brand_qmcFHy",
         "current_brand_KtJaFz",
-        "current_brand_EapLRb",
-        "current_brand_3648RU",
-        "current_brand_cYkjB3",
-        "current_brand_DYxjwM",
-        "current_brand_WEbtgb",
-        "current_brand_C7bpjb",
-        "current_brand_9HWGyz",
-        "current_brand_R8fPtW",
-        "past_brand_33DhWy"
+        "current_brand_EapLRb"
       ],
       "name": "Brands Grid",
       "settings": {
