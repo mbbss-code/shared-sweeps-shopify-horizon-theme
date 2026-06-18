@@ -58,8 +58,8 @@
       "settings": {
         "bg_color": "#ffffff",
         "section_border_color": "#e5e7eb",
-        "heading_color": "#FFFFFF",
-        "subheading_color": "#C5DAEE",
+        "heading_color": "#ffffff",
+        "subheading_color": "#c5daee",
         "badge_bg": "#e0f2fe",
         "badge_text_color": "#0c4a6e",
         "primary_btn_bg": "#3099d3",
@@ -190,106 +190,24 @@
       "settings": {
         "heading": "Participating Brands",
         "subheading": "These brands are part of the current Shared Sweeps giveaway",
+        "heading_color": "#ffffff",
+        "subheading_color": "#9fb3d1",
+        "brand_name_color": "#e2e8f0",
+        "accent_color": "#2f6fed",
+        "card_bg": "#15233d",
+        "card_border": "#2a3a57",
+        "logo_bg": "#ffffff",
+        "tab_container_bg": "#16233d",
+        "tab_text": "#cbd5e1",
+        "tab_active_bg": "#2f6fed",
+        "tab_active_text": "#ffffff",
         "enable_tabs": false,
         "current_tab_label": "Current Brands",
         "past_tab_label": "",
         "initial_brands_shown": 9,
         "show_all_text": "Show all current brands",
         "show_less_text": "Show fewer",
-        "case_study_link_text": "See case study",
-        "background_color": "gray-50",
-        "primary_color": "indigo"
-      }
-    },
-    "auto_scrolling_logos_NRWBzi": {
-      "type": "auto-scrolling-logos",
-      "blocks": {
-        "logo_LewFQB": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/cirkullogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_RPqLfD": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/fbslogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_jQqQiY": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/carawaylogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_VmmPEE": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/potlogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_ybprmg": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/byltlogo2.png",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_JCdprd": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/carilohalogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_t3qJEC": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/nobllogo.png",
-            "alt": "",
-            "link": ""
-          }
-        },
-        "logo_Ckg3Xx": {
-          "type": "logo",
-          "settings": {
-            "logo": "shopify://shop_images/fctlogo.jpg",
-            "alt": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "logo_LewFQB",
-        "logo_RPqLfD",
-        "logo_jQqQiY",
-        "logo_VmmPEE",
-        "logo_ybprmg",
-        "logo_JCdprd",
-        "logo_t3qJEC",
-        "logo_Ckg3Xx"
-      ],
-      "name": "Auto Scrolling Logos",
-      "settings": {
-        "logo_height": 60,
-        "logo_spacing": 50,
-        "vertical_padding": 30,
-        "scroll_speed": 45,
-        "pause_on_hover": true,
-        "logo_opacity": 70,
-        "grayscale": 0,
-        "placeholder_color": "#e6e6e6",
-        "aria_label": "Brand logos"
+        "case_study_link_text": "See case study"
       }
     },
     "participating_brands_trust_callout_eMi9XU": {
@@ -300,11 +218,16 @@
         "icon": "building",
         "heading": "You're in Good Company",
         "description": "Shared Sweeps hand-selects brands across various verticals to reward their customers with the chance to win life-changing prizes.",
+        "heading_color": "#ffffff",
+        "description_color": "#9fb3d1",
+        "accent_color": "#2f6fed",
+        "stat_label_color": "#9fb3d1",
         "show_stats": false,
         "button_text": "",
         "button_link": "",
-        "background_style": "gray-100/50",
-        "primary_color": "blue"
+        "button_bg": "#2f6fed",
+        "button_text_color": "#ffffff",
+        "button_hover_bg": "#2456c0"
       }
     },
     "participating_brands_winners_preview_KX6n4q": {
@@ -354,10 +277,17 @@
         "show_icon": true,
         "heading": "Recent Winners",
         "subheading": "Real people winning real prizes",
+        "heading_color": "#ffffff",
+        "subheading_color": "#9fb3d1",
+        "accent_color": "#2f6fed",
+        "name_color": "#ffffff",
+        "meta_color": "#9fb3d1",
+        "prize_color": "#2f6fed",
+        "quote_color": "#7f93b3",
+        "card_bg": "#15233d",
+        "card_border": "#2a3a57",
         "button_text": "See All Winners",
-        "button_link": "shopify://pages/past-winners",
-        "background_color": "white",
-        "primary_color": "blue"
+        "button_link": "shopify://pages/past-winners"
       }
     },
     "participating_brands_final_cta_CmTC4H": {
@@ -413,7 +343,6 @@
     "blocks_BedXpE",
     "participating_brands_hero_CGMNmY",
     "participating_brands_grid_jqzcDq",
-    "auto_scrolling_logos_NRWBzi",
     "participating_brands_trust_callout_eMi9XU",
     "participating_brands_winners_preview_KX6n4q",
     "participating_brands_final_cta_CmTC4H",

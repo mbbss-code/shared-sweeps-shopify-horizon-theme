@@ -36,11 +36,11 @@
         "secondary_btn_hover_text": "#374151",
         "secondary_btn_hover_border": "#9ca3af",
         "show_collage": true,
-        "brand_ad_3": "shopify://shop_images/brand-ad-1.jpg",
+        "brand_ad_3": "shopify://shop_images/Screenshot_2026-06-17_at_10.58.48_AM.png",
         "brand_ad_3_alt": "Beauty brand sweepstakes ad",
-        "brand_ad_1": "shopify://shop_images/brand-ad-2.jpg",
+        "brand_ad_1": "shopify://shop_images/Screenshot_2026-06-17_at_10.55.52_AM.png",
         "brand_ad_1_alt": "Apparel brand sweepstakes ad",
-        "brand_ad_2": "shopify://shop_images/brand-ad-3.jpg",
+        "brand_ad_2": "shopify://shop_images/Screenshot_2026-06-17_at_1.05.23_PM.png",
         "brand_ad_2_alt": "Home goods brand sweepstakes ad",
         "show_toggle": true,
         "toggle_brands_label": "For Brands",
@@ -71,6 +71,46 @@
     "auto_scrolling_logos_KBNmXm": {
       "type": "auto-scrolling-logos",
       "blocks": {
+        "logo_ff3fJr": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/gib.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_QTU46F": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/wolfpaklogo.webp",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_k76Amx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/images_6.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_gEpPeb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/vegancutslogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_W4mnFX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/kflogo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
         "logo_x6c8Gb": {
           "type": "logo",
           "settings": {
@@ -137,6 +177,11 @@
         }
       },
       "block_order": [
+        "logo_ff3fJr",
+        "logo_QTU46F",
+        "logo_k76Amx",
+        "logo_gEpPeb",
+        "logo_W4mnFX",
         "logo_x6c8Gb",
         "logo_VmYHY7",
         "logo_fGTBDe",

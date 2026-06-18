@@ -2,7 +2,10 @@
   Auto-Scrolling Brand Logos (marquee)
   Tailwind (tw- prefix) for structure; dynamic values + keyframes ride on CSS
   variables in a small scoped block (Shopify has no runtime Tailwind JIT).
-  Transparent background — painted by the Page Ombre Background section.
+
+  Background: transparent by default (the Page Ombre Background paints it).
+  Set "Background color" in the schema to give it a solid band instead — when
+  set, the section opts out of the ombre painter so your color isn't overridden.
 
   Infinite loop: JS clones the logo set until the track overflows the viewport,
   then the track shifts by exactly one set (-100% / copies) so the loop is
@@ -20,22 +23,26 @@
   assign opacity_dec = logo_opacity | times: 0.01
   assign grayscale = section.settings.grayscale | default: 0
   assign placeholder_color = section.settings.placeholder_color | default: '#E6E6E6'
+  assign bg_color = section.settings.background_color
 -%}
 
 <style>
-  .brand-logos-bg-{{ section.id }} .acs-marquee {
+  {% if bg_color != blank %}
+  .brand-logos-{{ section.id }} { background-color: {{ bg_color }}; }
+  {% endif %}
+  .brand-logos-{{ section.id }} .acs-marquee {
     -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
             mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   }
-  .brand-logos-bg-{{ section.id }} .acs-track { width: max-content; }
-  .brand-logos-bg-{{ section.id }} .acs-track.is-ready {
+  .brand-logos-{{ section.id }} .acs-track { width: max-content; }
+  .brand-logos-{{ section.id }} .acs-track.is-ready {
     animation: acs-scroll-{{ section.id }} var(--acs-speed) linear infinite;
   }
   {% if section.settings.pause_on_hover %}
-  .brand-logos-bg-{{ section.id }} .acs-marquee:hover .acs-track { animation-play-state: paused; }
+  .brand-logos-{{ section.id }} .acs-marquee:hover .acs-track { animation-play-state: paused; }
   {% endif %}
-  .brand-logos-bg-{{ section.id }} .acs-logo { margin-left: var(--acs-gap); margin-right: var(--acs-gap); }
-  .brand-logos-bg-{{ section.id }} .acs-logo img {
+  .brand-logos-{{ section.id }} .acs-logo { margin-left: var(--acs-gap); margin-right: var(--acs-gap); }
+  .brand-logos-{{ section.id }} .acs-logo img {
     height: var(--acs-h);
     width: auto;
     object-fit: contain;
@@ -43,8 +50,8 @@
     filter: grayscale(var(--acs-gray));
     transition: opacity 0.3s ease, filter 0.3s ease;
   }
-  .brand-logos-bg-{{ section.id }} .acs-logo a:hover img { opacity: 1; filter: grayscale(0%); }
-  .brand-logos-bg-{{ section.id }} .acs-logo-ph {
+  .brand-logos-{{ section.id }} .acs-logo a:hover img { opacity: 1; filter: grayscale(0%); }
+  .brand-logos-{{ section.id }} .acs-logo-ph {
     height: var(--acs-h);
     width: calc(var(--acs-h) * 2);
     background-color: {{ placeholder_color }};
@@ -55,8 +62,8 @@
     to   { transform: translateX(calc(-100% / var(--acs-copies, 2))); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .brand-logos-bg-{{ section.id }} .acs-track.is-ready { animation: none; }
-    .brand-logos-bg-{{ section.id }} .acs-marquee {
+    .brand-logos-{{ section.id }} .acs-track.is-ready { animation: none; }
+    .brand-logos-{{ section.id }} .acs-marquee {
       overflow-x: auto;
       -webkit-mask-image: none;
               mask-image: none;
@@ -65,7 +72,7 @@
 </style>
 
 <section
-  class="brand-logos-bg-{{ section.id }} tw-relative tw-overflow-hidden"
+  class="brand-logos-{{ section.id }}{% if bg_color == blank %} brand-logos-bg-{{ section.id }}{% endif %} tw-relative tw-overflow-hidden"
   style="--acs-h: {{ logo_height }}px; --acs-gap: {{ half_spacing }}px; --acs-op: {{ opacity_dec }}; --acs-gray: {{ grayscale }}%; --acs-speed: {{ scroll_speed }}s; padding-top: {{ vertical_padding }}px; padding-bottom: {{ vertical_padding }}px;"
   role="region"
   aria-label="{{ section.settings.aria_label | default: 'Brand logos' }}"
@@ -108,7 +115,7 @@
 
 <script>
   (function () {
-    var section = document.querySelector('.brand-logos-bg-{{ section.id }}');
+    var section = document.querySelector('.brand-logos-{{ section.id }}');
     if (!section) return;
     var marquee = section.querySelector('.acs-marquee');
     var track = section.querySelector('[data-acs-track]');
@@ -225,6 +232,12 @@
       "content": "Style"
     },
     {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave unset for a transparent band so the page ombre shows through. Set a color to make it a solid band (it then opts out of the ombre)."
+    },
+    {
       "type": "range",
       "id": "logo_opacity",
       "label": "Logo opacity",
@@ -249,10 +262,6 @@
       "id": "placeholder_color",
       "label": "Placeholder color",
       "default": "#E6E6E6"
-    },
-    {
-      "type": "paragraph",
-      "content": "Background is transparent so the page ombre shows through. Logos are cloned automatically to fill the width — add as few or as many as you like."
     },
     {
       "type": "header",
