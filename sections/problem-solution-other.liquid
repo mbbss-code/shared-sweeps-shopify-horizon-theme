@@ -1,0 +1,214 @@
+{% comment %}
+  Problem to Solution (image variant) with audience toggle support
+  Two illustrations instead of icon circles
+  Transparent background — painted by the Page Ombre Background section
+  SEO optimized, ADA compliant, responsive
+{% endcomment %}
+
+{%- liquid
+  assign heading_color = section.settings.heading_color | default: '#ffffff'
+  assign text_color = section.settings.text_color | default: '#9fb3d1'
+-%}
+
+<style>
+  /* Background intentionally omitted — the Page Ombre Background paints this section. */
+  .problem-solution-other-{{ section.id }} .acs-heading { color: {{ heading_color }}; }
+  .problem-solution-other-{{ section.id }} .acs-text { color: {{ text_color }}; }
+  .problem-solution-other-{{ section.id }} .acs-illustration {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5rem;
+    height: 10rem;
+    width: auto;
+    object-fit: contain;
+  }
+</style>
+
+<section class="problem-solution-other-{{ section.id }} tw-border-y tw-border-white/10 tw-py-20 md:tw-py-28" role="region" aria-labelledby="problem-solution-other-{{ section.id }}-heading" {{ section.shopify_attributes }}>
+  <div class="tw-container tw-mx-auto tw-px-4">
+    <div class="tw-mx-auto tw-max-w-4xl">
+      <h2 id="problem-solution-other-{{ section.id }}-heading" class="tw-sr-only">Problem and Solution</h2>
+
+      <div class="tw-grid tw-gap-12 md:tw-grid-cols-2">
+        {%- comment -%} Problem {%- endcomment -%}
+        <article class="tw-text-center md:tw-text-left">
+          {% if section.settings.problem_image != blank %}
+            {%- assign p_img = section.settings.problem_image -%}
+            <img
+              class="acs-illustration"
+              src="{{ p_img | image_url: width: 800 }}"
+              srcset="{{ p_img | image_url: width: 400 }} 400w, {{ p_img | image_url: width: 800 }} 800w"
+              sizes="160px"
+              width="{{ p_img.width }}"
+              height="{{ p_img.height }}"
+              alt="{{ section.settings.problem_image_alt | default: 'Shopping rewards' | escape }}"
+              loading="lazy"
+            />
+          {% else %}
+            <div class="acs-illustration" style="width:10rem;">{{ 'image' | placeholder_svg_tag }}</div>
+          {% endif %}
+
+          <h3 class="acs-heading tw-mb-4 tw-text-2xl tw-font-bold">
+            <span data-brands-content>{{ section.settings.brands_problem_heading | default: 'Growing an Online Brand Has Gotten Harder' }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_problem_heading | default: 'Everyday Shopping' }}</span>
+          </h3>
+
+          <p class="acs-text">
+            <span data-brands-content>{{ section.settings.brands_problem_description }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_problem_description }}</span>
+          </p>
+        </article>
+
+        {%- comment -%} Solution {%- endcomment -%}
+        <article class="tw-text-center md:tw-text-left">
+          {% if section.settings.solution_image != blank %}
+            {%- assign s_img = section.settings.solution_image -%}
+            <img
+              class="acs-illustration"
+              src="{{ s_img | image_url: width: 800 }}"
+              srcset="{{ s_img | image_url: width: 400 }} 400w, {{ s_img | image_url: width: 800 }} 800w"
+              sizes="160px"
+              width="{{ s_img.width }}"
+              height="{{ s_img.height }}"
+              alt="{{ section.settings.solution_image_alt | default: 'Winner celebrating' | escape }}"
+              loading="lazy"
+            />
+          {% else %}
+            <div class="acs-illustration" style="width:10rem;">{{ 'image' | placeholder_svg_tag }}</div>
+          {% endif %}
+
+          <h3 class="acs-heading tw-mb-4 tw-text-2xl tw-font-bold">
+            <span data-brands-content>{{ section.settings.brands_solution_heading | default: 'A Smarter Way for Everyone to Win' }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_solution_heading | default: 'Shopping With a Chance to Win' }}</span>
+          </h3>
+
+          <p class="acs-text">
+            <span data-brands-content>{{ section.settings.brands_solution_description }}</span>
+            <span data-customers-content class="tw-hidden">{{ section.settings.customers_solution_description }}</span>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Problem Solution (Image)",
+  "class": "problem-solution-other-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body text color",
+      "default": "#9fb3d1"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "problem_image",
+      "label": "Problem image"
+    },
+    {
+      "type": "text",
+      "id": "problem_image_alt",
+      "label": "Problem image alt text",
+      "default": "Shopping rewards on mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "solution_image",
+      "label": "Solution image"
+    },
+    {
+      "type": "text",
+      "id": "solution_image_alt",
+      "label": "Solution image alt text",
+      "default": "Winner celebrating"
+    },
+    {
+      "type": "header",
+      "content": "Brands Content - Problem"
+    },
+    {
+      "type": "text",
+      "id": "brands_problem_heading",
+      "label": "Problem heading",
+      "default": "Growing an Online Brand Has Gotten Harder"
+    },
+    {
+      "type": "textarea",
+      "id": "brands_problem_description",
+      "label": "Problem description",
+      "default": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards."
+    },
+    {
+      "type": "header",
+      "content": "Brands Content - Solution"
+    },
+    {
+      "type": "text",
+      "id": "brands_solution_heading",
+      "label": "Solution heading",
+      "default": "A Smarter Way for Everyone to Win"
+    },
+    {
+      "type": "textarea",
+      "id": "brands_solution_description",
+      "label": "Solution description",
+      "default": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win."
+    },
+    {
+      "type": "header",
+      "content": "Customers Content - Problem"
+    },
+    {
+      "type": "text",
+      "id": "customers_problem_heading",
+      "label": "Problem heading",
+      "default": "Everyday Shopping"
+    },
+    {
+      "type": "textarea",
+      "id": "customers_problem_description",
+      "label": "Problem description",
+      "default": "Shopping your favorite brands is already rewarding — great products, great experiences."
+    },
+    {
+      "type": "header",
+      "content": "Customers Content - Solution"
+    },
+    {
+      "type": "text",
+      "id": "customers_solution_heading",
+      "label": "Solution heading",
+      "default": "Shopping With a Chance to Win"
+    },
+    {
+      "type": "textarea",
+      "id": "customers_solution_description",
+      "label": "Solution description",
+      "default": "Shared Sweeps turns everyday shopping into something more. Discover new brands and earn entries toward real prizes with every purchase."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Problem Solution (Image)",
+      "category": "Content"
+    }
+  ]
+}
+{% endschema %}

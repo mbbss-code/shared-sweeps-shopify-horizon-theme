@@ -13,9 +13,10 @@
       "type": "hero-with-toggle",
       "name": "Hero with Toggle",
       "settings": {
-        "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "description_color": "#4b5563",
+        "bg_gradient_start": "#0a1124",
+        "bg_gradient_end": "#24456e",
+        "heading_color": "#ffffff",
+        "description_color": "#c5daee",
         "toggle_container_bg": "#f3f4f6",
         "toggle_container_border": "#e5e7eb",
         "toggle_active_bg": "#3099d3",
@@ -34,6 +35,13 @@
         "secondary_btn_hover_bg": "#f9fafb",
         "secondary_btn_hover_text": "#374151",
         "secondary_btn_hover_border": "#9ca3af",
+        "show_collage": true,
+        "brand_ad_3": "shopify://shop_images/Screenshot_2026-06-17_at_10.58.48_AM.png",
+        "brand_ad_3_alt": "Beauty brand sweepstakes ad",
+        "brand_ad_1": "shopify://shop_images/Screenshot_2026-06-17_at_10.55.52_AM.png",
+        "brand_ad_1_alt": "Apparel brand sweepstakes ad",
+        "brand_ad_2": "shopify://shop_images/Screenshot_2026-06-17_at_1.05.23_PM.png",
+        "brand_ad_2_alt": "Home goods brand sweepstakes ad",
         "show_toggle": true,
         "toggle_brands_label": "For Brands",
         "toggle_customers_label": "For Shoppers",
@@ -54,21 +62,162 @@
         "customers_secondary_cta_text": "",
         "customers_secondary_cta_link": "",
         "customers_indicator_1": "One $100,000 prize",
-        "customers_indicator_2": "Monthly $10,000 prizes",
+        "customers_indicator_2": "",
         "customers_indicator_3": "Real winners",
         "customers_indicator_4": "Trusted brands",
         "show_trust_indicators": true
       }
     },
-    "problem_solution_RCwd8k": {
-      "type": "problem-solution",
-      "name": "Problem Solution",
+    "auto_scrolling_logos_KBNmXm": {
+      "type": "auto-scrolling-logos",
+      "blocks": {
+        "logo_ff3fJr": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/gib.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_QTU46F": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/wolfpaklogo.webp",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_k76Amx": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/images_6.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_gEpPeb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/vegancutslogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_W4mnFX": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/kflogo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_x6c8Gb": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/cirkullogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_VmYHY7": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/fbslogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_fGTBDe": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/carawaylogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_fXDLKF": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/potlogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_RMrwrL": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/byltlogo2.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_mPdGWz": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/carilohalogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_xN3zWe": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/nobllogo.png",
+            "alt": "",
+            "link": ""
+          }
+        },
+        "logo_c9PtJc": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify://shop_images/fctlogo.jpg",
+            "alt": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_ff3fJr",
+        "logo_QTU46F",
+        "logo_k76Amx",
+        "logo_gEpPeb",
+        "logo_W4mnFX",
+        "logo_x6c8Gb",
+        "logo_VmYHY7",
+        "logo_fGTBDe",
+        "logo_fXDLKF",
+        "logo_RMrwrL",
+        "logo_mPdGWz",
+        "logo_xN3zWe",
+        "logo_c9PtJc"
+      ],
+      "name": "Auto Scrolling Logos",
       "settings": {
-        "bg_color": "#f9fafb",
-        "brands_problem_heading": "Running Your Own Sweepstakes Is Hard",
-        "brands_problem_description": "Between legal compliance, prize funding, marketing execution, and technical setup, running a large-scale giveaway on your own can be complicated, expensive, and risky for most brands.",
+        "logo_height": 60,
+        "logo_spacing": 50,
+        "vertical_padding": 30,
+        "scroll_speed": 45,
+        "pause_on_hover": true,
+        "logo_opacity": 70,
+        "grayscale": 0,
+        "placeholder_color": "#e6e6e6",
+        "aria_label": "Brand logos"
+      }
+    },
+    "problem_solution_other_4BkEeX": {
+      "type": "problem-solution-other",
+      "name": "Problem Solution (Image)",
+      "settings": {
+        "heading_color": "#ffffff",
+        "text_color": "#9fb3d1",
+        "problem_image": "shopify://shop_images/shopping-rewards.png",
+        "problem_image_alt": "Shopping rewards on mobile",
+        "solution_image": "shopify://shop_images/winner-celebration.png",
+        "solution_image_alt": "Winner celebrating",
+        "brands_problem_heading": "Growing an Online Brand Has Gotten Harder",
+        "brands_problem_description": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards.",
         "brands_solution_heading": "A Smarter Way for Everyone to Win",
-        "brands_solution_description": "Shared Sweeps gives brands the ability to run powerful giveaways without funding the prize or navigating complex legal requirements. Our team has helped run hundreds of campaigns and handles the heavy lifting so you can focus on your customers.",
+        "brands_solution_description": "Shared Sweeps turns everyday purchases into entries for real prizes. Brands grow without upfront risk, and customers get a real chance to win.",
         "customers_problem_heading": "Everyday Shopping",
         "customers_problem_description": "Shopping your favorite brands is already rewarding — great products, great experiences.",
         "customers_solution_heading": "Shopping With a Chance to Win",
@@ -129,7 +278,7 @@
         "customers_benefit_LnJf8a": {
           "type": "customers_benefit",
           "settings": {
-            "text": "Real $100K and $10K prizes"
+            "text": "Real $100K"
           }
         },
         "customers_benefit_NrgURm": {
@@ -167,7 +316,16 @@
       ],
       "name": "Comparison",
       "settings": {
-        "bg_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "card_heading_color": "#ffffff",
+        "item_text_color": "#e2e8f0",
+        "item_muted_color": "#9fb3d1",
+        "subtext_color": "#7f93b3",
+        "card_bg": "#15233d",
+        "card_border": "#2a3a57",
+        "card_border_highlight": "#2f6fed",
+        "positive_icon_color": "#34d399",
+        "negative_icon_color": "#f87171",
         "brands_heading": "Why Shared Sweeps Beats Traditional Giveaways",
         "customers_heading": "Why Shared Sweeps Is Different",
         "traditional_heading": "Traditional Giveaways",
@@ -248,9 +406,9 @@
       "name": "How It Works",
       "settings": {
         "bg_color": "#f9fafb",
-        "heading_color": "#111827",
-        "step_title_color": "#111827",
-        "step_desc_color": "#4b5563",
+        "heading_color": "#ffffff",
+        "step_title_color": "#ffffff",
+        "step_desc_color": "#c5daee",
         "step_badge_bg": "#3099d3",
         "step_badge_text": "#ffffff",
         "btn_bg": "#3099d3",
@@ -341,7 +499,7 @@
       "name": "Social Proof",
       "settings": {
         "bg_color": "#ffffff",
-        "heading_color": "#111827",
+        "heading_color": "#ffffff",
         "accent_color": "#3099d3",
         "card_bg": "#ffffff",
         "card_border": "#e5e7eb",
@@ -462,7 +620,9 @@
       "name": "HIW — FAQ",
       "settings": {
         "primary_color": "#9333ea",
-        "alt_bg_color": "#f3f4f6",
+        "heading_color": "#ffffff",
+        "question_color": "#ffffff",
+        "answer_color": "#9fb3d1",
         "faq_title": "Frequently Asked Questions"
       }
     },
@@ -491,15 +651,26 @@
         "customers_cta_text": "View Participating Brands",
         "customers_cta_link": "shopify://pages/participating-brands"
       }
+    },
+    "ombre_background_p8KmKN": {
+      "type": "ombre-background",
+      "name": "Page Ombre Background",
+      "settings": {
+        "top_color": "#0a1124",
+        "bottom_color": "#2a5891",
+        "selectors": ""
+      }
     }
   },
   "order": [
     "hero_with_toggle_48eMRL",
-    "problem_solution_RCwd8k",
+    "auto_scrolling_logos_KBNmXm",
+    "problem_solution_other_4BkEeX",
     "comparison_FNDeBU",
     "how_it_works_eJFfVt",
     "social_proof_yLW97D",
     "hiw_faq_9hTpza",
-    "bottom_final_cta_MpLdAR"
+    "bottom_final_cta_MpLdAR",
+    "ombre_background_p8KmKN"
   ]
 }

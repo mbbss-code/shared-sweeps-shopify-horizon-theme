@@ -116,7 +116,9 @@
       "type": "header-custom",
       "name": "Header Custom",
       "settings": {
-        "header_bg_color": "#172645",
+        "header_bg_color": "#0B1326",
+        "header_opacity": 100,
+        "header_blur": 24,
         "logo": "shopify://shop_images/shared-sweeps-logo.png",
         "logo_alt_text": "Shared Sweeps",
         "menu": "custom-header-menu",

@@ -1,0 +1,316 @@
+{% comment %}
+  Auto-Scrolling Brand Logos (marquee)
+  Tailwind (tw- prefix) for structure; dynamic values + keyframes ride on CSS
+  variables in a small scoped block (Shopify has no runtime Tailwind JIT).
+
+  Background: transparent by default (the Page Ombre Background paints it).
+  Set "Background color" in the schema to give it a solid band instead — when
+  set, the section opts out of the ombre painter so your color isn't overridden.
+
+  Infinite loop: JS clones the logo set until the track overflows the viewport,
+  then the track shifts by exactly one set (-100% / copies) so the loop is
+  seamless regardless of how many logos you add. Pauses on hover, respects
+  prefers-reduced-motion, and degrades to a static row without JS.
+{% endcomment %}
+
+{%- liquid
+  assign logo_height = section.settings.logo_height | default: 60
+  assign logo_spacing = section.settings.logo_spacing | default: 50
+  assign half_spacing = logo_spacing | divided_by: 2
+  assign vertical_padding = section.settings.vertical_padding | default: 30
+  assign scroll_speed = section.settings.scroll_speed | default: 45
+  assign logo_opacity = section.settings.logo_opacity | default: 70
+  assign opacity_dec = logo_opacity | times: 0.01
+  assign grayscale = section.settings.grayscale | default: 0
+  assign placeholder_color = section.settings.placeholder_color | default: '#E6E6E6'
+  assign bg_color = section.settings.background_color
+-%}
+
+<style>
+  {% if bg_color != blank %}
+  .brand-logos-{{ section.id }} { background-color: {{ bg_color }}; }
+  {% endif %}
+  .brand-logos-{{ section.id }} .acs-marquee {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+  .brand-logos-{{ section.id }} .acs-track { width: max-content; }
+  .brand-logos-{{ section.id }} .acs-track.is-ready {
+    animation: acs-scroll-{{ section.id }} var(--acs-speed) linear infinite;
+  }
+  {% if section.settings.pause_on_hover %}
+  .brand-logos-{{ section.id }} .acs-marquee:hover .acs-track { animation-play-state: paused; }
+  {% endif %}
+  .brand-logos-{{ section.id }} .acs-logo { margin-left: var(--acs-gap); margin-right: var(--acs-gap); }
+  .brand-logos-{{ section.id }} .acs-logo img {
+    height: var(--acs-h);
+    width: auto;
+    object-fit: contain;
+    opacity: var(--acs-op);
+    filter: grayscale(var(--acs-gray));
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+  .brand-logos-{{ section.id }} .acs-logo a:hover img { opacity: 1; filter: grayscale(0%); }
+  .brand-logos-{{ section.id }} .acs-logo-ph {
+    height: var(--acs-h);
+    width: calc(var(--acs-h) * 2);
+    background-color: {{ placeholder_color }};
+    opacity: var(--acs-op);
+  }
+  @keyframes acs-scroll-{{ section.id }} {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100% / var(--acs-copies, 2))); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .brand-logos-{{ section.id }} .acs-track.is-ready { animation: none; }
+    .brand-logos-{{ section.id }} .acs-marquee {
+      overflow-x: auto;
+      -webkit-mask-image: none;
+              mask-image: none;
+    }
+  }
+</style>
+
+<section
+  class="brand-logos-{{ section.id }}{% if bg_color == blank %} brand-logos-bg-{{ section.id }}{% endif %} tw-relative tw-overflow-hidden"
+  style="--acs-h: {{ logo_height }}px; --acs-gap: {{ half_spacing }}px; --acs-op: {{ opacity_dec }}; --acs-gray: {{ grayscale }}%; --acs-speed: {{ scroll_speed }}s; padding-top: {{ vertical_padding }}px; padding-bottom: {{ vertical_padding }}px;"
+  role="region"
+  aria-label="{{ section.settings.aria_label | default: 'Brand logos' }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="acs-marquee tw-w-full tw-overflow-hidden">
+    <div class="acs-track tw-flex tw-items-center" data-acs-track>
+      {% if section.blocks.size > 0 %}
+        {%- for block in section.blocks -%}
+          <div class="acs-logo tw-flex tw-shrink-0 tw-items-center tw-justify-center">
+            {%- if block.settings.logo != blank -%}
+              {%- assign img = block.settings.logo -%}
+              {%- assign logo_alt = block.settings.alt | default: img.alt | default: block.settings.link.title -%}
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="tw-inline-flex" aria-label="{{ logo_alt | escape }}">
+                  <img src="{{ img | image_url: width: 400 }}"
+                       srcset="{{ img | image_url: width: 200 }} 1x, {{ img | image_url: width: 400 }} 2x"
+                       width="{{ img.width }}" height="{{ img.height }}"
+                       alt="{{ logo_alt | escape }}" loading="lazy" decoding="async">
+                </a>
+              {%- else -%}
+                <img src="{{ img | image_url: width: 400 }}"
+                     srcset="{{ img | image_url: width: 200 }} 1x, {{ img | image_url: width: 400 }} 2x"
+                     width="{{ img.width }}" height="{{ img.height }}"
+                     alt="{{ logo_alt | escape }}" loading="lazy" decoding="async">
+              {%- endif -%}
+            {%- else -%}
+              <div class="acs-logo-ph tw-rounded-md"></div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      {% else %}
+        {%- for i in (1..6) -%}
+          <div class="acs-logo tw-flex tw-shrink-0 tw-items-center tw-justify-center"><div class="acs-logo-ph tw-rounded-md"></div></div>
+        {%- endfor -%}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var section = document.querySelector('.brand-logos-{{ section.id }}');
+    if (!section) return;
+    var marquee = section.querySelector('.acs-marquee');
+    var track = section.querySelector('[data-acs-track]');
+    if (!marquee || !track) return;
+
+    // Snapshot the original logo set so we can rebuild on resize.
+    var originals = Array.prototype.slice.call(track.children).map(function (n) {
+      return n.cloneNode(true);
+    });
+    if (!originals.length) return;
+
+    var raf;
+    function build() {
+      track.classList.remove('is-ready');
+      track.innerHTML = '';
+
+      // First (accessible) copy.
+      originals.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
+
+      // Clone whole sets until the track is at least 2x the viewport wide
+      // (and never fewer than 2 copies), so shifting one set never reveals a gap.
+      var copies = 1;
+      var minWidth = marquee.clientWidth * 2;
+      while (track.scrollWidth < minWidth || copies < 2) {
+        originals.forEach(function (n) {
+          var clone = n.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        });
+        copies++;
+        if (copies > 40) break; // safety valve
+      }
+
+      track.style.setProperty('--acs-copies', copies);
+      track.classList.add('is-ready');
+    }
+
+    function schedule() {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(build);
+    }
+
+    schedule();
+    window.addEventListener('load', schedule);
+    window.addEventListener('resize', function () {
+      clearTimeout(track._acsT);
+      track._acsT = setTimeout(schedule, 200);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Auto Scrolling Logos",
+  "class": "brand-logos-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 20,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "label": "Logo spacing",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "Scroll speed",
+      "min": 5,
+      "max": 100,
+      "step": 1,
+      "unit": "s",
+      "default": 45,
+      "info": "Time for one full set to pass. Lower is faster."
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave unset for a transparent band so the page ombre shows through. Set a color to make it a solid band (it then opts out of the ombre)."
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "Logo opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "grayscale",
+      "label": "Grayscale",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder color",
+      "default": "#E6E6E6"
+    },
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Region label",
+      "default": "Brand logos"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image",
+          "info": "Transparent PNG or SVG recommended. Use light/white logos for the dark ombre."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "info": "Brand name, for accessibility"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Auto Scrolling Logos",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}

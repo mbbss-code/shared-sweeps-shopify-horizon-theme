@@ -1,0 +1,102 @@
+{% comment %}
+  Page Ombre Background
+  Paints ONE master gradient across the whole page, sliced per section by
+  its document position, so the page reads as a single continuous ombre.
+
+  How it works: every targeted section is painted with the same gradient,
+  sized to the full page height, and offset by its own top position — so each
+  section shows only its slice. Recalculates on load, resize, and whenever the
+  audience toggle changes content height.
+
+  Add this section anywhere on the index template. While it's present it
+  overrides each section's individual gradient. Remove it and the sections
+  fall back to their own (chained) gradients.
+{% endcomment %}
+
+{%- liquid
+  assign top_color = section.settings.top_color | default: '#0a1124'
+  assign bottom_color = section.settings.bottom_color | default: '#2a5891'
+  assign default_selectors = '[class*="past-winners-trust-template-"],[class*="past-winners-grid-"],[class*="past-winners-hero-"],[class*="benefits-section-heading-"],[class*="case-studies-grid-"],[class*="case-studies-hero"],[class*="winners-preview-"],[class*="trust-callout-"],[class*="participating-brands-grid"],[class*="brands-hero-"],[class*="hero-section-"],[class*="problem-solution-"],[class*="comparison-"],[class*="how-it-works-"],[class*="social-proof-"],[class*="hiw-faq-bg-"],[class*="brand-logos-bg-"],[class*="final-cta-"],[class*="footer-custom-"]'
+  assign selectors = section.settings.selectors | default: default_selectors
+-%}
+
+<script>
+  (function () {
+    var TOP = {{ top_color | json }};
+    var BOTTOM = {{ bottom_color | json }};
+    var SELECTORS = {{ selectors | json }};
+
+    function paint() {
+      var els = document.querySelectorAll(SELECTORS);
+      if (!els.length) return;
+
+      var total = document.documentElement.scrollHeight;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var grad = 'linear-gradient(180deg, ' + TOP + ' 0%, ' + BOTTOM + ' 100%)';
+
+      els.forEach(function (el) {
+        var docTop = el.getBoundingClientRect().top + scrollY;
+        el.style.backgroundImage = grad;
+        el.style.backgroundRepeat = 'no-repeat';
+        el.style.backgroundAttachment = 'scroll';
+        el.style.backgroundSize = '100% ' + total + 'px';
+        el.style.backgroundPosition = '0px -' + docTop + 'px';
+      });
+    }
+
+    function schedule() { window.requestAnimationFrame(paint); }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', schedule);
+    } else {
+      schedule();
+    }
+
+    window.addEventListener('load', schedule);
+    window.addEventListener('resize', schedule);
+    window.addEventListener('orientationchange', schedule);
+    // The hero toggle changes content (and page height) — re-slice afterwards.
+    window.addEventListener('audienceChanged', function () { setTimeout(schedule, 60); });
+
+    if (window.ResizeObserver) {
+      try { new ResizeObserver(schedule).observe(document.body); } catch (e) {}
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Page Ombre Background",
+  "class": "page-ombre-background",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Paints one continuous gradient across the whole page, sliced per section. While active it overrides each section's own background gradient."
+    },
+    {
+      "type": "color",
+      "id": "top_color",
+      "label": "Top of page color",
+      "default": "#0a1124"
+    },
+    {
+      "type": "color",
+      "id": "bottom_color",
+      "label": "Bottom of page color (footer)",
+      "default": "#2a5891"
+    },
+    {
+      "type": "textarea",
+      "id": "selectors",
+      "label": "Section selectors (advanced)",
+      "info": "Comma-separated CSS selectors for the elements to paint. Leave blank to target the default home page sections + footer."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Ombre Background",
+      "category": "Layout"
+    }
+  ]
+}
+{% endschema %}

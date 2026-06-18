@@ -14,8 +14,8 @@
       "name": "Past Winners Hero",
       "settings": {
         "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "description_color": "#4b5563",
+        "heading_color": "#ffffff",
+        "description_color": "#c5daee",
         "btn_bg": "#3099d3",
         "btn_text": "#ffffff",
         "btn_border": "#3099d3",
@@ -34,6 +34,17 @@
     "past_winners_grid_AQEXeA": {
       "type": "past-winners-grid",
       "blocks": {
+        "winner_F7gMbk": {
+          "type": "winner",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-06-17_at_11.11.22_AM.png",
+            "name": "Dan C.",
+            "city": "Northport",
+            "state": "NY",
+            "brand": "Chemical Guys",
+            "prize": "$100,000"
+          }
+        },
         "winner_rKdNkp": {
           "type": "winner",
           "settings": {
@@ -168,6 +179,7 @@
         }
       },
       "block_order": [
+        "winner_F7gMbk",
         "winner_rKdNkp",
         "winner_7kFtzt",
         "winner_H3FpEb",
@@ -185,16 +197,16 @@
       "settings": {
         "bg_color": "#f3f4f6",
         "border_color": "#e5e7eb",
-        "card_bg": "#ffffff",
+        "card_bg": "#2a5891",
         "card_border": "#e5e7eb",
-        "name_color": "#111827",
-        "meta_color": "#4b5563",
+        "name_color": "#ffffff",
+        "meta_color": "#c5daee",
         "icon_color": "#9ca3af",
-        "brand_color": "#111827",
+        "brand_color": "#F5F5F5",
         "placeholder_bg": "#f3f4f6",
         "placeholder_text": "#9ca3af",
-        "accent_color": "#3099d3",
-        "prize_badge_bg": "#3099d3",
+        "accent_color": "#ffffff",
+        "prize_badge_bg": "#F5F5F5",
         "prize_badge_text": "#ffffff",
         "btn_bg": "#ffffff",
         "btn_text": "#374151",
@@ -212,8 +224,8 @@
       "name": "Past Winners Trust Callout",
       "settings": {
         "bg_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#4b5563",
+        "heading_color": "#ffffff",
+        "text_color": "#c5daee",
         "heading": "One Shared Sweepstakes. One Life-Changing Prize.",
         "description": "All participating brands contribute to one shared $100,000 sweepstakes. Customers earn entries by shopping participating brands, and one verified winner is selected at the end of each campaign."
       }
@@ -235,12 +247,22 @@
         "cta_text": "Shop Participating Brands",
         "cta_link": "shopify://pages/participating-brands"
       }
+    },
+    "ombre_background_GGn6BK": {
+      "type": "ombre-background",
+      "name": "Page Ombre Background",
+      "settings": {
+        "top_color": "#0a1124",
+        "bottom_color": "#2a5891",
+        "selectors": ""
+      }
     }
   },
   "order": [
     "past_winners_hero_9ETYWd",
     "past_winners_grid_AQEXeA",
     "past_winners_trust_h8PBw7",
-    "past_winners_cta_irjC7c"
+    "past_winners_cta_irjC7c",
+    "ombre_background_GGn6BK"
   ]
 }

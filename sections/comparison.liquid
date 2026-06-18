@@ -1,44 +1,65 @@
 {% comment %}
   Comparison section with audience toggle support
+  Transparent background — painted by the Page Ombre Background section
+  All colors driven by section settings
   SEO optimized, ADA compliant, responsive
 {% endcomment %}
 
 {%- liquid
-  assign bg_color = section.settings.bg_color | default: '#ffffff'
+  assign heading_color = section.settings.heading_color | default: '#ffffff'
+  assign card_heading_color = section.settings.card_heading_color | default: '#ffffff'
+  assign card_bg = section.settings.card_bg | default: '#15233d'
+  assign card_border = section.settings.card_border | default: '#2a3a57'
+  assign card_border_highlight = section.settings.card_border_highlight | default: '#2f6fed'
+  assign item_text_color = section.settings.item_text_color | default: '#e2e8f0'
+  assign item_muted_color = section.settings.item_muted_color | default: '#9fb3d1'
+  assign positive_icon_color = section.settings.positive_icon_color | default: '#34d399'
+  assign negative_icon_color = section.settings.negative_icon_color | default: '#f87171'
+  assign subtext_color = section.settings.subtext_color | default: '#7f93b3'
 -%}
 
 <style>
-  .comparison-{{ section.id }} {
-    background-color: {{ bg_color }};
+  /* Background intentionally omitted — the Page Ombre Background paints this section. */
+  .comparison-{{ section.id }} .acs-heading { color: {{ heading_color }}; }
+  .comparison-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
   }
+  .comparison-{{ section.id }} .acs-card-highlight { border-color: {{ card_border_highlight }}; }
+  .comparison-{{ section.id }} .acs-col-heading { color: {{ card_heading_color }}; }
+  .comparison-{{ section.id }} .acs-item-strong { color: {{ item_text_color }}; }
+  .comparison-{{ section.id }} .acs-item-muted { color: {{ item_muted_color }}; }
+  .comparison-{{ section.id }} .acs-icon-positive { color: {{ positive_icon_color }}; }
+  .comparison-{{ section.id }} .acs-icon-negative { color: {{ negative_icon_color }}; }
+  .comparison-{{ section.id }} .acs-subtext { color: {{ subtext_color }}; }
 </style>
 
-<section class="comparison-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="comparison-heading">
+<section class="comparison-{{ section.id }} tw-py-20 md:tw-py-28" role="region" aria-labelledby="comparison-heading" {{ section.shopify_attributes }}>
   <div class="tw-container tw-mx-auto tw-px-4">
-    
+
     {%- comment -%} Section Heading {%- endcomment -%}
     <div class="tw-mx-auto tw-mb-12 tw-max-w-2xl tw-text-center">
-      <h2 id="comparison-heading" class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 lg:tw-text-4xl xl:tw-text-5xl">
+      <h2 id="comparison-heading" class="acs-heading tw-mb-4 tw-text-3xl tw-font-bold lg:tw-text-4xl xl:tw-text-5xl">
         <span data-brands-content>{{ section.settings.brands_heading | default: 'Why Shared Sweeps Beats Traditional Giveaways' }}</span>
         <span data-customers-content class="tw-hidden">{{ section.settings.customers_heading | default: 'Why Shared Sweeps Is Different' }}</span>
       </h2>
     </div>
 
     <div class="tw-mx-auto tw-max-w-4xl">
-      
+
       {%- comment -%} Brands Comparison - Two Column {%- endcomment -%}
       <div data-brands-content class="tw-grid tw-gap-6 lg:tw-grid-cols-2">
-        
+
         {%- comment -%} Traditional Giveaways {%- endcomment -%}
-        <article class="tw-rounded-lg tw-border tw-border-gray-200 tw-bg-white tw-p-6 tw-shadow-sm">
-          <h3 class="tw-mb-4 tw-text-lg tw-font-semibold tw-text-gray-900">
+        <article class="acs-card tw-rounded-lg tw-border tw-p-6 tw-shadow-sm">
+          <h3 class="acs-col-heading tw-mb-4 tw-text-lg tw-font-semibold">
             {{ section.settings.traditional_heading | default: 'Traditional Giveaways' }}
           </h3>
           <ul class="tw-space-y-3" role="list">
             {% for block in section.blocks %}
               {% if block.type == 'traditional_item' %}
-                <li class="tw-flex tw-items-start tw-gap-3 tw-text-gray-600">
-                  <svg class="tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0 tw-text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <li class="acs-item-muted tw-flex tw-items-start tw-gap-3">
+                  <svg class="acs-icon-negative tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                   </svg>
                   <span>{{ block.settings.text }}</span>
@@ -49,15 +70,15 @@
         </article>
 
         {%- comment -%} Shared Sweeps {%- endcomment -%}
-        <article class="tw-rounded-lg tw-border-2 tw-border-purple-200 tw-bg-white tw-p-6 tw-shadow-sm">
-          <h3 class="tw-mb-4 tw-text-lg tw-font-semibold tw-text-gray-900">
+        <article class="acs-card acs-card-highlight tw-rounded-lg tw-border-2 tw-p-6 tw-shadow-sm">
+          <h3 class="acs-col-heading tw-mb-4 tw-text-lg tw-font-semibold">
             {{ section.settings.sharedsweeps_heading | default: 'Shared Sweeps' }}
           </h3>
           <ul class="tw-space-y-3" role="list">
             {% for block in section.blocks %}
               {% if block.type == 'sharedsweeps_item' %}
-                <li class="tw-flex tw-items-start tw-gap-3 tw-text-gray-900">
-                  <svg class="tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0 tw-text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <li class="acs-item-strong tw-flex tw-items-start tw-gap-3">
+                  <svg class="acs-icon-positive tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                   <span>{{ block.settings.text }}</span>
@@ -70,12 +91,12 @@
 
       {%- comment -%} Customers Content - Single Column {%- endcomment -%}
       <div data-customers-content class="tw-hidden tw-mx-auto tw-max-w-xl">
-        <article class="tw-rounded-lg tw-border-2 tw-border-purple-200 tw-bg-white tw-p-6 tw-shadow-sm">
+        <article class="acs-card acs-card-highlight tw-rounded-lg tw-border-2 tw-p-6 tw-shadow-sm">
           <ul class="tw-space-y-3" role="list">
             {% for block in section.blocks %}
               {% if block.type == 'customers_benefit' %}
-                <li class="tw-flex tw-items-start tw-gap-3 tw-text-gray-900">
-                  <svg class="tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0 tw-text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <li class="acs-item-strong tw-flex tw-items-start tw-gap-3">
+                  <svg class="acs-icon-positive tw-mt-0.5 tw-h-5 tw-w-5 tw-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>
                   <span>{{ block.settings.text }}</span>
@@ -88,7 +109,7 @@
 
       {%- comment -%} Brands Subtext {%- endcomment -%}
       {% if section.settings.show_brands_subtext %}
-        <p data-brands-content class="tw-mt-8 tw-text-center tw-text-sm tw-text-gray-500">
+        <p data-brands-content class="acs-subtext tw-mt-8 tw-text-center tw-text-sm">
           {{ section.settings.brands_subtext | default: 'Built for brands. Trusted by customers.' }}
         </p>
       {% endif %}
@@ -103,13 +124,75 @@
   "settings": [
     {
       "type": "header",
-      "content": "Section Styling"
+      "content": "Text Colors"
     },
     {
       "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
+      "id": "heading_color",
+      "label": "Section heading color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_heading_color",
+      "label": "Card heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "item_text_color",
+      "label": "List item text (Shared Sweeps / benefits)",
+      "default": "#e2e8f0"
+    },
+    {
+      "type": "color",
+      "id": "item_muted_color",
+      "label": "List item text (Traditional)",
+      "default": "#9fb3d1"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext color",
+      "default": "#7f93b3"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#15233d"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#2a3a57"
+    },
+    {
+      "type": "color",
+      "id": "card_border_highlight",
+      "label": "Highlighted card border (Shared Sweeps)",
+      "default": "#2f6fed"
+    },
+    {
+      "type": "header",
+      "content": "Icon Colors"
+    },
+    {
+      "type": "color",
+      "id": "positive_icon_color",
+      "label": "Check icon (positive)",
+      "default": "#34d399"
+    },
+    {
+      "type": "color",
+      "id": "negative_icon_color",
+      "label": "X icon (negative)",
+      "default": "#f87171"
     },
     {
       "type": "header",
@@ -157,36 +240,21 @@
       "type": "traditional_item",
       "name": "Traditional Item",
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Pay for prizes upfront"
-        }
+        { "type": "text", "id": "text", "label": "Text", "default": "Pay for prizes upfront" }
       ]
     },
     {
       "type": "sharedsweeps_item",
       "name": "Shared Sweeps Item",
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "$100K prize fully funded"
-        }
+        { "type": "text", "id": "text", "label": "Text", "default": "$100K prize fully funded" }
       ]
     },
     {
       "type": "customers_benefit",
       "name": "Customers Benefit",
       "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Real $100,000 prize"
-        }
+        { "type": "text", "id": "text", "label": "Text", "default": "Real $100,000 prize" }
       ]
     }
   ],
@@ -195,96 +263,21 @@
       "name": "Comparison",
       "category": "Content",
       "blocks": [
-        {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Pay for prizes upfront"
-          }
-        },
-        {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Risk legal non-compliance"
-          }
-        },
-        {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Low participation"
-          }
-        },
-        {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Time-consuming setup"
-          }
-        },
-        {
-          "type": "traditional_item",
-          "settings": {
-            "text": "Unpredictable ROI"
-          }
-        },
-        {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "$100K prize fully funded"
-          }
-        },
-        {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "Legal compliance handled"
-          }
-        },
-        {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "Dedicated customer support"
-          }
-        },
-        {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "Seamless Shopify integration"
-          }
-        },
-        {
-          "type": "sharedsweeps_item",
-          "settings": {
-            "text": "No upfront cost, capped fees"
-          }
-        },
-        {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "Real $100,000 prize"
-          }
-        },
-        {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "Earn entries automatically"
-          }
-        },
-        {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "No gimmicks or fine print"
-          }
-        },
-        {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "Trusted Shopify brands"
-          }
-        },
-        {
-          "type": "customers_benefit",
-          "settings": {
-            "text": "One real winner every sweepstakes"
-          }
-        }
+        { "type": "traditional_item", "settings": { "text": "Pay for prizes upfront" } },
+        { "type": "traditional_item", "settings": { "text": "Risk legal non-compliance" } },
+        { "type": "traditional_item", "settings": { "text": "Low participation" } },
+        { "type": "traditional_item", "settings": { "text": "Time-consuming setup" } },
+        { "type": "traditional_item", "settings": { "text": "Unpredictable ROI" } },
+        { "type": "sharedsweeps_item", "settings": { "text": "$100K prize fully funded" } },
+        { "type": "sharedsweeps_item", "settings": { "text": "Legal compliance handled" } },
+        { "type": "sharedsweeps_item", "settings": { "text": "Dedicated customer support" } },
+        { "type": "sharedsweeps_item", "settings": { "text": "Seamless Shopify integration" } },
+        { "type": "sharedsweeps_item", "settings": { "text": "No upfront cost, capped fees" } },
+        { "type": "customers_benefit", "settings": { "text": "Real $100,000 prize" } },
+        { "type": "customers_benefit", "settings": { "text": "Earn entries automatically" } },
+        { "type": "customers_benefit", "settings": { "text": "No gimmicks or fine print" } },
+        { "type": "customers_benefit", "settings": { "text": "Trusted Shopify brands" } },
+        { "type": "customers_benefit", "settings": { "text": "One real winner every sweepstakes" } }
       ]
     }
   ]

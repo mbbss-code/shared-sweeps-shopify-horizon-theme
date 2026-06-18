@@ -1,60 +1,113 @@
 {% comment %}
   Participating Brands Grid Section
   - Tabbed interface for current/past brands
-  - Responsive grid layout
-  - ADA Compliant with proper ARIA labels and keyboard navigation
-  - SEO Optimized with proper heading hierarchy
-  - Fully customizable via Shopify schema
+  - Transparent background — painted by the Page Ombre Background section
+  - Colors driven by section settings (color pickers)
+  - ADA compliant, keyboard-navigable tabs, SEO-friendly headings
 {% endcomment %}
 
-<section 
+{%- liquid
+  assign heading_color = section.settings.heading_color | default: '#ffffff'
+  assign subheading_color = section.settings.subheading_color | default: '#9fb3d1'
+  assign accent_color = section.settings.accent_color | default: '#2f6fed'
+  assign tab_container_bg = section.settings.tab_container_bg | default: '#16233d'
+  assign tab_text = section.settings.tab_text | default: '#cbd5e1'
+  assign tab_active_bg = section.settings.tab_active_bg | default: '#2f6fed'
+  assign tab_active_text = section.settings.tab_active_text | default: '#ffffff'
+  assign card_bg = section.settings.card_bg | default: '#15233d'
+  assign card_border = section.settings.card_border | default: '#2a3a57'
+  assign logo_bg = section.settings.logo_bg | default: '#ffffff'
+  assign brand_name_color = section.settings.brand_name_color | default: '#e2e8f0'
+-%}
+
+<style>
+  /* Background omitted — the Page Ombre Background paints this section. */
+  .brands-grid-{{ section.id }} .acs-heading { color: {{ heading_color }}; }
+  .brands-grid-{{ section.id }} .acs-subheading { color: {{ subheading_color }}; }
+
+  .brands-grid-{{ section.id }} .acs-tablist { background-color: {{ tab_container_bg }}; }
+  .brands-grid-{{ section.id }} .acs-tab { color: {{ tab_text }}; }
+  .brands-grid-{{ section.id }} .acs-tab[aria-selected="true"] {
+    background-color: {{ tab_active_bg }};
+    color: {{ tab_active_text }};
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .brands-grid-{{ section.id }} .acs-tab:focus-visible { outline: none; box-shadow: 0 0 0 2px {{ accent_color }}; }
+
+  .brands-grid-{{ section.id }} .acs-card {
+    background-color: {{ card_bg }};
+    border-color: {{ card_border }};
+  }
+  .brands-grid-{{ section.id }} .acs-card:hover { border-color: {{ accent_color }}; }
+  .brands-grid-{{ section.id }} .acs-card:focus-within { box-shadow: 0 0 0 2px {{ accent_color }}; }
+  .brands-grid-{{ section.id }} .acs-logo-chip { background-color: {{ logo_bg }}; }
+  .brands-grid-{{ section.id }} .acs-placeholder-icon { color: rgba(255, 255, 255, 0.4); }
+  .brands-grid-{{ section.id }} .acs-brand-name { color: {{ brand_name_color }}; }
+  .brands-grid-{{ section.id }} .acs-case-link { color: {{ accent_color }}; }
+  .brands-grid-{{ section.id }} .acs-case-link:hover { text-decoration: underline; }
+
+  .brands-grid-{{ section.id }} .acs-more-btn {
+    color: {{ brand_name_color }};
+    background-color: transparent;
+    border-color: {{ card_border }};
+  }
+  .brands-grid-{{ section.id }} .acs-more-btn:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: {{ accent_color }};
+  }
+  .brands-grid-{{ section.id }} .acs-more-btn:focus-visible { outline: none; box-shadow: 0 0 0 2px {{ accent_color }}; }
+
+  .brands-grid-{{ section.id }} .brand-card { animation: brands-fade-up-{{ section.id }} 0.3s ease-out; }
+  @keyframes brands-fade-up-{{ section.id }} {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .brands-grid-{{ section.id }} .tab-panel:not(.tw-hidden) { animation: brands-fade-{{ section.id }} 0.2s ease-out; }
+  @keyframes brands-fade-{{ section.id }} { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+<section
   id="participating-brands-grid"
-  class="tw-py-20 md:tw-py-28 tw-bg-{{ section.settings.background_color }}"
-  aria-labelledby="brands-section-heading"
+  class="brands-grid-{{ section.id }} tw-py-20 md:tw-py-28"
+  aria-labelledby="brands-section-heading-{{ section.id }}"
+  {{ section.shopify_attributes }}
 >
   <div class="tw-container tw-mx-auto tw-px-4">
     <div class="tw-mx-auto tw-max-w-4xl tw-text-center">
       {%- if section.settings.heading != blank -%}
-        <h2 
-          id="brands-section-heading"
-          class="tw-mb-4 tw-text-3xl tw-font-bold tw-text-gray-900 md:tw-text-4xl"
-        >
+        <h2 id="brands-section-heading-{{ section.id }}" class="acs-heading tw-mb-4 tw-text-3xl tw-font-bold md:tw-text-4xl">
           {{ section.settings.heading }}
         </h2>
       {%- endif -%}
 
       {%- if section.settings.subheading != blank -%}
-        <p class="tw-mb-8 tw-text-gray-600 tw-text-lg">
+        <p class="acs-subheading tw-mb-8 tw-text-lg">
           {{ section.settings.subheading }}
         </p>
       {%- endif -%}
 
       {%- if section.settings.enable_tabs -%}
-        <!-- Tabs Navigation -->
-        <div 
-          class="tw-mb-8" 
-          role="tablist" 
-          aria-label="Brand categories"
-        >
-          <div class="tw-inline-flex tw-rounded-lg tw-bg-gray-100 tw-p-1">
+        {%- comment -%} Tabs Navigation {%- endcomment -%}
+        <div class="tw-mb-8" role="tablist" aria-label="Brand categories">
+          <div class="acs-tablist tw-inline-flex tw-rounded-lg tw-p-1">
             <button
-              id="tab-current"
+              id="tab-current-{{ section.id }}"
               type="button"
               role="tab"
               aria-selected="true"
-              aria-controls="panel-current"
-              class="tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 focus:tw-ring-offset-2 tw-bg-white tw-text-gray-900 tw-shadow-sm"
+              aria-controls="panel-current-{{ section.id }}"
+              class="acs-tab tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200"
               data-tab="current"
             >
               {{ section.settings.current_tab_label }}
             </button>
             <button
-              id="tab-past"
+              id="tab-past-{{ section.id }}"
               type="button"
               role="tab"
               aria-selected="false"
-              aria-controls="panel-past"
-              class="tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 focus:tw-ring-offset-2 tw-text-gray-600 hover:tw-text-gray-900"
+              aria-controls="panel-past-{{ section.id }}"
+              class="acs-tab tab-button tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-rounded-md tw-transition-all tw-duration-200"
               data-tab="past"
               tabindex="-1"
             >
@@ -64,59 +117,46 @@
         </div>
       {%- endif -%}
 
-      <!-- Current Brands Panel -->
+      {%- comment -%} Current Brands Panel {%- endcomment -%}
       <div
-        id="panel-current"
+        id="panel-current-{{ section.id }}"
         role="tabpanel"
-        aria-labelledby="tab-current"
+        aria-labelledby="tab-current-{{ section.id }}"
         class="tab-panel"
         data-panel="current"
       >
         <div class="tw-grid tw-grid-cols-2 tw-gap-6 sm:tw-grid-cols-3 md:tw-gap-8" role="list" aria-label="Current participating brands">
           {%- assign visible_count = section.settings.initial_brands_shown -%}
           {%- assign current_brands_count = 0 -%}
-          
+
           {%- for block in section.blocks -%}
             {%- if block.type == 'current_brand' -%}
               {%- assign current_brands_count = current_brands_count | plus: 1 -%}
-              <div 
+              <div
                 class="brand-card {% if current_brands_count > visible_count %}hidden-brand{% endif %}"
                 role="listitem"
                 data-brand-index="{{ current_brands_count }}"
                 {{ block.shopify_attributes }}
               >
                 {%- if block.settings.brand_url != blank -%}
-                  <a 
-                    href="{{ block.settings.brand_url }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="tw-block"
-                    aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)"
-                  >
+                  <a href="{{ block.settings.brand_url }}" target="_blank" rel="noopener noreferrer" class="tw-block" aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)">
                 {%- endif -%}
-                
-                <div class="tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-border-gray-200/50 tw-bg-white tw-p-6 tw-transition-all tw-duration-300 hover:tw-border-{{ section.settings.primary_color }}-300/50 hover:tw-shadow-lg focus-within:tw-ring-2 focus-within:tw-ring-{{ section.settings.primary_color }}-500 focus-within:tw-ring-offset-2 tw-group">
-                  <div class="tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-bg-gray-100 tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
+
+                <div class="acs-card tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-p-6 tw-transition-all tw-duration-300 hover:tw-shadow-lg tw-group">
+                  <div class="acs-logo-chip tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
                     {%- if block.settings.brand_logo != blank -%}
-                      <img 
-                        src="{{ block.settings.brand_logo | image_url: width: 160 }}"
-                        alt="{{ block.settings.brand_name }} logo"
-                        class="tw-h-full tw-w-full tw-p-2 tw-object-contain"
-                        loading="lazy"
-                        width="80"
-                        height="80"
-                      >
+                      <img src="{{ block.settings.brand_logo | image_url: width: 160 }}" alt="{{ block.settings.brand_name }} logo" class="tw-h-full tw-w-full tw-p-2 tw-object-contain" loading="lazy" width="80" height="80">
                     {%- else -%}
-                      <div class="tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full tw-text-gray-400">
+                      <div class="acs-placeholder-icon tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full">
                         <svg class="tw-w-8 tw-h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                       </div>
                     {%- endif -%}
                   </div>
-                  <span class="tw-text-sm tw-font-medium tw-text-gray-900">{{ block.settings.brand_name }}</span>
+                  <span class="acs-brand-name tw-text-sm tw-font-medium">{{ block.settings.brand_name }}</span>
                 </div>
-                
+
                 {%- if block.settings.brand_url != blank -%}
                   </a>
                 {%- endif -%}
@@ -129,13 +169,13 @@
           <div class="tw-mt-8">
             <button
               type="button"
-              id="toggle-brands-btn"
-              class="tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-text-gray-700 tw-bg-white tw-border tw-border-gray-300 tw-rounded-lg hover:tw-bg-gray-50 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-transition-all tw-duration-200"
+              id="toggle-brands-btn-{{ section.id }}"
+              class="acs-more-btn tw-inline-flex tw-items-center tw-justify-center tw-px-6 tw-py-2.5 tw-text-sm tw-font-medium tw-border tw-rounded-lg tw-transition-all tw-duration-200"
               data-show-text="{{ section.settings.show_all_text }}"
               data-hide-text="{{ section.settings.show_less_text }}"
               data-visible-count="{{ visible_count }}"
               aria-expanded="false"
-              aria-controls="panel-current"
+              aria-controls="panel-current-{{ section.id }}"
             >
               <span class="btn-text">{{ section.settings.show_all_text }}</span>
             </button>
@@ -143,11 +183,11 @@
         {%- endif -%}
       </div>
 
-      <!-- Past Brands Panel -->
+      {%- comment -%} Past Brands Panel {%- endcomment -%}
       <div
-        id="panel-past"
+        id="panel-past-{{ section.id }}"
         role="tabpanel"
-        aria-labelledby="tab-past"
+        aria-labelledby="tab-past-{{ section.id }}"
         class="tab-panel tw-hidden"
         data-panel="past"
         hidden
@@ -157,48 +197,30 @@
             {%- if block.type == 'past_brand' -%}
               <div role="listitem" {{ block.shopify_attributes }}>
                 {%- if block.settings.brand_url != blank -%}
-                  <a 
-                    href="{{ block.settings.brand_url }}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="tw-block"
-                    aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)"
-                  >
+                  <a href="{{ block.settings.brand_url }}" target="_blank" rel="noopener noreferrer" class="tw-block" aria-label="Visit {{ block.settings.brand_name }} website (opens in new tab)">
                 {%- endif -%}
-                
-                <div class="tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-border-gray-200/50 tw-bg-white tw-p-6 tw-transition-all tw-duration-300 hover:tw-border-{{ section.settings.primary_color }}-300/50 hover:tw-shadow-lg focus-within:tw-ring-2 focus-within:tw-ring-{{ section.settings.primary_color }}-500 focus-within:tw-ring-offset-2 tw-group">
-                  <div class="tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-bg-gray-100 tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
+
+                <div class="acs-card tw-flex tw-flex-col tw-items-center tw-rounded-xl tw-border tw-p-6 tw-transition-all tw-duration-300 hover:tw-shadow-lg tw-group">
+                  <div class="acs-logo-chip tw-mb-4 tw-flex tw-h-20 tw-w-20 tw-items-center tw-justify-center tw-rounded-full tw-overflow-hidden tw-transition-transform tw-duration-300 group-hover:tw-scale-105">
                     {%- if block.settings.brand_logo != blank -%}
-                      <img 
-                        src="{{ block.settings.brand_logo | image_url: width: 160 }}"
-                        alt="{{ block.settings.brand_name }} logo"
-                        class="tw-h-full tw-w-full tw-p-2 tw-object-contain"
-                        loading="lazy"
-                        width="80"
-                        height="80"
-                      >
+                      <img src="{{ block.settings.brand_logo | image_url: width: 160 }}" alt="{{ block.settings.brand_name }} logo" class="tw-h-full tw-w-full tw-p-2 tw-object-contain" loading="lazy" width="80" height="80">
                     {%- else -%}
-                      <div class="tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full tw-text-gray-400">
+                      <div class="acs-placeholder-icon tw-flex tw-items-center tw-justify-center tw-h-full tw-w-full">
                         <svg class="tw-w-8 tw-h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                       </div>
                     {%- endif -%}
                   </div>
-                  <span class="tw-text-sm tw-font-medium tw-text-gray-900">{{ block.settings.brand_name }}</span>
-                  
+                  <span class="acs-brand-name tw-text-sm tw-font-medium">{{ block.settings.brand_name }}</span>
+
                   {%- if block.settings.case_study_url != blank -%}
-                    <a 
-                      href="{{ block.settings.case_study_url }}"
-                      class="tw-mt-2 tw-text-xs tw-font-normal tw-text-{{ section.settings.primary_color }}-600 hover:tw-underline focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-{{ section.settings.primary_color }}-500 tw-rounded"
-                      onclick="event.stopPropagation()"
-                      aria-label="See case study for {{ block.settings.brand_name }}"
-                    >
+                    <a href="{{ block.settings.case_study_url }}" class="acs-case-link tw-mt-2 tw-text-xs tw-font-normal tw-rounded" onclick="event.stopPropagation()" aria-label="See case study for {{ block.settings.brand_name }}">
                       {{ section.settings.case_study_link_text }} →
                     </a>
                   {%- endif -%}
                 </div>
-                
+
                 {%- if block.settings.brand_url != blank -%}
                   </a>
                 {%- endif -%}
@@ -212,112 +234,64 @@
 </section>
 
 <script>
-  (function() {
-    const section = document.getElementById('participating-brands-grid');
+  (function () {
+    var section = document.querySelector('.brands-grid-{{ section.id }}');
     if (!section) return;
 
-    // Tab functionality
-    const tabButtons = section.querySelectorAll('.tab-button');
-    const tabPanels = section.querySelectorAll('.tab-panel');
+    var tabButtons = section.querySelectorAll('.tab-button');
+    var tabPanels = section.querySelectorAll('.tab-panel');
 
-    tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const tabId = button.dataset.tab;
-        
-        // Update tab buttons
-        tabButtons.forEach(btn => {
-          const isSelected = btn.dataset.tab === tabId;
+    tabButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var tabId = button.dataset.tab;
+
+        tabButtons.forEach(function (btn) {
+          var isSelected = btn.dataset.tab === tabId;
           btn.setAttribute('aria-selected', isSelected);
           btn.setAttribute('tabindex', isSelected ? '0' : '-1');
-          btn.classList.toggle('bg-white', isSelected);
-          btn.classList.toggle('text-gray-900', isSelected);
-          btn.classList.toggle('shadow-sm', isSelected);
-          btn.classList.toggle('text-gray-600', !isSelected);
         });
 
-        // Update tab panels
-        tabPanels.forEach(panel => {
-          const isActive = panel.dataset.panel === tabId;
-          panel.classList.toggle('hidden', !isActive);
+        tabPanels.forEach(function (panel) {
+          var isActive = panel.dataset.panel === tabId;
+          panel.classList.toggle('tw-hidden', !isActive);
           panel.hidden = !isActive;
         });
       });
 
-      // Keyboard navigation for tabs
-      button.addEventListener('keydown', (e) => {
-        let targetButton = null;
-        
+      button.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
           e.preventDefault();
-          const buttons = Array.from(tabButtons);
-          const currentIndex = buttons.indexOf(button);
-          
-          if (e.key === 'ArrowRight') {
-            targetButton = buttons[(currentIndex + 1) % buttons.length];
-          } else {
-            targetButton = buttons[(currentIndex - 1 + buttons.length) % buttons.length];
-          }
-          
-          targetButton.click();
-          targetButton.focus();
+          var buttons = Array.prototype.slice.call(tabButtons);
+          var currentIndex = buttons.indexOf(button);
+          var target = e.key === 'ArrowRight'
+            ? buttons[(currentIndex + 1) % buttons.length]
+            : buttons[(currentIndex - 1 + buttons.length) % buttons.length];
+          target.click();
+          target.focus();
         }
       });
     });
 
-    // Show/Hide more brands functionality
-    const toggleBtn = section.querySelector('#toggle-brands-btn');
+    var toggleBtn = section.querySelector('#toggle-brands-btn-{{ section.id }}');
     if (toggleBtn) {
-      const hiddenBrands = section.querySelectorAll('.hidden-brand');
-      const visibleCount = parseInt(toggleBtn.dataset.visibleCount, 10);
-      let isExpanded = false;
+      var hiddenBrands = section.querySelectorAll('.hidden-brand');
+      var isExpanded = false;
 
-      toggleBtn.addEventListener('click', () => {
+      toggleBtn.addEventListener('click', function () {
         isExpanded = !isExpanded;
-        
-        hiddenBrands.forEach(brand => {
+        hiddenBrands.forEach(function (brand) {
           brand.style.display = isExpanded ? '' : 'none';
         });
-
-        toggleBtn.querySelector('.btn-text').textContent = isExpanded 
-          ? toggleBtn.dataset.hideText 
+        toggleBtn.querySelector('.btn-text').textContent = isExpanded
+          ? toggleBtn.dataset.hideText
           : toggleBtn.dataset.showText;
-        
         toggleBtn.setAttribute('aria-expanded', isExpanded);
       });
 
-      // Initially hide brands beyond visible count
-      hiddenBrands.forEach(brand => {
-        brand.style.display = 'none';
-      });
+      hiddenBrands.forEach(function (brand) { brand.style.display = 'none'; });
     }
   })();
 </script>
-
-<style>
-  #participating-brands-grid .brand-card {
-    animation: fadeInUp 0.3s ease-out;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  #participating-brands-grid .tab-panel:not(.hidden) {
-    animation: fadeIn 0.2s ease-out;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-</style>
 
 {% schema %}
 {
@@ -340,6 +314,85 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "These brands are part of the Shared Sweeps network"
+    },
+    {
+      "type": "header",
+      "content": "Text Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#9fb3d1"
+    },
+    {
+      "type": "color",
+      "id": "brand_name_color",
+      "label": "Brand name color",
+      "default": "#e2e8f0"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color (active tab, links, focus, hover)",
+      "default": "#2f6fed"
+    },
+    {
+      "type": "header",
+      "content": "Card Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#15233d"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border",
+      "default": "#2a3a57"
+    },
+    {
+      "type": "color",
+      "id": "logo_bg",
+      "label": "Logo chip background",
+      "default": "#ffffff",
+      "info": "Keep this light so colored brand logos stay visible."
+    },
+    {
+      "type": "header",
+      "content": "Tab Colors"
+    },
+    {
+      "type": "color",
+      "id": "tab_container_bg",
+      "label": "Tab container background",
+      "default": "#16233d"
+    },
+    {
+      "type": "color",
+      "id": "tab_text",
+      "label": "Inactive tab text",
+      "default": "#cbd5e1"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_bg",
+      "label": "Active tab background",
+      "default": "#2f6fed"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_text",
+      "label": "Active tab text",
+      "default": "#ffffff"
     },
     {
       "type": "header",
@@ -393,39 +446,6 @@
       "id": "case_study_link_text",
       "label": "Case Study Link Text",
       "default": "See case study"
-    },
-    {
-      "type": "header",
-      "content": "Appearance"
-    },
-    {
-      "type": "select",
-      "id": "background_color",
-      "label": "Background Color",
-      "options": [
-        { "value": "white", "label": "White" },
-        { "value": "gray-50", "label": "Light Gray" },
-        { "value": "gray-100", "label": "Gray" }
-      ],
-      "default": "white"
-    },
-    {
-      "type": "select",
-      "id": "primary_color",
-      "label": "Primary Color",
-      "options": [
-        { "value": "blue", "label": "Blue" },
-        { "value": "indigo", "label": "Indigo" },
-        { "value": "purple", "label": "Purple" },
-        { "value": "pink", "label": "Pink" },
-        { "value": "red", "label": "Red" },
-        { "value": "orange", "label": "Orange" },
-        { "value": "amber", "label": "Amber" },
-        { "value": "emerald", "label": "Emerald" },
-        { "value": "teal", "label": "Teal" },
-        { "value": "cyan", "label": "Cyan" }
-      ],
-      "default": "indigo"
     }
   ],
   "blocks": [
@@ -433,49 +453,19 @@
       "type": "current_brand",
       "name": "Current Brand",
       "settings": [
-        {
-          "type": "text",
-          "id": "brand_name",
-          "label": "Brand Name",
-          "default": "Brand Name"
-        },
-        {
-          "type": "image_picker",
-          "id": "brand_logo",
-          "label": "Brand Logo"
-        },
-        {
-          "type": "url",
-          "id": "brand_url",
-          "label": "Brand Website URL"
-        }
+        { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "Brand Name" },
+        { "type": "image_picker", "id": "brand_logo", "label": "Brand Logo" },
+        { "type": "url", "id": "brand_url", "label": "Brand Website URL" }
       ]
     },
     {
       "type": "past_brand",
       "name": "Past Brand",
       "settings": [
-        {
-          "type": "text",
-          "id": "brand_name",
-          "label": "Brand Name",
-          "default": "Brand Name"
-        },
-        {
-          "type": "image_picker",
-          "id": "brand_logo",
-          "label": "Brand Logo"
-        },
-        {
-          "type": "url",
-          "id": "brand_url",
-          "label": "Brand Website URL"
-        },
-        {
-          "type": "url",
-          "id": "case_study_url",
-          "label": "Case Study URL"
-        }
+        { "type": "text", "id": "brand_name", "label": "Brand Name", "default": "Brand Name" },
+        { "type": "image_picker", "id": "brand_logo", "label": "Brand Logo" },
+        { "type": "url", "id": "brand_url", "label": "Brand Website URL" },
+        { "type": "url", "id": "case_study_url", "label": "Case Study URL" }
       ]
     }
   ],
