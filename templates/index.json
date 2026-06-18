@@ -198,6 +198,7 @@
         "vertical_padding": 30,
         "scroll_speed": 45,
         "pause_on_hover": true,
+        "background_color": "#95A5BA",
         "logo_opacity": 70,
         "grayscale": 0,
         "placeholder_color": "#e6e6e6",
