@@ -141,14 +141,6 @@
             "brand_url": "https://www.gycgiveaways.com/"
           }
         },
-        "current_brand_aFG8em": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "The National Professional Fishing League",
-            "brand_logo": "shopify://shop_images/npfllogo.avif",
-            "brand_url": "https://shop.thenationalprofessionalfishingleague.com/"
-          }
-        },
         "current_brand_qmcFHy": {
           "type": "current_brand",
           "settings": {
@@ -181,7 +173,6 @@
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
         "current_brand_iJgiDg",
-        "current_brand_aFG8em",
         "current_brand_qmcFHy",
         "current_brand_KtJaFz",
         "current_brand_EapLRb"
