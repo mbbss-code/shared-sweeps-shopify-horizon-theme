@@ -101,6 +101,14 @@
             "brand_url": "https://overkillbattalion.com/"
           }
         },
+        "current_brand_mhQbgX": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "True Nutra",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-06-19_at_12.47.42_PM.png",
+            "brand_url": "https://truenutra.com/"
+          }
+        },
         "current_brand_KapkRY": {
           "type": "current_brand",
           "settings": {
@@ -168,6 +176,7 @@
       },
       "block_order": [
         "current_brand_zbJGpt",
+        "current_brand_mhQbgX",
         "current_brand_KapkRY",
         "current_brand_jex66X",
         "current_brand_tgG4zF",
