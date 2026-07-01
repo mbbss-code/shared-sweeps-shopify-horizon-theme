@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -7,7 +16,7 @@
           "type": "text",
           "name": "Title",
           "settings": {
-            "text": "<h1>Meet the Team<\/h1>",
+            "text": "<h1>Meet the Team</h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -47,6 +56,7 @@
       "blocks": {
         "integration_f9CRMn": {
           "type": "integration",
+          "disabled": true,
           "settings": {
             "app_title": "Integration Partner",
             "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
@@ -54,6 +64,7 @@
         },
         "integration_8UE6fT": {
           "type": "integration",
+          "disabled": true,
           "settings": {
             "app_title": "Integration Partner",
             "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
@@ -61,6 +72,7 @@
         },
         "integration_n8kMj9": {
           "type": "integration",
+          "disabled": true,
           "settings": {
             "app_title": "Integration Partner",
             "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
@@ -68,6 +80,7 @@
         },
         "integration_3GJMjb": {
           "type": "integration",
+          "disabled": true,
           "settings": {
             "app_title": "Integration Partner",
             "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
@@ -82,8 +95,8 @@
       ],
       "name": "App Integrations Grid",
       "settings": {
-        "heading": "App Integrations",
-        "subheading": "Discover the powerful tools that seamlessly connect with our platform to enhance your business.",
+        "heading": "Coming soon!",
+        "subheading": "",
         "heading_tag": "h1",
         "bg_color": "#ffffff",
         "heading_color": "#ffffff",
