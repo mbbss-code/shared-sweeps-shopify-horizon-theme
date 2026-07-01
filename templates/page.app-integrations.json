@@ -53,46 +53,6 @@
     },
     "app_integrations_minimal_q6NzqC": {
       "type": "app-integrations-minimal",
-      "blocks": {
-        "integration_f9CRMn": {
-          "type": "integration",
-          "disabled": true,
-          "settings": {
-            "app_title": "Integration Partner",
-            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
-          }
-        },
-        "integration_8UE6fT": {
-          "type": "integration",
-          "disabled": true,
-          "settings": {
-            "app_title": "Integration Partner",
-            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
-          }
-        },
-        "integration_n8kMj9": {
-          "type": "integration",
-          "disabled": true,
-          "settings": {
-            "app_title": "Integration Partner",
-            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
-          }
-        },
-        "integration_3GJMjb": {
-          "type": "integration",
-          "disabled": true,
-          "settings": {
-            "app_title": "Integration Partner",
-            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
-          }
-        }
-      },
-      "block_order": [
-        "integration_f9CRMn",
-        "integration_8UE6fT",
-        "integration_n8kMj9",
-        "integration_3GJMjb"
-      ],
       "name": "App Integrations Grid",
       "settings": {
         "heading": "Coming soon!",
