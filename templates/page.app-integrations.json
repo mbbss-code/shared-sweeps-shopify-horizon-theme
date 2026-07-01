@@ -61,10 +61,19 @@
             "app_title": "Alia",
             "app_description": "aliapopups.com"
           }
+        },
+        "integration_9CNp8V": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/stayai_logo.jpg",
+            "app_title": "Stay AI",
+            "app_description": "stay.ai"
+          }
         }
       },
       "block_order": [
-        "integration_LNchGi"
+        "integration_LNchGi",
+        "integration_9CNp8V"
       ],
       "name": "App Integrations Grid",
       "settings": {
