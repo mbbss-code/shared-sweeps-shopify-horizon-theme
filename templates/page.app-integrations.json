@@ -117,6 +117,7 @@
     },
     "ombre_background_dAE9xd": {
       "type": "ombre-background",
+      "disabled": true,
       "name": "Page Ombre Background",
       "settings": {
         "top_color": "#0a1124",
