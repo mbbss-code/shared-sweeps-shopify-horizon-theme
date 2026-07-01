@@ -1,8 +1,12 @@
 {
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.18"
+  "name": "shared-sweeps-horizon-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:tailwind": "tailwindcss -i src/tailwind.css -o assets/tailwind.css --watch --verbose"
   },
-  "devDependencies": {
-    "tailwindcss": "^4.1.18"
+  "dependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }

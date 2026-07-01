@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "past_winners_hero_9ETYWd": {
@@ -28,7 +19,7 @@
         "description": "Shared Sweeps awards real cash prizes to real shoppers — funded by participating brands.",
         "show_cta": true,
         "cta_text": "Shop Participating Brands to Enter",
-        "cta_link": "shopify://pages/participating-brands"
+        "cta_link": "shopify:\/\/pages\/participating-brands"
       }
     },
     "past_winners_grid_AQEXeA": {
@@ -37,7 +28,7 @@
         "winner_F7gMbk": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-06-17_at_11.11.22_AM.png",
+            "image": "shopify:\/\/shop_images\/Screenshot_2026-06-17_at_11.11.22_AM.png",
             "name": "Dan C.",
             "city": "Northport",
             "state": "NY",
@@ -48,7 +39,7 @@
         "winner_rKdNkp": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/SS9Winner_Month_2.jpg",
+            "image": "shopify:\/\/shop_images\/SS9Winner_Month_2.jpg",
             "name": "Elizabeth",
             "city": "Miami",
             "state": "FL",
@@ -59,7 +50,7 @@
         "winner_7kFtzt": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/image1.jpg",
+            "image": "shopify:\/\/shop_images\/image1.jpg",
             "name": "Jocelyn J.",
             "city": "Lawnside",
             "state": "NJ",
@@ -70,7 +61,7 @@
         "winner_H3FpEb": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-04-09_at_9.35.36_AM.png",
+            "image": "shopify:\/\/shop_images\/Screenshot_2026-04-09_at_9.35.36_AM.png",
             "name": "Greg S.",
             "city": "Seattle",
             "state": "WA",
@@ -81,7 +72,7 @@
         "winner_tybHyf": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2026-03-10_at_2.18.34_PM.png",
+            "image": "shopify:\/\/shop_images\/Screenshot_2026-03-10_at_2.18.34_PM.png",
             "name": "Brandon B.",
             "city": "Tampa",
             "state": "FL",
@@ -92,7 +83,7 @@
         "winner_hiKpgg": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/jason.png",
+            "image": "shopify:\/\/shop_images\/jason.png",
             "name": "Jason H.",
             "city": "Marshall",
             "state": "MO",
@@ -103,7 +94,7 @@
         "winner_cdDcBy": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/kaitlin.jpg",
+            "image": "shopify:\/\/shop_images\/kaitlin.jpg",
             "name": "Kaitlin M.",
             "city": "Montague",
             "state": "NJ",
@@ -114,7 +105,7 @@
         "winner_VypGpP": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/dre-c.png",
+            "image": "shopify:\/\/shop_images\/dre-c.png",
             "name": "Dre C.",
             "city": "Bozeman",
             "state": "MT",
@@ -125,7 +116,7 @@
         "winner_W9xUQU": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/shannon-r.png",
+            "image": "shopify:\/\/shop_images\/shannon-r.png",
             "name": "Shannon R.",
             "city": "Austin",
             "state": "TX",
@@ -136,7 +127,7 @@
         "winner_JHdLde": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/morty-t.jpg",
+            "image": "shopify:\/\/shop_images\/morty-t.jpg",
             "name": "Marty T.",
             "city": "Miami",
             "state": "FL",
@@ -147,7 +138,7 @@
         "winner_Y6pzKz": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/laura-c.jpg",
+            "image": "shopify:\/\/shop_images\/laura-c.jpg",
             "name": "Laura C.",
             "city": "Portland",
             "state": "OR",
@@ -158,7 +149,7 @@
         "winner_pWMzz3": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/MiguelQ-CmW5lG_G.jpg",
+            "image": "shopify:\/\/shop_images\/MiguelQ-CmW5lG_G.jpg",
             "name": "Miguel Q.",
             "city": "Chicago",
             "state": "IL",
@@ -169,7 +160,7 @@
         "winner_3pmi8f": {
           "type": "winner",
           "settings": {
-            "image": "shopify://shop_images/JesseT-B4eknULA.jpg",
+            "image": "shopify:\/\/shop_images\/JesseT-B4eknULA.jpg",
             "name": "Jesse T.",
             "city": "Nashville",
             "state": "TN",
@@ -245,7 +236,7 @@
         "heading": "Ready to Earn Your Entries?",
         "show_cta": true,
         "cta_text": "Shop Participating Brands",
-        "cta_link": "shopify://pages/participating-brands"
+        "cta_link": "shopify:\/\/pages\/participating-brands"
       }
     },
     "ombre_background_GGn6BK": {

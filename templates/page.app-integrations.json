@@ -1,0 +1,104 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "blocks": {
+        "heading": {
+          "type": "text",
+          "name": "Title",
+          "settings": {
+            "text": "<h1>Meet the Team</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 60,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "disabled": true,
+      "settings": {
+        "content_direction": "column",
+        "gap": 32,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 35
+      }
+    },
+    "app_integrations_minimal_q6NzqC": {
+      "type": "app-integrations-minimal",
+      "blocks": {
+        "integration_f9CRMn": {
+          "type": "integration",
+          "settings": {
+            "app_title": "Integration Partner",
+            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
+          }
+        },
+        "integration_8UE6fT": {
+          "type": "integration",
+          "settings": {
+            "app_title": "Integration Partner",
+            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
+          }
+        },
+        "integration_n8kMj9": {
+          "type": "integration",
+          "settings": {
+            "app_title": "Integration Partner",
+            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
+          }
+        },
+        "integration_3GJMjb": {
+          "type": "integration",
+          "settings": {
+            "app_title": "Integration Partner",
+            "app_description": "Provide your customers deeper insights into your integrations, connections, and workflows."
+          }
+        }
+      },
+      "block_order": [
+        "integration_f9CRMn",
+        "integration_8UE6fT",
+        "integration_n8kMj9",
+        "integration_3GJMjb"
+      ],
+      "name": "App Integrations Grid",
+      "settings": {
+        "heading": "App Integrations",
+        "subheading": "Discover the powerful tools that seamlessly connect with our platform to enhance your business.",
+        "heading_tag": "h1"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "app_integrations_minimal_q6NzqC"
+  ]
+}
