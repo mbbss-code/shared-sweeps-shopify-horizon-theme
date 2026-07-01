@@ -53,6 +53,19 @@
     },
     "app_integrations_minimal_q6NzqC": {
       "type": "app-integrations-minimal",
+      "blocks": {
+        "integration_LNchGi": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/alia_logo.jpg",
+            "app_title": "Alia",
+            "app_description": "aliapopups.com"
+          }
+        }
+      },
+      "block_order": [
+        "integration_LNchGi"
+      ],
       "name": "App Integrations Grid",
       "settings": {
         "heading": "Coming soon!",
