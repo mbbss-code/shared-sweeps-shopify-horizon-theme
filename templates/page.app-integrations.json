@@ -68,8 +68,8 @@
       ],
       "name": "App Integrations Grid",
       "settings": {
-        "heading": "Coming soon!",
-        "subheading": "",
+        "heading": "App Integrations",
+        "subheading": "These Shopify apps integrate seamlessly with Shared Sweeps. Click to learn more about what each app can do to improve your performance before, during, and after a giveaway.",
         "heading_tag": "h1",
         "bg_color": "#ffffff",
         "heading_color": "#ffffff",
