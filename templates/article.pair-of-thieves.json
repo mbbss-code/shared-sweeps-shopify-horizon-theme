@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "pair-of-thieves": {
@@ -195,7 +186,7 @@
         "fs_small": 14,
         "fs_stat_value": 36,
         "back_link_text": "Back to Case Studies",
-        "back_link_url": "shopify://pages/case-studies",
+        "back_link_url": "shopify:\/\/pages\/case-studies",
         "hero_eyebrow": "Case Study — Pair of Thieves",
         "hero_title": "How Pair of Thieves Reduced Discounts, Increased Sales, and Re‑Engaged Customers with Shared Sweeps",
         "hero_description": "Pair of Thieves used a Shared Sweeps $100K giveaway to move inventory, reduce discount dependence, and create a meaningful brand activation moment — without sacrificing margins.",
@@ -207,14 +198,14 @@
         "about_heading": "About Pair of Thieves",
         "about_body_1": "Pair of Thieves is an apparel brand known for comfortable men's basics and a bold design approach. Founded in 2013, the company has built a loyal following by balancing style, comfort, and value.",
         "about_body_2": "Like many apparel brands, Pair of Thieves needed a way to move inventory, protect margins, and re‑engage customers without leaning harder on discounting.",
-        "about_image": "shopify://shop_images/pairofthieveslogo.webp",
+        "about_image": "shopify:\/\/shop_images\/pairofthieveslogo.webp",
         "about_image_alt": "Pair of Thieves products",
         "challenge_heading": "The Challenge",
         "challenge_description": "Before partnering with Shared Sweeps, Pair of Thieves was facing several familiar ecommerce challenges.",
         "solution_heading": "The Shared Sweeps Solution",
         "solution_body": "Pair of Thieves partnered with Shared Sweeps to run a $100K giveaway as a strategic alternative to a traditional promotion. Instead of relying on deep discounts, the campaign used a high‑perceived‑value incentive to drive urgency, increase engagement, and support sales goals.",
         "results_heading": "The Results",
-        "results_media": "shopify://shop_images/lineupblue.webp",
+        "results_media": "shopify:\/\/shop_images\/lineupblue.webp",
         "results_media_alt": "Pair of Thieves campaign",
         "results_video_url": "",
         "testimonial_quote": "What started as a sweepstakes became a breakthrough moment, helping us clear slow‑moving inventory, strengthen our brand position, and re‑ignite relationships with customers we hadn't reached in years.",
@@ -225,7 +216,7 @@
         "cta_description": "Shared Sweeps helps Shopify brands run high‑impact giveaways that drive revenue, grow engagement, and reduce reliance on discounting.",
         "cta_btn_primary_text": "Run a Giveaway",
         "cta_btn_secondary_text": "See More Case Studies",
-        "cta_btn_secondary_url": "shopify://pages/case-studies"
+        "cta_btn_secondary_url": "shopify:\/\/pages\/case-studies"
       }
     }
   },

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "footer",
   "name": "Footer",
@@ -17,19 +8,19 @@
       "settings": {
         "footer_bg_color": "#1e3a5f",
         "footer_text_color": "#e5e7eb",
-        "logo": "shopify://shop_images/shared-sweeps-logo.png",
+        "logo": "shopify:\/\/shop_images\/shared-sweeps-logo.png",
         "logo_alt_text": "Shared Sweeps",
         "tagline": "Making every purchase a chance to win.",
         "show_legal_text": true,
-        "legal_disclaimer": "NO PURCHASE NECESSARY. Ends 9/10/26. <br> \nMust be:\ni) a legal US resident of the 50 US or DC and age of majority or <br>\nii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at sharedsweeps.com/rules. <br> \nVoid where prohibited.  <br>\nSponsored By Shared Sweeps.",
+        "legal_disclaimer": "NO PURCHASE NECESSARY. Ends 9\/10\/26. <br> \nMust be:\ni) a legal US resident of the 50 US or DC and age of majority or <br>\nii) a legal resident of Canada(excl. Quebec) and age of majority at time of entry. Subject to Official Rules available at sharedsweeps.com\/rules. <br> \nVoid where prohibited.  <br>\nSponsored By Shared Sweeps.",
         "footer_menu": "custom-footer-menu",
         "copyright_text": "© __YEAR__ __SHOP__. All rights reserved.",
         "show_payment_icons": false,
         "show_social_icons": true,
         "social_facebook": "",
         "social_twitter": "",
-        "social_instagram": "https://www.instagram.com/shared_sweeps/",
-        "social_linkedin": "https://www.linkedin.com/company/shared-sweeps",
+        "social_instagram": "https:\/\/www.instagram.com\/shared_sweeps\/",
+        "social_linkedin": "https:\/\/www.linkedin.com\/company\/shared-sweeps",
         "social_youtube": ""
       }
     }

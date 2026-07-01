@@ -1,0 +1,338 @@
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --bg-color: {{ section.settings.bg_color }};
+    
+    --heading-color: {{ section.settings.heading_color }};
+    --heading-size: {{ section.settings.heading_size }}px;
+    --heading-weight: {{ section.settings.heading_weight }};
+    
+    --subheading-color: {{ section.settings.subheading_color }};
+    --subheading-size: {{ section.settings.subheading_size }}px;
+    --subheading-weight: {{ section.settings.subheading_weight }};
+    
+    --card-bg-color: {{ section.settings.card_bg_color }};
+    --card-border-color: {{ section.settings.card_border_color }};
+    --card-title-color: {{ section.settings.card_title_color }};
+    --card-title-size: {{ section.settings.card_title_size }}px;
+    --card-title-weight: {{ section.settings.card_title_weight }};
+    
+    --card-desc-color: {{ section.settings.card_desc_color }};
+    --card-desc-size: {{ section.settings.card_desc_size }}px;
+    --card-desc-weight: {{ section.settings.card_desc_weight }};
+  }
+
+  /* Inline styles mapping configuration parameters to the dynamic elements */
+  #shopify-section-{{ section.id }} .dynamic-bg { background-color: var(--bg-color); }
+  
+  #shopify-section-{{ section.id }} .dynamic-heading { 
+    color: var(--heading-color); 
+    font-size: var(--heading-size); 
+    font-weight: var(--heading-weight); 
+  }
+  #shopify-section-{{ section.id }} .dynamic-subheading { 
+    color: var(--subheading-color); 
+    font-size: var(--subheading-size); 
+    font-weight: var(--subheading-weight); 
+  }
+  
+  #shopify-section-{{ section.id }} .dynamic-card { 
+    background-color: var(--card-bg-color); 
+    border-color: var(--card-border-color); 
+  }
+  #shopify-section-{{ section.id }} .dynamic-card-title { 
+    color: var(--card-title-color); 
+    font-size: var(--card-title-size); 
+    font-weight: var(--card-title-weight); 
+  }
+  #shopify-section-{{ section.id }} .dynamic-card-desc { 
+    color: var(--card-desc-color); 
+    font-size: var(--card-desc-size); 
+    font-weight: var(--card-desc-weight); 
+  }
+{%- endstyle -%}
+
+<section 
+  id="shopify-section-{{ section.id }}" 
+  class="app-integrations-section dynamic-bg tw-py-12 sm:tw-py-16 md:tw-py-20 tw-px-4 sm:tw-px-6"
+  aria-labelledby="section-heading-{{ section.id }}"
+>
+  <div class="tw-max-w-7xl tw-mx-auto">
+    
+    {%- if section.settings.heading != blank -%}
+      <header class="tw-text-center tw-max-w-3xl tw-mx-auto tw-mb-12 md:tw-mb-16">
+        <{{ section.settings.heading_tag }} 
+          id="section-heading-{{ section.id }}" 
+          class="dynamic-heading tw-tracking-tight"
+        >
+          {{ section.settings.heading | escape }}
+        </{{ section.settings.heading_tag }}>
+        
+        {%- if section.settings.subheading != blank -%}
+          <p class="dynamic-subheading tw-mt-3 sm:tw-mt-4">
+            {{ section.settings.subheading | escape }}
+          </p>
+        {%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <ul class="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-6 sm:tw-gap-8 tw-list-none tw-p-0 tw-m-0" role="list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'integration' -%}
+          <li 
+            class="integration-card dynamic-card tw-flex tw-flex-col tw-items-center tw-text-center tw-p-6 sm:tw-p-8 tw-border tw-rounded-2xl tw-transition-all tw-duration-300 hover:tw-shadow-lg hover:tw-translate-y-1" 
+            {{ block.shopify_attributes }}
+          >
+            
+            <div class="tw-w-20 tw-h-20 tw-mb-5 tw-p-2 tw-bg-gray-50 tw-rounded-xl tw-flex tw-items-center tw-justify-center tw-overflow-hidden">
+              {%- if block.settings.app_image != blank -%}
+                {%- capture alt_text -%}
+                  {{ block.settings.app_image.alt | default: block.settings.app_title | escape }}
+                {%- endcapture -%}
+                <img 
+                  src="{{ block.settings.app_image | image_url: width: 160 }}" 
+                  srcset="{{ block.settings.app_image | image_url: width: 160 }} 1x, {{ block.settings.app_image | image_url: width: 320 }} 2x"
+                  alt="{{ alt_text }}"
+                  loading="lazy"
+                  decoding="async"
+                  width="80"
+                  height="80"
+                  class="tw-max-w-full tw-max-h-full tw-object-contain"
+                >
+              {%- else -%}
+                <div class="tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center" aria-hidden="true">
+                  {{ 'image' | placeholder_svg_tag: 'tw-w-full tw-h-full tw-text-gray-300' }}
+                </div>
+              {%- endif -%}
+            </div>
+
+            <h3 class="dynamic-card-title tw-mb-2">
+              {{ block.settings.app_title | escape | default: "Integration Partner" }}
+            </h3>
+            
+            {%- if block.settings.app_description != blank -%}
+              <p class="dynamic-card-desc tw-leading-relaxed tw-line-clamp-4">
+                {{ block.settings.app_description | escape }}
+              </p>
+            {%- endif -%}
+            
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "App Integrations Custom",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "App Integrations"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover the powerful tools that seamlessly connect with our platform to enhance your business."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "SEO Heading Tag Hint",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "header",
+      "content": "Section Background & Main Heading Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Title Color",
+      "default": "#111827"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 64,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "900", "label": "Black" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading Font Size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "subheading_weight",
+      "label": "Subheading Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Card Container & Typography Styling"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "color",
+      "id": "card_title_color",
+      "label": "Card Title Color",
+      "default": "#111827"
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Title Font Size",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "card_title_weight",
+      "label": "Card Title Font Weight",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi-Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "color",
+      "id": "card_desc_color",
+      "label": "Card Description Color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "range",
+      "id": "card_desc_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Card Description Font Size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "card_desc_weight",
+      "label": "Card Description Font Weight",
+      "options": [
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" }
+      ],
+      "default": "400"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "integration",
+      "name": "App Integration",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "app_image",
+          "label": "App Icon/Logo",
+          "info": "Transparent square PNGs or SVGs yield optimal results."
+        },
+        {
+          "type": "text",
+          "id": "app_title",
+          "label": "App Title",
+          "default": "Integration Partner"
+        },
+        {
+          "type": "textarea",
+          "id": "app_description",
+          "label": "App Description",
+          "default": "Provide your customers deeper insights into your integrations, connections, and workflows."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "App Integrations Custom",
+      "blocks": [
+        { "type": "integration" },
+        { "type": "integration" },
+        { "type": "integration" },
+        { "type": "integration" }
+      ]
+    }
+  ]
+}
+{% endschema %}

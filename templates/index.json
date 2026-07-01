@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero_with_toggle_48eMRL": {
@@ -36,11 +27,11 @@
         "secondary_btn_hover_text": "#374151",
         "secondary_btn_hover_border": "#9ca3af",
         "show_collage": true,
-        "brand_ad_3": "shopify://shop_images/Screenshot_2026-06-17_at_10.58.48_AM.png",
+        "brand_ad_3": "shopify:\/\/shop_images\/Screenshot_2026-06-17_at_10.58.48_AM.png",
         "brand_ad_3_alt": "Beauty brand sweepstakes ad",
-        "brand_ad_1": "shopify://shop_images/Screenshot_2026-06-17_at_10.55.52_AM.png",
+        "brand_ad_1": "shopify:\/\/shop_images\/Screenshot_2026-06-17_at_10.55.52_AM.png",
         "brand_ad_1_alt": "Apparel brand sweepstakes ad",
-        "brand_ad_2": "shopify://shop_images/Screenshot_2026-06-17_at_1.05.23_PM.png",
+        "brand_ad_2": "shopify:\/\/shop_images\/Screenshot_2026-06-17_at_1.05.23_PM.png",
         "brand_ad_2_alt": "Home goods brand sweepstakes ad",
         "show_toggle": true,
         "toggle_brands_label": "For Brands",
@@ -58,7 +49,7 @@
         "customers_heading": "Win $100,000 Just by Shopping Your Favorite Brands",
         "customers_description": "Shop from your favorite brands and discover new ones you'll love. Earn entries with every dollar you spend and get a real chance at life-changing prizes.",
         "customers_primary_cta_text": "View Participating Brands",
-        "customers_primary_cta_link": "shopify://pages/participating-brands",
+        "customers_primary_cta_link": "shopify:\/\/pages\/participating-brands",
         "customers_secondary_cta_text": "",
         "customers_secondary_cta_link": "",
         "customers_indicator_1": "One $100,000 prize",
@@ -74,7 +65,7 @@
         "logo_ff3fJr": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/gib.png",
+            "logo": "shopify:\/\/shop_images\/gib.png",
             "alt": "",
             "link": ""
           }
@@ -82,7 +73,7 @@
         "logo_QTU46F": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/wolfpaklogo.webp",
+            "logo": "shopify:\/\/shop_images\/wolfpaklogo.webp",
             "alt": "",
             "link": ""
           }
@@ -90,7 +81,7 @@
         "logo_k76Amx": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/images_6.png",
+            "logo": "shopify:\/\/shop_images\/images_6.png",
             "alt": "",
             "link": ""
           }
@@ -98,7 +89,7 @@
         "logo_gEpPeb": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/vegancutslogo.jpg",
+            "logo": "shopify:\/\/shop_images\/vegancutslogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -106,7 +97,7 @@
         "logo_W4mnFX": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/kflogo.png",
+            "logo": "shopify:\/\/shop_images\/kflogo.png",
             "alt": "",
             "link": ""
           }
@@ -114,7 +105,7 @@
         "logo_x6c8Gb": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/cirkullogo.jpg",
+            "logo": "shopify:\/\/shop_images\/cirkullogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -122,7 +113,7 @@
         "logo_VmYHY7": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/fbslogo.jpg",
+            "logo": "shopify:\/\/shop_images\/fbslogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -130,7 +121,7 @@
         "logo_fGTBDe": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/carawaylogo.jpg",
+            "logo": "shopify:\/\/shop_images\/carawaylogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -138,7 +129,7 @@
         "logo_fXDLKF": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/potlogo.jpg",
+            "logo": "shopify:\/\/shop_images\/potlogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -146,7 +137,7 @@
         "logo_RMrwrL": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/byltlogo2.png",
+            "logo": "shopify:\/\/shop_images\/byltlogo2.png",
             "alt": "",
             "link": ""
           }
@@ -154,7 +145,7 @@
         "logo_mPdGWz": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/carilohalogo.jpg",
+            "logo": "shopify:\/\/shop_images\/carilohalogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -162,7 +153,7 @@
         "logo_xN3zWe": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/nobllogo.png",
+            "logo": "shopify:\/\/shop_images\/nobllogo.png",
             "alt": "",
             "link": ""
           }
@@ -170,7 +161,7 @@
         "logo_c9PtJc": {
           "type": "logo",
           "settings": {
-            "logo": "shopify://shop_images/fctlogo.jpg",
+            "logo": "shopify:\/\/shop_images\/fctlogo.jpg",
             "alt": "",
             "link": ""
           }
@@ -198,7 +189,6 @@
         "vertical_padding": 30,
         "scroll_speed": 45,
         "pause_on_hover": true,
-        "background_color": "#95A5BA",
         "logo_opacity": 70,
         "grayscale": 0,
         "placeholder_color": "#e6e6e6",
@@ -211,9 +201,9 @@
       "settings": {
         "heading_color": "#ffffff",
         "text_color": "#9fb3d1",
-        "problem_image": "shopify://shop_images/shopping-rewards.png",
+        "problem_image": "shopify:\/\/shop_images\/shopping-rewards.png",
         "problem_image_alt": "Shopping rewards on mobile",
-        "solution_image": "shopify://shop_images/winner-celebration.png",
+        "solution_image": "shopify:\/\/shop_images\/winner-celebration.png",
         "solution_image_alt": "Winner celebrating",
         "brands_problem_heading": "Growing an Online Brand Has Gotten Harder",
         "brands_problem_description": "Rising ad costs, constant discounting, and complex giveaway rules make it harder for brands to grow sustainably — and harder for customers to benefit from meaningful rewards.",
@@ -422,7 +412,7 @@
         "customers_heading": "How It Works for Shoppers",
         "show_brands_cta": true,
         "brands_cta_text": "Real Winners",
-        "brands_cta_link": "shopify://pages/past-winners"
+        "brands_cta_link": "shopify:\/\/pages\/past-winners"
       }
     },
     "social_proof_yLW97D": {
@@ -431,37 +421,37 @@
         "case_study_Ekjf6Y": {
           "type": "case_study",
           "settings": {
-            "logo": "shopify://shop_images/freshchileco_logo.jpg",
+            "logo": "shopify:\/\/shop_images\/freshchileco_logo.jpg",
             "brand_name": "Fresh Chile Co",
             "stat": "35.97% increase in ROAS",
             "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
-            "link": "shopify://blogs/case-studies/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine"
+            "link": "shopify:\/\/blogs\/case-studies\/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine"
           }
         },
         "case_study_tDaeYn": {
           "type": "case_study",
           "settings": {
-            "logo": "shopify://shop_images/potlogo.jpg",
+            "logo": "shopify:\/\/shop_images\/potlogo.jpg",
             "brand_name": "Pair of Thieves",
             "stat": "18% increase in gross sales",
             "summary": "Sweepstakes drove more site visits, repeated touches, and channel interaction.",
-            "link": "shopify://blogs/case-studies/pair-of-thieves"
+            "link": "shopify:\/\/blogs\/case-studies\/pair-of-thieves"
           }
         },
         "case_study_btXTFF": {
           "type": "case_study",
           "settings": {
-            "logo": "shopify://shop_images/carawaylogo.jpg",
+            "logo": "shopify:\/\/shop_images\/carawaylogo.jpg",
             "brand_name": "Caraway Home",
             "stat": "61% increase in YoY top-line revenue",
             "summary": "Sweepstakes drove substantial growth across email and SMS lists.",
-            "link": "shopify://blogs/case-studies/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps"
+            "link": "shopify:\/\/blogs\/case-studies\/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps"
           }
         },
         "winner_XHYQEH": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/Screenshot_2026-04-09_at_9.35.36_AM.png",
+            "winner_image": "shopify:\/\/shop_images\/Screenshot_2026-04-09_at_9.35.36_AM.png",
             "winner_name": "Greg S.",
             "location": "Seattle, WA",
             "brand": "Fresh Clean Threads",
@@ -471,7 +461,7 @@
         "winner_yF8UX8": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/kaitlin.jpg",
+            "winner_image": "shopify:\/\/shop_images\/kaitlin.jpg",
             "winner_name": "Kaitlin M.",
             "location": "Montague, NJ",
             "brand": "Cirkul",
@@ -481,7 +471,7 @@
         "winner_YUAWCL": {
           "type": "winner",
           "settings": {
-            "winner_image": "shopify://shop_images/dre-c.png",
+            "winner_image": "shopify:\/\/shop_images\/dre-c.png",
             "winner_name": "Dre C.",
             "location": "Bozeman, MT",
             "brand": "Caraway Home",
@@ -516,10 +506,10 @@
         "customers_heading": "Real People. Real Winners.",
         "show_brands_cta": true,
         "brands_cta_text": "See All Case Studies",
-        "brands_cta_link": "shopify://pages/all-case-studies",
+        "brands_cta_link": "shopify:\/\/pages\/all-case-studies",
         "show_customers_cta": true,
         "customers_cta_text": "See All Winners",
-        "customers_cta_link": "shopify://pages/past-winners"
+        "customers_cta_link": "shopify:\/\/pages\/past-winners"
       }
     },
     "hiw_faq_9hTpza": {
@@ -576,7 +566,7 @@
           "settings": {
             "audience": "customers",
             "question": "How many prizes are there?",
-            "answer": "For each giveaway period, there will be two monthly $10K winners and one $100K grand prize winner. Please see sharedsweeps.com/rules for giveaway periods."
+            "answer": "For each giveaway period, there will be two monthly $10K winners and one $100K grand prize winner. Please see sharedsweeps.com\/rules for giveaway periods."
           }
         },
         "faq_item_dqUBzE": {
@@ -585,7 +575,7 @@
           "settings": {
             "audience": "customers",
             "question": "When will a winner be announced?",
-            "answer": "The winner will be announced about 2 weeks after the giveaway period ends. For giveaway period dates, please reference sharedsweeps.com/rules."
+            "answer": "The winner will be announced about 2 weeks after the giveaway period ends. For giveaway period dates, please reference sharedsweeps.com\/rules."
           }
         },
         "faq_item_UmVFd7": {
@@ -650,7 +640,7 @@
         "customers_heading": "Ready to Turn Shopping Into a Chance to Win?",
         "customers_description": "Every purchase counts. Shop participating brands and earn entries toward real prizes.",
         "customers_cta_text": "View Participating Brands",
-        "customers_cta_link": "shopify://pages/participating-brands"
+        "customers_cta_link": "shopify:\/\/pages\/participating-brands"
       }
     },
     "ombre_background_p8KmKN": {

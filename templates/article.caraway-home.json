@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "caraway-home": {
@@ -180,7 +171,7 @@
         "fs_stat_value": 36,
         "hero_reverse": true,
         "back_link_text": "Back to Case Studies",
-        "back_link_url": "shopify://pages/case-studies",
+        "back_link_url": "shopify:\/\/pages\/case-studies",
         "hero_eyebrow": "Case Study — Caraway Home",
         "hero_title": "How Caraway Home Drove a 61% Increase in YoY Revenue and Accelerated List Growth with Shared Sweeps",
         "hero_description": "Caraway Home used a Shared Sweeps $100K giveaway to drive revenue, grow their email and SMS lists, and create a high-impact brand activation — without compromising Brand or CAC.",
@@ -193,7 +184,7 @@
         "about_heading": "About Caraway Home",
         "about_body_1": "Caraway Home is a design-forward kitchen brand known for its non-toxic, ceramic-coated cookware that blends performance, sustainability, and elevated aesthetics.",
         "about_body_2": "With a strong focus on quality and intentional design, Caraway has built a loyal customer base and continues to scale through thoughtful, brand-aligned growth strategies.",
-        "about_image": "shopify://shop_images/Carawaywhite.jpg",
+        "about_image": "shopify:\/\/shop_images\/Carawaywhite.jpg",
         "about_image_alt": "Caraway Home cookware products",
         "challenge_heading": "The Challenge",
         "challenge_description": "As Caraway Home entered a key growth phase, the team was focused on scaling performance without sacrificing the efficiency that had fueled their success. Several key challenges stood in the way:",
@@ -202,7 +193,7 @@
         "solution_body": "Shared Sweeps provided a high-perceived-value incentive that did not erode margins. Using sweepstakes entries and multipliers, Caraway was able to:",
         "results_reverse": true,
         "results_heading": "The Results",
-        "results_media": "shopify://shop_images/carawaypink.avif",
+        "results_media": "shopify:\/\/shop_images\/carawaypink.avif",
         "results_media_alt": "Caraway Home campaign",
         "results_video_url": "",
         "testimonial_quote": "",
@@ -213,7 +204,7 @@
         "cta_description": "Shared Sweeps helps Shopify brands run high-impact giveaways that drive revenue, grow engagement, and reduce reliance on discounting.",
         "cta_btn_primary_text": "Run a Giveaway",
         "cta_btn_secondary_text": "See More Case Studies",
-        "cta_btn_secondary_url": "/blogs/case-studies"
+        "cta_btn_secondary_url": "\/blogs\/case-studies"
       }
     }
   },
