@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -16,7 +7,7 @@
           "type": "text",
           "name": "Title",
           "settings": {
-            "text": "<h1>Meet the Team</h1>",
+            "text": "<h1>Meet the Team<\/h1>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -93,12 +84,37 @@
       "settings": {
         "heading": "App Integrations",
         "subheading": "Discover the powerful tools that seamlessly connect with our platform to enhance your business.",
-        "heading_tag": "h1"
+        "heading_tag": "h1",
+        "bg_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "heading_size": 36,
+        "heading_weight": "700",
+        "subheading_color": "#c5daee",
+        "subheading_size": 18,
+        "subheading_weight": "400",
+        "card_bg_color": "#ffffff",
+        "card_border_color": "#e5e7eb",
+        "card_title_color": "#111827",
+        "card_title_size": 18,
+        "card_title_weight": "700",
+        "card_desc_color": "#4b5563",
+        "card_desc_size": 14,
+        "card_desc_weight": "400"
+      }
+    },
+    "ombre_background_dAE9xd": {
+      "type": "ombre-background",
+      "name": "Page Ombre Background",
+      "settings": {
+        "top_color": "#0a1124",
+        "bottom_color": "#2a5891",
+        "selectors": ""
       }
     }
   },
   "order": [
     "main",
-    "app_integrations_minimal_q6NzqC"
+    "app_integrations_minimal_q6NzqC",
+    "ombre_background_dAE9xd"
   ]
 }
