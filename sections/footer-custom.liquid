@@ -101,11 +101,22 @@
               <ul class="tw-space-y-2 tw-text-white/70 tw-text-sm" role="list">
                 {% for child_link in link.links %}
                   <li itemprop="name">
+                    {%- comment -%} Detect the Contact link so it opens the contact modal instead of navigating {%- endcomment -%}
+                    {%- liquid
+                      assign is_contact_link = false
+                      if child_link.url contains '/pages/contact' or child_link.handle == 'contact'
+                        assign is_contact_link = true
+                      endif
+                    -%}
                     <a 
                       href="{{ child_link.url }}" 
                       class="hover:tw-text-white tw-transition-colors focus:tw-text-white focus:tw-outline-none focus:tw-underline tw-inline-block"
                       itemprop="url"
                       title="{{ child_link.title }}"
+                      {% if is_contact_link %}
+                        data-contact-modal-trigger
+                        aria-haspopup="dialog"
+                      {% endif %}
                     >
                       {{ child_link.title }}
                     </a>

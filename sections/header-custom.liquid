@@ -488,42 +488,55 @@
       });
     }
 
-    // Contact modal
-    const modalTriggers = document.querySelectorAll('[data-contact-modal-trigger]');
-    const modal = document.querySelector('[data-contact-modal]');
-    const modalClose = document.querySelector('[data-contact-modal-close]');
-    
-    if (modalTriggers && modal) {
-      modalTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-          modal.classList.remove('tw-hidden');
-          document.body.style.overflow = 'hidden';
-          const firstInput = modal.querySelector('input, textarea, button');
-          if (firstInput) firstInput.focus();
-        });
-      });
+    // Contact modal — helpers
+    function openContactModal(modal) {
+      modal.classList.remove('tw-hidden');
+      document.body.style.overflow = 'hidden';
+      const firstInput = modal.querySelector('input, textarea, button');
+      if (firstInput) firstInput.focus();
     }
 
-    if (modalClose && modal) {
-      modalClose.addEventListener('click', function() {
-        modal.classList.add('tw-hidden');
-        document.body.style.overflow = '';
-      });
-      
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          modal.classList.add('tw-hidden');
-          document.body.style.overflow = '';
-        }
-      });
-      
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modal.classList.contains('tw-hidden')) {
-          modal.classList.add('tw-hidden');
-          document.body.style.overflow = '';
-        }
-      });
+    function closeContactModal(modal) {
+      modal.classList.add('tw-hidden');
+      document.body.style.overflow = '';
     }
+
+    // Contact modal — event delegation so triggers ANYWHERE on the page work
+    // (header CTA buttons, footer "Contact" link, or any future
+    // [data-contact-modal-trigger] element), and survive section re-renders
+    // in the theme editor.
+    document.addEventListener('click', function(e) {
+      const modal = document.querySelector('[data-contact-modal]');
+      if (!modal) return;
+
+      // Open triggers (buttons or links)
+      const trigger = e.target.closest('[data-contact-modal-trigger]');
+      if (trigger) {
+        e.preventDefault(); // stops footer <a href="/pages/contact"> from navigating
+        openContactModal(modal);
+        return;
+      }
+
+      // Close button
+      const closeBtn = e.target.closest('[data-contact-modal-close]');
+      if (closeBtn) {
+        closeContactModal(modal);
+        return;
+      }
+
+      // Click on the backdrop (the modal overlay itself)
+      if (e.target === modal) {
+        closeContactModal(modal);
+      }
+    });
+
+    // Escape key closes the modal
+    document.addEventListener('keydown', function(e) {
+      const modal = document.querySelector('[data-contact-modal]');
+      if (modal && e.key === 'Escape' && !modal.classList.contains('tw-hidden')) {
+        closeContactModal(modal);
+      }
+    });
   });
 </script>
 
