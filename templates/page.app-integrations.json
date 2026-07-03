@@ -59,7 +59,9 @@
           "settings": {
             "app_image": "shopify://shop_images/alia_logo.jpg",
             "app_title": "Alia",
-            "app_description": "aliapopups.com"
+            "app_description": "aliapopups.com",
+            "app_url": "https://aliapopups.com",
+            "card_bg_color": ""
           }
         },
         "integration_9CNp8V": {
@@ -67,7 +69,9 @@
           "settings": {
             "app_image": "shopify://shop_images/stayai_logo.jpg",
             "app_title": "Stay AI",
-            "app_description": "stay.ai"
+            "app_description": "stay.ai",
+            "app_url": "https://stay.ai",
+            "card_bg_color": ""
           }
         }
       },
@@ -87,12 +91,12 @@
         "subheading_color": "#c5daee",
         "subheading_size": 18,
         "subheading_weight": "400",
-        "card_bg_color": "#ffffff",
-        "card_border_color": "#e5e7eb",
-        "card_title_color": "#111827",
+        "card_bg_color": "#15233D",
+        "card_border_color": "#2A3A57",
+        "card_title_color": "#FFFFFF",
         "card_title_size": 18,
         "card_title_weight": "700",
-        "card_desc_color": "#4b5563",
+        "card_desc_color": "#C5DAEE",
         "card_desc_size": 14,
         "card_desc_weight": "400"
       }
