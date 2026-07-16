@@ -96,6 +96,46 @@
         "current_brand_zbJGpt": {
           "type": "current_brand",
           "settings": {
+            "brand_name": "Caraway Home",
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
+            "brand_url": "https://carawayhome.com"
+          }
+        },
+        "current_brand_H4MjtP": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Original Grain",
+            "brand_logo": "shopify://shop_images/oglogo.jpg",
+            "brand_url": "https://originalgrain.com"
+          }
+        },
+        "current_brand_B4jHHJ": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Finish the Fight",
+            "brand_logo": "shopify://shop_images/ftflogo.avif",
+            "brand_url": "https://finishthefight.net"
+          }
+        },
+        "current_brand_WPJdPN": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Cloud9 Supplements",
+            "brand_logo": "shopify://shop_images/cloud9suppslogo.webp",
+            "brand_url": "https://trycloud9.com"
+          }
+        },
+        "current_brand_yB9Mik": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Portside Giveaways",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-07-16_at_9.14.57_AM.png",
+            "brand_url": "https://portsidegiveaways.com"
+          }
+        },
+        "current_brand_igKrEY": {
+          "type": "current_brand",
+          "settings": {
             "brand_name": "Overkill Battalion",
             "brand_logo": "shopify://shop_images/overkilllogo.png",
             "brand_url": "https://overkillbattalion.com/"
@@ -176,6 +216,11 @@
       },
       "block_order": [
         "current_brand_zbJGpt",
+        "current_brand_H4MjtP",
+        "current_brand_B4jHHJ",
+        "current_brand_WPJdPN",
+        "current_brand_yB9Mik",
+        "current_brand_igKrEY",
         "current_brand_KapkRY",
         "current_brand_jex66X",
         "current_brand_tgG4zF",
