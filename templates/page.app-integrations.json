@@ -90,7 +90,7 @@
             "app_image": "shopify://shop_images/rebuylogo.jpg",
             "app_title": "Rebuy",
             "app_description": "rebuyengine.com",
-            "app_url": "",
+            "app_url": "https://rebuyengine.com",
             "card_bg_color": ""
           }
         },
@@ -100,7 +100,7 @@
             "app_image": "shopify://shop_images/rechargelogo.webp",
             "app_title": "Recharge",
             "app_description": "getrecharge.com",
-            "app_url": "",
+            "app_url": "https://getrecharge.com",
             "card_bg_color": ""
           }
         },
@@ -120,7 +120,7 @@
             "app_image": "shopify://shop_images/shopliftlogo.png",
             "app_title": "Shoplift",
             "app_description": "shoplift.ai",
-            "app_url": "",
+            "app_url": "https://shoplift.ai",
             "card_bg_color": ""
           }
         },
