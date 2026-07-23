@@ -64,6 +64,26 @@
             "card_bg_color": ""
           }
         },
+        "integration_LRwCDj": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/attentivelogo.jpg",
+            "app_title": "Attentive",
+            "app_description": "attentive.com",
+            "app_url": "https://attentive.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_4mVVd3": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/judgemelogo.png",
+            "app_title": "Judge.me",
+            "app_description": "judge.me",
+            "app_url": "https://judge.me",
+            "card_bg_color": ""
+          }
+        },
         "integration_WdGGRz": {
           "type": "integration",
           "settings": {
@@ -71,6 +91,16 @@
             "app_title": "Klaviyo",
             "app_description": "klaviyo.com",
             "app_url": "https://klaviyo.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_xPnnpm": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/postpilotlogo.jpg",
+            "app_title": "PostPilot",
+            "app_description": "postpilot.com",
+            "app_url": "https://postpilot.com",
             "card_bg_color": ""
           }
         },
@@ -133,17 +163,42 @@
             "app_url": "https://stay.ai",
             "card_bg_color": ""
           }
+        },
+        "integration_wPzhtM": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/stordlogo.jpg",
+            "app_title": "Stord",
+            "app_description": "stord.com",
+            "app_url": "https://stord.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_zaAG78": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/yotpologo.png",
+            "app_title": "Yotpo",
+            "app_description": "yotpo.com",
+            "app_url": "https://yotpo.com",
+            "card_bg_color": ""
+          }
         }
       },
       "block_order": [
         "integration_LNchGi",
+        "integration_LRwCDj",
+        "integration_4mVVd3",
         "integration_WdGGRz",
+        "integration_xPnnpm",
         "integration_FV7Qjp",
         "integration_Rg4EaJ",
         "integration_b7A86J",
         "integration_dtYWb4",
         "integration_erFU9n",
-        "integration_9CNp8V"
+        "integration_9CNp8V",
+        "integration_wPzhtM",
+        "integration_zaAG78"
       ],
       "name": "App Integrations Grid",
       "settings": {
