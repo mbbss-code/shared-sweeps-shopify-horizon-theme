@@ -101,14 +101,6 @@
             "brand_url": "https://carawayhome.com"
           }
         },
-        "current_brand_H4MjtP": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Original Grain",
-            "brand_logo": "shopify://shop_images/oglogo.jpg",
-            "brand_url": "https://originalgrain.com"
-          }
-        },
         "current_brand_B4jHHJ": {
           "type": "current_brand",
           "settings": {
@@ -224,7 +216,6 @@
       },
       "block_order": [
         "current_brand_zbJGpt",
-        "current_brand_H4MjtP",
         "current_brand_B4jHHJ",
         "current_brand_WPJdPN",
         "current_brand_yB9Mik",
