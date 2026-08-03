@@ -64,6 +64,96 @@
             "card_bg_color": ""
           }
         },
+        "integration_LRwCDj": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/attentivelogo.jpg",
+            "app_title": "Attentive",
+            "app_description": "attentive.com",
+            "app_url": "https://attentive.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_4mVVd3": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/judgemelogo.png",
+            "app_title": "Judge.me",
+            "app_description": "judge.me",
+            "app_url": "https://judge.me",
+            "card_bg_color": ""
+          }
+        },
+        "integration_WdGGRz": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/klaviyo.png",
+            "app_title": "Klaviyo",
+            "app_description": "klaviyo.com",
+            "app_url": "https://klaviyo.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_xPnnpm": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/postpilotlogo.jpg",
+            "app_title": "PostPilot",
+            "app_description": "postpilot.com",
+            "app_url": "https://postpilot.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_FV7Qjp": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/postscriptlogo.avif",
+            "app_title": "Postscript",
+            "app_description": "postscript.io",
+            "app_url": "https://postscript.io",
+            "card_bg_color": ""
+          }
+        },
+        "integration_Rg4EaJ": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/rebuylogo.jpg",
+            "app_title": "Rebuy",
+            "app_description": "rebuyengine.com",
+            "app_url": "https://rebuyengine.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_b7A86J": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/rechargelogo.webp",
+            "app_title": "Recharge",
+            "app_description": "getrecharge.com",
+            "app_url": "https://getrecharge.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_dtYWb4": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/redologo.png",
+            "app_title": "Redo",
+            "app_description": "redo.com",
+            "app_url": "https://redo.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_erFU9n": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/shopliftlogo.png",
+            "app_title": "Shoplift",
+            "app_description": "shoplift.ai",
+            "app_url": "https://shoplift.ai",
+            "card_bg_color": ""
+          }
+        },
         "integration_9CNp8V": {
           "type": "integration",
           "settings": {
@@ -73,16 +163,47 @@
             "app_url": "https://stay.ai",
             "card_bg_color": ""
           }
+        },
+        "integration_wPzhtM": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/stordlogo.jpg",
+            "app_title": "Stord",
+            "app_description": "stord.com",
+            "app_url": "https://stord.com",
+            "card_bg_color": ""
+          }
+        },
+        "integration_zaAG78": {
+          "type": "integration",
+          "settings": {
+            "app_image": "shopify://shop_images/yotpologo.png",
+            "app_title": "Yotpo",
+            "app_description": "yotpo.com",
+            "app_url": "https://yotpo.com",
+            "card_bg_color": ""
+          }
         }
       },
       "block_order": [
         "integration_LNchGi",
-        "integration_9CNp8V"
+        "integration_LRwCDj",
+        "integration_4mVVd3",
+        "integration_WdGGRz",
+        "integration_xPnnpm",
+        "integration_FV7Qjp",
+        "integration_Rg4EaJ",
+        "integration_b7A86J",
+        "integration_dtYWb4",
+        "integration_erFU9n",
+        "integration_9CNp8V",
+        "integration_wPzhtM",
+        "integration_zaAG78"
       ],
       "name": "App Integrations Grid",
       "settings": {
         "heading": "App Integrations",
-        "subheading": "These Shopify apps integrate seamlessly with Shared Sweeps. Click to learn more about what each app can do to improve your performance before, during, and after a giveaway.",
+        "subheading": "Already have a solid tech stack? Shared Sweeps can integrate seamlessly with these apps. (plus many more!)",
         "heading_tag": "h1",
         "bg_color": "#ffffff",
         "heading_color": "#ffffff",
@@ -91,12 +212,12 @@
         "subheading_color": "#c5daee",
         "subheading_size": 18,
         "subheading_weight": "400",
-        "card_bg_color": "#15233D",
-        "card_border_color": "#2A3A57",
-        "card_title_color": "#FFFFFF",
+        "card_bg_color": "#15233d",
+        "card_border_color": "#2a3a57",
+        "card_title_color": "#ffffff",
         "card_title_size": 18,
         "card_title_weight": "700",
-        "card_desc_color": "#C5DAEE",
+        "card_desc_color": "#c5daee",
         "card_desc_size": 14,
         "card_desc_weight": "400"
       }

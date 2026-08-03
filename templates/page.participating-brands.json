@@ -96,6 +96,62 @@
         "current_brand_zbJGpt": {
           "type": "current_brand",
           "settings": {
+            "brand_name": "Caraway Home",
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
+            "brand_url": "https://carawayhome.com"
+          }
+        },
+        "current_brand_B4jHHJ": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Finish the Fight",
+            "brand_logo": "shopify://shop_images/ftflogo.avif",
+            "brand_url": "https://finishthefight.net"
+          }
+        },
+        "current_brand_WPJdPN": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Cloud9 Supplements",
+            "brand_logo": "shopify://shop_images/cloud9suppslogo.webp",
+            "brand_url": "https://trycloud9.com"
+          }
+        },
+        "current_brand_iwNAyN": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Wild Junkie Boutique",
+            "brand_logo": "shopify://shop_images/wildjunkielogo.png",
+            "brand_url": "https://wildjunkieboutique.com"
+          }
+        },
+        "current_brand_ttwacC": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Adoorn",
+            "brand_logo": "shopify://shop_images/adoornlogo.avif",
+            "brand_url": "https://adoorn.com"
+          }
+        },
+        "current_brand_n9MMh3": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Sticker Express",
+            "brand_logo": "shopify://shop_images/stickerexpresslogo.avif",
+            "brand_url": "https://stickerexpress.com"
+          }
+        },
+        "current_brand_yB9Mik": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Portside Giveaways",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-07-16_at_9.14.57_AM.png",
+            "brand_url": "https://portsidegiveaways.com"
+          }
+        },
+        "current_brand_igKrEY": {
+          "type": "current_brand",
+          "settings": {
             "brand_name": "Overkill Battalion",
             "brand_logo": "shopify://shop_images/overkilllogo.png",
             "brand_url": "https://overkillbattalion.com/"
@@ -133,12 +189,28 @@
             "brand_url": "https://synisterspeed.com"
           }
         },
+        "current_brand_kcbbNW": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Reeds Cattle Co",
+            "brand_logo": "shopify://shop_images/reedslogo.jpg",
+            "brand_url": "https://reedscattleco.com"
+          }
+        },
         "current_brand_iJgiDg": {
           "type": "current_brand",
           "settings": {
             "brand_name": "Graveyard Carz",
             "brand_logo": "shopify://shop_images/gyclogo.avif",
             "brand_url": "https://www.gycgiveaways.com/"
+          }
+        },
+        "current_brand_HVHqwW": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "True Nutra",
+            "brand_logo": "shopify://shop_images/Screenshot_2026-06-19_at_12.47.42_PM.png",
+            "brand_url": "https://truenutra.com"
           }
         },
         "current_brand_qmcFHy": {
@@ -176,11 +248,20 @@
       },
       "block_order": [
         "current_brand_zbJGpt",
+        "current_brand_B4jHHJ",
+        "current_brand_WPJdPN",
+        "current_brand_iwNAyN",
+        "current_brand_ttwacC",
+        "current_brand_n9MMh3",
+        "current_brand_yB9Mik",
+        "current_brand_igKrEY",
         "current_brand_KapkRY",
         "current_brand_jex66X",
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
+        "current_brand_kcbbNW",
         "current_brand_iJgiDg",
+        "current_brand_HVHqwW",
         "current_brand_qmcFHy",
         "current_brand_KtJaFz",
         "current_brand_YPAMFE",

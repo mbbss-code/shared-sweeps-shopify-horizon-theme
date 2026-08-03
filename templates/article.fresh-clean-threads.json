@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fresh-chile-co": {
@@ -38,95 +47,95 @@
         "challenge_1": {
           "type": "challenge_card",
           "settings": {
-            "icon": "users",
-            "title": "Re-energize Demand",
-            "body": "Traditional percentage discounts were eroding margins and training customers to wait for markdowns rather than buy at full price."
+            "icon": "trending_up",
+            "title": "Drive Incremental Revenue",
+            "body": "The team was looking for a campaign that could generate additional revenue while complementing its existing marketing efforts."
           }
         },
         "challenge_2": {
           "type": "challenge_card",
           "settings": {
-            "icon": "bar_chart",
-            "title": "Rising Ad Spend Costs",
-            "body": "Increasing paid media costs made it harder to maintain a profitable ROAS and scale customer acquisition efficiently year over year."
+            "icon": "users",
+            "title": "Acquire New Customers",
+            "body": "Fresh Clean Threads wanted to attract new shoppers while continuing to engage existing customers throughout the campaign."
           }
         },
         "challenge_3": {
           "type": "challenge_card",
           "settings": {
             "icon": "users",
-            "title": "Need to Acquire New Customers",
-            "body": "Fresh Chile wanted to bring in a wave of new customers without leaning harder on deep discounts or expanding ad budgets."
+            "title": "Increase Average Order Value",
+            "body": "The brand wanted to encourage larger purchases and highlight higher-value products rather than relying on lower-priced items."
           }
         },
         "challenge_4": {
           "type": "challenge_card",
           "settings": {
             "icon": "sparkles",
-            "title": "Driving a Record Sales Moment",
-            "body": "The brand was looking for a campaign that could deliver a breakthrough sales day without sacrificing profitability or brand equity."
+            "title": "Maximize Marketing Performance",
+            "body": "Fresh Clean Threads needed a campaign that could be activated across paid social, email, and onsite experiences to improve overall marketing efficiency."
           }
         },
         "solution_1": {
           "type": "solution_item",
           "settings": {
-            "text": "Replace traditional discounting with a high‑perceived‑value giveaway"
+            "text": "Launch a high-value giveaway to create excitement and encourage purchases"
           }
         },
         "solution_2": {
           "type": "solution_item",
           "settings": {
-            "text": "Improve ad spend efficiency and lift ROAS year over year"
+            "text": "Activate paid social, email, and onsite marketing with campaign-specific creative"
           }
         },
         "solution_3": {
           "type": "solution_item",
           "settings": {
-            "text": "Acquire new customers at scale without eroding margins"
+            "text": "Engage both new and returning customers throughout the campaign"
           }
         },
         "solution_4": {
           "type": "solution_item",
           "settings": {
-            "text": "Drive record‑breaking revenue during the campaign period"
+            "text": "Merchandise higher-value products to increase average order value"
           }
         },
         "solution_6": {
           "type": "solution_item",
           "settings": {
-            "text": "Turn a traditional expense (discounting) into a profit‑generating campaign"
+            "text": "Drive incremental revenue through a multi-channel campaign"
           }
         },
         "result_1": {
           "type": "result_card",
           "settings": {
             "icon": "trending_up",
-            "title": "Biggest Revenue Day Ever",
-            "body": "Fresh Chile hit its highest single‑day revenue ever during the Shared Sweeps campaign, contributing to $736,427.79 in total sales."
+            "title": "9% Increase in Revenue",
+            "body": "Fresh Clean Threads generated $2.89M in revenue during the giveaway period, an increase of 9% to Plan."
           }
         },
         "result_2": {
           "type": "result_card",
           "settings": {
-            "icon": "trending_down",
-            "title": "$117K in Ad Spend Savings",
-            "body": "Fresh Chile spent 28.45% less on ads than the prior year while driving stronger outcomes, saving $117K in paid media."
+            "icon": "repeat",
+            "title": "+233% Email Revenue",
+            "body": "Giveaway-related email campaigns generated 233% more revenue than standard product email campaigns."
           }
         },
         "result_3": {
           "type": "result_card",
           "settings": {
-            "icon": "bar_chart",
-            "title": "+35.97% Increase in ROAS",
-            "body": "Ad efficiency climbed to a 4.12 ROAS — a 35.97% YoY improvement over the prior year's performance."
+            "icon": "target",
+            "title": "+40% Increase in ROAS",
+            "body": "Fresh Clean Threads achieved a 40% increase in ROAS on giveaway ads vs. non-giveaway ads."
           }
         },
         "result_card_T379He": {
           "type": "result_card",
           "settings": {
             "icon": "target",
-            "title": "Profit‑Generating Campaign",
-            "body": "By replacing discounts with a giveaway, Fresh Chile turned a traditional margin expense into a scalable, performance‑aligned revenue driver."
+            "title": "Activated New + Returning Customers",
+            "body": "By offering an alternative to traditional discounting, Fresh Clean Threads was able to engage both new and returning customers at scale."
           }
         }
       },
@@ -171,7 +180,7 @@
         "fs_stat_value": 36,
         "hero_reverse": false,
         "back_link_text": "Back to Case Studies",
-        "back_link_url": "shopify:\/\/pages\/case-studies",
+        "back_link_url": "shopify://pages/case-studies",
         "hero_eyebrow": "Case Study — Fresh Clean Threads (February 2026)",
         "hero_title": "How Fresh Clean Threads Turned a Slow Month Into a Big Revenue Win With Shared Sweeps",
         "hero_description": "Fresh Clean Threads used a Shared Sweeps giveaway to drive incremental revenue, re-engage customers, and outperform monthly targets — without relying on heavy discounting.",
@@ -184,27 +193,27 @@
         "about_heading": "About Fresh Clean Threads",
         "about_body_1": "Fresh Clean Threads is a San Diego-based DTC apparel brand founded in 2015, focused on creating high-quality, affordable everyday essentials.",
         "about_body_2": "Originally launched as a t-shirt subscription service, the company has expanded into a full basics brand offering tees, polos, activewear, and other wardrobe staples.",
-        "about_image": "shopify:\/\/shop_images\/vneck_walking.webp",
+        "about_image": "shopify://shop_images/vneck_walking.webp",
         "about_image_alt": "FCT V-neck",
         "challenge_heading": "The Challenge",
-        "challenge_description": "Before partnering with Shared Sweeps, Fresh Clean Threads was navigating a slower-than-expected month and looking for ways to drive incremental revenue without sacrificing long-term brand value.",
+        "challenge_description": "Fresh Clean Threads wanted to accelerate revenue while continuing to acquire customers and maximize the performance of its marketing channels — without relying solely on traditional promotions.",
         "solution_reverse": false,
         "solution_heading": "The Shared Sweeps Solution",
-        "solution_body": "Fresh Chile Co partnered with Shared Sweeps to run a high‑value giveaway as a strategic alternative to deeper discounting and heavier ad spend. The campaign created urgency, drove new customer acquisition, and delivered a record sales moment — all under a transparent, performance‑based fee structure capped at $60,000 per giveaway period.",
+        "solution_body": "Fresh Clean Threads partnered with Shared Sweeps to launch a high-value giveaway designed to drive customer engagement and accelerate revenue. The campaign was promoted across paid social, email, and onsite marketing, encouraging both new and returning customers to shop while highlighting higher-value products.",
         "results_reverse": false,
         "results_heading": "The Results",
-        "results_media": "shopify:\/\/shop_images\/Screenshot_2026-05-05_at_2.19.37_PM.png",
+        "results_media": "shopify://shop_images/Screenshot_2026-05-05_at_2.19.37_PM.png",
         "results_media_alt": "Fresh Chile Co campaign",
         "results_video_url": "",
-        "testimonial_quote": "The Shared Sweeps fee structure is a fair and profitable investment. The capped fee ensures costs remain manageable for larger brands, and the performance‑based model aligns directly with revenue growth. For us, it was a no‑brainer.",
-        "testimonial_attribution": "Chris Lang, Founder, Fresh Chile Co",
+        "testimonial_quote": "",
+        "testimonial_attribution": "",
         "why_heading": "Why It Worked",
-        "why_body": "For Fresh Chile Co, Shared Sweeps turned a traditional margin expense — discounting — into a profit‑generating campaign. The performance‑based fee model kept costs aligned with revenue growth, and the giveaway format delivered record sales, 60% new customer acquisition, and a 35.97% lift in ROAS without leaning harder on paid media.",
+        "why_body": "The Sweeps campaign gave Fresh Clean Threads a way to engage both new and returning customers with a compelling incentive beyond traditional promotions. By pairing high-value giveaways with creative across paid, email, and site channels, the brand was able to amplify reach, promote higher AOV products, and generate stronger performance across key marketing channels.",
         "cta_heading": "Want Results Like This for Your Brand?",
         "cta_description": "Shared Sweeps helps Shopify brands run high‑impact giveaways that drive revenue, improve ROAS, and reduce reliance on discounting.",
         "cta_btn_primary_text": "Run a Giveaway",
         "cta_btn_secondary_text": "See More Case Studies",
-        "cta_btn_secondary_url": "shopify:\/\/pages\/case-studies"
+        "cta_btn_secondary_url": "shopify://pages/case-studies"
       }
     }
   },
