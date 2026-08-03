@@ -24,6 +24,17 @@
     "case_study_grid_NdaNHX": {
       "type": "case-study-grid",
       "blocks": {
+        "case_study_Dj4Wy8": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/gainscasestudy.png",
+            "brand_name": "Gains in Bulk",
+            "metric": "Biggest day in brand history",
+            "summary": "Driving record revenue, higher AOV, and customer growth.",
+            "link_url": "shopify://blogs/case-studies/the-giveaway-that-produced-the-biggest-day-in-company-history",
+            "link_text": "Read Case Study"
+          }
+        },
         "case_study_kcLmj3": {
           "type": "case_study",
           "settings": {
@@ -81,6 +92,7 @@
         }
       },
       "block_order": [
+        "case_study_Dj4Wy8",
         "case_study_kcLmj3",
         "case_study_EPJDRi",
         "case_study_bRyBKR",
