@@ -125,6 +125,22 @@
             "brand_url": "https://wildjunkieboutique.com"
           }
         },
+        "current_brand_ttwacC": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Adoorn",
+            "brand_logo": "shopify://shop_images/adoornlogo.avif",
+            "brand_url": "https://adoorn.com"
+          }
+        },
+        "current_brand_n9MMh3": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Sticker Express",
+            "brand_logo": "shopify://shop_images/stickerexpresslogo.avif",
+            "brand_url": "https://stickerexpress.com"
+          }
+        },
         "current_brand_yB9Mik": {
           "type": "current_brand",
           "settings": {
@@ -235,6 +251,8 @@
         "current_brand_B4jHHJ",
         "current_brand_WPJdPN",
         "current_brand_iwNAyN",
+        "current_brand_ttwacC",
+        "current_brand_n9MMh3",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
         "current_brand_KapkRY",
