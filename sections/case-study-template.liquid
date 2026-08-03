@@ -32,6 +32,9 @@
   assign c_btn_text        = section.settings.color_btn_text
   assign c_btn_outline_bdr = section.settings.color_btn_outline_border
   assign c_btn_outline_txt = section.settings.color_btn_outline_text
+  assign c_comp_eyebrow    = section.settings.comparison_eyebrow_color
+  assign c_comp_positive   = section.settings.comparison_positive_color
+  assign c_comp_negative   = section.settings.comparison_negative_color
 
   comment
     ── Font-size aliases ──
@@ -97,6 +100,9 @@
     --cs-btn-text:         {{ c_btn_text }};
     --cs-btn-outline-bdr:  {{ c_btn_outline_bdr }};
     --cs-btn-outline-txt:  {{ c_btn_outline_txt }};
+    --cs-comp-eyebrow:     {{ c_comp_eyebrow }};
+    --cs-comp-positive:    {{ c_comp_positive }};
+    --cs-comp-negative:    {{ c_comp_negative }};
     --cs-fs-hero:          {{ fs_hero_heading }}px;
     --cs-fs-section:       {{ fs_section_heading }}px;
     --cs-fs-body:          {{ fs_body }}px;
@@ -151,6 +157,72 @@
     .cs-order-first-md { order: -1; }
     .cs-order-last-md  { order: 99; }
   }
+
+  /* ── YoY comparison table: responsive stacked cards (< md) ── */
+  @media (max-width: 767px) {
+    /* Unwrap the outer card so each row becomes its own card */
+    #shopify-section-{{ section.id }} .cs-comp-wrap {
+      overflow: visible;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+    #shopify-section-{{ section.id }} .cs-comp-table {
+      min-width: 0;
+      display: block;
+    }
+    /* Hide the header row (values are labelled per-cell instead) */
+    .cs-comp-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .cs-comp-table tbody,
+    .cs-comp-table tr,
+    .cs-comp-table th,
+    .cs-comp-table td {
+      display: block;
+      width: 100%;
+    }
+    /* Row → card */
+    .cs-comp-table tr {
+      background: var(--cs-card-bg);
+      border: 1px solid var(--cs-card-border);
+      border-radius: .75rem;
+      margin-bottom: .875rem;
+      padding-bottom: .375rem;
+    }
+    .cs-comp-table tr:last-child { margin-bottom: 0; }
+    /* Metric → card title */
+    .cs-comp-table th[scope="row"] {
+      text-align: left;
+      padding: .75rem .875rem;
+      border-bottom: 1px solid var(--cs-card-border);
+    }
+    /* Each value → label / value row */
+    .cs-comp-table td {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .5rem .875rem;
+      text-align: right;
+    }
+    .cs-comp-table td::before {
+      content: attr(data-label);
+      color: var(--cs-muted);
+      font-size: var(--cs-fs-small);
+      font-weight: 600;
+      letter-spacing: .03em;
+      text-align: left;
+    }
+  }
 {% endstyle %}
 
 {%- comment -%}
@@ -177,7 +249,8 @@
 {%- assign stat_blocks      = section.blocks | where: 'type', 'stat_card' -%}
 {%- assign challenge_blocks = section.blocks | where: 'type', 'challenge_card' -%}
 {%- assign solution_blocks  = section.blocks | where: 'type', 'solution_item' -%}
-{%- assign result_blocks    = section.blocks | where: 'type', 'result_card' -%}
+{%- assign result_blocks     = section.blocks | where: 'type', 'result_card' -%}
+{%- assign comparison_blocks = section.blocks | where: 'type', 'comparison_row' -%}
 
 <article class="cs-wrap" aria-label="{{ section.settings.hero_title | default: article.title | escape }}">
 
@@ -558,9 +631,16 @@
   {%- comment -%}
   ════════════════════════════════════════
   §6  THE RESULTS  (reversible)
+  ────────────────────────────────────────
+  Media column accepts an image, a video URL, or both.
+  • Video URL set  → renders <video>; if an image is also
+    set it becomes the poster (thumbnail).
+  • Image only     → renders the image as a static figure.
+  • Video only     → renders <video> with preload="metadata"
+    so the first frame shows in place of a poster.
   ════════════════════════════════════════
   {%- endcomment -%}
-  {%- if section.settings.results_heading != blank or result_blocks.size > 0 or section.settings.results_media != blank -%}
+  {%- if section.settings.results_heading != blank or result_blocks.size > 0 or section.settings.results_media != blank or section.settings.results_video_url != blank -%}
     <section
       class="tw-border-y tw-py-16 md:tw-py-20 lg:tw-py-28"
       style="border-color: {{ c_card_border }}80; background: {{ c_bg_alt }}"
@@ -577,16 +657,39 @@
         {%- endif -%}
 
         <div class="tw-mx-auto tw-grid tw-max-w-6xl tw-items-center tw-gap-8 md:tw-gap-10 md:tw-grid-cols-2">
-          {%- comment -%}── Media column ──{%- endcomment -%}
-          {%- if section.settings.results_media != blank -%}
+          {%- comment -%}── Media column: image OR video (or both) ──{%- endcomment -%}
+          {%- if section.settings.results_media != blank or section.settings.results_video_url != blank -%}
+            {%- liquid
+              case section.settings.results_media_aspect
+                when '1/1'
+                  assign results_aspect = '1 / 1'
+                when '16/9'
+                  assign results_aspect = '16 / 9'
+                when '4/3'
+                  assign results_aspect = '4 / 3'
+                when '3/4'
+                  assign results_aspect = '3 / 4'
+                else
+                  assign results_aspect = '9 / 16'
+              endcase
+              assign results_fit = section.settings.results_media_fit | default: 'contain'
+            -%}
             <figure class="tw-mx-auto tw-w-full tw-max-w-sm md:tw-mx-0 {{ results_order_a }}">
               {%- if section.settings.results_video_url != blank -%}
-                <div class="tw-relative tw-aspect-[9/16] tw-overflow-hidden tw-rounded-xl tw-shadow-lg">
+                <div
+                  class="tw-relative tw-overflow-hidden tw-rounded-xl tw-shadow-lg"
+                  style="aspect-ratio: {{ results_aspect }}; background: var(--cs-bg-alt)"
+                >
                   <video
-                    class="tw-h-full tw-w-full tw-object-cover"
-                    poster="{{ section.settings.results_media | image_url: width: 600 }}"
+                    class="tw-h-full tw-w-full"
+                    style="object-fit: {{ results_fit }}"
+                    {%- if section.settings.results_media != blank %}
+                      poster="{{ section.settings.results_media | image_url: width: 600 }}"
+                      preload="none"
+                    {%- else %}
+                      preload="metadata"
+                    {%- endif %}
                     controls
-                    preload="none"
                     playsinline
                     aria-label="{{ section.settings.results_media_alt | default: 'Case study video' | escape }}"
                   >
@@ -598,7 +701,7 @@
                   section.settings.results_media
                   | image_url: width: 600
                   | image_tag:
-                      class: 'tw-w-full tw-rounded-xl tw-shadow-lg tw-object-cover',
+                      class: 'tw-w-full tw-rounded-xl tw-shadow-lg',
                       loading: 'lazy',
                       widths: '300,400,600',
                       sizes: '(min-width: 768px) 384px, 100vw',
@@ -655,6 +758,150 @@
             </div>
           {%- endif -%}
         </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}
+  ════════════════════════════════════════
+  §6b  YEAR-OVER-YEAR COMPARISON TABLE
+  ────────────────────────────────────────
+  Rendered directly below "The Results".
+  Each row is a manually-added "YoY Table Row"
+  block. Column headers, eyebrow, heading and
+  footnote are section-level text settings.
+  Per-row YoY colour is driven by a trend select
+  (positive → green, negative → red, neutral → muted).
+  Horizontally scrolls on narrow viewports.
+  ════════════════════════════════════════
+  {%- endcomment -%}
+  {%- if section.settings.comparison_heading != blank or section.settings.comparison_eyebrow != blank or comparison_blocks.size > 0 -%}
+    <section
+      class="tw-py-16 md:tw-py-20 lg:tw-py-28"
+      aria-label="{{ section.settings.comparison_heading | default: 'Year over year comparison' | escape }}"
+    >
+      <div class="tw-mx-auto tw-max-w-7xl tw-px-4">
+
+        {%- if section.settings.comparison_eyebrow != blank -%}
+          <p
+            class="tw-mb-3 tw-font-bold tw-uppercase tw-tracking-widest md:tw-mb-4"
+            style="font-size: var(--cs-fs-small); color: var(--cs-comp-eyebrow)"
+          >
+            {{ section.settings.comparison_eyebrow }}
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.comparison_heading != blank -%}
+          <h2
+            class="cs-heading tw-mb-6 tw-font-bold md:tw-mb-8"
+            style="font-size: clamp(1.5rem, 3vw, var(--cs-fs-section))"
+          >
+            {{ section.settings.comparison_heading }}
+          </h2>
+        {%- endif -%}
+
+        {%- if comparison_blocks.size > 0 -%}
+          <div class="cs-card cs-comp-wrap tw-overflow-x-auto tw-rounded-2xl">
+            <table class="cs-comp-table tw-w-full tw-min-w-[640px] tw-border-collapse tw-text-left tw-tabular-nums">
+              {%- if section.settings.comparison_heading != blank -%}
+                <caption class="tw-sr-only">{{ section.settings.comparison_heading }}</caption>
+              {%- endif -%}
+              <thead>
+                <tr class="cs-bg-alt">
+                  <th
+                    scope="col"
+                    class="cs-muted tw-px-5 tw-py-4 tw-font-semibold tw-uppercase tw-tracking-wider md:tw-px-6"
+                    style="font-size: var(--cs-fs-small)"
+                  >
+                    {{ section.settings.comparison_col_metric | default: 'Metric' }}
+                  </th>
+                  <th
+                    scope="col"
+                    class="cs-muted tw-px-5 tw-py-4 tw-text-right tw-font-semibold tw-uppercase tw-tracking-wider md:tw-px-6"
+                    style="font-size: var(--cs-fs-small)"
+                  >
+                    {{ section.settings.comparison_col_1 }}
+                  </th>
+                  <th
+                    scope="col"
+                    class="cs-muted tw-px-5 tw-py-4 tw-text-right tw-font-semibold tw-uppercase tw-tracking-wider md:tw-px-6"
+                    style="font-size: var(--cs-fs-small)"
+                  >
+                    {{ section.settings.comparison_col_2 }}
+                  </th>
+                  <th
+                    scope="col"
+                    class="cs-muted tw-px-5 tw-py-4 tw-text-right tw-font-semibold tw-uppercase tw-tracking-wider md:tw-px-6"
+                    style="font-size: var(--cs-fs-small)"
+                  >
+                    {{ section.settings.comparison_col_yoy | default: 'YoY' }}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for block in comparison_blocks -%}
+                  {%- liquid
+                    case block.settings.yoy_trend
+                      when 'negative'
+                        assign yoy_color = 'var(--cs-comp-negative)'
+                      when 'neutral'
+                        assign yoy_color = 'var(--cs-muted)'
+                      else
+                        assign yoy_color = 'var(--cs-comp-positive)'
+                    endcase
+                  -%}
+                  <tr
+                    class="tw-border-t"
+                    style="border-color: {{ c_card_border }}80"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.metric != blank -%}
+                      <th
+                        scope="row"
+                        class="cs-heading tw-px-5 tw-py-4 tw-font-semibold md:tw-px-6"
+                        style="font-size: var(--cs-fs-body)"
+                      >
+                        {{ block.settings.metric }}
+                      </th>
+                    {%- else -%}
+                      <td class="tw-px-5 tw-py-4 md:tw-px-6"></td>
+                    {%- endif -%}
+
+                    <td
+                      class="cs-body tw-px-5 tw-py-4 tw-text-right md:tw-px-6"
+                      style="font-size: var(--cs-fs-body)"
+                      data-label="{{ section.settings.comparison_col_1 | escape }}"
+                    >
+                      {{ block.settings.value_col_1 }}
+                    </td>
+
+                    <td
+                      class="cs-body tw-px-5 tw-py-4 tw-text-right md:tw-px-6"
+                      style="font-size: var(--cs-fs-body)"
+                      data-label="{{ section.settings.comparison_col_2 | escape }}"
+                    >
+                      {{ block.settings.value_col_2 }}
+                    </td>
+
+                    <td
+                      class="tw-px-5 tw-py-4 tw-text-right tw-font-bold md:tw-px-6"
+                      style="font-size: var(--cs-fs-body); color: {{ yoy_color }}"
+                      data-label="{{ section.settings.comparison_col_yoy | default: 'YoY' | escape }}"
+                    >
+                      {{ block.settings.yoy_value }}
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.comparison_footnote != blank -%}
+          <p class="cs-muted tw-mt-4 tw-leading-relaxed md:tw-mt-6" style="font-size: var(--cs-fs-small)">
+            {{ section.settings.comparison_footnote }}
+          </p>
+        {%- endif -%}
       </div>
     </section>
   {%- endif -%}
@@ -1108,7 +1355,8 @@
     {
       "type": "image_picker",
       "id": "results_media",
-      "label": "Results image or video poster"
+      "label": "Results image / video thumbnail",
+      "info": "Shown as a static image on its own. If a video URL is also set, this image becomes the video thumbnail (poster)."
     },
     {
       "type": "text",
@@ -1120,7 +1368,96 @@
       "type": "text",
       "id": "results_video_url",
       "label": "Video URL (mp4, optional)",
-      "info": "Leave blank to display the image as a static figure."
+      "info": "Set to render a video. Works with or without an image above — the image, if set, is used as the thumbnail."
+    },
+    {
+      "type": "select",
+      "id": "results_media_aspect",
+      "label": "Video frame shape",
+      "default": "9/16",
+      "info": "Aspect ratio of the video/thumbnail frame. Applies to the video only.",
+      "options": [
+        { "value": "9/16", "label": "Portrait (9:16)" },
+        { "value": "3/4", "label": "Portrait (3:4)" },
+        { "value": "1/1", "label": "Square (1:1)" },
+        { "value": "4/3", "label": "Landscape (4:3)" },
+        { "value": "16/9", "label": "Landscape (16:9)" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "results_media_fit",
+      "label": "Thumbnail fit",
+      "default": "contain",
+      "info": "Contain shows the whole thumbnail (no cropping). Cover fills the frame and may crop the edges.",
+      "options": [
+        { "value": "contain", "label": "Contain — show full image" },
+        { "value": "cover", "label": "Cover — fill & crop" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "── §6b Year-over-Year Table ──"
+    },
+    {
+      "type": "text",
+      "id": "comparison_eyebrow",
+      "label": "Eyebrow",
+      "default": "Framing 3 · Year over Year"
+    },
+    {
+      "type": "color",
+      "id": "comparison_eyebrow_color",
+      "label": "Eyebrow colour",
+      "default": "#fbbf24"
+    },
+    {
+      "type": "text",
+      "id": "comparison_heading",
+      "label": "Heading",
+      "default": "Same dates, one year apart"
+    },
+    {
+      "type": "text",
+      "id": "comparison_col_metric",
+      "label": "Column 1 header (metric)",
+      "default": "Metric"
+    },
+    {
+      "type": "text",
+      "id": "comparison_col_1",
+      "label": "Column 2 header",
+      "default": "Apr 7 – Jun 4, 2026"
+    },
+    {
+      "type": "text",
+      "id": "comparison_col_2",
+      "label": "Column 3 header",
+      "default": "Apr 7 – Jun 4, 2025"
+    },
+    {
+      "type": "text",
+      "id": "comparison_col_yoy",
+      "label": "Column 4 header (YoY)",
+      "default": "YoY"
+    },
+    {
+      "type": "color",
+      "id": "comparison_positive_color",
+      "label": "Positive YoY colour",
+      "default": "#34d399"
+    },
+    {
+      "type": "color",
+      "id": "comparison_negative_color",
+      "label": "Negative YoY colour",
+      "default": "#ef4444"
+    },
+    {
+      "type": "textarea",
+      "id": "comparison_footnote",
+      "label": "Footnote",
+      "default": "Seasonality-controlled comparison: identical calendar dates. The giveaway year acquired 7,000+ more new customers than the same window a year earlier."
     },
     {
       "type": "header",
@@ -1308,6 +1645,47 @@
           "default": "Result description goes here."
         }
       ]
+    },
+    {
+      "type": "comparison_row",
+      "name": "YoY Table Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "metric",
+          "label": "Metric",
+          "default": "Revenue"
+        },
+        {
+          "type": "text",
+          "id": "value_col_1",
+          "label": "Column 2 value",
+          "default": "$0"
+        },
+        {
+          "type": "text",
+          "id": "value_col_2",
+          "label": "Column 3 value",
+          "default": "$0"
+        },
+        {
+          "type": "text",
+          "id": "yoy_value",
+          "label": "YoY value",
+          "default": "+0%"
+        },
+        {
+          "type": "select",
+          "id": "yoy_trend",
+          "label": "YoY colour",
+          "default": "positive",
+          "options": [
+            { "value": "positive", "label": "Positive (green)" },
+            { "value": "negative", "label": "Negative (red)" },
+            { "value": "neutral", "label": "Neutral (muted)" }
+          ]
+        }
+      ]
     }
   ],
   "presets": [
@@ -1424,6 +1802,56 @@
             "icon": "repeat",
             "title": "Higher Repeat Purchase Rate",
             "body": "Re-engaged dormant customers drove stronger repeat purchase behavior compared to prior years."
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Revenue",
+            "value_col_1": "$3,306,601",
+            "value_col_2": "$2,558,266",
+            "yoy_value": "+29.3%",
+            "yoy_trend": "positive"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Orders",
+            "value_col_1": "49,807",
+            "value_col_2": "42,701",
+            "yoy_value": "+16.6%",
+            "yoy_trend": "positive"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "New customers",
+            "value_col_1": "17,207",
+            "value_col_2": "10,148",
+            "yoy_value": "+69.6%",
+            "yoy_trend": "positive"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "New-customer revenue",
+            "value_col_1": "$1,167,981",
+            "value_col_2": "$720,244",
+            "yoy_value": "+62.2%",
+            "yoy_trend": "positive"
+          }
+        },
+        {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Ad spend deployed",
+            "value_col_1": "$1,590,226",
+            "value_col_2": "$732,098",
+            "yoy_value": "+117.2%",
+            "yoy_trend": "positive"
           }
         }
       ]

@@ -1,0 +1,247 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gains-in-bulk": {
+      "type": "case-study-template",
+      "blocks": {
+        "comparison_row_k84DBm": {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Revenue",
+            "value_col_1": "$3,306,601",
+            "value_col_2": "$2,558,266",
+            "yoy_value": "+29.3%",
+            "yoy_trend": "positive"
+          }
+        },
+        "comparison_row_KAX8Vg": {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Orders",
+            "value_col_1": "49,807",
+            "value_col_2": "42,701",
+            "yoy_value": "+16.6%",
+            "yoy_trend": "positive"
+          }
+        },
+        "comparison_row_UfRPqP": {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "New Customers",
+            "value_col_1": "17,207",
+            "value_col_2": "10,148",
+            "yoy_value": "+69.6%",
+            "yoy_trend": "positive"
+          }
+        },
+        "comparison_row_pdNXNC": {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "New-customer revenue",
+            "value_col_1": "$1,167,981",
+            "value_col_2": "$720,244",
+            "yoy_value": "+62.2%",
+            "yoy_trend": "positive"
+          }
+        },
+        "comparison_row_VG7nQB": {
+          "type": "comparison_row",
+          "settings": {
+            "metric": "Ad spend deployed",
+            "value_col_1": "$1,590,226",
+            "value_col_2": "$732,098",
+            "yoy_value": "+117.2%",
+            "yoy_trend": "positive"
+          }
+        },
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "trending_up",
+            "value": "+29%",
+            "label": "Increase in year-over-year revenue"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "users",
+            "value": "17,207",
+            "label": "New customers acquired (+70% from 2025)"
+          }
+        },
+        "stat_3": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "zap",
+            "value": "$213,000",
+            "label": "Revenue on final day of giveaway (1.54x all-time record)"
+          }
+        },
+        "stat_4": {
+          "type": "stat_card",
+          "settings": {
+            "icon": "target",
+            "value": "+32%",
+            "label": "Increase in average order value"
+          }
+        },
+        "solution_2": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Test a variety of Shared Sweeps-recommended giveaway strategies for increasing average order value, subscribers, and revenue."
+          }
+        },
+        "solution_3": {
+          "type": "solution_item",
+          "settings": {
+            "text": ""
+          }
+        },
+        "solution_4": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Offer entries that scaled with dollars spent, growing baskets and raising excitement about the prize."
+          }
+        },
+        "solution_5": {
+          "type": "solution_item",
+          "settings": {
+            "text": "Integrate a G-Wagon giveaway into existing Meta ads while staying on-brand."
+          }
+        },
+        "result_1": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_up",
+            "title": "The Biggest Day in Company History",
+            "body": "June 4th"
+          }
+        },
+        "result_2": {
+          "type": "result_card",
+          "settings": {
+            "icon": "trending_down",
+            "title": "Significantly Less Discounting",
+            "body": "Because of improved efficiency and profitability, Caraway also saw a 91% increase in bottom-line performance."
+          }
+        },
+        "result_3": {
+          "type": "result_card",
+          "settings": {
+            "icon": "target",
+            "title": "Efficient Paid Media Scaling",
+            "body": "Paid media spend increased by 45% while CAC remained stable, enabling sustainable growth at scale."
+          }
+        },
+        "result_card_gBYVmV": {
+          "type": "result_card",
+          "settings": {
+            "icon": "users",
+            "title": "List Growth Acceleration",
+            "body": "Lead generation increased significantly, driving substantial growth across both email and SMS lists."
+          }
+        }
+      },
+      "block_order": [
+        "comparison_row_k84DBm",
+        "comparison_row_KAX8Vg",
+        "comparison_row_UfRPqP",
+        "comparison_row_pdNXNC",
+        "comparison_row_VG7nQB",
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "solution_2",
+        "solution_3",
+        "solution_4",
+        "solution_5",
+        "result_1",
+        "result_2",
+        "result_3",
+        "result_card_gBYVmV"
+      ],
+      "settings": {
+        "color_primary": "#8d744a",
+        "color_heading": "#212529",
+        "color_body": "#444444",
+        "color_muted": "#6b7280",
+        "color_bg": "#ffffff",
+        "color_bg_alt": "#f9fafb",
+        "color_card_bg": "#ffffff",
+        "color_card_border": "#e5e7eb",
+        "color_btn_bg": "#8d744a",
+        "color_btn_text": "#ffffff",
+        "color_btn_outline_border": "#d1d5db",
+        "color_btn_outline_text": "#8d744a",
+        "color_cta_section_bg": "#444444",
+        "color_cta_section_text": "#ffffff",
+        "fs_hero_heading": 48,
+        "fs_section_heading": 30,
+        "fs_body": 18,
+        "fs_small": 14,
+        "fs_stat_value": 36,
+        "hero_reverse": true,
+        "back_link_text": "Back to Case Studies",
+        "back_link_url": "shopify://pages/case-studies",
+        "hero_eyebrow": "Case Study — Gains in Bulk (April-June 2026)",
+        "hero_title": "The giveaway that produced the biggest day in company history",
+        "hero_description": "Gains in Bulk used a Shared Sweeps giveaway to drive groundbreaking results: increased AOV, thousands of new customers, and the highest-revenue day of all time.",
+        "hero_btn_text": "Run a Giveaway With Shared Sweeps",
+        "stat_card_label": "Final day of giveaway Revenue",
+        "stat_card_before": "",
+        "stat_card_after": "$212,531",
+        "stat_card_caption": "1.54x the previous all-time daily record",
+        "about_reverse": true,
+        "about_heading": "About Gains in Bulk",
+        "about_body_1": "Gains in Bulk is a fitness and nutrition brand built for people looking to get stronger, build muscle, and perform at their best.",
+        "about_body_2": "From protein and creatine to performance and recovery supplements, Gains in Bulk makes high-quality products designed to help customers reach their goals.",
+        "about_image": "shopify://shop_images/gibmarketing.webp",
+        "about_image_alt": "Caraway Home cookware products",
+        "challenge_heading": "The Challenge",
+        "challenge_description": "With growth beginning to plateau, Gains in Bulk was looking for a new way to drive momentum and introduce an exciting offer to its customers. The team saw an opportunity to use a giveaway not only to generate growth, but to test new strategies for increasing subscribers, boosting AOV, and uncovering new ways to engage customers.",
+        "solution_reverse": false,
+        "solution_heading": "The Shared Sweeps Solution",
+        "solution_body": "Shared Sweeps provided an exciting shopping incentive for new and existing customers. Using sweepstakes entries and multipliers, Gains in Bulk was able to:",
+        "results_reverse": true,
+        "results_heading": "The Results",
+        "results_media": "shopify://shop_images/Screenshot_2026-08-03_at_3.49.07_PM.png",
+        "results_media_alt": "Caraway Home campaign",
+        "results_video_url": "https://cdn.shopify.com/videos/c/o/v/309e3490c15b409d82bc0878d8afab75.mp4",
+        "results_media_aspect": "9/16",
+        "results_media_fit": "contain",
+        "comparison_eyebrow": "Framing 3 · Year over Year",
+        "comparison_eyebrow_color": "#8D744A",
+        "comparison_heading": "Same dates, one year apart",
+        "comparison_col_metric": "Metric",
+        "comparison_col_1": "Apr 7 – Jun 4, 2026",
+        "comparison_col_2": "Apr 7 – Jun 4, 2025",
+        "comparison_col_yoy": "YoY",
+        "comparison_positive_color": "#34d399",
+        "comparison_negative_color": "#ef4444",
+        "comparison_footnote": "Seasonality-controlled comparison: identical calendar dates. The giveaway year acquired 7,000+ more new customers than the same window a year earlier.",
+        "testimonial_quote": "",
+        "testimonial_attribution": "",
+        "why_heading": "Why It Worked",
+        "why_body": "For Caraway Home, Shared Sweeps delivered more than a short-term sales spike. It provided a scalable mechanism to drive top-line revenue, substantially grow email and SMS lists, re-engage past customers, and build brand excitement — all without sacrificing the premium positioning that defines the Caraway brand.",
+        "cta_heading": "Want Results Like This for Your Brand?",
+        "cta_description": "Shared Sweeps helps Shopify brands run high-impact giveaways that drive revenue, grow engagement, and reduce reliance on discounting.",
+        "cta_btn_primary_text": "Run a Giveaway",
+        "cta_btn_secondary_text": "See More Case Studies",
+        "cta_btn_secondary_url": "/blogs/case-studies"
+      }
+    }
+  },
+  "order": [
+    "gains-in-bulk"
+  ]
+}
