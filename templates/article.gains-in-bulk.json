@@ -121,33 +121,33 @@
         "result_1": {
           "type": "result_card",
           "settings": {
-            "icon": "trending_up",
+            "icon": "sparkles",
             "title": "The Biggest Day in Company History",
-            "body": "June 4th"
+            "body": "The final day of the giveaway delivered $212,531 in revenue — 54% above the previous all-time record ($138,100, set on Black Friday 2024)."
           }
         },
         "result_2": {
           "type": "result_card",
           "settings": {
-            "icon": "trending_down",
-            "title": "Significantly Less Discounting",
-            "body": "Because of improved efficiency and profitability, Caraway also saw a 91% increase in bottom-line performance."
+            "icon": "users",
+            "title": "A New-Customer Acquisition Engine",
+            "body": "The giveaway generated $1.17M in new-customer revenue and 17,207 new customers — 70% more than the same dates last year."
           }
         },
         "result_3": {
           "type": "result_card",
           "settings": {
-            "icon": "target",
-            "title": "Efficient Paid Media Scaling",
-            "body": "Paid media spend increased by 45% while CAC remained stable, enabling sustainable growth at scale."
+            "icon": "trending_up",
+            "title": "Customers Filled Their Carts",
+            "body": "Because entries scaled with dollars spent, baskets grew: average order value jumped from $50.13 to $66.39 (+32.4%) versus the previous two months."
           }
         },
         "result_card_gBYVmV": {
           "type": "result_card",
           "settings": {
-            "icon": "users",
-            "title": "List Growth Acceleration",
-            "body": "Lead generation increased significantly, driving substantial growth across both email and SMS lists."
+            "icon": "target",
+            "title": "Ad Spend Acceleration",
+            "body": "The giveaway gave Gains in Bulk a reason — and the conversion power — to spend at a scale that was never previously possible."
           }
         }
       },
@@ -214,13 +214,13 @@
         "solution_body": "Shared Sweeps provided an exciting shopping incentive for new and existing customers. Using sweepstakes entries and multipliers, Gains in Bulk was able to:",
         "results_reverse": true,
         "results_heading": "The Results",
-        "results_media": "shopify://shop_images/Screenshot_2026-08-03_at_3.49.07_PM.png",
+        "results_media": "shopify://shop_images/Screenshot_2026-08-03_at_4.33.03_PM.png",
         "results_media_alt": "Caraway Home campaign",
         "results_video_url": "https://cdn.shopify.com/videos/c/o/v/309e3490c15b409d82bc0878d8afab75.mp4",
         "results_media_aspect": "9/16",
         "results_media_fit": "contain",
         "comparison_eyebrow": "Framing 3 · Year over Year",
-        "comparison_eyebrow_color": "#8D744A",
+        "comparison_eyebrow_color": "#8d744a",
         "comparison_heading": "Same dates, one year apart",
         "comparison_col_metric": "Metric",
         "comparison_col_1": "Apr 7 – Jun 4, 2026",
