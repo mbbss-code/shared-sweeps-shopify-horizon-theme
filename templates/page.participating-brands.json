@@ -117,6 +117,14 @@
             "brand_url": "https://trycloud9.com"
           }
         },
+        "current_brand_iwNAyN": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Wild Junkie Boutique",
+            "brand_logo": "shopify://shop_images/wildjunkielogo.png",
+            "brand_url": "https://wildjunkieboutique.com"
+          }
+        },
         "current_brand_yB9Mik": {
           "type": "current_brand",
           "settings": {
@@ -163,6 +171,14 @@
             "brand_name": "Synister Speed",
             "brand_logo": "shopify://shop_images/synisterlogo.webp",
             "brand_url": "https://synisterspeed.com"
+          }
+        },
+        "current_brand_kcbbNW": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Reeds Cattle Co",
+            "brand_logo": "shopify://shop_images/reedslogo.jpg",
+            "brand_url": "https://reedscattleco.com"
           }
         },
         "current_brand_iJgiDg": {
@@ -218,12 +234,14 @@
         "current_brand_zbJGpt",
         "current_brand_B4jHHJ",
         "current_brand_WPJdPN",
+        "current_brand_iwNAyN",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
         "current_brand_KapkRY",
         "current_brand_jex66X",
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
+        "current_brand_kcbbNW",
         "current_brand_iJgiDg",
         "current_brand_HVHqwW",
         "current_brand_qmcFHy",
