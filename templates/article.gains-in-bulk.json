@@ -16,8 +16,8 @@
           "type": "comparison_row",
           "settings": {
             "metric": "Revenue",
-            "value_col_1": "$3,306,601",
-            "value_col_2": "$2,558,266",
+            "value_col_1": "$2,558,266",
+            "value_col_2": "$3,306,601",
             "yoy_value": "+29.3%",
             "yoy_trend": "positive"
           }
@@ -26,8 +26,8 @@
           "type": "comparison_row",
           "settings": {
             "metric": "Orders",
-            "value_col_1": "49,807",
-            "value_col_2": "42,701",
+            "value_col_1": "42,701",
+            "value_col_2": "49,807",
             "yoy_value": "+16.6%",
             "yoy_trend": "positive"
           }
@@ -36,8 +36,8 @@
           "type": "comparison_row",
           "settings": {
             "metric": "New Customers",
-            "value_col_1": "17,207",
-            "value_col_2": "10,148",
+            "value_col_1": "10,148",
+            "value_col_2": "17,207",
             "yoy_value": "+69.6%",
             "yoy_trend": "positive"
           }
@@ -46,8 +46,8 @@
           "type": "comparison_row",
           "settings": {
             "metric": "New-customer revenue",
-            "value_col_1": "$1,167,981",
-            "value_col_2": "$720,244",
+            "value_col_1": "$720,244",
+            "value_col_2": "$1,167,981",
             "yoy_value": "+62.2%",
             "yoy_trend": "positive"
           }
@@ -56,8 +56,8 @@
           "type": "comparison_row",
           "settings": {
             "metric": "Ad spend deployed",
-            "value_col_1": "$1,590,226",
-            "value_col_2": "$732,098",
+            "value_col_1": "$732,098",
+            "value_col_2": "$1,590,226",
             "yoy_value": "+117.2%",
             "yoy_trend": "positive"
           }
@@ -223,8 +223,8 @@
         "comparison_eyebrow_color": "#8d744a",
         "comparison_heading": "Same dates, one year apart",
         "comparison_col_metric": "Metric",
-        "comparison_col_1": "Apr 7 – Jun 4, 2026",
-        "comparison_col_2": "Apr 7 – Jun 4, 2025",
+        "comparison_col_1": "Apr 7 – Jun 4, 2025",
+        "comparison_col_2": "Apr 7 – Jun 4, 2026",
         "comparison_col_yoy": "YoY",
         "comparison_positive_color": "#34d399",
         "comparison_negative_color": "#ef4444",
