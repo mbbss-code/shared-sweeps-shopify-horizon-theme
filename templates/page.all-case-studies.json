@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "all_case_study_hero_kjwHFn": {
@@ -45,51 +54,75 @@
             "industry_name": "Health & Wellness"
           }
         },
-        "case_study_iWnhDQ": {
+        "case_study_WwEJtx": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify:\/\/shop_images\/freshchilecologo.jpg",
-            "brand_name": "Fresh Chile Co",
-            "industry": "Food & Beverage",
-            "metric": "$117K in ad spend savings",
-            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
-            "case_study_url": "shopify:\/\/blogs\/case-studies\/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
+            "brand_name": "Caraway Home",
+            "industry": "Home",
+            "metric": "61% increase in YoY  top-line revenue",
+            "summary": "Substantial growth across email and SMS lists.",
+            "case_study_url": "shopify://blogs/case-studies/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps",
             "link_text": "View Case Study"
           }
         },
-        "case_study_TFde7F": {
+        "case_study_ztd3G6": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify:\/\/shop_images\/s_slogo.jpg",
-            "brand_name": "Shaker & Spoon",
-            "industry": "Subscription",
-            "metric": "30% reduction in monthly churn",
-            "summary": "Acquisition with less discounts, resulting in higher-value customers.",
-            "case_study_url": "shopify:\/\/blogs\/case-studies\/how-shaker-spoon-cut-churn-by-30-slashed-discounting-66-and-grew-revenue-in-the-off-season-with-shared-sweeps",
+            "brand_logo": "shopify://shop_images/gainscasestudy.png",
+            "brand_name": "Gains in Bulk",
+            "industry": "Health & Wellness",
+            "metric": "Biggest day in brand history",
+            "summary": "Driving record revenue, higher AOV, and customer growth.",
+            "case_study_url": "shopify://blogs/case-studies/the-giveaway-that-produced-the-biggest-day-in-company-history",
+            "link_text": "View Case Study"
+          }
+        },
+        "case_study_CmWiGd": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/tryingagain.jpg",
+            "brand_name": "Fresh Clean Threads",
+            "industry": "Apparel",
+            "metric": "$2.89M in Revenue",
+            "summary": "Increased revenue, customer engagement, and ROAS.",
+            "case_study_url": "shopify://blogs/case-studies/how-fresh-clean-threads-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
             "link_text": "View Case Study"
           }
         },
         "case_study_zEzVUU": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify:\/\/shop_images\/potlogo.jpg",
+            "brand_logo": "shopify://shop_images/potlogo.jpg",
             "brand_name": "Pair of Thieves",
             "industry": "Apparel",
             "metric": "18% increase in gross sales",
             "summary": "Drove more site visits, repeated touches, and channel interaction.",
-            "case_study_url": "shopify:\/\/blogs\/case-studies\/pair-of-thieves",
+            "case_study_url": "shopify://blogs/case-studies/pair-of-thieves",
             "link_text": "View Case Study"
           }
         },
-        "case_study_WwEJtx": {
+        "case_study_iWnhDQ": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify:\/\/shop_images\/carawaylogo.jpg",
-            "brand_name": "Caraway Home",
-            "industry": "Home",
-            "metric": "61% increase in YoY  top-line revenue",
-            "summary": "Substantial growth across email and SMS lists.",
-            "case_study_url": "shopify:\/\/blogs\/case-studies\/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps",
+            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
+            "brand_name": "Fresh Chile Co",
+            "industry": "Food & Beverage",
+            "metric": "$117K in ad spend savings",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "case_study_url": "shopify://blogs/case-studies/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
+            "link_text": "View Case Study"
+          }
+        },
+        "case_study_TFde7F": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/s_slogo.jpg",
+            "brand_name": "Shaker & Spoon",
+            "industry": "Subscription",
+            "metric": "30% reduction in monthly churn",
+            "summary": "Acquisition with less discounts, resulting in higher-value customers.",
+            "case_study_url": "shopify://blogs/case-studies/how-shaker-spoon-cut-churn-by-30-slashed-discounting-66-and-grew-revenue-in-the-off-season-with-shared-sweeps",
             "link_text": "View Case Study"
           }
         }
@@ -100,10 +133,12 @@
         "industry_filter_XEFCPQ",
         "industry_filter_aByWra",
         "industry_filter_xHUTwW",
-        "case_study_iWnhDQ",
-        "case_study_TFde7F",
+        "case_study_WwEJtx",
+        "case_study_ztd3G6",
+        "case_study_CmWiGd",
         "case_study_zEzVUU",
-        "case_study_WwEJtx"
+        "case_study_iWnhDQ",
+        "case_study_TFde7F"
       ],
       "name": "ACS — Filter & Grid",
       "settings": {

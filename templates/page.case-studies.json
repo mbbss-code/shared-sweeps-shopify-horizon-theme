@@ -24,14 +24,36 @@
     "case_study_grid_NdaNHX": {
       "type": "case-study-grid",
       "blocks": {
-        "case_study_kcLmj3": {
+        "case_study_bRyBKR": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
-            "brand_name": "Fresh Chile Co",
-            "metric": "$117K in ad spend savings",
-            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
-            "link_url": "shopify://blogs/case-studies/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
+            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
+            "brand_name": "Caraway Home",
+            "metric": "61% increase in YoY top-line revenue",
+            "summary": "Substantial growth across email and SMS lists.",
+            "link_url": "shopify://blogs/case-studies/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps",
+            "link_text": "Read Case Study"
+          }
+        },
+        "case_study_Dj4Wy8": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/gainscasestudy.png",
+            "brand_name": "Gains in Bulk",
+            "metric": "Biggest month and day in brand history",
+            "summary": "Driving record revenue, higher AOV, and customer growth.",
+            "link_url": "shopify://blogs/case-studies/the-giveaway-that-produced-the-biggest-day-in-company-history",
+            "link_text": "Read Case Study"
+          }
+        },
+        "case_study_tJKLj4": {
+          "type": "case_study",
+          "settings": {
+            "brand_logo": "shopify://shop_images/Screenshot_2026-07-15_at_3.08.28_PM.png",
+            "brand_name": "Fresh Clean Threads",
+            "metric": "$2.89M in Revenue",
+            "summary": "Increased revenue, customer engagement, and ROAS.",
+            "link_url": "shopify://blogs/case-studies/how-fresh-clean-threads-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
             "link_text": "Read Case Study"
           }
         },
@@ -46,14 +68,14 @@
             "link_text": "Read Case Study"
           }
         },
-        "case_study_bRyBKR": {
+        "case_study_kcLmj3": {
           "type": "case_study",
           "settings": {
-            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
-            "brand_name": "Caraway Home",
-            "metric": "61% increase in YoY top-line revenue",
-            "summary": "Substantial growth across email and SMS lists.",
-            "link_url": "shopify://blogs/case-studies/how-caraway-home-drove-a-61-increase-in-yoy-revenue-and-accelerated-list-growth-with-shared-sweeps",
+            "brand_logo": "shopify://shop_images/freshchilecologo.jpg",
+            "brand_name": "Fresh Chile Co",
+            "metric": "$117K in ad spend savings",
+            "summary": "A 3-month Shared Sweeps campaign became their top growth channel.",
+            "link_url": "shopify://blogs/case-studies/how-fresh-chile-co-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
             "link_text": "Read Case Study"
           }
         },
@@ -67,25 +89,15 @@
             "link_url": "shopify://blogs/case-studies/how-shaker-spoon-cut-churn-by-30-slashed-discounting-66-and-grew-revenue-in-the-off-season-with-shared-sweeps",
             "link_text": "Read Case Study"
           }
-        },
-        "case_study_tJKLj4": {
-          "type": "case_study",
-          "settings": {
-            "brand_logo": "shopify://shop_images/Screenshot_2026-07-15_at_3.08.28_PM.png",
-            "brand_name": "Fresh Clean Threads",
-            "metric": "$2.89M in Revenue",
-            "summary": "Increased revenue, customer engagement, and ROAS.",
-            "link_url": "shopify://blogs/case-studies/how-fresh-clean-threads-turned-a-shared-sweeps-giveaway-into-their-biggest-sales-engine",
-            "link_text": "Read Case Study"
-          }
         }
       },
       "block_order": [
-        "case_study_kcLmj3",
-        "case_study_EPJDRi",
         "case_study_bRyBKR",
-        "case_study_fHabyh",
-        "case_study_tJKLj4"
+        "case_study_Dj4Wy8",
+        "case_study_tJKLj4",
+        "case_study_EPJDRi",
+        "case_study_kcLmj3",
+        "case_study_fHabyh"
       ],
       "name": "Case Studies Grid",
       "settings": {
