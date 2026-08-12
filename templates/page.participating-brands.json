@@ -101,6 +101,14 @@
             "brand_url": "https://carawayhome.com"
           }
         },
+        "current_brand_G4awPq": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Rhino USA",
+            "brand_logo": "shopify://shop_images/rhinologo.jpg",
+            "brand_url": "https://rhinousainc.com"
+          }
+        },
         "current_brand_B4jHHJ": {
           "type": "current_brand",
           "settings": {
@@ -131,6 +139,22 @@
             "brand_name": "Adoorn",
             "brand_logo": "shopify://shop_images/adoornlogo.avif",
             "brand_url": "https://adoorn.com"
+          }
+        },
+        "current_brand_Hjxitk": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Deadsoxy",
+            "brand_logo": "shopify://shop_images/deadsoxylogo.jpg",
+            "brand_url": "https://deadsoxy.com"
+          }
+        },
+        "current_brand_GrLBjb": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Tuff Ring",
+            "brand_logo": "shopify://shop_images/tuffringlogo.jpg",
+            "brand_url": "https://tuffring.com"
           }
         },
         "current_brand_n9MMh3": {
@@ -248,10 +272,13 @@
       },
       "block_order": [
         "current_brand_zbJGpt",
+        "current_brand_G4awPq",
         "current_brand_B4jHHJ",
         "current_brand_WPJdPN",
         "current_brand_iwNAyN",
         "current_brand_ttwacC",
+        "current_brand_Hjxitk",
+        "current_brand_GrLBjb",
         "current_brand_n9MMh3",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
