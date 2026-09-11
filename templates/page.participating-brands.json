@@ -93,79 +93,55 @@
     "participating_brands_grid_jqzcDq": {
       "type": "participating-brands-grid",
       "blocks": {
-        "current_brand_zbJGpt": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Caraway Home",
-            "brand_logo": "shopify://shop_images/carawaylogo.jpg",
-            "brand_url": "https://carawayhome.com"
-          }
-        },
-        "current_brand_G4awPq": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Rhino USA",
-            "brand_logo": "shopify://shop_images/rhinologo.jpg",
-            "brand_url": "https://rhinousainc.com"
-          }
-        },
-        "current_brand_ttwacC": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Adoorn",
-            "brand_logo": "shopify://shop_images/adoornlogo.avif",
-            "brand_url": "https://adoorn.com"
-          }
-        },
-        "current_brand_iwNAyN": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Wild Junkie Boutique",
-            "brand_logo": "shopify://shop_images/wildjunkielogo.png",
-            "brand_url": "https://wildjunkieboutique.com"
-          }
-        },
-        "current_brand_GrLBjb": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Tuff Ring",
-            "brand_logo": "shopify://shop_images/tuffringlogo.jpg",
-            "brand_url": "https://tuffring.com"
-          }
-        },
-        "current_brand_HVHqwW": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "True Nutra",
-            "brand_logo": "shopify://shop_images/Screenshot_2026-06-19_at_12.47.42_PM.png",
-            "brand_url": "https://truenutra.com"
-          }
-        },
-        "current_brand_Hjxitk": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Deadsoxy",
-            "brand_logo": "shopify://shop_images/deadsoxylogo.jpg",
-            "brand_url": "https://deadsoxy.com"
-          }
-        },
-        "current_brand_B4jHHJ": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Finish the Fight",
-            "brand_logo": "shopify://shop_images/ftflogo.avif",
-            "brand_url": "https://finishthefight.net"
-          }
-        },
-        "current_brand_WPJdPN": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Cloud9 Supplements",
-            "brand_logo": "shopify://shop_images/cloud9suppslogo.webp",
-            "brand_url": "https://trycloud9.com"
-          }
-        },
         "current_brand_n9MMh3": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Chemical Guys",
+            "brand_logo": "shopify://shop_images/chemguyslogo.svg",
+            "brand_url": "https://chemicalguys.com"
+          }
+        },
+        "current_brand_fjANEA": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Medterra CBD",
+            "brand_logo": "shopify://shop_images/medterralogo.webp",
+            "brand_url": "https://medterracbd.com"
+          }
+        },
+        "current_brand_nixMhj": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "ForeverWick",
+            "brand_logo": "shopify://shop_images/foreverwicklogo.jpg",
+            "brand_url": "https://foreverwickcandle.com"
+          }
+        },
+        "current_brand_YL88aF": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Baerskin Tactical",
+            "brand_logo": "shopify://shop_images/bskinlogo.png",
+            "brand_url": "https://baerskintactical.com"
+          }
+        },
+        "current_brand_7CbKtw": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Brook & Bloom",
+            "brand_logo": "shopify://shop_images/brookbloomlogo.png",
+            "brand_url": "https://brookbloom.com"
+          }
+        },
+        "current_brand_tX9HXp": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Vulcan Pest",
+            "brand_logo": "shopify://shop_images/vulcanlogo.jpg",
+            "brand_url": "https://vulcanpest.com"
+          }
+        },
+        "current_brand_QgWVCn": {
           "type": "current_brand",
           "settings": {
             "brand_name": "Sticker Express",
@@ -197,14 +173,6 @@
             "brand_url": "https://albreserve.com/"
           }
         },
-        "current_brand_jex66X": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "eSix Sportswear",
-            "brand_logo": "shopify://shop_images/esixlogo.jpg",
-            "brand_url": "https://shopesixsportswear.com/"
-          }
-        },
         "current_brand_tgG4zF": {
           "type": "current_brand",
           "settings": {
@@ -219,14 +187,6 @@
             "brand_name": "Synister Speed",
             "brand_logo": "shopify://shop_images/synisterlogo.webp",
             "brand_url": "https://synisterspeed.com"
-          }
-        },
-        "current_brand_kcbbNW": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Reeds Cattle Co",
-            "brand_logo": "shopify://shop_images/reedslogo.jpg",
-            "brand_url": "https://reedscattleco.com"
           }
         },
         "current_brand_iJgiDg": {
@@ -271,23 +231,18 @@
         }
       },
       "block_order": [
-        "current_brand_zbJGpt",
-        "current_brand_G4awPq",
-        "current_brand_ttwacC",
-        "current_brand_iwNAyN",
-        "current_brand_GrLBjb",
-        "current_brand_HVHqwW",
-        "current_brand_Hjxitk",
-        "current_brand_B4jHHJ",
-        "current_brand_WPJdPN",
         "current_brand_n9MMh3",
+        "current_brand_fjANEA",
+        "current_brand_nixMhj",
+        "current_brand_YL88aF",
+        "current_brand_7CbKtw",
+        "current_brand_tX9HXp",
+        "current_brand_QgWVCn",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
         "current_brand_KapkRY",
-        "current_brand_jex66X",
         "current_brand_tgG4zF",
         "current_brand_EXBnmt",
-        "current_brand_kcbbNW",
         "current_brand_iJgiDg",
         "current_brand_qmcFHy",
         "current_brand_KtJaFz",
