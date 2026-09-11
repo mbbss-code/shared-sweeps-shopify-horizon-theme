@@ -213,14 +213,6 @@
             "brand_url": "https://luckyjoesgarage.com"
           }
         },
-        "current_brand_YPAMFE": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "PinkedSlip",
-            "brand_logo": "shopify://shop_images/pinkedslip.png",
-            "brand_url": "https://pinkedslip.com"
-          }
-        },
         "current_brand_EapLRb": {
           "type": "current_brand",
           "settings": {
@@ -246,7 +238,6 @@
         "current_brand_iJgiDg",
         "current_brand_qmcFHy",
         "current_brand_KtJaFz",
-        "current_brand_YPAMFE",
         "current_brand_EapLRb"
       ],
       "name": "Brands Grid",
