@@ -101,6 +101,14 @@
             "brand_url": "https://chemicalguys.com"
           }
         },
+        "current_brand_TnpTR4": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Fresh Clean Threads",
+            "brand_logo": "shopify://shop_images/fctlogo.jpg",
+            "brand_url": "https://freshcleantees.com"
+          }
+        },
         "current_brand_fjANEA": {
           "type": "current_brand",
           "settings": {
@@ -224,6 +232,7 @@
       },
       "block_order": [
         "current_brand_n9MMh3",
+        "current_brand_TnpTR4",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
