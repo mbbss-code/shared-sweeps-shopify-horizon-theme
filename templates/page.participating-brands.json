@@ -109,6 +109,14 @@
             "brand_url": "https://freshcleantees.com"
           }
         },
+        "current_brand_paVtTK": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Sterling Forever",
+            "brand_logo": "shopify://shop_images/sflogo.png",
+            "brand_url": "https://sterlingforever.com"
+          }
+        },
         "current_brand_fjANEA": {
           "type": "current_brand",
           "settings": {
@@ -225,6 +233,7 @@
       "block_order": [
         "current_brand_n9MMh3",
         "current_brand_TnpTR4",
+        "current_brand_paVtTK",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
