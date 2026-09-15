@@ -133,14 +133,6 @@
             "brand_url": "https://baerskintactical.com"
           }
         },
-        "current_brand_7CbKtw": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Brook & Bloom",
-            "brand_logo": "shopify://shop_images/brookbloomlogo.png",
-            "brand_url": "https://brookbloom.com"
-          }
-        },
         "current_brand_tX9HXp": {
           "type": "current_brand",
           "settings": {
@@ -236,7 +228,6 @@
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
-        "current_brand_7CbKtw",
         "current_brand_tX9HXp",
         "current_brand_QgWVCn",
         "current_brand_yB9Mik",
