@@ -117,6 +117,14 @@
             "brand_url": "https://sterlingforever.com"
           }
         },
+        "current_brand_bTmjPA": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Miracle Made",
+            "brand_logo": "shopify://shop_images/mirmadelogo.png",
+            "brand_url": "https://miraclebrand.co"
+          }
+        },
         "current_brand_fjANEA": {
           "type": "current_brand",
           "settings": {
@@ -234,6 +242,7 @@
         "current_brand_n9MMh3",
         "current_brand_TnpTR4",
         "current_brand_paVtTK",
+        "current_brand_bTmjPA",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
