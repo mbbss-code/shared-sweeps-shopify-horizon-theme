@@ -109,6 +109,14 @@
             "brand_url": "https://freshcleantees.com"
           }
         },
+        "current_brand_Nmmx7E": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Caden Lane",
+            "brand_logo": "shopify://shop_images/cadenlanelogo.webp",
+            "brand_url": "https://cadenlane.com"
+          }
+        },
         "current_brand_paVtTK": {
           "type": "current_brand",
           "settings": {
@@ -241,6 +249,7 @@
       "block_order": [
         "current_brand_n9MMh3",
         "current_brand_TnpTR4",
+        "current_brand_Nmmx7E",
         "current_brand_paVtTK",
         "current_brand_bTmjPA",
         "current_brand_fjANEA",
