@@ -117,6 +117,22 @@
             "brand_url": "https://cadenlane.com"
           }
         },
+        "current_brand_by7cAQ": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Atari",
+            "brand_logo": "shopify://shop_images/atarilogo.jpg",
+            "brand_url": "https://atari.com"
+          }
+        },
+        "current_brand_6EEcmP": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Onsen",
+            "brand_logo": "shopify://shop_images/onsenlogo.jpg",
+            "brand_url": "https://onsentowel.com"
+          }
+        },
         "current_brand_paVtTK": {
           "type": "current_brand",
           "settings": {
@@ -131,6 +147,22 @@
             "brand_name": "Miracle Made",
             "brand_logo": "shopify://shop_images/mirmadelogo.png",
             "brand_url": "https://miraclebrand.co"
+          }
+        },
+        "current_brand_fWaezD": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Bearaby",
+            "brand_logo": "shopify://shop_images/bearabylogo2.jpg",
+            "brand_url": "https://bearaby.com"
+          }
+        },
+        "current_brand_gDdTT7": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Zulay Kitchen",
+            "brand_logo": "shopify://shop_images/zulaylogo.jpg",
+            "brand_url": "https://zulaykitchen.com"
           }
         },
         "current_brand_fjANEA": {
@@ -250,8 +282,12 @@
         "current_brand_n9MMh3",
         "current_brand_TnpTR4",
         "current_brand_Nmmx7E",
+        "current_brand_by7cAQ",
+        "current_brand_6EEcmP",
         "current_brand_paVtTK",
         "current_brand_bTmjPA",
+        "current_brand_fWaezD",
+        "current_brand_gDdTT7",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
