@@ -165,6 +165,22 @@
             "brand_url": "https://zulaykitchen.com"
           }
         },
+        "current_brand_wpbgUP": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Whiskey Road Hat C0",
+            "brand_logo": "shopify://shop_images/wrlogo2.avif",
+            "brand_url": "https://whiskeyroadhatco.com"
+          }
+        },
+        "current_brand_yxRi6B": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "GIR",
+            "brand_logo": "shopify://shop_images/girlogo.avif",
+            "brand_url": "https://gir.co"
+          }
+        },
         "current_brand_fjANEA": {
           "type": "current_brand",
           "settings": {
@@ -288,6 +304,8 @@
         "current_brand_bTmjPA",
         "current_brand_fWaezD",
         "current_brand_gDdTT7",
+        "current_brand_wpbgUP",
+        "current_brand_yxRi6B",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
         "current_brand_YL88aF",
