@@ -125,14 +125,6 @@
             "brand_url": "https://atari.com"
           }
         },
-        "current_brand_6EEcmP": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Onsen",
-            "brand_logo": "shopify://shop_images/onsenlogo.jpg",
-            "brand_url": "https://onsentowel.com"
-          }
-        },
         "current_brand_paVtTK": {
           "type": "current_brand",
           "settings": {
@@ -171,6 +163,14 @@
             "brand_name": "Bucket Golf",
             "brand_logo": "shopify://shop_images/bgolflogo.jpg",
             "brand_url": "https://bucketgolfgame.com"
+          }
+        },
+        "current_brand_6EEcmP": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Onsen",
+            "brand_logo": "shopify://shop_images/onsenlogo.jpg",
+            "brand_url": "https://onsentowel.com"
           }
         },
         "current_brand_wpbgUP": {
@@ -315,12 +315,12 @@
         "current_brand_TnpTR4",
         "current_brand_Nmmx7E",
         "current_brand_by7cAQ",
-        "current_brand_6EEcmP",
         "current_brand_paVtTK",
         "current_brand_bTmjPA",
         "current_brand_fWaezD",
         "current_brand_gDdTT7",
         "current_brand_wxU7Bn",
+        "current_brand_6EEcmP",
         "current_brand_wpbgUP",
         "current_brand_yxRi6B",
         "current_brand_fjANEA",
