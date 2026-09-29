@@ -165,6 +165,14 @@
             "brand_url": "https://zulaykitchen.com"
           }
         },
+        "current_brand_wxU7Bn": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Bucket Golf",
+            "brand_logo": "shopify://shop_images/bgolflogo.jpg",
+            "brand_url": "https://bucketgolfgame.com"
+          }
+        },
         "current_brand_wpbgUP": {
           "type": "current_brand",
           "settings": {
@@ -195,6 +203,14 @@
             "brand_name": "ForeverWick",
             "brand_logo": "shopify://shop_images/foreverwicklogo.jpg",
             "brand_url": "https://foreverwickcandle.com"
+          }
+        },
+        "current_brand_W4BMjt": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Finish the Fight",
+            "brand_logo": "shopify://shop_images/ftflogo.avif",
+            "brand_url": "https://finishthefight.net"
           }
         },
         "current_brand_YL88aF": {
@@ -304,10 +320,12 @@
         "current_brand_bTmjPA",
         "current_brand_fWaezD",
         "current_brand_gDdTT7",
+        "current_brand_wxU7Bn",
         "current_brand_wpbgUP",
         "current_brand_yxRi6B",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
+        "current_brand_W4BMjt",
         "current_brand_YL88aF",
         "current_brand_tX9HXp",
         "current_brand_QgWVCn",
