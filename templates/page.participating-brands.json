@@ -149,12 +149,12 @@
             "brand_url": "https://bearaby.com"
           }
         },
-        "current_brand_gDdTT7": {
+        "current_brand_8q8FXb": {
           "type": "current_brand",
           "settings": {
-            "brand_name": "Zulay Kitchen",
-            "brand_logo": "shopify://shop_images/zulaylogo.jpg",
-            "brand_url": "https://zulaykitchen.com"
+            "brand_name": "Laura Geller",
+            "brand_logo": "shopify://shop_images/Laura_Geller_Logo.jpg",
+            "brand_url": "https://laurageller.com"
           }
         },
         "current_brand_wxU7Bn": {
@@ -163,6 +163,14 @@
             "brand_name": "Bucket Golf",
             "brand_logo": "shopify://shop_images/bgolflogo.jpg",
             "brand_url": "https://bucketgolfgame.com"
+          }
+        },
+        "current_brand_gDdTT7": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Zulay Kitchen",
+            "brand_logo": "shopify://shop_images/zulaylogo.jpg",
+            "brand_url": "https://zulaykitchen.com"
           }
         },
         "current_brand_6EEcmP": {
@@ -203,6 +211,14 @@
             "brand_name": "ForeverWick",
             "brand_logo": "shopify://shop_images/foreverwicklogo.jpg",
             "brand_url": "https://foreverwickcandle.com"
+          }
+        },
+        "current_brand_zMfcF6": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Everyman",
+            "brand_logo": "shopify://shop_images/everymanlogo.png",
+            "brand_url": "https://everyman.co"
           }
         },
         "current_brand_W4BMjt": {
@@ -318,13 +334,15 @@
         "current_brand_paVtTK",
         "current_brand_bTmjPA",
         "current_brand_fWaezD",
-        "current_brand_gDdTT7",
+        "current_brand_8q8FXb",
         "current_brand_wxU7Bn",
+        "current_brand_gDdTT7",
         "current_brand_6EEcmP",
         "current_brand_wpbgUP",
         "current_brand_yxRi6B",
         "current_brand_fjANEA",
         "current_brand_nixMhj",
+        "current_brand_zMfcF6",
         "current_brand_W4BMjt",
         "current_brand_YL88aF",
         "current_brand_tX9HXp",
