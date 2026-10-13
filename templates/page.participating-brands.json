@@ -143,6 +143,7 @@
         },
         "current_brand_fWaezD": {
           "type": "current_brand",
+          "disabled": true,
           "settings": {
             "brand_name": "Bearaby",
             "brand_logo": "shopify://shop_images/bearabylogo2.jpg",
@@ -171,6 +172,14 @@
             "brand_name": "Zulay Kitchen",
             "brand_logo": "shopify://shop_images/zulaylogo.jpg",
             "brand_url": "https://zulaykitchen.com"
+          }
+        },
+        "current_brand_L9anHn": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "PetraTools",
+            "brand_logo": "shopify://shop_images/petratools.jpg",
+            "brand_url": "https://petratools.com"
           }
         },
         "current_brand_6EEcmP": {
@@ -203,6 +212,14 @@
             "brand_name": "Medterra CBD",
             "brand_logo": "shopify://shop_images/medterralogo.webp",
             "brand_url": "https://medterracbd.com"
+          }
+        },
+        "current_brand_AH9piM": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Beest USA",
+            "brand_logo": "shopify://shop_images/beestlogo.jpg",
+            "brand_url": "https://beestusa.com"
           }
         },
         "current_brand_nixMhj": {
@@ -243,6 +260,14 @@
             "brand_name": "Vulcan Pest",
             "brand_logo": "shopify://shop_images/vulcanlogo.jpg",
             "brand_url": "https://vulcanpest.com"
+          }
+        },
+        "current_brand_EwFWan": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "PetraMax",
+            "brand_logo": "shopify://shop_images/petramaxlogo.webp",
+            "brand_url": "https://petramax.com"
           }
         },
         "current_brand_QgWVCn": {
@@ -337,15 +362,18 @@
         "current_brand_8q8FXb",
         "current_brand_wxU7Bn",
         "current_brand_gDdTT7",
+        "current_brand_L9anHn",
         "current_brand_6EEcmP",
         "current_brand_wpbgUP",
         "current_brand_yxRi6B",
         "current_brand_fjANEA",
+        "current_brand_AH9piM",
         "current_brand_nixMhj",
         "current_brand_zMfcF6",
         "current_brand_W4BMjt",
         "current_brand_YL88aF",
         "current_brand_tX9HXp",
+        "current_brand_EwFWan",
         "current_brand_QgWVCn",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
