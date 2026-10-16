@@ -166,6 +166,14 @@
             "brand_url": "https://bucketgolfgame.com"
           }
         },
+        "current_brand_MBAJ8n": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "SunFrog",
+            "brand_logo": "shopify://shop_images/sunfroglogo.jpg",
+            "brand_url": "https://sunfrog.com"
+          }
+        },
         "current_brand_gDdTT7": {
           "type": "current_brand",
           "settings": {
@@ -361,6 +369,7 @@
         "current_brand_fWaezD",
         "current_brand_8q8FXb",
         "current_brand_wxU7Bn",
+        "current_brand_MBAJ8n",
         "current_brand_gDdTT7",
         "current_brand_L9anHn",
         "current_brand_6EEcmP",
