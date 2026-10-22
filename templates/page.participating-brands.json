@@ -133,14 +133,6 @@
             "brand_url": "https://sterlingforever.com"
           }
         },
-        "current_brand_bTmjPA": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Miracle Made",
-            "brand_logo": "shopify://shop_images/mirmadelogo.png",
-            "brand_url": "https://miraclebrand.co"
-          }
-        },
         "current_brand_fWaezD": {
           "type": "current_brand",
           "disabled": true,
@@ -204,14 +196,6 @@
             "brand_name": "Whiskey Road Hat C0",
             "brand_logo": "shopify://shop_images/wrlogo2.avif",
             "brand_url": "https://whiskeyroadhatco.com"
-          }
-        },
-        "current_brand_yxRi6B": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "GIR",
-            "brand_logo": "shopify://shop_images/girlogo.avif",
-            "brand_url": "https://gir.co"
           }
         },
         "current_brand_fjANEA": {
@@ -365,7 +349,6 @@
         "current_brand_Nmmx7E",
         "current_brand_by7cAQ",
         "current_brand_paVtTK",
-        "current_brand_bTmjPA",
         "current_brand_fWaezD",
         "current_brand_8q8FXb",
         "current_brand_wxU7Bn",
@@ -374,7 +357,6 @@
         "current_brand_L9anHn",
         "current_brand_6EEcmP",
         "current_brand_wpbgUP",
-        "current_brand_yxRi6B",
         "current_brand_fjANEA",
         "current_brand_AH9piM",
         "current_brand_nixMhj",
