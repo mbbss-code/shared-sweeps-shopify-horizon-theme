@@ -254,14 +254,6 @@
             "brand_url": "https://vulcanpest.com"
           }
         },
-        "current_brand_EwFWan": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "PetraMax",
-            "brand_logo": "shopify://shop_images/petramaxlogo.webp",
-            "brand_url": "https://petramax.com"
-          }
-        },
         "current_brand_QgWVCn": {
           "type": "current_brand",
           "settings": {
@@ -364,7 +356,6 @@
         "current_brand_W4BMjt",
         "current_brand_YL88aF",
         "current_brand_tX9HXp",
-        "current_brand_EwFWan",
         "current_brand_QgWVCn",
         "current_brand_yB9Mik",
         "current_brand_igKrEY",
