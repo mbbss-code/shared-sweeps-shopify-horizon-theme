@@ -230,6 +230,22 @@
             "brand_url": "https://baerskintactical.com"
           }
         },
+        "current_brand_mfPy8B": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Larson Jewelers",
+            "brand_logo": "shopify://shop_images/ljewelers.png",
+            "brand_url": "https://larsonjewelers.com"
+          }
+        },
+        "current_brand_qxqxBY": {
+          "type": "current_brand",
+          "settings": {
+            "brand_name": "Stacked Sauces",
+            "brand_logo": "shopify://shop_images/stackedsauces.webp",
+            "brand_url": "https://stackedsauces.com"
+          }
+        },
         "current_brand_tX9HXp": {
           "type": "current_brand",
           "settings": {
@@ -337,6 +353,8 @@
         "current_brand_zMfcF6",
         "current_brand_W4BMjt",
         "current_brand_YL88aF",
+        "current_brand_mfPy8B",
+        "current_brand_qxqxBY",
         "current_brand_tX9HXp",
         "current_brand_QgWVCn",
         "current_brand_yB9Mik",
