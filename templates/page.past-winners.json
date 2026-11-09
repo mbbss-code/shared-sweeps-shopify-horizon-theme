@@ -138,7 +138,7 @@
           "settings": {
             "image": "shopify://shop_images/shannon-r.png",
             "name": "Shannon R.",
-            "city": "Austin",
+            "city": "Dallas",
             "state": "TX",
             "brand": "Cariloha",
             "prize": "$100,000"
@@ -149,8 +149,8 @@
           "settings": {
             "image": "shopify://shop_images/morty-t.jpg",
             "name": "Marty T.",
-            "city": "Miami",
-            "state": "FL",
+            "city": "West Port",
+            "state": "WA",
             "brand": "WelderUp",
             "prize": "$100,000"
           }
@@ -160,8 +160,8 @@
           "settings": {
             "image": "shopify://shop_images/laura-c.jpg",
             "name": "Laura C.",
-            "city": "Portland",
-            "state": "OR",
+            "city": "Denver",
+            "state": "CO",
             "brand": "Nomadik",
             "prize": "$100,000"
           }
@@ -171,8 +171,8 @@
           "settings": {
             "image": "shopify://shop_images/MiguelQ-CmW5lG_G.jpg",
             "name": "Miguel Q.",
-            "city": "Chicago",
-            "state": "IL",
+            "city": "Reno",
+            "state": "NV",
             "brand": "Nine Line Apparel",
             "prize": "$100,000"
           }
@@ -182,8 +182,8 @@
           "settings": {
             "image": "shopify://shop_images/JesseT-B4eknULA.jpg",
             "name": "Jesse T.",
-            "city": "Nashville",
-            "state": "TN",
+            "city": "Kannapolis",
+            "state": "NC",
             "brand": "Gas Monkey Garage",
             "prize": "$100,000"
           }
