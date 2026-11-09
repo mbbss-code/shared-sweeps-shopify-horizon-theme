@@ -150,28 +150,12 @@
             "brand_url": "https://laurageller.com"
           }
         },
-        "current_brand_wxU7Bn": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Bucket Golf",
-            "brand_logo": "shopify://shop_images/bgolflogo.jpg",
-            "brand_url": "https://bucketgolfgame.com"
-          }
-        },
         "current_brand_MBAJ8n": {
           "type": "current_brand",
           "settings": {
             "brand_name": "SunFrog",
             "brand_logo": "shopify://shop_images/sunfroglogo.jpg",
             "brand_url": "https://sunfrog.com"
-          }
-        },
-        "current_brand_L9anHn": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "PetraTools",
-            "brand_logo": "shopify://shop_images/petratools.jpg",
-            "brand_url": "https://petratools.com"
           }
         },
         "current_brand_6EEcmP": {
@@ -188,14 +172,6 @@
             "brand_name": "Whiskey Road Hat C0",
             "brand_logo": "shopify://shop_images/wrlogo2.avif",
             "brand_url": "https://whiskeyroadhatco.com"
-          }
-        },
-        "current_brand_AH9piM": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Beest USA",
-            "brand_logo": "shopify://shop_images/beestlogo.jpg",
-            "brand_url": "https://beestusa.com"
           }
         },
         "current_brand_nixMhj": {
@@ -236,14 +212,6 @@
             "brand_name": "Larson Jewelers",
             "brand_logo": "shopify://shop_images/ljewelers.png",
             "brand_url": "https://larsonjewelers.com"
-          }
-        },
-        "current_brand_qxqxBY": {
-          "type": "current_brand",
-          "settings": {
-            "brand_name": "Stacked Sauces",
-            "brand_logo": "shopify://shop_images/stackedsauces.webp",
-            "brand_url": "https://stackedsauces.com"
           }
         },
         "current_brand_tX9HXp": {
@@ -343,18 +311,14 @@
         "current_brand_paVtTK",
         "current_brand_fWaezD",
         "current_brand_8q8FXb",
-        "current_brand_wxU7Bn",
         "current_brand_MBAJ8n",
-        "current_brand_L9anHn",
         "current_brand_6EEcmP",
         "current_brand_wpbgUP",
-        "current_brand_AH9piM",
         "current_brand_nixMhj",
         "current_brand_zMfcF6",
         "current_brand_W4BMjt",
         "current_brand_YL88aF",
         "current_brand_mfPy8B",
-        "current_brand_qxqxBY",
         "current_brand_tX9HXp",
         "current_brand_QgWVCn",
         "current_brand_yB9Mik",
